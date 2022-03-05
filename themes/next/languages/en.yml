@@ -48,19 +48,33 @@ footer:
 
 counter:
   tag_cloud:
-    zero: No tags
-    one: 1 tag in total
-    other: "%d tags in total"
+    zero: 还没有tag哦
+    one: 有1个tag了
+    other: "总共有 %d 个tag了"
 
   categories:
-    zero: No categories
-    one: 1 category in total
-    other: "%d categories in total"
+    zero: 还没有category哦
+    one: 有1项category了
+    other: "总共有 %d 个categories了"
 
   archive_posts:
-    zero: No posts.
-    one: 1 post.
-    other: "%d posts in total."
+    zero: 还没有发布的文章哦.
+    one: 有1篇发布的文章了.
+    other: "总共发布 %d 篇文章了"
+  #tag_cloud:
+  #  zero: No tags
+  #  one: 1 tag in total
+  #  other: "%d tags in total"
+
+  #categories:
+  #  zero: No categories
+  #  one: 1 category in total
+  #  other: "%d categories in total"
+
+  #archive_posts:
+  #  zero: No posts.
+  #  one: 1 post.
+  #  other: "%d posts in total."
 
 state:
   posts: posts
@@ -74,14 +88,14 @@ search:
   hits: "%s results found"
 
 cheers:
-  um: Um..
+  um: 可以的
   ok: OK
   nice: Nice
   good: Good
   great: Great
   excellent: Excellent
 
-keep_on: Keep on posting.
+keep_on: 加油!!!
 
 symbol:
   comma: ", "
