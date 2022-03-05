@@ -20,23 +20,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+    <meta name="description" content="learning ansible本文内容参考自朱双印ansible笔记 2021-07-03 配置主机清单# ini方式1234567891011# 1,如下示例:[ctl]10.168.0.210.168.0.310.168.0.4[nova:children]ctl[nova-compute:children]nova #  yaml方式1234567891011121314151617181">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ansible学习">
+<meta property="og:url" content="http://example.com/2022/03/05/ansible%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="learning ansible本文内容参考自朱双印ansible笔记 2021-07-03 配置主机清单# ini方式1234567891011# 1,如下示例:[ctl]10.168.0.210.168.0.310.168.0.4[nova:children]ctl[nova-compute:children]nova #  yaml方式1234567891011121314151617181">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/home/liawne/.config/Typora/typora-user-images/image-20220305120529676.png">
+<meta property="article:published_time" content="2022-03-05T04:07:21.000Z">
+<meta property="article:modified_time" content="2022-03-05T04:41:46.353Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="ansible">
+<meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/home/liawne/.config/Typora/typora-user-images/image-20220305120529676.png">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2022/03/05/ansible%E5%AD%A6%E4%B9%A0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/03/05/ansible%E5%AD%A6%E4%B9%A0/","path":"2022/03/05/ansible学习/","title":"ansible学习"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo</title>
+<title>ansible学习 | Hexo</title>
   
 
 
@@ -63,7 +71,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Hexo</h1>
+      <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -91,7 +99,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -104,6 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-ansible"><span class="nav-number">1.</span> <span class="nav-text">learning ansible</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E6%96%87%E5%86%85%E5%AE%B9%E5%8F%82%E8%80%83%E8%87%AA%E6%9C%B1%E5%8F%8C%E5%8D%B0ansible%E7%AC%94%E8%AE%B0"><span class="nav-number">1.0.1.</span> <span class="nav-text">本文内容参考自朱双印ansible笔记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-03-%E9%85%8D%E7%BD%AE%E4%B8%BB%E6%9C%BA%E6%B8%85%E5%8D%95"><span class="nav-number">1.0.2.</span> <span class="nav-text">2021-07-03 配置主机清单</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ini%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.2.1.</span> <span class="nav-text"># ini方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yaml%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">#  yaml方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-03-%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="nav-number">1.0.3.</span> <span class="nav-text">2021-07-03 常用模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%B1%BB%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">#  文件类操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E7%B1%BB%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">#  命令类操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%B1%BB%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">#  系统类操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%85%E7%AE%A1%E7%90%86%E7%B1%BB%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.3.4.</span> <span class="nav-text">#  包管理类操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-03-%E8%AE%A4%E8%AF%86ansible-playbook"><span class="nav-number">1.0.4.</span> <span class="nav-text">2021-07-03 认识ansible-playbook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-03-%E4%BD%BF%E7%94%A8handlers"><span class="nav-number">1.0.5.</span> <span class="nav-text">2021-07-03 使用handlers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-03-%E4%BD%BF%E7%94%A8tags"><span class="nav-number">1.0.6.</span> <span class="nav-text">2021-07-03 使用tags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-03-%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F-%E4%B8%80"><span class="nav-number">1.0.7.</span> <span class="nav-text">2021-07-03 使用变量(一)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F-%E4%BA%8C"><span class="nav-number">1.0.8.</span> <span class="nav-text">2021-07-04 使用变量(二)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F-%E4%B8%89"><span class="nav-number">1.0.9.</span> <span class="nav-text">2021-07-04 使用变量(三)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F-%E5%9B%9B-register-set-fact"><span class="nav-number">1.0.10.</span> <span class="nav-text">2021-07-04 使用变量(四),register,set_fact</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F-%E4%BA%94-%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F-host-vars"><span class="nav-number">1.0.11.</span> <span class="nav-text">2021-07-04 使用变量(五),内置变量,host_vars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E4%B8%80-with-items%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">1.0.12.</span> <span class="nav-text">2021-07-04 使用循环(一),with_items的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E4%BA%8C-%E5%AF%B9%E5%88%97%E8%A1%A8%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.0.13.</span> <span class="nav-text">2021-07-04 使用循环(二),对列表循环的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E4%B8%89-%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.0.14.</span> <span class="nav-text">2021-07-04 使用循环(三),嵌套循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-04-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E5%9B%9B-%E5%BA%8F%E5%88%97%E7%B4%A2%E5%BC%95%E5%BE%AA%E7%8E%AF"><span class="nav-number">1.0.15.</span> <span class="nav-text">2021-07-04 使用循环(四),序列索引循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-05-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E4%BA%94-with-sequence-with-random-choice"><span class="nav-number">1.0.16.</span> <span class="nav-text">2021-07-05 使用循环(五),with_sequence,with_random_choice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-05-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E5%85%AD-with-dict-with-subelements-with-file"><span class="nav-number">1.0.17.</span> <span class="nav-text">2021-07-05 使用循环(六),with_dict,with_subelements,with_file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-05-%E4%BD%BF%E7%94%A8%E5%BE%AA%E7%8E%AF-%E4%B8%83-with-file-with-fileglob"><span class="nav-number">1.0.18.</span> <span class="nav-text">2021-07-05 使用循环(七) with_file, with_fileglob</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-06-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD-%E5%85%AD-with-dict-with-subelements-with-file"><span class="nav-number">1.0.19.</span> <span class="nav-text">2021-07-06 条件判断(六),with_dict,with_subelements,with_file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-09-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E4%B8%8Etests"><span class="nav-number">1.0.20.</span> <span class="nav-text">2021-07-09 条件判断与tests</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-13-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E4%B8%8Eblock"><span class="nav-number">1.0.21.</span> <span class="nav-text">2021-07-13 条件判断与block</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-13-%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD%E4%B8%8E%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="nav-number">1.0.22.</span> <span class="nav-text">2021-07-13 条件判断与错误处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-13-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.0.23.</span> <span class="nav-text">2021-07-13 过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-14-%E5%8F%98%E9%87%8F-%E5%85%AD-include-vars"><span class="nav-number">1.0.24.</span> <span class="nav-text">2021-07-14 变量(六)include_vars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-15-%E8%BF%87%E6%BB%A4%E5%99%A8-%E4%BA%8C-json-query"><span class="nav-number">1.0.25.</span> <span class="nav-text">2021-07-15 过滤器(二) json_query</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-15-%E8%BF%87%E6%BB%A4%E5%99%A8-%E4%B8%89-%E5%85%B6%E4%BB%96%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.0.26.</span> <span class="nav-text">2021-07-15 过滤器(三) 其他过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-15-lookup%E6%8F%92%E4%BB%B6"><span class="nav-number">1.0.27.</span> <span class="nav-text">2021-07-15 lookup插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-%E5%BE%AA%E7%8E%AF-%E5%85%AB"><span class="nav-number">1.0.28.</span> <span class="nav-text">2021-07-17 循环(八)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-include"><span class="nav-number">1.0.29.</span> <span class="nav-text">2021-07-17 include</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-include-%E4%BA%8C"><span class="nav-number">1.0.30.</span> <span class="nav-text">2021-07-17 include(二)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-jinja2%E6%A8%A1%E6%9D%BF-%E4%B8%80"><span class="nav-number">1.0.31.</span> <span class="nav-text">2021-07-17 jinja2模板(一)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-jinja2%E6%A8%A1%E6%9D%BF-%E4%BA%8C"><span class="nav-number">1.0.32.</span> <span class="nav-text">2021-07-17 jinja2模板(二)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-jinja2%E6%A8%A1%E6%9D%BF-%E4%B8%89"><span class="nav-number">1.0.33.</span> <span class="nav-text">2021-07-17 jinja2模板(三)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-ansible%E4%B8%AD%E7%9A%84role"><span class="nav-number">1.0.34.</span> <span class="nav-text">2021-07-17 ansible中的role</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7-%E4%B8%80"><span class="nav-number">1.0.35.</span> <span class="nav-text">2021-07-17 常用技巧(一)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2021-07-17-%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7-%E4%BA%8C"><span class="nav-number">1.0.36.</span> <span class="nav-text">2021-07-17 常用技巧(二)</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -153,16 +162,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/05/ansible%E5%AD%A6%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -175,9 +185,9 @@
       <meta itemprop="name" content="Hexo">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/05/ansible%E5%AD%A6%E4%B9%A0/" class="post-title-link" itemprop="url">ansible学习</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          ansible学习
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -201,7 +211,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="learning-ansible"><a href="#learning-ansible" class="headerlink" title="learning ansible"></a>learning ansible</h1><h3 id="本文内容参考自朱双印ansible笔记"><a href="#本文内容参考自朱双印ansible笔记" class="headerlink" title="本文内容参考自朱双印ansible笔记"></a>本文内容参考自<a target="_blank" rel="noopener" href="https://www.zsythink.net/archives/2481">朱双印ansible笔记</a></h3><p><img src="/home/liawne/.config/Typora/typora-user-images/image-20220305120529676.png" alt="image-20220305120529676"></p>
+        <h1 id="learning-ansible"><a href="#learning-ansible" class="headerlink" title="learning ansible"></a>learning ansible</h1><h3 id="本文内容参考自朱双印ansible笔记"><a href="#本文内容参考自朱双印ansible笔记" class="headerlink" title="本文内容参考自朱双印ansible笔记"></a>本文内容参考自<a target="_blank" rel="noopener" href="https://www.zsythink.net/archives/2481">朱双印ansible笔记</a></h3><p><img src="/home/liawne/.config/Typora/typora-user-images/image-20220305120529676.png" alt="image-20220305120529676"></p>
 <h3 id="2021-07-03-配置主机清单"><a href="#2021-07-03-配置主机清单" class="headerlink" title="2021-07-03 配置主机清单"></a>2021-07-03 配置主机清单</h3><h4 id="ini方式"><a href="#ini方式" class="headerlink" title="# ini方式"></a># ini方式</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1,如下示例:</span></span><br><span class="line"><span class="section">[ctl]</span></span><br><span class="line">10.168.0.2</span><br><span class="line">10.168.0.3</span><br><span class="line">10.168.0.4</span><br><span class="line"></span><br><span class="line"><span class="section">[nova:children]</span></span><br><span class="line">ctl</span><br><span class="line"></span><br><span class="line"><span class="section">[nova-compute:children]</span></span><br><span class="line">nova</span><br></pre></td></tr></table></figure>
 <h4 id="yaml方式"><a href="#yaml方式" class="headerlink" title="#  yaml方式"></a>#  yaml方式</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1,如下示例:</span></span><br><span class="line"><span class="attr">all:</span></span><br><span class="line">  <span class="attr">children:</span></span><br><span class="line">    <span class="attr">k8s:</span></span><br><span class="line">      <span class="attr">hosts:</span></span><br><span class="line">        <span class="attr">master:</span></span><br><span class="line">          <span class="attr">ansible_host:</span> <span class="number">192.168</span><span class="number">.110</span><span class="number">.11</span></span><br><span class="line">          <span class="attr">ansible_port:</span> <span class="number">22</span></span><br><span class="line">          <span class="attr">ansible_user:</span> <span class="string">root</span></span><br><span class="line">          <span class="attr">ansible_pass:</span> <span class="string">&#x27;123.com&#x27;</span></span><br><span class="line">        <span class="attr">node2:</span></span><br><span class="line">          <span class="attr">ansible_host:</span> <span class="number">192.168</span><span class="number">.110</span><span class="number">.22</span></span><br><span class="line">          <span class="attr">ansible_port:</span> <span class="number">22</span></span><br><span class="line">          <span class="attr">ansible_user:</span> <span class="string">root</span></span><br><span class="line">          <span class="attr">ansible_pass:</span> <span class="string">&#x27;123.com&#x27;</span></span><br><span class="line">        <span class="attr">node3:</span></span><br><span class="line">          <span class="attr">ansible_host:</span> <span class="number">192.168</span><span class="number">.110</span><span class="number">.33</span></span><br><span class="line">          <span class="attr">ansible_port:</span> <span class="number">22</span></span><br><span class="line">          <span class="attr">ansible_user:</span> <span class="string">root</span></span><br><span class="line">          <span class="attr">ansible_pass:</span> <span class="string">&#x27;123.com&#x27;</span></span><br></pre></td></tr></table></figure>
 
@@ -795,7 +805,6 @@
 <li>如下示例:<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用pop</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">me</span></span><br><span class="line">  <span class="attr">gather_facts:</span> <span class="literal">no</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">   <span class="attr">tlist:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="number">11</span></span><br><span class="line">     <span class="bullet">-</span> <span class="number">2</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">     <span class="bullet">-</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">      <span class="attr">msg:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123;tlist.pop(2)&#125;&#125;</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用remove()</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">me</span></span><br><span class="line">  <span class="attr">gather_facts:</span> <span class="literal">no</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">   <span class="attr">tlist:</span></span><br><span class="line">     <span class="bullet">-</span> <span class="number">11</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">     <span class="bullet">-</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">     <span class="bullet">-</span> <span class="number">3</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">set_fact:</span></span><br><span class="line">      <span class="attr">tlist:</span> <span class="string">&quot;<span class="template-variable">&#123;&#123; tlist.remove(&#x27;b&#x27;) &#125;&#125;</span><span class="template-variable">&#123;&#123;tlist&#125;&#125;</span>&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">      <span class="attr">var:</span> <span class="string">tlist</span></span><br><span class="line"><span class="comment"># for循环匹配删除</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">hosts:</span> <span class="string">me</span></span><br><span class="line">  <span class="attr">gather_facts:</span> <span class="literal">no</span></span><br><span class="line">  <span class="attr">vars:</span></span><br><span class="line">    <span class="attr">tlist:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">11</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;a&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;b&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="number">11</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;a11&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;1a&#x27;</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;11&#x27;</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">set_fact:</span></span><br><span class="line">      <span class="attr">tlist:</span> <span class="string">&quot;&#123;%for i in tlist%&#125;&#123;% if 11 in tlist%&#125;<span class="template-variable">&#123;&#123;tlist.remove(11)&#125;&#125;</span>&#123;%endif%&#125;&#123;%endfor%&#125;<span class="template-variable">&#123;&#123;tlist&#125;&#125;</span>&quot;</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">debug:</span></span><br><span class="line">      <span class="attr">var:</span> <span class="string">tlist</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 
-      
     </div>
 
     
@@ -803,186 +812,26 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/ansible/" rel="tag"># ansible</a>
+              <a href="/tags/notes/" rel="tag"># notes</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/03/01/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" rel="prev" title="hexo多设备管理">
+                  <i class="fa fa-chevron-left"></i> hexo多设备管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/01/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">hexo多设备管理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-03-01 22:13:11 / Modified: 22:20:49" itemprop="dateCreated datePublished" datetime="2022-03-01T22:13:11+08:00">2022-03-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><code>github+hexo+next搭建个人博客</code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.<br>在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在hexo分支,hexo基于更改内容生成的文件提交到master分支<br>下列内容记录在raspberry上配置实现hexo编辑提交内容的过程</p>
-<h3 id="1-安装基础包"><a href="#1-安装基础包" class="headerlink" title="1.安装基础包"></a>1.安装基础包</h3><p>在新机器上安装基础包，当前机器为raspberry，以该机器为例说明<br>raspberry安装系统是”Raspbian GNU&#x2F;Linux 10 (buster)”，基于debian的发行，用如下命令安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装nodejs、npm、git</span></span><br><span class="line">sudo apt install nodejs npm git</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-配置git及github"><a href="#2-配置git及github" class="headerlink" title="2.配置git及github"></a>2.配置git及github</h3><p>安装好基础包后，要配置github上<strong>个人资料&#x2F;settings&#x2F;SSH and GPG keys&#x2F;SSH keys</strong>,用于提交代码使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在raspberry上,使用pi用户生成公私钥对</span></span><br><span class="line">PI $ ssh-keygen -t rsa -P <span class="string">&#x27;&#x27;</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/pi/.ssh/id_rsa): Your identification has been saved <span class="keyword">in</span> /home/pi/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/pi/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:5C2iM9maPY/n+2iDwmodQJOjxTq2ZJkwv0xBy4EG68E pi@raspberrypi</span><br><span class="line">The keys randomart image is:</span><br><span class="line">+---[RSA 2048]----+</span><br><span class="line">|o+o.             |</span><br><span class="line">|=+Oo             |</span><br><span class="line">|+E=+    .        |</span><br><span class="line">|=*=    o .       |</span><br><span class="line">|+=.o  . S .      |</span><br><span class="line">| .o .+ . .       |</span><br><span class="line">|   o=...         |</span><br><span class="line">|  . +*o.+.       |</span><br><span class="line">| ...o.o*=+.      |</span><br><span class="line">+----[SHA256]-----+</span><br><span class="line"></span><br><span class="line"><span class="comment"># pi用户家目录下.ssh文件夹下新生成了id_rsa/id_rsa.pub文件</span></span><br><span class="line">PI $ <span class="built_in">ls</span> ~/.ssh -lrt</span><br><span class="line">total 16</span><br><span class="line">-rw-r--r-- 1 pi pi  444 Feb 27 21:28 known_hosts</span><br><span class="line">-rw------- 1 pi pi 1366 Feb 28 13:06 authorized_keys</span><br><span class="line">-rw-r--r-- 1 pi pi  396 Mar  1 21:30 id_rsa.pub</span><br><span class="line">-rw------- 1 pi pi 1823 Mar  1 21:30 id_rsa</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制id_rsa.pub内容,在github上SSH keys界面上点击New SSH key,添加复制的公钥内容并命名</span></span><br><span class="line">PI $ <span class="built_in">cat</span> ~/.ssh/id_rsa.pub </span><br><span class="line">ssh-rsa AAAAB3NzaCxxxx.....</span><br></pre></td></tr></table></figure>
-
-<p>配置本地git</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置user.name和user.email</span></span><br><span class="line">PI $ git config --global user.email <span class="string">&quot;you@example.com&quot;</span></span><br><span class="line">PI $ git config --global user.name <span class="string">&quot;Your Name&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="3-npm安装hexo相关包"><a href="#3-npm安装hexo相关包" class="headerlink" title="3.npm安装hexo相关包"></a>3.npm安装hexo相关包</h3><p>配置好github <strong>SSH keys</strong>后,下载<strong>yourname.github.io</strong>库到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入相应的目录,下载hexo分支代码; 此处在家目录下新建了projects目录,进入projects目录进行操作</span></span><br><span class="line">PI $ <span class="built_in">mkdir</span> ~/projects &amp;&amp; <span class="built_in">cd</span> ~/projects</span><br><span class="line"></span><br><span class="line"><span class="comment"># $yourname填写自己实际的名称</span></span><br><span class="line">PI $ git <span class="built_in">clone</span> git@github.com:<span class="variable">$yourname</span>/<span class="variable">$yourname</span>.github.io.git</span><br></pre></td></tr></table></figure>
-
-<p>下载完成后,进入<strong>yourname.github.io</strong>目录,安装npm相关包</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装hexo</span></span><br><span class="line">PI $ <span class="built_in">cd</span> <span class="variable">$yourname</span>.github.io &amp;&amp; npm install hexo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 当前目录下已经包含package.json文件,直接安装相关包</span></span><br><span class="line">PI $ npm install</span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo同步至github需要使用的包</span></span><br><span class="line">PI $ npm install hexo-deployer-git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装完成后,需要将当前目录下node_modules/.bin加入到PATH中</span></span><br><span class="line">PI $ <span class="built_in">echo</span> <span class="string">&#x27;export PATH=$PATH:/home/pi/projects/$yourname.github.io/node_modules/.bin&#x27;</span> &gt;&gt; ~/.bashrc </span><br><span class="line">PI $ <span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-测试发布新文章"><a href="#4-测试发布新文章" class="headerlink" title="4.测试发布新文章"></a>4.测试发布新文章</h3><p>上述内容配置完成后,在新机器上测试新文章发布</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新增文章</span></span><br><span class="line">PI $ hexo n <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑source/_post/test.md内容,可以在typora等markdown写作软件上先完成内容后再粘贴</span></span><br><span class="line">PI $ vim <span class="built_in">source</span>/_post/test.md</span><br><span class="line"></span><br><span class="line"><span class="comment"># 生成内容</span></span><br><span class="line">PI $ hexo g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试新文章内容,hexo s后访问localhost:4000查看文章效果</span></span><br><span class="line">PI $ hexo s</span><br><span class="line"></span><br><span class="line"><span class="comment"># 内容核对完成,发布到github yourname.github.io的master分支上</span></span><br><span class="line">PI $ hexo d</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/02/28/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/02/28/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-02-28 21:53:07" itemprop="dateCreated datePublished" datetime="2022-02-28T21:53:07+08:00">2022-02-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-02-27 11:00:14" itemprop="dateModified" datetime="2022-02-27T11:00:14+08:00">2022-02-27</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
