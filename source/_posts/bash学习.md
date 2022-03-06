@@ -1,13 +1,13 @@
 ---
-title: bash学习
+title: learning bash via abs
 date: 2022-03-06 10:42:55
 tags:
 - bash
+- linux
+categories:
+- notes
 description: "通过advanced-bash-scripting学习bash的笔记内容"
 ---
-
-# Learning BASH via abs
-
 ## 变量及操作符
 
 ### \#1. 特殊字符使用  
@@ -404,7 +404,7 @@ $[...] --> 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
 	变量操作
 	--> bash允许大量字符串操作,部分属于变量替换操作,部分属于UNIX的expr功能
 	1, 字符串长度
-		--> ${#string},显示变量string的长度
+		--> ${井号string},显示变量string的长度
 		--> expr length $string,使用expr功能显示字符串长度
 		--> expr "$string" : '.*',同样是显示变量string中字符串的长度值
 	2, substring从string开头匹配的字符数,substring是正则表达式
@@ -472,7 +472,7 @@ $[...] --> 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
 	        也受影响。
 	
 	    --> ${var,,}               # 更改var的大小写,将$var中的大写字符转换成小写
-	    --> ${#var}                # get the length of the variate of var
+	    --> ${井号var}                # get the length of the variate of var
 	
 	变量替换
 	    stringZ=abcABC123ABCabc
@@ -764,7 +764,7 @@ $[...] --> 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
     P_array=( $PIDS )
     echo $PIDS
 
-    let "instances = ${#P_array[*]} - 1" 
+    let "instances = ${井号P_array[*]} - 1" 
     echo "$instances instance(s) of this script running."
     echo "[Hit Ctl-C to exit.]"; 
     echo
