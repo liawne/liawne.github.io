@@ -1,3 +1,18 @@
-<div class="cc-license animated" itemprop="sponsor">
-  <a href="https://www.netlify.com" class="cc-opacity" title="Deploy with Netlify → https://www.netlify.com" target="_blank"><img width="80" src="https://www.netlify.com/img/global/badges/netlify-dark.svg" alt="Netlify"></a>
-</div>
+{% if theme.recent_posts %}
+    <div class="links-of-blogroll motion-element {{ "links-of-blogroll-" + theme.recent_posts_layout  }}">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-{{ theme.recent_posts_icon | lower }}" aria-hidden="true"></i>
+        {{ theme.recent_posts_title }}
+      </div>
+      <ul class="links-of-blogroll-list">
+        {% set posts = site.posts.sort('-date') %}
+        {% set posts = site.posts.sort('-date').toArray() %}
+        {% for post in posts.slice('0', '5') %}
+          <li>
+            <a href="{{ url_for(post.path) }}" title="{{ post.title }}" target="_blank">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+{% endif %}

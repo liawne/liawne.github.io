@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: Liawne
+subtitle: 'Just go go'
+description: 'record miscellence'
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: Rui
+language: zh-CN
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://ruisum.top
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -46,7 +46,7 @@ future: true
 highlight:
   enable: true
   line_number: true
-  auto_detect: false
+  auto_detect: true
   tab_replace: ''
   wrap: true
   hljs: false
@@ -107,3 +107,20 @@ deploy:
   type: 'git'
   repo: https://github.com/liawne/liawne.github.io.git
   branch: master
+
+######################################################
+###                 Personal added                 ###
+######################################################
+# Live2D
+## https://github.com/EYHN/hexo-helper-live2d
+live2d:
+  enable: true
+  scriptFrom: local
+  model:
+    use: live2d-widget-model-tororo # 模型名字
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: false

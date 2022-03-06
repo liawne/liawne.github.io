@@ -4,12 +4,13 @@ date: 2022-03-05 12:07:21
 tags: 
 - ansible
 - notes
+description: "讲解ansible及ansible-playbook的使用"
 ---
 # learning ansible
 *本文内容参考自[朱双印ansible笔记](https://www.zsythink.net/archives/2481)*
 
 ### 配置主机清单 ###
-
+主机清单配置有两种方式
 #### \# ini方式
 ```ini
 # 1,如下示例:
@@ -116,6 +117,7 @@ all:
 2,上述脚本在ansible-playbook中称作为'playbook',即剧本
   - 每个playbook(剧本)又多个play(桥段)组成,每个剧本是由多个桥段组成的,每个桥段包含有人物,场景,故事
   - 每个play在执行时,都会执行一个默认任务('Gathering Facts),任务会收集当前当前play对应的目标主机的相关信息(IP,hostname,硬件版本,系统版本等),收集完成后才会完成我们定义的相关任务
+
 3,ansible有个重要特性:幂等性
   - 在ansible调用模块或者ansible-playbook执行相应play时,输出内容会有颜色区分,黄色表示有修改,绿色表示么有修改;区别是远端的内容是否满足我们的预期
   - ansible是”以结果为导向的”，我们指定了一个”目标状态”，ansible会自动判断，”当前状态”是否与”目标状态”一致，如果一致，则不进行任何操作，如果不一致，那么就将”当前状态”变成”目标状态”，这就是”幂等性”，”幂等性”可以保证我们重复的执行同一项操作时，得到的结果是一样的

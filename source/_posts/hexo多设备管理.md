@@ -4,10 +4,12 @@ date: 2022-03-01 22:13:11
 tags:
 - record
 categories: 随笔
+description: "在新设备上准备hexo发布文章的配置过程"
 ---
 `github+hexo+next搭建个人博客`已经完成,使用一段时间后,发现存在多处编辑提交的需求.
 在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在hexo分支,hexo基于更改内容生成的文件提交到master分支
 下列内容记录在raspberry上配置实现hexo编辑提交内容的过程
+<!--more-->
 
 ### 1.安装基础包
 
