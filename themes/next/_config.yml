@@ -105,7 +105,7 @@ menu:
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
   #schedule: /schedule/ || fa fa-calendar
-  sitemap: /sitemap.xml || fa fa-sitemap
+  #sitemap: /sitemap.xml || fa fa-sitemap
   #commonweal: /404/ || fa fa-heartbeat
 
 # Enable / Disable menu icons / item badges.
@@ -444,7 +444,7 @@ font:
   global:
     external: true
     #family: Lato
-    family: 微软雅黑
+    family: Noto Serif SC
     size:
 
   # Font settings for site title (.site-title).
