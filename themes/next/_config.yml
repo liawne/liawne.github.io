@@ -208,7 +208,7 @@ language_switcher: false
 
 footer:
   # Specify the year when the site was setup. If not defined, current year will be used.
-  #since: 2021
+  since: 2021
 
   # Icon between year and copyright info.
   icon:
@@ -220,7 +220,7 @@ footer:
     color: "#ff0000"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright:
+  copyright: Liawne
 
   # Powered by Hexo & NexT
   powered: false
@@ -320,6 +320,8 @@ post_navigation: left
 tagcloud:
   min: 12 # Minimum font size in px
   max: 30 # Maximum font size in px
+  start: "#FF69B4" # Start color (hex, rgba, hsla or color keywords)
+  end: "#8A2BE2" # End color (hex, rgba, hsla or color keywords)
   amount: 200 # Total amount of tags
   orderby: name # Order of tags
   order: 1 # Sort order
@@ -381,7 +383,7 @@ codeblock:
   copy_button:
     enable: true
     # Available values: default | flat | mac
-    style: flat
+    style: default
 
 back2top:
   enable: true
