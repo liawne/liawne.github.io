@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">LIAWNE</title><subtitle type="html">Liawne's blog</subtitle><updated>2022-03-13T16:04:40+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>liawne</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator><entry><title type="text">计划写和做的内容</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/"/><id>https://liawne.github.io/posts/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/</id><updated>2022-03-13T11:24:50+08:00</updated><published>2022-03-12T16:19:42+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">理一下哪些内容可以整理输出</summary><content type="html">&lt;p>刚开始写博客,先梳理一下哪些内容可以整理输出,以及还有哪些事情需要做.&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">LIAWNE</title><subtitle type="html">Liawne's blog</subtitle><updated>2022-03-13T17:28:27+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>liawne</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator><entry><title type="text">计划写和做的内容</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/"/><id>https://liawne.github.io/posts/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/</id><updated>2022-03-13T17:18:44+08:00</updated><published>2022-03-12T16:19:42+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">理一下哪些内容可以整理输出</summary><content type="html">&lt;p>刚开始写博客,先梳理一下哪些内容可以整理输出,以及还有哪些事情需要做.&lt;/p>
 &lt;h3 id="可以写的文章">可以写的文章&lt;/h3>
 &lt;blockquote>
 &lt;p>总的来说,就分为两大类,技术和生活&lt;/p>
@@ -63,7 +63,7 @@
 &lt;ul>
 &lt;li>界面优化,字体调整/排版调整&lt;/li>
 &lt;li>确定界面展示内容&lt;/li>
-&lt;/ul></content><category scheme="https://liawne.github.io/categories/%E7%94%9F%E6%B4%BB/" term="生活" label="生活"/><category scheme="https://liawne.github.io/categories/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/" term="计划内容" label="计划内容"/><category scheme="https://liawne.github.io/tags/plan/" term="plan" label="plan"/><category scheme="https://liawne.github.io/tags/%E9%9A%8F%E7%AC%94/" term="随笔" label="随笔"/><category scheme="https://liawne.github.io/tags/%E6%83%B3%E6%B3%95/" term="想法" label="想法"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/docker%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T11:26:41+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h3 id="-容器是什么">#. 容器是什么&lt;/h3>
+&lt;/ul></content><category scheme="https://liawne.github.io/categories/%E7%94%9F%E6%B4%BB/" term="生活" label="生活"/><category scheme="https://liawne.github.io/categories/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/" term="计划内容" label="计划内容"/><category scheme="https://liawne.github.io/tags/plan/" term="plan" label="plan"/><category scheme="https://liawne.github.io/tags/%E9%9A%8F%E7%AC%94/" term="随笔" label="随笔"/><category scheme="https://liawne.github.io/tags/%E6%83%B3%E6%B3%95/" term="想法" label="想法"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/docker%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:10:14+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
 &lt;p>1, LXC(linux container): linux容器&lt;/p>
 &lt;p>2, 虚拟化类型:&lt;/p>
 &lt;ul>
@@ -183,7 +183,7 @@ Type-II: virtualbox,vmware workstation,kvm等;先存在一个宿主机,安装好
 &lt;li>runc,容器运行时的环境标准&lt;/li>
 &lt;li>容器镜像格式标准OCF(open container format),事实上的工业标准&lt;/li>
 &lt;/ul>
-&lt;h3 id="-docker基础用法">#. docker基础用法&lt;/h3>
+&lt;h2 id="-docker基础用法">#. docker基础用法&lt;/h2>
 &lt;p>1, 相关名词&lt;/p>
 &lt;ul>
 &lt;li>OCI(open container initiative),开放容器协会,主要目的是围绕容器格式和运行时制定一个开放的工业化标准,由两部分组成:
@@ -294,7 +294,7 @@ c,centos7之前还有使用到dm(弱爆了),就是lvm的实现,使用dm的方式
 &lt;/li>
 &lt;li>启动一个容器时,不能让其跑在后台,不然启动就会停止(一个容器就是为了一个进程,如果跑后台,终端没有任何程序,那docker就认为已经结束了)&lt;/li>
 &lt;/ul>
-&lt;h3 id="-docker镜像管理基础">#. docker镜像管理基础&lt;/h3>
+&lt;h2 id="-docker镜像管理基础">#. docker镜像管理基础&lt;/h2>
 &lt;p>1, docker镜像含有启动容器所需要的文件系统及其内容,容器镜像用于创建并启动docker容器&lt;/p>
 &lt;ul>
 &lt;li>采用分层构建的机制,最底层为bootfs,其次为rootfs
@@ -399,7 +399,7 @@ docker commit -p &amp;lt;container&amp;gt; -c &lt;span class="s2">&amp;#34;CMD [
 &lt;li>docker save -o &lt;filename>&lt;/li>
 &lt;li>docker load -i &lt;filename>&lt;/li>
 &lt;/ul>
-&lt;h3 id="-容器虚拟化网络">#. 容器虚拟化网络&lt;/h3>
+&lt;h2 id="-容器虚拟化网络">#. 容器虚拟化网络&lt;/h2>
 &lt;p>1,网络名称空间主要是实现网络设备(网卡,协议栈)的隔离&lt;/p>
 &lt;ul>
 &lt;li>当网络设备不够用时,可以通过命令生成虚拟网络设备,linux内核支持实现生成两种网络设备:
@@ -446,7 +446,7 @@ docker commit -p &amp;lt;container&amp;gt; -c &lt;span class="s2">&amp;#34;CMD [
 &lt;li>docker container inspect &lt;container name>&lt;/li>
 &lt;li>docker volume inspect &lt;volume name>&lt;/li>
 &lt;/ul>
-&lt;h3 id="-容器网络">#. 容器网络&lt;/h3>
+&lt;h2 id="-容器网络">#. 容器网络&lt;/h2>
 &lt;p>1,容器间可以共享IPC,UTC,NET命名空间&lt;/p>
 &lt;p>2,可以手动操作网络名称空间,因为由ip命令&lt;/p>
 &lt;ul>
@@ -584,7 +584,7 @@ docker run -it --name t2 --net bridge busybox:latest
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
-&lt;h3 id="-容器存储">#. 容器存储&lt;/h3>
+&lt;h2 id="-容器存储">#. 容器存储&lt;/h2>
 &lt;p>1,为什么要使用data volume&lt;/p>
 &lt;ul>
 &lt;li>docker镜像由多个只读层叠加而成,启动容器时,docker会加载只读镜像层并在镜像栈顶添加一个读写层&lt;/li>
@@ -724,7 +724,7 @@ docker run -it --name mysql --network container:infracon --volume-from infracon 
 &lt;/div>&lt;/li>
 &lt;li>对于这种需求,可以使用docker-compose来实现,主要功能是单击编排(还可以做镜像,镜像现做,容器现启动)&lt;/li>
 &lt;/ul>
-&lt;h3 id="-dockerfile详解一">#. Dockerfile详解(一)&lt;/h3>
+&lt;h2 id="-dockerfile详解一">#. Dockerfile详解(一)&lt;/h2>
 &lt;p>1,生产环境下使用nginx场景,修改配置生效的几种方式&lt;/p>
 &lt;ul>
 &lt;li>docker exec CONTAINER vi, reload进入容器修改配置文件,再reload服务&lt;/li>
@@ -1016,7 +1016,7 @@ docker run -it --name mysql --network container:infracon --volume-from infracon 
 &lt;/li>
 &lt;/ul>
 &lt;p>5,Dockerfile中请惜字如金,因为每一条指令都会生成一个新的层&lt;/p>
-&lt;h3 id="-dockerfile详解二">#. Dockerfile详解(二)&lt;/h3>
+&lt;h2 id="-dockerfile详解二">#. Dockerfile详解(二)&lt;/h2>
 &lt;p>1,在docker的上下文当中,有一个重要的特点,一个容器只是为了运行单个程序或者单个应用&lt;/p>
 &lt;p>2,在命令行下通过&amp;amp;符放后台执行的程序都是当前shell的子进程,当退出当前shell时,该shell的子进程会被杀掉,相应的该shell下的后台进程也被关闭&lt;/p>
 &lt;ul>
@@ -1323,7 +1323,7 @@ docker run -it --name mysql --network container:infracon --volume-from infracon 
 &lt;/div>&lt;/li>
 &lt;/ul>
 &lt;p>5,在写Dockerfile时,注意json传入时必须要写双引号,单引号会报错&lt;/p>
-&lt;h3 id="-docker私有registry">#. Docker私有registry&lt;/h3>
+&lt;h2 id="-docker私有registry">#. Docker私有registry&lt;/h2>
 &lt;p>1,registry用于保存docker镜像,包括镜像的层次结构和元数据&lt;/p>
 &lt;p>2,启动registry有几种方式&lt;/p>
 &lt;ul>
@@ -1362,7 +1362,7 @@ docker run -it --name mysql --network container:infracon --volume-from infracon 
 &lt;li>实例间镜像拷贝&lt;/li>
 &lt;li>扩展API和web UI界面&lt;/li>
 &lt;/ul>
-&lt;h3 id="-docker的资源限制">#. Docker的资源限制&lt;/h3>
+&lt;h2 id="-docker的资源限制">#. Docker的资源限制&lt;/h2>
 &lt;p>1,默认情况下,容器是没有资源限制的,可以使用完宿主机上内核分配给该容器的所有资源&lt;/p>
 &lt;p>2,docker提供了一个途径,可以用来控制容器可以使用多少CPU,memory,块设备IO(限制有限);可以通过设置运行时(runtime)配置&lt;/p>
 &lt;ul>
@@ -1410,8 +1410,8 @@ docker run -it --name mysql --network container:infracon --volume-from infracon 
 &lt;li>--cpuset-cpus 限制在哪些核上&lt;/li>
 &lt;li>-- cpu-shares 配置为共享方式(各个容器共享宿主机CPU)&lt;/li>
 &lt;/ul>
-&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/bash%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T11:24:04+08:00</updated><published>2022-03-06T10:42:55+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
-&lt;h3 id="1-特殊字符使用">#1. 特殊字符使用&lt;/h3>
+&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/bash%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:13:46+08:00</updated><published>2022-03-06T10:42:55+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
+&lt;h3 id="-特殊字符使用">#. 特殊字符使用&lt;/h3>
 &lt;pre tabindex="0">&lt;code># --&amp;gt; 注释(不包括#!)
 --&amp;gt; 变量替换使用 echo ${PATH#*:}
 ; --&amp;gt; 命令分隔符,用于连接多个命令
@@ -1557,7 +1557,7 @@ if [[ &amp;quot;$variable&amp;quot; =~ T.........fin*es* ]]
 --&amp;gt; 参数替换中,大写替换
 ^^ --&amp;gt; 参数替换中,大写替换
 ' ' --&amp;gt; 空格,用作命令或者是变量的分隔
-&lt;/code>&lt;/pre>&lt;h3 id="2-变量及参数">#2. 变量及参数&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h3 id="-变量及参数">#. 变量及参数&lt;/h3>
 &lt;pre>&lt;code>1, 变量名是变量值的占位符,获取变量值的操作称之为变量替换
 2, 变量裸露的情况(没有前缀'$'符)
 --&amp;gt; 变量声明或者是赋值的时候
@@ -1603,7 +1603,7 @@ case `basenam $0` in # Or: case ${0##*/} in
 * ) echo &amp;quot;Usage: `basename $0` [domain-name]&amp;quot;;;
 esac
 &lt;/code>&lt;/pre>
-&lt;h3 id="3--引用">#3. 引用&lt;/h3>
+&lt;h3 id="--引用">#. 引用&lt;/h3>
 &lt;pre>&lt;code>1, grep '[Ff]irst' *.txt;在''中的特殊情况,这里并不会去除[]的作用,而是作为被保护的内容传递给grep
 2, &amp;quot;&amp;quot;保护除过$,\,`的其他符号
 3, 可以引用\n
@@ -1613,7 +1613,7 @@ echo -e '\'${quote,}
 quote=$'\042'
 5, echo -e用于转换特殊含义字符
 &lt;/code>&lt;/pre>
-&lt;h3 id="4--测试">#4. 测试&lt;/h3>
+&lt;h3 id="--测试">#. 测试&lt;/h3>
 &lt;pre>&lt;code>测试结构:
 1, if/then/elif/else结构,结合if后面的返回值确定执行顺序
 --&amp;gt; if结构不仅仅只能判断[]结构,后面可借命令
@@ -1654,7 +1654,7 @@ echo &amp;quot;Input&amp;quot; | show_input_type # PIPE
 --&amp;gt; f1 -ef f2 文件f1和f2是指向同一个文件的硬链接
 --&amp;gt; ! 非
 &lt;/code>&lt;/pre>
-&lt;h3 id="5--操作符">#5. 操作符&lt;/h3>
+&lt;h3 id="--操作符">#. 操作符&lt;/h3>
 &lt;pre>&lt;code>--&amp;gt; bash不明白浮点数的运算,会将浮点数当作字符处理;需要处理浮点数的运算,可以使用bc操作
 --&amp;gt; 逻辑运算符:
 1, &amp;amp;&amp;amp; 和/与
@@ -1686,7 +1686,7 @@ if [ &amp;quot;$v1&amp;quot; -gt &amp;quot;$v2&amp;quot; -o &amp;quot;$v1&amp;qu
 if [[ &amp;quot;$v1&amp;quot; -gt &amp;quot;$v2&amp;quot; ]] || [[ &amp;quot;$v1&amp;quot; -lt &amp;quot;$v2&amp;quot; ]] &amp;amp;&amp;amp; [[ -e &amp;quot;$filename&amp;quot; ]]
 # Much better -- the condition tests are grouped in logical sections.
 &lt;/code>&lt;/pre>
-&lt;h3 id="6--其他变量视角">#6. 其他变量视角&lt;/h3>
+&lt;h3 id="--其他变量视角">#. 其他变量视角&lt;/h3>
 &lt;pre>&lt;code>内部变量
 1, $BASHPID(返回当前shell),不同于$$(返回父shell),虽然大部分时候两个值相同
 echo $BASHPID;(echo $BASHPID) ## output different
@@ -1873,7 +1873,7 @@ String=23skidoo1
 --&amp;gt; echo | awk '{ print substr(&amp;quot;'&amp;quot;${String}&amp;quot;'&amp;quot;,3,4) }' # skid
 前面使用空echo的作用是,所谓伪输入,不需要填写输入文件
 &lt;/code>&lt;/pre>
-&lt;h3 id="7-循环和分支结构">#7. 循环和分支结构&lt;/h3>
+&lt;h3 id="-循环和分支结构">#. 循环和分支结构&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -2068,7 +2068,7 @@ done
 }
 choice_of beans rice carrots radishes rutabaga spinach
 ------------------------------------------------------------------------------------------------------
-&lt;/code>&lt;/pre>&lt;h3 id="8-命令替换">#8. 命令替换&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h3 id="-命令替换">#. 命令替换&lt;/h3>
 &lt;pre>&lt;code>命令替换重新单个甚至多个命令的输出结果,逐字的将输出内容传递给另一个上下文
 --&amp;gt; 命令的输出结果可以是传递给其他命令的参数,可以是设置变量,甚至生成for循环需要使用的内容参数
 --&amp;gt; 命令替换有两种形式:`commands`,$(commands),两种方式等效
@@ -2096,7 +2096,7 @@ done`
 允许这种形式：content=$(&amp;lt;$File2)
 --&amp;gt; $()的形式允许多重嵌套
 &lt;/code>&lt;/pre>
-&lt;h3 id="9-运算展开">#9. 运算展开&lt;/h3>
+&lt;h3 id="-运算展开">#. 运算展开&lt;/h3>
 &lt;pre>&lt;code>算数展开提供了一个强大的工具，用于在脚本中进行算数运算；常用的有反引号、双括号、let
 变种：
 --&amp;gt; 使用反引号的算数运算，常常和expr结合使用
@@ -2107,7 +2107,7 @@ z=$(($z+3))或者z=$((z+3))也可以
 let z=z+3是正确的；let &amp;quot;z += 3&amp;quot;也可以
 &lt;/code>&lt;/pre>
 &lt;h2 id="linux命令">linux命令&lt;/h2>
-&lt;h3 id="1-内部命令和内部指令">#1. 内部命令和内部指令&lt;/h3>
+&lt;h3 id="-内部命令和内部指令">#. 内部命令和内部指令&lt;/h3>
 &lt;p>​ 内建指令是指包含在bash工具集内部的命令；内建命令的作用一方面是为了提升性能，常用于需要fork新进程的命令，另一方面是出于某些命令需要直接访问shell内部&lt;/p>
 &lt;pre>&lt;code>--&amp;gt; 父进程获取到子进程的pid后，可以传递参数给子进程，反过来则不行；这个需要注意，出现这种问题时，一般难以排查
 &lt;/code>&lt;/pre>
@@ -2127,7 +2127,7 @@ echo &amp;quot;This line uses the \&amp;quot;echo\&amp;quot; builtin.&amp;quot;
 /bin/echo &amp;quot;This line uses the /bin/echo system command.&amp;quot;
 --&amp;gt; 关键字是预留字、符号，或者是操作符；关键字对shell来说具有特殊的含义，是shell的语句块的构成部分；关键字属于bash的硬编码部分，不同于内建指令，关键字是命令的子单元
 &lt;/code>&lt;/pre>
-&lt;h3 id="2-io命令">#2. IO命令&lt;/h3>
+&lt;h3 id="-io命令">#. IO命令&lt;/h3>
 &lt;pre>&lt;code>echo：打印表达式或者变量到标准输出
 --&amp;gt; 和-e使用，用来打印脱意符
 --&amp;gt; 默认情况下，每个echo会打印一个终端换行符，当与-n一起使用时，会将换行符省略掉
@@ -2169,7 +2169,7 @@ delete='\[3'
 &lt;pre tabindex="0">&lt;code>read var1 &amp;lt; /tmp/file1
 read var1 var2 &amp;lt; /tmp/file1
 while read line; do echo $line; done &amp;lt; /tmp/file1
-&lt;/code>&lt;/pre>&lt;h3 id="3-文件系统命令">#3. 文件系统命令&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h3 id="-文件系统命令">#. 文件系统命令&lt;/h3>
 &lt;pre>&lt;code>cd：切换路径命令
 --&amp;gt; 使用-P参数，忽略链接文件
 --&amp;gt; cd -,切换到上一个目录，$OLDPWD变量保存的内容
@@ -2187,7 +2187,7 @@ pushd,popd,dirs：这个命令集合是一个工作目录书签工具，用于�
 --&amp;gt; dirs 列出栈中的目录列表，popd和pushd会引用到dirs
 在脚本中需要切换多个目录工作时，使用这个命令集可以方便的进行管理，$DIRSTACK数组包含有目录的列表栈内容
 &lt;/code>&lt;/pre>
-&lt;h3 id="4-变量操作命令">#4. 变量操作命令&lt;/h3>
+&lt;h3 id="-变量操作命令">#. 变量操作命令&lt;/h3>
 &lt;pre>&lt;code>let：let命令执行对变量的算数运算操作，在很多种情况下，let相当于简化版的expr命令
 &lt;/code>&lt;/pre>
 &lt;pre tabindex="0">&lt;code>let a=11; let a=a+5
@@ -2318,7 +2318,7 @@ esac
 done
 shift $(($OPTIND - 1))
 exit $?
-&lt;/code>&lt;/pre>&lt;h3 id="5-脚本行为命令">#5. 脚本行为命令&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h3 id="-脚本行为命令">#. 脚本行为命令&lt;/h3>
 &lt;pre>&lt;code>source/. (点命令)
 这个命令,当在脚本外使用时,作用为调用一个脚本;
 在脚本内部使用,source file-name的作用为加载file-name的内容;
@@ -2393,7 +2393,7 @@ function1
 &lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; caller命令在被source后,同样能够打印出在被source文件中的位置,类似于一个函数,这个被称作为子程序
 --&amp;gt; caller在debug中比较有用
 &lt;/code>&lt;/pre>
-&lt;h3 id="6-常用命令">#6 常用命令&lt;/h3>
+&lt;h3 id="-常用命令"># 常用命令&lt;/h3>
 &lt;pre>&lt;code>true
 一个返回成功(0)的退出状态码命令,不做任何其他动作
 常用与无限循环结构中: while true
@@ -2428,7 +2428,7 @@ help
 获取简短的shell内建命令帮助信息,这个命令whatis的副本,但是是一个内建命令
 help命令在bash v4后显示的信息详尽很多
 &lt;/code>&lt;/pre>
-&lt;h3 id="7-job控制命令">#7. job控制命令&lt;/h3>
+&lt;h3 id="-job控制命令">#. job控制命令&lt;/h3>
 &lt;pre>&lt;code>该部分内容的部分命令需要后接任务鉴定符作为参数
 jobs
 列出当前在后台运行的所有job,给出job数字,没有ps有用
@@ -2538,7 +2538,7 @@ enable
 --&amp;gt; enable的-a选项列出所有的shell内建命令,指示这些命令是否被enable
 --&amp;gt; -f filename选项让enable加载一个内建命令作为一个共享库模块从一个正确编译的二进制文件
 &lt;/code>&lt;/pre>
-&lt;h3 id="8-任务识别符">#8. 任务识别符&lt;/h3>
+&lt;h3 id="-任务识别符">#. 任务识别符&lt;/h3>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -2577,9 +2577,9 @@ enable
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h3 id="9-外部过滤器程序及命令">#9. 外部过滤器,程序及命令&lt;/h3>
+&lt;h3 id="-外部过滤器程序及命令">#. 外部过滤器,程序及命令&lt;/h3>
 &lt;p>标准的UNIX命令让shell脚本更加灵活,shell脚本的能力通过多个系统命令和shell指令的整合来实现&lt;/p>
-&lt;h3 id="10-基础命令">#10. 基础命令&lt;/h3>
+&lt;h3 id="-基础命令">#. 基础命令&lt;/h3>
 &lt;pre>&lt;code>ls
 基础文件罗列命令.很容易理解这个命令的低调;
 用-R参数是递归的罗列出当前目录下的内容
@@ -2670,7 +2670,7 @@ exit $HELLO_CALL
 获取帮助文档,info文档一般描述信息会比man文档更详尽
 --&amp;gt; man文档的书写可以通过脚本来优化(abs-709)
 &lt;/code>&lt;/pre>
-&lt;h3 id="11-高级命令">#11. 高级命令&lt;/h3>
+&lt;h3 id="-高级命令">#. 高级命令&lt;/h3>
 &lt;pre>&lt;code>find
 命令形式: -exec COMMAND \;
 为每一行find匹配的内容执行COMMAND命令,命令序列是以';'结尾
@@ -2741,7 +2741,7 @@ y=`expr $y + 1` # 变量自增,等效于 let y=y+1 and y=$(($y+1))
 z=`expr substr $string $position $length` # 获取变量string中position位置length长度的字符
 &lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; ':'运算符可以用来替代match;命令 b=`expr $a : [0-9]*`等效于 b=`expr match $a [0-9]*`
 &lt;/code>&lt;/pre>
-&lt;h3 id="12-时间日期命令">#12. 时间/日期命令&lt;/h3>
+&lt;h3 id="-时间日期命令">#. 时间/日期命令&lt;/h3>
 &lt;pre>&lt;code>date
 打印当前时间和日期信息到标准输出,这个命令的格式化输出和解析选项很有用
 --&amp;gt; -u选项显示UTC时间
@@ -2792,7 +2792,7 @@ hwclock/clock
 --&amp;gt; 在rhel6中,启动时,/etc/rc.d/rc.sysinit启动文件通过hwclock获取硬件时间来设置系统时间
 --&amp;gt; clock是hwclock的同义词
 &lt;/code>&lt;/pre>
-&lt;h3 id="13-文本处理命令">#13. 文本处理命令&lt;/h3>
+&lt;h3 id="-文本处理命令">#. 文本处理命令&lt;/h3>
 &lt;pre>&lt;code>sort
 文件归类工具,通常用在管道后过滤使用
 --&amp;gt; 命令用来正序,逆序或者指定位置关键字/字符位置来处理文本流或者文件
@@ -3042,7 +3042,7 @@ mkfifo
 ls -l | tr -s ' ' | cut -d' ' -f3,9- | tee pipe1 | cut -d' ' -f2 | paste - pipe2
 rm -f pipe1
 rm -f pipe2
-&lt;/code>&lt;/pre>&lt;h3 id="14-其他命令">#14. 其他命令&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h3 id="-其他命令">#. 其他命令&lt;/h3>
 &lt;pre>&lt;code>groups
 显示当前用户属于哪些组
 lid
@@ -3141,7 +3141,7 @@ watch
 以特定间隔运行一个命令
 &lt;/code>&lt;/pre>
 &lt;h2 id="特殊内容">特殊内容&lt;/h2>
-&lt;h3 id="1-here-document">#1. here document&lt;/h3>
+&lt;h3 id="-here-document">#. here document&lt;/h3>
 &lt;pre>&lt;code>&amp;lt;&amp;lt; 可以结合vi一同使用,如下所示:
 &lt;/code>&lt;/pre>
 &lt;pre tabindex="0">&lt;code># Insert 2 lines in file, then save.
@@ -3155,11 +3155,13 @@ ZZ
 x23LimitStringx23
 #----------End here document-----------#
 &lt;/code>&lt;/pre>&lt;pre>&lt;code>可以使用vi +n的形式指定文件打开后在第几行
-&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T11:22:32+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
+&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:17:28+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
 &lt;p>&lt;em>本文内容参考自&lt;a href="https://www.zsythink.net/archives/2481">朱双印ansible笔记&lt;/a>&lt;/em>&lt;/p>
-&lt;h3 id="配置主机清单">配置主机清单&lt;/h3>
+&lt;h2 id="配置主机清单">配置主机清单&lt;/h2>
 &lt;p>主机清单配置有两种方式&lt;/p>
-&lt;h4 id="-ini方式"># ini方式&lt;/h4>
+&lt;ul>
+&lt;li>ini方式&lt;/li>
+&lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -3186,7 +3188,9 @@ x23LimitStringx23
 &lt;span class="na">nova&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="--yaml方式"># yaml方式&lt;/h4>
+&lt;/div>&lt;ul>
+&lt;li>yaml方式&lt;/li>
+&lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -3233,8 +3237,8 @@ x23LimitStringx23
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">ansible_pass&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;123.com&amp;#39;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="常用模块">常用模块&lt;/h3>
-&lt;h4 id="--文件类操作"># 文件类操作&lt;/h4>
+&lt;/div>&lt;h2 id="常用模块">常用模块&lt;/h2>
+&lt;h2 id="--文件类操作"># 文件类操作&lt;/h2>
 &lt;p>1,copy: 将ansible主机上的文件拷贝至远端主机&lt;/p>
 &lt;ul>
 &lt;li>同fetch类似,不过操作动作相反,fetch是从远端主机拿文件到ansible主机&lt;/li>
@@ -3270,7 +3274,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>使用方式ansible-doc -s replace查看&lt;/li>
 &lt;/ul>
-&lt;h4 id="--命令类操作"># 命令类操作&lt;/h4>
+&lt;h2 id="--命令类操作"># 命令类操作&lt;/h2>
 &lt;p>1,command: 在远端主机上执行命令&lt;/p>
 &lt;ul>
 &lt;li>使用command模块在远程主机中执行命令时，不会经过远程主机的shell处理，在使用command模块时，如果需要执行的命令中含有重定向、管道符等操作时，这些符号也会失效，比如”&amp;lt;“, “&amp;gt;”, “|”, “;” 和 “&amp;amp;” 这些符号，如果你需要这些功能，需要使用shell模块&lt;/li>
@@ -3284,7 +3288,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s scripts&lt;/li>
 &lt;/ul>
-&lt;h4 id="--系统类操作"># 系统类操作&lt;/h4>
+&lt;h2 id="--系统类操作"># 系统类操作&lt;/h2>
 &lt;p>1,cron: 管理远端主机上的定时任务,功能同crontab&lt;/p>
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s cron&lt;/li>
@@ -3302,7 +3306,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s group&lt;/li>
 &lt;/ul>
-&lt;h4 id="--包管理类操作"># 包管理类操作&lt;/h4>
+&lt;h2 id="--包管理类操作"># 包管理类操作&lt;/h2>
 &lt;p>1,yum_repository: 管理远端主机上的yum仓库&lt;/p>
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s yum_repository&lt;/li>
@@ -3311,7 +3315,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s yum&lt;/li>
 &lt;/ul>
-&lt;h3 id="认识ansible-playbook">认识ansible-playbook&lt;/h3>
+&lt;h2 id="认识ansible-playbook">认识ansible-playbook&lt;/h2>
 &lt;p>1,ansible-playbook的使用,可以理解为ansible -m &amp;lt;module_name&amp;gt; -a 'xxxx'的转换,将命令行使用模块操作的内容写成脚本内容,按照脚本内容完成相关操作
 2,上述脚本在ansible-playbook中称作为'playbook',即剧本&lt;/p>
 &lt;ul>
@@ -3323,7 +3327,7 @@ x23LimitStringx23
 &lt;li>在ansible调用模块或者ansible-playbook执行相应play时,输出内容会有颜色区分,黄色表示有修改,绿色表示么有修改;区别是远端的内容是否满足我们的预期&lt;/li>
 &lt;li>ansible是”以结果为导向的”，我们指定了一个”目标状态”，ansible会自动判断，”当前状态”是否与”目标状态”一致，如果一致，则不进行任何操作，如果不一致，那么就将”当前状态”变成”目标状态”，这就是”幂等性”，”幂等性”可以保证我们重复的执行同一项操作时，得到的结果是一样的&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用handlers">使用handlers&lt;/h3>
+&lt;h2 id="使用handlers">使用handlers&lt;/h2>
 &lt;p>1,handlers的使用场景:&lt;/p>
 &lt;ul>
 &lt;li>有个任务需要修改nginx的配置文件,将listen端口由8080改为8088,使用handler可以在nginx配置文件有修改的环境上重启nginx,没有修改的不会出发重启nginx&lt;/li>
@@ -3577,7 +3581,7 @@ x23LimitStringx23
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">shell&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;echo handler2&amp;#39;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用tags">使用tags&lt;/h3>
+&lt;/div>&lt;h2 id="使用tags">使用tags&lt;/h2>
 &lt;p>1,写了一个很长的playbook,在调试时只想跑其中很少的一部分,tag在这种场景下可以使用,指定执行哪些任务,不执行哪些任务&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -3723,7 +3727,7 @@ $ ansible-playbook --list-tags test.yaml
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">state&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">started&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用变量一">使用变量(一)&lt;/h3>
+&lt;/div>&lt;h2 id="使用变量一">使用变量(一)&lt;/h2>
 &lt;p>1,怎么定义变量&lt;/p>
 &lt;ul>
 &lt;li>变量由数字,字母,下划线组成,要以字母开头&lt;/li>
@@ -3896,7 +3900,7 @@ $ ansible-playbook --list-tags test.yaml
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">state&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">touch&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用变量二">使用变量(二)&lt;/h3>
+&lt;/div>&lt;h2 id="使用变量二">使用变量(二)&lt;/h2>
 &lt;p>1,在playbook执行前,有一个Gathering Facts的动作,调用的是setup模块; 这些信息会保存在对应的变量中，我们在playbook中可以使用这些变量,我们可以称这些信息为facts信息&lt;/p>
 &lt;ul>
 &lt;li>setupa模块的返回值是json格式的,方便返回时内容展示&lt;/li>
@@ -3954,7 +3958,7 @@ tasks:
 - name: test debug
 debug:
 var: testvar
-&lt;/code>&lt;/pre>&lt;h3 id="使用变量三">使用变量(三)&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h2 id="使用变量三">使用变量(三)&lt;/h2>
 &lt;p>1,变量注册&lt;/p>
 &lt;ul>
 &lt;li>ansible模块在执行之后都会有一些返回值,默认情况下,这些返回值不会显示而已;我们可以把这些返回值写入到某个变量中,我们可以通过引用相应的变量获取到这些返回值,将模块的返回值写入到变量中,这种方式称为'注册变量'; 如下为变量注册的的一个范例&lt;/li>
@@ -4102,7 +4106,7 @@ var: testvar
 &lt;li>命令行传入,直接在ansible-playbook执行时增加-e 'key=value'即可,可有多个,变量赋值有多种方式,还可以是json格式&lt;/li>
 &lt;li>文件传入,类似命令行-e &amp;quot;@变量文件绝对路径&amp;quot;&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用变量四registerset_fact">使用变量(四),register,set_fact&lt;/h3>
+&lt;h2 id="使用变量四registerset_fact">使用变量(四),register,set_fact&lt;/h2>
 &lt;p>1,配置主机清单时,可以配置主机或主机组变量,但只对配置的主机或主机组生效&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -4307,7 +4311,7 @@ var: testvar
 &lt;/div>&lt;ul>
 &lt;li>如果想要在tasks中给变量自定义信息，并且在之后的play操作同一个主机时能够使用到之前在tasks中定义的变量时，则可以使用set_facts定义对应的变量&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用变量五内置变量host_vars">使用变量(五),内置变量,host_vars&lt;/h3>
+&lt;h2 id="使用变量五内置变量host_vars">使用变量(五),内置变量,host_vars&lt;/h2>
 &lt;p>1,ansible有一些内置变量可供使用,这些变量被ansible保留,我们定义变量时不能使用&lt;/p>
 &lt;ul>
 &lt;li>ansible_version&lt;/li>
@@ -4608,7 +4612,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>9,除了直接在hosts文件中定义主机变量和组变量，还有另外一种方法也可以定义主机变量和组变量，我们可以在清单文件的同级目录中创建两个目录，这两个目录的名字分别为”group_vars”和”host_vars”，我们可以将组变量文件放在”group_vars”目录中，将主机变量文件放在”host_vars”目录中，这样ansible就能获取到对应组变量和主机变量&lt;/p>
-&lt;h3 id="使用循环一with_items的使用">使用循环(一),with_items的使用&lt;/h3>
+&lt;h2 id="使用循环一with_items的使用">使用循环(一),with_items的使用&lt;/h2>
 &lt;p>1,使用with_items处理循环的内容&lt;/p>
 &lt;ul>
 &lt;li>普通示例:&lt;/li>
@@ -4758,7 +4762,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c"># 先使用循环重复的调用了shell模块，然后将shell模块每次执行后的返回值注册到了变量”returnvalue”中，之后，在使用debug模块时，通过返回值”results”获取到了之前每次执行shell模块的返回值（shell每次执行后的返回值已经被放入到item变量中），最后又通过返回值”stdout”获取到了每次shell模块执行后的标准输出&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环二对列表循环的操作">使用循环(二),对列表循环的操作&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环二对列表循环的操作">使用循环(二),对列表循环的操作&lt;/h2>
 &lt;p>1,对序列循环有几个关键字&lt;/p>
 &lt;ul>
 &lt;li>with_items: 当循环的序列元素也是列表时,展开与预期的有差异,会将所有的列表展开&lt;/li>
@@ -4862,7 +4866,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/span>&lt;span class="w">&lt;/span>}&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环三嵌套循环">使用循环(三),嵌套循环&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环三嵌套循环">使用循环(三),嵌套循环&lt;/h2>
 &lt;p>1,with_cartesian和with_nested&lt;/p>
 &lt;ul>
 &lt;li>当我们需要两个列表嵌套循环时,可以使用with_cartesian或者with_nested,将每个小列表中的元素按照”笛卡尔的方式”组合后，循环的处理每个组合,如下示例&lt;/li>
@@ -4897,7 +4901,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="p">[&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">test1, test2 ]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环四序列索引循环">使用循环(四),序列索引循环&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环四序列索引循环">使用循环(四),序列索引循环&lt;/h2>
 &lt;p>1,使用到with_indexed_items,在处理列表中的每一项时，按照顺序为每一项添加了编号,如下示例:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -5001,7 +5005,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;li>”with_indexed_items”会将嵌套的两层列表”拉平”，”拉平”后按照顺序为每一项编号&lt;/li>
 &lt;li>当多加了一层嵌套以后，”with_indexed_items”并不能像”with_flattened”一样将嵌套的列表”完全拉平”，第二层列表中的项如果仍然是一个列表，”with_indexed_items”则不会拉平这个列表，而是将其当做一个整体进行编号&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用循环五with_sequencewith_random_choice">使用循环(五),with_sequence,with_random_choice&lt;/h3>
+&lt;h2 id="使用循环五with_sequencewith_random_choice">使用循环(五),with_sequence,with_random_choice&lt;/h2>
 &lt;p>1,with_sequence&lt;/p>
 &lt;ul>
 &lt;li>使用with_sequence生成序列,with_sequence可以按照顺序生成数字序列,如下示例:&lt;/li>
@@ -5095,7 +5099,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="m">5&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环六with_dictwith_subelementswith_file">使用循环(六),with_dict,with_subelements,with_file&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环六with_dictwith_subelementswith_file">使用循环(六),with_dict,with_subelements,with_file&lt;/h2>
 &lt;p>1,with_dict,循环遍历字典元素,如下示例:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -5438,7 +5442,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="nt">&amp;#34;msg&amp;#34;: &lt;/span>&lt;span class="s2">&amp;#34;alice &amp;#39;s hobby is Music&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环七-with_file-with_fileglob">使用循环(七) with_file, with_fileglob&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环七-with_file-with_fileglob">使用循环(七) with_file, with_fileglob&lt;/h2>
 &lt;p>1, ansible主机中有几个文件,若需要获取到这些文件的内容，可以使用with_file关键字，循环的获取到这些文件的内容&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -5525,7 +5529,7 @@ node2 &lt;span class="p">|&lt;/span> &lt;span class="nv">SUCCESS&lt;/span> &lt;s
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c"># 需要注意的是，with_fileglob只会匹配指定目录中的文件，而不会匹配指定目录中的目录&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断六with_dictwith_subelementswith_file">条件判断(六),with_dict,with_subelements,with_file&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断六with_dictwith_subelementswith_file">条件判断(六),with_dict,with_subelements,with_file&lt;/h2>
 &lt;p>1,绝大多数语言中，都使用if作为条件判断的关键字，而在ansible中，条件判断的关键字是when&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -5753,7 +5757,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">when&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">returnmsg.rc != 0&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断与tests">条件判断与tests&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断与tests">条件判断与tests&lt;/h2>
 &lt;p>1,在ansible中也有类似bash中test的用法,不过是借助jinja2的tests，借助tests，可以进行一些判断操作，tests会将判断后的布尔值返回，如果条件成立，返回true，否则返回false，通常在条件判断时使用到tests&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -6252,7 +6256,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># 上例playbook中只有testvar1和testvar3会被判断成数字,testvar2不会&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断与block">条件判断与block&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断与block">条件判断与block&lt;/h2>
 &lt;p>1,在ansible中,可以使用&amp;quot;block&amp;quot;关键字将多个任务整合成一个&amp;quot;块&amp;quot;,这个&amp;quot;块&amp;quot;将被当做一个整体,我们可以对这个&amp;quot;块&amp;quot;添加判断条件,当条件成立时,则执行这个块中的所有任务&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -6438,7 +6442,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c"># 如上例所示,block中有多个任务,rescue中也有多个任务,上例中故意执行&amp;#34;/bin/false&amp;#34;命令,模拟任务出错的情况,当block中的&amp;#39;/bin/false&amp;#39;执行后,其后的debug任务将不会被执行,因为&amp;#39;/bin/false&amp;#39;模拟出错,出错后直接执行rescue中的任务,在执行rescue中的任务时,会先输出 ‘I caught an error&amp;#39;,然后又在rescue中使用&amp;#39;/bin/false&amp;#39;模拟出错的情况,出错后之后的debug任务不会被执行,直接执行always中的任务,always中的任务一定会被执行,无论block中的任务是否出错&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断与错误处理">条件判断与错误处理&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断与错误处理">条件判断与错误处理&lt;/h2>
 &lt;p>1,使用fail模块来处理出错&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -6574,7 +6578,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c"># 当将&amp;#39;changed_when&amp;#39;直接设置为false时,对应任务的状态将不会被设置为&amp;#39;changed&amp;#39;,如果任务原本的执行状态为&amp;#39;changed&amp;#39;,最终则会被设置为&amp;#39;ok&amp;#39;,所以,上例playbook执行后,shell模块的执行状态最终为&amp;#39;ok&amp;#39;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="过滤器">过滤器&lt;/h3>
+&lt;/div>&lt;h2 id="过滤器">过滤器&lt;/h2>
 &lt;p>1,过滤器是一种能够帮助我们处理数据的工具,其实,ansible中的过滤器功能来自于jinja2模板引擎&lt;/p>
 &lt;p>2,过滤器有些是jinja2内置的,有些是ansible特有的,如果这些过滤器都不能满足你的需求,jinja2也支持自定义过滤器&lt;/p>
 &lt;p>3,一些常见的过滤器&lt;/p>
@@ -7106,7 +7110,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c"># 没有对文件是否有mode属性进行判断,而是直接调用了file模块的mode参数,将mode参数的值设定为了&amp;#34;{{item.mode | default(omit)}}&amp;#34;,这是什么意思呢？它的意思是,如果item有mode属性,就把file模块的mode参数的值设置为item的mode属性的值,如果item没有mode属性,file模块就直接省略mode参数,&amp;#39;omit&amp;#39;的字面意思就是&amp;#34;省略&amp;#34;,换成大白话说就是:[有就用,没有就不用,可以有,也可以没有]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="变量六include_vars">变量(六)include_vars&lt;/h3>
+&lt;/div>&lt;h2 id="变量六include_vars">变量(六)include_vars&lt;/h2>
 &lt;p>1,通过'vars_files'可以将文件中的变量引入playbook,以便在task中使用,但是vars_files加载时是静态的引入变量,即后续在vars_files中新增的变量,无法被引用&lt;/p>
 &lt;ul>
 &lt;li>vars_files变量文件在ansible控制节点中,与目标主机无关&lt;/li>
@@ -7431,7 +7435,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{return_val.ansible_included_var_files}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="过滤器二-json_query">过滤器(二) json_query&lt;/h3>
+&lt;/div>&lt;h2 id="过滤器二-json_query">过滤器(二) json_query&lt;/h2>
 &lt;p>1,ansible可以通过include_vars加载日志文件,debug格式化输出json/yaml内容,方便查看&lt;/p>
 &lt;ul>
 &lt;li>json是yaml的子集,yaml是json的超集,yaml格式的数据和json格式的数据是可以互相转换的&lt;/li>
@@ -7846,7 +7850,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">with_items&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ logs | json_query(&amp;#39;[*].files[*].logUrl&amp;#39;) }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="过滤器三-其他过滤器">过滤器(三) 其他过滤器&lt;/h3>
+&lt;/div>&lt;h2 id="过滤器三-其他过滤器">过滤器(三) 其他过滤器&lt;/h2>
 &lt;p>1,其他一些常用的过滤器&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -8029,7 +8033,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">remote_user&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">liawne&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">gather_facts&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kc">no&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">tasks&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#在调用shell模块时,如果引用某些变量时需要添加引号,则可以使用quote过滤器代替引号&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#示例如下,先看示例,后面会有注解&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">shell&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;echo {{teststr | quote}} &amp;gt; /testdir/testfile&amp;#34;&lt;/span>&lt;span class="w">
@@ -8039,7 +8043,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#shell: &amp;#34;echo &amp;#39;{{teststr}}&amp;#39; &amp;gt; /testdir/testfile&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#没错,如你所见,quote过滤器能够代替引号&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#上例中,如果不对{{teststr}}添加引号,则会报错,因为teststr变量中包含&amp;#34;\n&amp;#34;转义符&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#ternary过滤器可以实现三元运算的效果 示例如下&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#如下示例表示如果name变量的值是John,那么对应的值则为Mr,否则则为Ms&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#简便的实现类似if else对变量赋值的效果&lt;/span>&lt;span class="w">
@@ -8047,31 +8051,31 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ (name == &amp;#39;John&amp;#39;) | ternary(&amp;#39;Mr&amp;#39;,&amp;#39;Ms&amp;#39;) }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">name&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;John&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#basename过滤器可以获取到一个路径字符串中的文件名&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{teststr | basename}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">teststr&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/testdir/ansible/testfile&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#获取到一个windows路径字符串中的文件名,2.0版本以后的ansible可用&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{teststr | win_basename}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">teststr&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;D:\study\zsythink&amp;#39;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#dirname过滤器可以获取到一个路径字符串中的路径名&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{teststr | dirname}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">teststr&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/testdir/ansible/testfile&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#获取到一个windows路径字符串中的文件名,2.0版本以后的ansible可用&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{teststr | win_dirname}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">teststr&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;D:\study\zsythink&amp;#39;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#将一个windows路径字符串中的盘符和路径分开,2.0版本以后的ansible可用&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{teststr | win_splitdrive}}&amp;#34;&lt;/span>&lt;span class="w">
@@ -8081,19 +8085,19 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#msg: &amp;#34;{{teststr | win_splitdrive | first}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#可以配合之前总结的过滤器一起使用,比如只获取到路径,示例如下&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#msg: &amp;#34;{{teststr | win_splitdrive | last}}&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#realpath过滤器可以获取软链接文件所指向的真正文件&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ path | realpath }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">path&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/testdir/ansible/testsoft&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#relpath过滤器可以获取到path对于“指定路径”来说的“相对路径”&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ path | relpath(&amp;#39;/testdir/testdir&amp;#39;) }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">path&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/testdir/ansible&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#splitext过滤器可以将带有文件名后缀的路径从“.后缀”部分分开&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ path | splitext }}&amp;#34;&lt;/span>&lt;span class="w">
@@ -8103,13 +8107,13 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#msg: &amp;#34;{{ path | splitext | last}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#可以配置之前总结的过滤器,获取到文件前缀名&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#msg: &amp;#34;{{ path | splitext | first | basename}}&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#to_uuid过滤器能够为对应的字符串生成uuid&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ teststr | to_uuid }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">teststr&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;This is a test statement&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#bool过滤器可以根据字符串的内容返回bool值true或者false&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#字符串的内容为yes、1、True、true则返回布尔值true,字符串内容为其他内容则返回false&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
@@ -8121,7 +8125,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#- debug:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># msg: &amp;#34;output when bool is true&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c"># when: some_string_user_input | bool&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#map过滤器可以从列表中获取到每个元素所共有的某个属性的值,并将这些值组成一个列表&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#当列表中嵌套了列表,不能越级获取属性的值,也就是说只能获取直接子元素的共有属性值.&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">vars&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
@@ -8139,7 +8143,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ users | map(attribute=&amp;#39;name&amp;#39;) | list }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#也可以组成一个字符串,用指定的字符隔开,比如分号&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#msg: &amp;#34;{{ users | map(attribute=&amp;#39;name&amp;#39;) | join(&amp;#39;;&amp;#39;) }}&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#与python中的用法相同,两个日期类型相减能够算出两个日期间的时间差&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#下例中,我们使用to_datatime过滤器将字符串类型转换成了日期了类型,并且算出了时间差&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
@@ -8160,14 +8164,14 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#如下方法可以获取到两个日期“日期位”相差多少天,注意:时间位不会纳入对比计算范围&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;{{ ( (&amp;#34;2016-08-14 20:00:12&amp;#34;| to_datetime) - (&amp;#34;2012-12-25 08:30:00&amp;#34; | to_datetime) ).days }}&amp;#39;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">###############################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#使用base64编码方式对字符串进行编码&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ &amp;#39;hello&amp;#39; | b64encode }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#使用base64编码方式对字符串进行解码&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ &amp;#39;aGVsbG8=&amp;#39; | b64decode }}&amp;#34;&lt;/span>&lt;span class="w">
-&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#######################################################################&lt;/span>&lt;span class="w">
+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">################################################&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#使用sha1算法对字符串进行哈希&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>- &lt;span class="nt">debug&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ &amp;#39;123456&amp;#39; | hash(&amp;#39;sha1&amp;#39;) }}&amp;#34;&lt;/span>&lt;span class="w">
@@ -8198,7 +8202,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ &amp;#39;123123&amp;#39; | password_hash(&amp;#39;sha512&amp;#39;, 65534|random(seed=inventory_hostname)|string) }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="lookup插件">lookup插件&lt;/h3>
+&lt;/div>&lt;h2 id="lookup插件">lookup插件&lt;/h2>
 &lt;p>1,ansible中有很多种类的插件,比如之前总结的”tests”,也是插件的一种,ansible官网总结了各个插件的作用,并且将这些插件按照功能进行了分类&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://docs.ansible.com/ansible/latest/plugins/plugins.html">https://docs.ansible.com/ansible/latest/plugins/plugins.html&lt;/a>&lt;/li>
@@ -8493,7 +8497,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c">#https://docs.ansible.com/ansible/latest/plugins/lookup.html&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="循环八">循环(八)&lt;/h3>
+&lt;/div>&lt;h2 id="循环八">循环(八)&lt;/h2>
 &lt;p>1,在新版本的ansible中,官方推荐的循环的使用方式不同,在2.6推荐的方式为loop加lookup和loop加filter&lt;/p>
 &lt;ul>
 &lt;li>loop的简单使用方式:&lt;/li>
@@ -9166,7 +9170,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">label&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{item.key}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="include">include&lt;/h3>
+&lt;/div>&lt;h2 id="include">include&lt;/h2>
 &lt;p>1,ansible中有类似编程语言中类似函数调用的功能,就是include,通过include,可以在一个playbook中包含另一个文件&lt;/p>
 &lt;ul>
 &lt;li>include模块可以指定一个文件,这个文件中的内容是一个任务列表（一个或多个任务）,使用include模块引用对应的文件时,文件中的任务会在被引用处执行,就像写在被引用处一样&lt;/li>
@@ -9629,7 +9633,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w">&lt;/span>&lt;span class="c"># 将loop_var选项的值设置为&amp;#34;outer_item&amp;#34;,这表示,我们将外层循环的item值存放在了&amp;#34;outer_item&amp;#34;变量中,在B文件中的debug任务中,同时输出了&amp;#34;outer_item&amp;#34;变量和&amp;#34;item&amp;#34;变量的值&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="include二">include(二)&lt;/h3>
+&lt;/div>&lt;h2 id="include二">include(二)&lt;/h2>
 &lt;p>1,&amp;quot;include&amp;quot;的某些原始用法在之后的版本中可能会被弃用,在之后的版本中,会使用一些新的关键字代替这些原始用法&lt;/p>
 &lt;p>2,include_task模块&lt;/p>
 &lt;ul>
@@ -10089,7 +10093,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;test task in intest7.yml&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="jinja2模板一">jinja2模板(一)&lt;/h3>
+&lt;/div>&lt;h2 id="jinja2模板一">jinja2模板(一)&lt;/h2>
 &lt;p>1,对远端机器进行操作时,很多场景下都需要根据主机信息进行配置,这个时候可以使用template模块来完成相应的目的&lt;/p>
 &lt;ul>
 &lt;li>示例如下:&lt;/li>
@@ -10355,25 +10359,25 @@ False
 &lt;span class="c1">## 一些基础的数据类型,都可以包含在&amp;#34;{{ }}&amp;#34;中,jinja2本身就是基于python的模板引擎,所以,python的基础数据类型都可以包含在&amp;#34;{{ }}&amp;#34;中&lt;/span>
 &lt;span class="c1"># cat test.j2&lt;/span>
 jinja2 &lt;span class="nb">test&lt;/span>
-&lt;span class="c1">### str&lt;/span>
+&lt;span class="c1">## str&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="s1">&amp;#39;testString&amp;#39;&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="s2">&amp;#34;testString&amp;#34;&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;span class="c1">### num&lt;/span>
+&lt;span class="c1">## num&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="m">15&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> 18.8 &lt;span class="o">}}&lt;/span>
-&lt;span class="c1">### list&lt;/span>
+&lt;span class="c1">## list&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span>.1 &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">][&lt;/span>1&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;span class="c1">### tuple&lt;/span>
+&lt;span class="c1">## tuple&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>.0 &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)[&lt;/span>0&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;span class="c1">### dic&lt;/span>
+&lt;span class="c1">## dic&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>:&lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>:18&lt;span class="o">}&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>:&lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>:18&lt;span class="o">}&lt;/span>.name &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>:&lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>:18&lt;span class="o">}[&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;span class="c1">### Boolean&lt;/span>
+&lt;span class="c1">## Boolean&lt;/span>
 &lt;span class="o">{{&lt;/span> True &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> &lt;span class="nb">true&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;span class="o">{{&lt;/span> False &lt;span class="o">}}&lt;/span>
@@ -10381,25 +10385,25 @@ jinja2 &lt;span class="nb">test&lt;/span>
 生成文件内容如下:
 &lt;span class="c1"># cat test&lt;/span>
 jinja2 &lt;span class="nb">test&lt;/span>
-&lt;span class="c1">### str&lt;/span>
+&lt;span class="c1">## str&lt;/span>
 testString
 testString
-&lt;span class="c1">### num&lt;/span>
+&lt;span class="c1">## num&lt;/span>
 &lt;span class="m">15&lt;/span>
 18.8
-&lt;span class="c1">### list&lt;/span>
+&lt;span class="c1">## list&lt;/span>
 &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span>
 Bb
 Bb
-&lt;span class="c1">### tuple&lt;/span>
+&lt;span class="c1">## tuple&lt;/span>
 &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>
 Aa
 Aa
-&lt;span class="c1">### dic&lt;/span>
+&lt;span class="c1">## dic&lt;/span>
 &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>: 18, &lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>: &lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>&lt;span class="o">}&lt;/span>
 bob
 bob
-&lt;span class="c1">### Boolean&lt;/span>
+&lt;span class="c1">## Boolean&lt;/span>
 True
 True
 False
@@ -10566,7 +10570,7 @@ jinja2 &lt;span class="nb">test&lt;/span>
 jinja2 &lt;span class="nb">test&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="jinja2模板二">jinja2模板(二)&lt;/h3>
+&lt;/div>&lt;h2 id="jinja2模板二">jinja2模板(二)&lt;/h2>
 &lt;p>1,结合if的使用&lt;/p>
 &lt;ul>
 &lt;li>通用结构&lt;/li>
@@ -10918,7 +10922,7 @@ name:bob
 &lt;/span>&lt;span class="x">tom&amp;#39;s son is jerry
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="jinja2模板三">jinja2模板(三)&lt;/h3>
+&lt;/div>&lt;h2 id="jinja2模板三">jinja2模板(三)&lt;/h2>
 &lt;p>1,jinja2模板文件中需要使用特殊字符&lt;/p>
 &lt;ul>
 &lt;li>最简单的方法就是直接在&amp;quot;双花括号&amp;quot;中使用引号将这类符号引起,当做纯粹的字符串进行处理&lt;/li>
@@ -11084,7 +11088,7 @@ name:bob
 &lt;/span>&lt;span class="x"> &lt;/span>&lt;span class="cp">{{&lt;/span> &lt;span class="nv">testfunc&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="m">666&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="cp">}}&lt;/span>&lt;span class="x">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="ansible中的role">ansible中的role&lt;/h3>
+&lt;/div>&lt;h2 id="ansible中的role">ansible中的role&lt;/h2>
 &lt;p>1,ansible官方定义的规范&lt;/p>
 &lt;ul>
 &lt;li>role的标准目录结构&lt;/li>
@@ -11276,7 +11280,7 @@ debug:
 msg: &lt;span class="s2">&amp;#34;this is a test handler&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="常用技巧一">常用技巧(一)&lt;/h3>
+&lt;/div>&lt;h2 id="常用技巧一">常用技巧(一)&lt;/h2>
 &lt;p>1,技巧一,在ansible中使用python字符串的一些特性&lt;/p>
 &lt;ul>
 &lt;li>ansible基于python实现,当我们在ansible中处理字符串时,能够借助一些python的字符串特性,比如,在python中可以使用中括号(方括号)截取字符串中的一部分,在ansible中也可以利用这一特性&lt;/li>
@@ -11562,7 +11566,7 @@ when: &lt;span class="s2">&amp;#34;&amp;#39;va&amp;#39; in a&amp;#34;&lt;/span>
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">dest&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/tmp&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="常用技巧二">常用技巧(二)&lt;/h3>
+&lt;/div>&lt;h2 id="常用技巧二">常用技巧(二)&lt;/h2>
 &lt;p>1,向列表中追加项&lt;/p>
 &lt;ul>
 &lt;li>如下内容:&lt;/li>
@@ -11847,7 +11851,7 @@ when: &lt;span class="s2">&amp;#34;&amp;#39;va&amp;#39; in a&amp;#34;&lt;/span>
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">var&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">tlist&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E8%BF%90%E7%BB%B4%E5%86%85%E5%AE%B9/" term="运维内容" label="运维内容"/><category scheme="https://liawne.github.io/tags/ansible/" term="ansible" label="ansible"/><category scheme="https://liawne.github.io/tags/ops/" term="ops" label="ops"/></entry><entry><title type="text">hexo多设备管理</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/><id>https://liawne.github.io/posts/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</id><updated>2022-03-13T11:25:37+08:00</updated><published>2022-03-01T22:13:11+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">在新设备上准备hexo发布文章的配置过程</summary><content type="html">&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
+&lt;/div></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E8%BF%90%E7%BB%B4%E5%86%85%E5%AE%B9/" term="运维内容" label="运维内容"/><category scheme="https://liawne.github.io/tags/ansible/" term="ansible" label="ansible"/><category scheme="https://liawne.github.io/tags/ops/" term="ops" label="ops"/></entry><entry><title type="text">hexo多设备管理</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/><id>https://liawne.github.io/posts/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</id><updated>2022-03-13T17:18:52+08:00</updated><published>2022-03-01T22:13:11+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">在新设备上准备hexo发布文章的配置过程</summary><content type="html">&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
 在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在hexo分支,hexo基于更改内容生成的文件提交到master分支
 下列内容记录在raspberry上配置实现hexo编辑提交内容的过程&lt;/p>
 &lt;h3 id="1安装基础包">1.安装基础包&lt;/h3>
