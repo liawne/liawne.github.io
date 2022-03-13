@@ -1,10 +1,8 @@
 ---
 title: hexo多设备管理
 date: 2022-03-01 22:13:11
-tags:
-- hexo
-categories: 
-- 随笔
+tags: ['hexo']
+categories: ['技术', '操作记录']
 description: "在新设备上准备hexo发布文章的配置过程"
 ---
 `github+hexo+next搭建个人博客`已经完成,使用一段时间后,发现存在多处编辑提交的需求.

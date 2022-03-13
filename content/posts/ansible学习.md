@@ -1,10 +1,8 @@
 ---
 title: ansible及ansible-playbook的使用
 date: 2022-03-05 12:07:21
-tags: 
-- ansible
-categories:
-- notes
+tags: ['ansible', 'ops']
+categories: ['技术', '运维内容']
 description: "讲解ansible及ansible-playbook的使用"
 ---
 # learning ansible
