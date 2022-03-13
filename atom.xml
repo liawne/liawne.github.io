@@ -1,69 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">LIAWNE</title><subtitle type="html">Liawne's blog</subtitle><updated>2022-03-13T17:28:27+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>liawne</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator><entry><title type="text">计划写和做的内容</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/"/><id>https://liawne.github.io/posts/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/</id><updated>2022-03-13T17:18:44+08:00</updated><published>2022-03-12T16:19:42+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">理一下哪些内容可以整理输出</summary><content type="html">&lt;p>刚开始写博客,先梳理一下哪些内容可以整理输出,以及还有哪些事情需要做.&lt;/p>
-&lt;h3 id="可以写的文章">可以写的文章&lt;/h3>
-&lt;blockquote>
-&lt;p>总的来说,就分为两大类,技术和生活&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>日常内容(技术)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>vim打开文件,中文显示乱码等&lt;/li>
-&lt;li>跟着马哥的视频学习时,可以展开和深入的内容&lt;/li>
-&lt;li>一些自己不熟悉,但平时工作可能会用到的内容,比如数据库json数据更新&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>工作内容(技术)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>jenkins的流程和实现&lt;/li>
-&lt;li>openstack组件构成,数据流向,创建一台虚拟机的整个流程&lt;/li>
-&lt;li>allinone工具的内容&lt;/li>
-&lt;li>oms的构成和实现&lt;/li>
-&lt;li>物理机自动重装部署的实现&lt;/li>
-&lt;li>服务器各种接口协议的差别等&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>学习总结(技术/生活)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>一年总结&lt;/li>
-&lt;li>技术总结,如网络/linux/k8s等&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>笔记整理(技术/生活)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>添加图片&lt;/li>
-&lt;li>增加解释内容,扩展相关内容,原理梳理&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>心得体会(生活)&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>日常感悟,观后感&lt;/li>
-&lt;li>手工作品创作记录&lt;/li>
-&lt;/ul>
-&lt;h3 id="待完成的内容">待完成的内容&lt;/h3>
-&lt;p>&lt;strong>物理机重装工具&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>整理下业界现有的物理机重装工具&lt;/li>
-&lt;li>尝试自行完成一个从镜像制作到自动完成物理机系统安装的工具
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;span class="lnt">6
-&lt;/span>&lt;span class="lnt">7
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="c1"># 提供 Dockerfile,包含 dhcp/tftp/httpd 的安装和配置以及 start.sh 脚本&lt;/span>
-&lt;span class="c1"># - 容器启动需要以 volume 方式挂载包含物理机相关信息的配置文件&lt;/span>
-&lt;span class="c1"># - start.sh 可以接受不同镜像名称/配置文件作为参数&lt;/span>
-&lt;span class="c1"># 提供 kickstart 文件及相关 post 脚本,安装完系统自动完成基础配置&lt;/span>
-&lt;span class="c1"># - 系统安装完成,重启自动配置 dhcp 地址,用于后续连接&lt;/span>
-&lt;span class="c1"># - ks内容已经完成,可自行填写 rpm 包部分内容&lt;/span>
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>博客完善&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>界面优化,字体调整/排版调整&lt;/li>
-&lt;li>确定界面展示内容&lt;/li>
-&lt;/ul></content><category scheme="https://liawne.github.io/categories/%E7%94%9F%E6%B4%BB/" term="生活" label="生活"/><category scheme="https://liawne.github.io/categories/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/" term="计划内容" label="计划内容"/><category scheme="https://liawne.github.io/tags/plan/" term="plan" label="plan"/><category scheme="https://liawne.github.io/tags/%E9%9A%8F%E7%AC%94/" term="随笔" label="随笔"/><category scheme="https://liawne.github.io/tags/%E6%83%B3%E6%B3%95/" term="想法" label="想法"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/docker%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:10:14+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">LIAWNE</title><subtitle type="html">Liawne's blog</subtitle><updated>2022-03-13T21:42:32+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>liawne</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.92.2">Hugo</generator><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:10:14+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
 &lt;p>1, LXC(linux container): linux容器&lt;/p>
 &lt;p>2, 虚拟化类型:&lt;/p>
 &lt;ul>
@@ -1410,7 +1345,7 @@ docker run -it --name mysql --network container:infracon --volume-from infracon 
 &lt;li>--cpuset-cpus 限制在哪些核上&lt;/li>
 &lt;li>-- cpu-shares 配置为共享方式(各个容器共享宿主机CPU)&lt;/li>
 &lt;/ul>
-&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/bash%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:13:46+08:00</updated><published>2022-03-06T10:42:55+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
+&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:13:46+08:00</updated><published>2022-03-06T10:42:55+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
 &lt;h3 id="-特殊字符使用">#. 特殊字符使用&lt;/h3>
 &lt;pre tabindex="0">&lt;code># --&amp;gt; 注释(不包括#!)
 --&amp;gt; 变量替换使用 echo ${PATH#*:}
@@ -3155,7 +3090,7 @@ ZZ
 x23LimitStringx23
 #----------End here document-----------#
 &lt;/code>&lt;/pre>&lt;pre>&lt;code>可以使用vi +n的形式指定文件打开后在第几行
-&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" term="学习笔记" label="学习笔记"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/posts/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:17:28+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
+&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/basics/" term="basics" label="basics"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T17:44:53+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
 &lt;p>&lt;em>本文内容参考自&lt;a href="https://www.zsythink.net/archives/2481">朱双印ansible笔记&lt;/a>&lt;/em>&lt;/p>
 &lt;h2 id="配置主机清单">配置主机清单&lt;/h2>
 &lt;p>主机清单配置有两种方式&lt;/p>
@@ -11851,7 +11786,7 @@ when: &lt;span class="s2">&amp;#34;&amp;#39;va&amp;#39; in a&amp;#34;&lt;/span>
 &lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nt">var&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">tlist&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E8%BF%90%E7%BB%B4%E5%86%85%E5%AE%B9/" term="运维内容" label="运维内容"/><category scheme="https://liawne.github.io/tags/ansible/" term="ansible" label="ansible"/><category scheme="https://liawne.github.io/tags/ops/" term="ops" label="ops"/></entry><entry><title type="text">hexo多设备管理</title><link rel="alternate" type="text/html" href="https://liawne.github.io/posts/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/><id>https://liawne.github.io/posts/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</id><updated>2022-03-13T17:18:52+08:00</updated><published>2022-03-01T22:13:11+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">在新设备上准备hexo发布文章的配置过程</summary><content type="html">&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
+&lt;/div></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/ops/" term="ops" label="ops"/><category scheme="https://liawne.github.io/tags/ansible/" term="ansible" label="ansible"/><category scheme="https://liawne.github.io/tags/ops/" term="ops" label="ops"/></entry><entry><title type="text">hexo多设备管理</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/><id>https://liawne.github.io/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</id><updated>2022-03-13T17:18:52+08:00</updated><published>2022-03-01T22:13:11+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">在新设备上准备hexo发布文章的配置过程</summary><content type="html">&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
 在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在hexo分支,hexo基于更改内容生成的文件提交到master分支
 下列内容记录在raspberry上配置实现hexo编辑提交内容的过程&lt;/p>
 &lt;h3 id="1安装基础包">1.安装基础包&lt;/h3>
@@ -12025,4 +11960,4 @@ PI $ hexo s
 PI $ hexo d
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content><category scheme="https://liawne.github.io/categories/%E6%8A%80%E6%9C%AF/" term="技术" label="技术"/><category scheme="https://liawne.github.io/categories/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" term="操作记录" label="操作记录"/><category scheme="https://liawne.github.io/tags/hexo/" term="hexo" label="hexo"/></entry></feed>
+&lt;/div></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://liawne.github.io/tags/hexo/" term="hexo" label="hexo"/></entry></feed>
