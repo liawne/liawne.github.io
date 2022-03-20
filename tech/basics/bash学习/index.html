@@ -1,10 +1,10 @@
-<!doctype html><html lang=zh-cn><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><meta charset=utf-8><meta name=generator content="Hugo 0.92.2"><meta name=theme-color content="#fff"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=format-detection content="telephone=no, date=no, address=no, email=no"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><title>learning bash via abs | LIAWNE</title><link rel=stylesheet href=/css/meme.min.css><script src=/js/meme.min.js></script>
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" media=print onload="this.media='all'"><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript><meta name=author content="liawne"><meta name=description content="通过advanced-bash-scripting学习bash的笔记内容"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=mask-icon href=/icons/safari-pinned-tab.svg color=#2a6df4><link rel=apple-touch-icon sizes=180x180 href=/icons/apple-touch-icon.png><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-title content="LIAWNE"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=mobile-web-app-capable content="yes"><meta name=application-name content="LIAWNE"><meta name=msapplication-starturl content="../../../"><meta name=msapplication-TileColor content="#fff"><meta name=msapplication-TileImage content="../../../icons/mstile-150x150.png"><link rel=manifest href=/manifest.json><link rel=canonical href=https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2022-03-06T10:42:55+00:00","dateModified":"2022-03-13T21:52:20+08:00","url":"https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/","headline":"learning bash via abs","description":"通过advanced-bash-scripting学习bash的笔记内容","inLanguage":"zh-CN","articleSection":"tech","wordCount":25992,"image":"https://liawne.github.io/icons/apple-touch-icon.png","author":{"@type":"Person","description":"just go go","email":"rwen913@gmail.com","image":"https://liawne.github.io/icons/apple-touch-icon.png","url":"https://ruisum.top","name":"liawne"},"license":"[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)","publisher":{"@type":"Organization","name":"LIAWNE","logo":{"@type":"ImageObject","url":"https://liawne.github.io/icons/apple-touch-icon.png"},"url":"https://liawne.github.io/"},"mainEntityOfPage":{"@type":"WebSite","@id":"https://liawne.github.io/"}}</script><meta name=twitter:card content="summary"><meta property="og:title" content="learning bash via abs"><meta property="og:description" content="通过advanced-bash-scripting学习bash的笔记内容"><meta property="og:url" content="https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="LIAWNE"><meta property="og:locale" content="zh"><meta property="og:image" content="https://liawne.github.io/icons/apple-touch-icon.png"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-03-06T10:42:55+00:00"><meta property="article:modified_time" content="2022-03-13T21:52:20+08:00"><meta property="article:section" content="tech"></head><body><div class=container><header class=header><div class=header-wrapper><div class="header-inner single"><div class=site-brand><a href=/ class=brand>LIAWNE</a></div><nav class=nav><ul class=menu id=menu><li class=menu-item><a href=/tags/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tags"><path d="M497.941 225.941 286.059 14.059A48 48 0 00252.118.0H48C21.49.0.0 21.49.0 48v204.118a48 48 0 0014.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882.0l204.118-204.118c18.745-18.745 18.745-49.137.0-67.882zM112 160c-26.51.0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882.0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397.0h48.721a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882z"/></svg><span class=menu-item-name>标签</span></a></li><li class=menu-item><a href=/categories/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255.0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255.0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255.0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255.0-24 10.745-24 24zm386.667-56H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24z"/></svg><span class=menu-item-name>分类</span></a></li><li class=menu-item><a href=/life/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon life"><path d="M301.1 212c4.4 4.4 4.4 11.9.0 16.3l-9.7 9.7c-4.4 4.7-11.9 4.7-16.6.0l-10.5-10.5c-4.4-4.7-4.4-11.9.0-16.6l9.7-9.7c4.4-4.4 11.9-4.4 16.6.0l10.5 10.8zm-30.2-19.7c3-3 3-7.8.0-10.5-2.8-3-7.5-3-10.5.0-2.8 2.8-2.8 7.5.0 10.5 3.1 2.8 7.8 2.8 10.5.0zm-26 5.3c-3 2.8-3 7.5.0 10.2 2.8 3 7.5 3 10.5.0 2.8-2.8 2.8-7.5.0-10.2-3-3-7.7-3-10.5.0zm72.5-13.3c-19.9-14.4-33.8-43.2-11.9-68.1 21.6-24.9 40.7-17.2 59.8.8 11.9 11.3 29.3 24.9 17.2 48.2-12.5 23.5-45.1 33.2-65.1 19.1zm47.7-44.5c-8.9-10-23.3 6.9-15.5 16.1 7.4 9 32.1 2.4 15.5-16.1zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-66.2 42.6c2.5-16.1-20.2-16.6-25.2-25.7-13.6-24.1-27.7-36.8-54.5-30.4 11.6-8 23.5-6.1 23.5-6.1.3-6.4.0-13-9.4-24.9 3.9-12.5.3-22.4.3-22.4 15.5-8.6 26.8-24.4 29.1-43.2 3.6-31-18.8-59.2-49.8-62.8-22.1-2.5-43.7 7.7-54.3 25.7-23.2 40.1 1.4 70.9 22.4 81.4-14.4-1.4-34.3-11.9-40.1-34.3-6.6-25.7 2.8-49.8 8.9-61.4.0.0-4.4-5.8-8-8.9.0.0-13.8.0-24.6 5.3 11.9-15.2 25.2-14.4 25.2-14.4.0-6.4-.6-14.9-3.6-21.6-5.4-11-23.8-12.9-31.7 2.8.1-.2.3-.4.4-.5-5 11.9-1.1 55.9 16.9 87.2-2.5 1.4-9.1 6.1-13 10-21.6 9.7-56.2 60.3-56.2 60.3-28.2 10.8-77.2 50.9-70.6 79.7.3 3 1.4 5.5 3 7.5-2.8 2.2-5.5 5-8.3 8.3-11.9 13.8-5.3 35.2 17.7 24.4 15.8-7.2 29.6-20.2 36.3-30.4.0.0-5.5-5-16.3-4.4 27.7-6.6 34.3-9.4 46.2-9.1 8 3.9 8-34.3 8-34.3.0-14.7-2.2-31-11.1-41.5 12.5 12.2 29.1 32.7 28 60.6-.8 18.3-15.2 23-15.2 23-9.1 16.6-43.2 65.9-30.4 106 0 0-9.7-14.9-10.2-22.1-17.4 19.4-46.5 52.3-24.6 64.5 26.6 14.7 108.8-88.6 126.2-142.3 34.6-20.8 55.4-47.3 63.9-65 22 43.5 95.3 94.5 101.1 59z"/></svg><span class=menu-item-name>生活</span></a></li><li class=menu-item><a href=/tech/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tech"><path d="M512 256c0 141.2-114.7 256-256 256C114.8 512 0 397.3.0 256S114.7.0 256 0s256 114.7 256 256zm-32 0c0-123.2-100.3-224-224-224C132.5 32 32 132.5 32 256s100.5 224 224 224 224-100.5 224-224zM160.9 124.6l86.9 37.1-37.1 86.9-86.9-37.1 37.1-86.9zm110 169.1 46.6 94h-14.6l-50-1e2-48.9 1e2h-14l51.1-106.9-22.3-9.4 6-14 68.6 29.1-6 14.3-16.5-7.1zm-11.8-116.3 68.6 29.4-29.4 68.3L230 246l29.1-68.6zm80.3 42.9 54.6 23.1-23.4 54.3-54.3-23.1 23.1-54.3z"/></svg><span class=menu-item-name>技术</span></a></li><li class=menu-item><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6.0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7.0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4.0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9s28-2.7 40.9-6.9c2.3-.7 4.7-1.1 7.1-1.1 42.9.0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class=menu-item-name>关于</span></a></li><li class=menu-item><a id=theme-switcher href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5 242 7a18 18 0 0128 0l48.8 97.5L422.2 70A18 18 0 01442 89.8l-34.5 103.4L505 242a18 18 0 010 28l-97.5 48.8L442 422.2A18 18 0 01422.2 442l-103.4-34.5L270 505a18 18 0 01-28 0l-48.8-97.5L89.8 442A18 18 0 0170 422.2l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8L70 89.8A18 18 0 0189.8 70zM256 128a128 128 0 10.01.0M256 160a96 96 0 10.01.0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412A256 256 0 10181 5a11.5 11.5.0 00-5 20A201.5 201.5.0 0142 399a11.5 11.5.0 00-15 13"/></svg></a></li></ul></nav></div></div><input type=checkbox id=nav-toggle aria-hidden=true>
+<!doctype html><html lang=zh-cn><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><meta charset=utf-8><meta name=generator content="Hugo 0.93.2"><meta name=theme-color content="#fff"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=format-detection content="telephone=no, date=no, address=no, email=no"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><title>learning bash via abs | LIAWNE</title><link rel=stylesheet href=/css/meme.min.css><script src=/js/meme.min.js></script>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript><meta name=author content="liawne"><meta name=description content="通过advanced-bash-scripting学习bash的笔记内容"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=mask-icon href=/icons/safari-pinned-tab.svg color=#2a6df4><link rel=apple-touch-icon sizes=180x180 href=/icons/apple-touch-icon.png><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-title content="LIAWNE"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=mobile-web-app-capable content="yes"><meta name=application-name content="LIAWNE"><meta name=msapplication-starturl content="../../../"><meta name=msapplication-TileColor content="#fff"><meta name=msapplication-TileImage content="../../../icons/mstile-150x150.png"><link rel=manifest href=/manifest.json><link rel=canonical href=https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2022-03-06T10:42:55+00:00","dateModified":"2022-03-13T21:52:20+08:00","url":"https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/","headline":"learning bash via abs","description":"通过advanced-bash-scripting学习bash的笔记内容","inLanguage":"zh-CN","articleSection":"tech","wordCount":26008,"image":"https://liawne.github.io/icons/apple-touch-icon.png","author":{"@type":"Person","description":"just go go","email":"rwen913@gmail.com","image":"https://liawne.github.io/icons/apple-touch-icon.png","url":"https://ruisum.top","name":"liawne"},"license":"[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)","publisher":{"@type":"Organization","name":"LIAWNE","logo":{"@type":"ImageObject","url":"https://liawne.github.io/icons/apple-touch-icon.png"},"url":"https://liawne.github.io/"},"mainEntityOfPage":{"@type":"WebSite","@id":"https://liawne.github.io/"}}</script><meta name=twitter:card content="summary"><meta property="og:title" content="learning bash via abs"><meta property="og:description" content="通过advanced-bash-scripting学习bash的笔记内容"><meta property="og:url" content="https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="LIAWNE"><meta property="og:locale" content="zh"><meta property="og:image" content="https://liawne.github.io/icons/apple-touch-icon.png"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-03-06T10:42:55+00:00"><meta property="article:modified_time" content="2022-03-13T21:52:20+08:00"><meta property="article:section" content="tech"></head><body><div class=container><header class=header><div class=header-wrapper><div class="header-inner single"><div class=site-brand><a href=/ class=brand>LIAWNE</a></div><nav class=nav><ul class=menu id=menu><li class=menu-item><a href=/tags/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tags"><path d="M497.941 225.941 286.059 14.059A48 48 0 00252.118.0H48C21.49.0.0 21.49.0 48v204.118a48 48 0 0014.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882.0l204.118-204.118c18.745-18.745 18.745-49.137.0-67.882zM112 160c-26.51.0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882.0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397.0h48.721a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882z"/></svg><span class=menu-item-name>标签</span></a></li><li class=menu-item><a href=/categories/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255.0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255.0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255.0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255.0-24 10.745-24 24zm386.667-56H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24z"/></svg><span class=menu-item-name>分类</span></a></li><li class=menu-item><a href=/life/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon life"><path d="M301.1 212c4.4 4.4 4.4 11.9.0 16.3l-9.7 9.7c-4.4 4.7-11.9 4.7-16.6.0l-10.5-10.5c-4.4-4.7-4.4-11.9.0-16.6l9.7-9.7c4.4-4.4 11.9-4.4 16.6.0l10.5 10.8zm-30.2-19.7c3-3 3-7.8.0-10.5-2.8-3-7.5-3-10.5.0-2.8 2.8-2.8 7.5.0 10.5 3.1 2.8 7.8 2.8 10.5.0zm-26 5.3c-3 2.8-3 7.5.0 10.2 2.8 3 7.5 3 10.5.0 2.8-2.8 2.8-7.5.0-10.2-3-3-7.7-3-10.5.0zm72.5-13.3c-19.9-14.4-33.8-43.2-11.9-68.1 21.6-24.9 40.7-17.2 59.8.8 11.9 11.3 29.3 24.9 17.2 48.2-12.5 23.5-45.1 33.2-65.1 19.1zm47.7-44.5c-8.9-10-23.3 6.9-15.5 16.1 7.4 9 32.1 2.4 15.5-16.1zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-66.2 42.6c2.5-16.1-20.2-16.6-25.2-25.7-13.6-24.1-27.7-36.8-54.5-30.4 11.6-8 23.5-6.1 23.5-6.1.3-6.4.0-13-9.4-24.9 3.9-12.5.3-22.4.3-22.4 15.5-8.6 26.8-24.4 29.1-43.2 3.6-31-18.8-59.2-49.8-62.8-22.1-2.5-43.7 7.7-54.3 25.7-23.2 40.1 1.4 70.9 22.4 81.4-14.4-1.4-34.3-11.9-40.1-34.3-6.6-25.7 2.8-49.8 8.9-61.4.0.0-4.4-5.8-8-8.9.0.0-13.8.0-24.6 5.3 11.9-15.2 25.2-14.4 25.2-14.4.0-6.4-.6-14.9-3.6-21.6-5.4-11-23.8-12.9-31.7 2.8.1-.2.3-.4.4-.5-5 11.9-1.1 55.9 16.9 87.2-2.5 1.4-9.1 6.1-13 10-21.6 9.7-56.2 60.3-56.2 60.3-28.2 10.8-77.2 50.9-70.6 79.7.3 3 1.4 5.5 3 7.5-2.8 2.2-5.5 5-8.3 8.3-11.9 13.8-5.3 35.2 17.7 24.4 15.8-7.2 29.6-20.2 36.3-30.4.0.0-5.5-5-16.3-4.4 27.7-6.6 34.3-9.4 46.2-9.1 8 3.9 8-34.3 8-34.3.0-14.7-2.2-31-11.1-41.5 12.5 12.2 29.1 32.7 28 60.6-.8 18.3-15.2 23-15.2 23-9.1 16.6-43.2 65.9-30.4 106 0 0-9.7-14.9-10.2-22.1-17.4 19.4-46.5 52.3-24.6 64.5 26.6 14.7 108.8-88.6 126.2-142.3 34.6-20.8 55.4-47.3 63.9-65 22 43.5 95.3 94.5 101.1 59z"/></svg><span class=menu-item-name>生活</span></a></li><li class=menu-item><a href=/tech/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tech"><path d="M512 256c0 141.2-114.7 256-256 256C114.8 512 0 397.3.0 256S114.7.0 256 0s256 114.7 256 256zm-32 0c0-123.2-100.3-224-224-224C132.5 32 32 132.5 32 256s100.5 224 224 224 224-100.5 224-224zM160.9 124.6l86.9 37.1-37.1 86.9-86.9-37.1 37.1-86.9zm110 169.1 46.6 94h-14.6l-50-1e2-48.9 1e2h-14l51.1-106.9-22.3-9.4 6-14 68.6 29.1-6 14.3-16.5-7.1zm-11.8-116.3 68.6 29.4-29.4 68.3L230 246l29.1-68.6zm80.3 42.9 54.6 23.1-23.4 54.3-54.3-23.1 23.1-54.3z"/></svg><span class=menu-item-name>技术</span></a></li><li class=menu-item><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6.0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7.0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4.0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9s28-2.7 40.9-6.9c2.3-.7 4.7-1.1 7.1-1.1 42.9.0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class=menu-item-name>关于</span></a></li><li class=menu-item><a id=theme-switcher href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5 242 7a18 18 0 0128 0l48.8 97.5L422.2 70A18 18 0 01442 89.8l-34.5 103.4L505 242a18 18 0 010 28l-97.5 48.8L442 422.2A18 18 0 01422.2 442l-103.4-34.5L270 505a18 18 0 01-28 0l-48.8-97.5L89.8 442A18 18 0 0170 422.2l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8L70 89.8A18 18 0 0189.8 70zM256 128a128 128 0 10.01.0M256 160a96 96 0 10.01.0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412A256 256 0 10181 5a11.5 11.5.0 00-5 20A201.5 201.5.0 0142 399a11.5 11.5.0 00-15 13"/></svg></a></li></ul></nav></div></div><input type=checkbox id=nav-toggle aria-hidden=true>
 <label for=nav-toggle class=nav-toggle></label>
 <label for=nav-toggle class=nav-curtain></label></header><main class="main single" id=main><div class=main-inner><article class="content post h-entry" data-align=justify data-type=tech data-toc-num=true><h1 class="post-title p-name">learning bash via abs</h1><div class="post-description p-summary">通过advanced-bash-scripting学习bash的笔记内容</div><div class=post-meta><time datetime=2022-03-06T10:42:55+00:00 class="post-meta-item published dt-published"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M148 288h-40c-6.6.0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12zm108-12v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm-96 96v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm-96 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm192 0v-40c0-6.6-5.4-12-12-12h-40c-6.6.0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6.0 12-5.4 12-12zm96-260v352c0 26.5-21.5 48-48 48H48c-26.5.0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v52h48c26.5.0 48 21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3.0 6-2.7 6-6z"/></svg>&nbsp;2022.3.6</time>
 <time datetime=2022-03-13T21:52:20+08:00 class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M4e2 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H48C21.49 64 0 85.49.0 112v352c0 26.51 21.49 48 48 48h352c26.51.0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 4e2H54a6 6 0 01-6-6V160h352v298a6 6 0 01-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.3.13</time>
 <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49.0 112v288c0 26.51 21.49 48 48 48h416c26.51.0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href=/tech/ class="category-link p-category">技术</a>/<a href=/tech/basics/ class="category-link p-category">基础</a></span>
-<span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3.0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9.0l60.1 60.1c18.8 18.7 18.8 49.1.0 67.9zM284.2 99.8 21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3.0-17l-111-111c-4.8-4.7-12.4-4.7-17.1.0zM124.1 339.9c-5.5-5.5-5.5-14.3.0-19.8l154-154c5.5-5.5 14.3-5.5 19.8.0s5.5 14.3.0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8.0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;25992</span>
+<span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3.0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9.0l60.1 60.1c18.8 18.7 18.8 49.1.0 67.9zM284.2 99.8 21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3.0-17l-111-111c-4.8-4.7-12.4-4.7-17.1.0zM124.1 339.9c-5.5-5.5-5.5-14.3.0-19.8l154-154c5.5-5.5 14.3-5.5 19.8.0s5.5 14.3.0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8.0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;26008</span>
 <span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5.0-2e2-89.5-2e2-2e2S145.5 56 256 56s2e2 89.5 2e2 2e2-89.5 2e2-2e2 2e2zm61.8-104.4-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6.0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;52&nbsp;分钟</span></div><div class="post-body e-content"><h2 id=变量及操作符><a href=#变量及操作符 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>变量及操作符</h2><h3 id=1-特殊字符使用><a href=#1-特殊字符使用 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>#1. 特殊字符使用</h3><pre tabindex=0><code>#   --&gt; 注释(不包括#!)
     --&gt; 变量替换使用 echo ${PATH#*:}
 ;   --&gt; 命令分隔符,用于连接多个命令
@@ -13,23 +13,23 @@
     --&gt; 可作为隐藏文件的文件名开头
     --&gt; 相对路径的表示,当前路径和父目录路径
     --&gt; 匹配单个字符
-''  --&gt; 忽略所有特殊字符,全部引用
-&quot;&quot;  --&gt; 忽略除去`,$,\外所有的特殊字符,部分引用
+&#39;&#39;  --&gt; 忽略所有特殊字符,全部引用
+&#34;&#34;  --&gt; 忽略除去`,$,\外所有的特殊字符,部分引用
 ,   --&gt; 连接一串运算,只返回最后一个的结果
-        let &quot;t2 = ((a = 9, 15 / 3))&quot;          ## set &quot;a=9&quot; and &quot;t2 = 15 / 3&quot;
+        let &#34;t2 = ((a = 9, 15 / 3))&#34;          ## set &#34;a=9&#34; and &#34;t2 = 15 / 3&#34;
     --&gt; for file in /{,usr/}bin/*calc         ## 与{}一起使用,用作选择的一种,简略代码
 1.1 变量替换中的大小写替换
     echo ${var,}   --&gt; 第一个字符小写
     echo ${var,,}  --&gt; 所有字符小写
     echo ${var^}   --&gt; 第一个字符大写
     echo ${var^^}  --&gt; 所有字符大写
-\   --&gt; 脱意符,除去特殊字符的含义,\X等效与'X'
+\   --&gt; 脱意符,除去特殊字符的含义,\X等效与&#39;X&#39;
 `   --&gt; 运算符,将命令的输出结果作为内容传递给变量
 :   --&gt; 空命令,no op,执行结果返回值为0
     --&gt; 在if/then记过中作为占位符使用
         if condition;then :;else action;done
     --&gt; 为需要二进制文件存在的场合提供占位符
-        : ${username=`whoami`}   |  : ${1?&quot;Usage: $0 ARGUMENT&quot;}
+        : ${username=`whoami`}   |  : ${1?&#34;Usage: $0 ARGUMENT&#34;}
     --&gt; 作为切片使用,同python中的切片
         ${var:1} ${var:3:3}
     --&gt; 同重定向一同使用,用于清空一个文件而不更改其权限,如果文件不存在,则创建该文件
@@ -58,7 +58,7 @@ $$  --&gt; 进程ID
     --&gt; 用于数组的初始化
         Array=(e1 e2 e3)
 {}  --&gt; 大括号展开
-        echo {file1,file2}\ :{\ A,&quot; B&quot;,' C'}
+        echo {file1,file2}\ :{\ A,&#34; B&#34;,&#39; C&#39;}
     --&gt; 扩展大括号展开
         echo {a..e}
         echo {1<em class=emphasis-point>10</em>2} 显示10以内的奇数，步长为2
@@ -69,19 +69,19 @@ $$  --&gt; 进程ID
         } &lt; /tmp/passwd line1和line2可以直接读取passwd中的文件内容
         在{}中的代码块,一般情况下不会开启一个新的子shell
     --&gt; {}可以用在非标准的for循环当中
-        for ((n=1; n&lt;=10; n++)); { echo -n &quot;* $n *&quot;; }
+        for ((n=1; n&lt;=10; n++)); { echo -n &#34;* $n *&#34;; }
     --&gt; many commands can be used in a {} section, just like a function, return the outcome
-    --&gt; 占位符, use with xargs; 'ls . | xargs -i -t cp ./{} $1'
+    --&gt; 占位符, use with xargs; &#39;ls . | xargs -i -t cp ./{} $1&#39;
 {} \; --&gt; 该结构用在find架构当中,不作为shell的关键字存在
-        The &quot;;&quot; ends the -exec option of a find command sequence. It needs to be escaped to protect it from interpretation by the shell.
+        The &#34;;&#34; ends the -exec option of a find command sequence. It needs to be escaped to protect it from interpretation by the shell.
 []  --&gt; test命令,[是test命令的内置指令(test的同义字),并不是test的链接
     --&gt; 数组元素,用于展开各个序号的数组元素
     --&gt; 正则表达式中使用,用于表示一个序列
-        &quot;[B-Pk-y]&quot;
+        &#34;[B-Pk-y]&#34;
 $[] --&gt; 运算符,等效与(())
         echo $[$a+$b]
 
-$[...] --&gt; 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
+$[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
         
 (())--&gt; 运算符
         (( a = 23 )); (( a++ ))
@@ -96,9 +96,9 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
 
     exec 300&lt;&gt;$lock_file 
     if ! flock -x -n 300; then
-        echo &quot;already running&quot;
+        echo &#34;already running&#34;
     else
-        echo &quot;starting...&quot;
+        echo &#34;starting...&#34;
         sleep 30
     fi
     --&gt; (command)&gt; 进程替换, 暂且记下,后续有具体讲解
@@ -106,20 +106,20 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
     --&gt; &lt;&lt;&lt; here string
     --&gt; askii 比较,对比文本字符顺序
 \&gt;  --&gt; 单词边界,同时还有\&lt;
-        grep '\&lt;the\&gt;' textfile
+        grep &#39;\&lt;the\&gt;&#39; textfile
 [[]]--&gt; test,比[]更灵活
 |   --&gt; 管道,将命令的输出作为输入传递给下一个命令
         echo ls -l | sh  ## 可以作为一种方式执行命令
     --&gt; 管道运行在子shell当中,所以不能在管道中定义变量
-        variable=&quot;initial_value&quot;;echo &quot;new_value&quot; | read variable;echo &quot;variable = $variable&quot;  # variable = initial_value
+        variable=&#34;initial_value&#34;;echo &#34;new_value&#34; | read variable;echo &#34;variable = $variable&#34;  # variable = initial_value
 &gt;|  --&gt; 强制重定向,强制清空文件内容,即使已经设置了noclobber属性已经设置了
 ||  --&gt; 或逻辑运算符,在test结构中使用
 &amp;   --&gt; 在后台运行任务,在脚本中,命令甚至是循环结构可以运行在后台中
-        for i in {1..10};do echo -n &quot;$i&quot;; done &amp;
+        for i in {1..10};do echo -n &#34;$i&#34;; done &amp;
         脚本中包含后台运行的命令可能会导致脚本hang死,可以设置补救措施;
         a,在后台命令后面增加一个wait命令可以解决该问题
         b,在将结果重定向至/dev/null或者一个文件也可
-        ls -l &amp;; ehco &quot;Done.&quot;; wait
+        ls -l &amp;; ehco &#34;Done.&#34;; wait
 &amp;&amp;  --&gt; 逻辑和运算符,用于test结构中
 -   --&gt; 选项前缀, ls -l
     --&gt; 从stdin重定向输入或从stdout重定向输入
@@ -131,13 +131,13 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
 --  --&gt; 命令长格式选项前缀
         ls --all
     --&gt; 与set结合使用,设置位置参数
-        variable=&quot;one two three four five&quot;
+        variable=&#34;one two three four five&#34;
         set -- $variable;
         first_param=$1
         second_param=$2
         shift; shift
-        echo &quot;first parameter = $first_param&quot;    # one
-        echo &quot;second parameter = $second_param&quot;  # two
+        echo &#34;first parameter = $first_param&#34;    # one
+        echo &#34;second parameter = $second_param&#34;  # two
 =   --&gt; 赋值运算符;a=28
 +   --&gt; 逻辑运算符,相加
     --&gt; 正则表达式,1各或者多个
@@ -147,12 +147,12 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; 'echo $[3*5]'
 ~+  --&gt; 当前工作目录,由$PWD保存
 ~-  --&gt; 上一个工作目录,由$OLDPWD保存
 =~  --&gt; 正则表达式中匹配
-        variable=&quot;This is a fine mess.&quot;
-        if [[ &quot;$variable&quot; =~ T.........fin*es* ]]
+        variable=&#34;This is a fine mess.&#34;
+        if [[ &#34;$variable&#34; =~ T.........fin*es* ]]
 ^   --&gt; 行开头
     --&gt; 参数替换中,大写替换
 ^^  --&gt; 参数替换中,大写替换
-' ' --&gt; 空格,用作命令或者是变量的分隔
+&#39; &#39; --&gt; 空格,用作命令或者是变量的分隔
 </code></pre><h3 id=2-变量及参数><a href=#2-变量及参数 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>#2. 变量及参数</h3><pre><code>1, 变量名是变量值的占位符,获取变量值的操作称之为变量替换
 2, 变量裸露的情况(没有前缀'$'符)
     --&gt; 变量声明或者是赋值的时候
@@ -480,13 +480,13 @@ awk的使用,等效变量替换
 </code></pre><h3 id=7-循环和分支结构><a href=#7-循环和分支结构 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>#7. 循环和分支结构</h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>1, for循环
-    <span class=k>for</span> arg in <span class=o>[</span>list<span class=o>]</span><span class=p>;</span> <span class=k>do</span> command<span class=p>;</span><span class=k>done</span>
-    --&gt; for循环和set结合使用,会很方便,以下是例子
-</code></pre></td></tr></table></div></div></div><pre tabindex=0><code>    set `uname -a`; for item in $(seq $#); do echo ${!item}; done
-    for planet in &quot;Mercury 36&quot; &quot;Venus 67&quot; &quot;Earth 93&quot; &quot;Mars 142&quot; &quot;Jupiter 483&quot;; do
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>1, for循环
+</span></span><span class=line><span class=cl>    <span class=k>for</span> arg in <span class=o>[</span>list<span class=o>]</span><span class=p>;</span> <span class=k>do</span> command<span class=p>;</span><span class=k>done</span>
+</span></span><span class=line><span class=cl>    --&gt; for循环和set结合使用,会很方便,以下是例子
+</span></span></code></pre></td></tr></table></div></div></div><pre tabindex=0><code>    set `uname -a`; for item in $(seq $#); do echo ${!item}; done
+    for planet in &#34;Mercury 36&#34; &#34;Venus 67&#34; &#34;Earth 93&#34; &#34;Mars 142&#34; &#34;Jupiter 483&#34;; do
         set -- $planet
-        echo &quot;$1    $2,000,000 miles from the sun&quot;
+        echo &#34;$1    $2,000,000 miles from the sun&#34;
     done
 </code></pre><pre><code>    --&gt; set中使用的--,避免难预测的bug,当后面的变量为空或者是以'-'开头
     --&gt; [list]可以是一个变量,保存了多个值,用于for循环使用
@@ -568,20 +568,20 @@ awk的使用,等效变量替换
 	break;continue
 	--&gt; break的作用为终止当前循环
 	--&gt; continue的作用为跳过当前这次的循环,在该分支中,跳过该分支后面需要执行的命令和操作
-</code></pre><pre tabindex=0><code>        while [ $a -le &quot;$LIMIT&quot; ]; do
+</code></pre><pre tabindex=0><code>        while [ $a -le &#34;$LIMIT&#34; ]; do
             a=$(($a+1))
-            if [ &quot;$a&quot; -eq 3 ] || [ &quot;$a&quot; -eq 11 ]; then 			# Excludes 3 and 11.
+            if [ &#34;$a&#34; -eq 3 ] || [ &#34;$a&#34; -eq 11 ]; then 			# Excludes 3 and 11.
                 continue										# Skip rest of this particular loop iteration.
             fi
-            echo -n &quot;$a&quot;										# This will not execute for 3 and 11.
+            echo -n &#34;$a&#34;										# This will not execute for 3 and 11.
         done
 
-        while [ &quot;$a&quot; -le &quot;$LIMIT&quot; ]; do
+        while [ &#34;$a&#34; -le &#34;$LIMIT&#34; ]; do
             a=$(($a+1))
-            if [ &quot;$a&quot; -gt 2 ]; then
+            if [ &#34;$a&#34; -gt 2 ]; then
                 break 											# Skip entire rest of loop.
             fi
-            echo -n &quot;$a&quot;
+            echo -n &#34;$a&#34;
         done
 </code></pre><pre><code>	--&gt; break可以后接参数,单个的break表示终止当前循环;break N表示终止几层循环
 	--&gt; continue也可以接参数,单个的continue表示此次循环,continue N会终止当前层级的循环,开始下一次的循环,从N层开始
@@ -607,15 +607,15 @@ awk的使用,等效变量替换
         esac
 </code></pre><pre tabindex=0><code>    --&gt; while和case一起使用:
         while [ $# -gt 0 ]; do
-            case &quot;$1&quot; in
+            case &#34;$1&#34; in
                 -d|--debug)
                     DEBUG=1
                     ;;
                 -c|--conf)
-                    CONFFILE=&quot;$2&quot;
+                    CONFFILE=&#34;$2&#34;
                     shift
                     if [ ! -f $CONFFILE ]; then
-                        echo &quot;Error: Supplied file doesn't exist!&quot;
+                        echo &#34;Error: Supplied file doesn&#39;t exist!&#34;
                         exit $E_CONFFILE
                     fi
                     ;;
@@ -632,8 +632,8 @@ awk的使用,等效变量替换
 
                     [ $# -eq $PARAMS ] || return $E_BAD_PARAMS
 
-                    case &quot;$1&quot; in
-                        &quot;$2&quot;) return $MATCH;;
+                    case &#34;$1&#34; in
+                        &#34;$2&#34;) return $MATCH;;
                         *   ) return $E_NOMATCH;;
                     esac
                 }
@@ -644,27 +644,26 @@ awk的使用,等效变量替换
             command...
             break
         done
-</code></pre><p>​</p><pre tabindex=0><code>
-</code></pre><pre><code>	--&gt; select结构提示用户输入给定的选项之一,默认情况下使用环境变量PS3作为提示符,但这个可以被改变
-</code></pre><pre tabindex=0><code>		PS3='Choose your favorite vegetable: ' 	 # Sets the prompt string.
+</code></pre><p>​</p><pre tabindex=0><code></code></pre><pre><code>	--&gt; select结构提示用户输入给定的选项之一,默认情况下使用环境变量PS3作为提示符,但这个可以被改变
+</code></pre><pre tabindex=0><code>		PS3=&#39;Choose your favorite vegetable: &#39; 	 # Sets the prompt string.
 											  	 # Otherwise it defaults to #? .
 
-		select vegetable in &quot;beans&quot; &quot;carrots&quot; &quot;potatoes&quot; &quot;onions&quot; &quot;rutabagas&quot;
+		select vegetable in &#34;beans&#34; &#34;carrots&#34; &#34;potatoes&#34; &#34;onions&#34; &#34;rutabagas&#34;
 		do
 			echo
-			echo &quot;Your favorite veggie is $vegetable.&quot;
-			echo &quot;Yuck!&quot;
+			echo &#34;Your favorite veggie is $vegetable.&#34;
+			echo &#34;Yuck!&#34;
 			echo
-			break 								 # What happens if there is no 'break' here?
+			break 								 # What happens if there is no &#39;break&#39; here?
 		done
 </code></pre><pre><code>	--&gt; 如果结构中list不存在,select会使用传递给脚本或包含select结构的函数的位置参数$@;可类比for variable [in list]
-</code></pre><pre tabindex=0><code>        PS3='Choose your favorite vegetable: '
+</code></pre><pre tabindex=0><code>        PS3=&#39;Choose your favorite vegetable: &#39;
 		choice_of(){
-		select vegetable							# [in list] omitted, so 'select' uses arguments passed to function.
+		select vegetable							# [in list] omitted, so &#39;select&#39; uses arguments passed to function.
 		do
 			echo
-			echo &quot;Your favorite veggie is $vegetable.&quot;
-			echo &quot;Yuck!&quot;
+			echo &#34;Your favorite veggie is $vegetable.&#34;
+			echo &#34;Yuck!&#34;
 			echo
 			break
 		done
@@ -691,7 +690,7 @@ awk的使用,等效变量替换
 --&gt; 变量声明甚至可以通过一个循环结构来赋值
 </code></pre><pre tabindex=0><code>    variable1=`for i in 1 2 3 4 5
     do
-    echo -n &quot;$i&quot;
+    echo -n &#34;$i&#34;
     done`
 </code></pre><pre><code>--&gt; 命令替换使用$()替换掉反引号的使用
     允许这种形式：content=$(&lt;$File2)
@@ -710,9 +709,9 @@ awk的使用,等效变量替换
     P_array=( $PIDS )
     echo $PIDS
 
-    let &quot;instances = ${井号P_array[*]} - 1&quot; 
-    echo &quot;$instances instance(s) of this script running.&quot;
-    echo &quot;[Hit Ctl-C to exit.]&quot;; 
+    let &#34;instances = ${井号P_array[*]} - 1&#34; 
+    echo &#34;$instances instance(s) of this script running.&#34;
+    echo &#34;[Hit Ctl-C to exit.]&#34;; 
     echo
 
     sleep 1
@@ -733,17 +732,17 @@ printf：格式化打印，增强型的echo，是一个C语言中printf()函数�
 printf format-string... parameter...
 --&gt; 格式化输出
 </code></pre><pre tabindex=0><code>declare -r PI=3.14159265358979
-printf &quot;Pi to 2 decimal places = %1.2f&quot; $PI
-printf &quot;Pi to 9 decimal places = %1.9f&quot; $PI
+printf &#34;Pi to 2 decimal places = %1.2f&#34; $PI
+printf &#34;Pi to 9 decimal places = %1.9f&#34; $PI
 </code></pre><pre><code>--&gt; 格式化输出错误内容很实用
-</code></pre><pre tabindex=0><code># 注意$'strings...'的格式，在此处与%s的使用
+</code></pre><pre tabindex=0><code># 注意$&#39;strings...&#39;的格式，在此处与%s的使用
 error()
 {
-    printf &quot;$@&quot; &gt;&amp;2 # Formats positional params passed, and sends them to stderr.
+    printf &#34;$@&#34; &gt;&amp;2 # Formats positional params passed, and sends them to stderr.
     echo
     exit $E_BADDIR
 }
-cd $var || error $&quot;Can't cd to %s.&quot; &quot;$var&quot;
+cd $var || error $&#34;Can&#39;t cd to %s.&#34; &#34;$var&#34;
 </code></pre><pre><code>read：通过标准输入读取变量值，动态的通过键盘获取值，与-a选项一起使用时可获取数组变量
 --&gt; read通常情况下，'\'会去除换行的含义，当与-r参数一同使用时，'\'按照原意进行输出
 --&gt; -s：不显示输入内容到屏幕上
@@ -781,10 +780,10 @@ pushd,popd,dirs：这个命令集合是一个工作目录书签工具，用于�
 在脚本中需要切换多个目录工作时，使用这个命令集可以方便的进行管理，$DIRSTACK数组包含有目录的列表栈内容
 </code></pre><h3 id=4-变量操作命令><a href=#4-变量操作命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>#4. 变量操作命令</h3><pre><code>let：let命令执行对变量的算数运算操作，在很多种情况下，let相当于简化版的expr命令
 </code></pre><pre tabindex=0><code>let a=11; let a=a+5
-let &quot;a &lt;&lt;= 3&quot;
-let &quot;a += 5&quot;
+let &#34;a &lt;&lt;= 3&#34;
+let &#34;a += 5&#34;
 let a++(++a)
-let &quot;t = a&lt;7?7:11&quot;
+let &#34;t = a&lt;7?7:11&#34;
 </code></pre><pre><code>--&gt; 使用let命令，在特定情况下，命令返回值和通常情况不同
 </code></pre><pre tabindex=0><code>$ var=0
 $ echo $?
@@ -795,22 +794,22 @@ $ echo $?
 </code></pre><pre><code>eval：
 eval arg1 [arg2] ... [argN]
 结合一个表达式或者一列表达式中的参数，是这些参数联合；所有在表达式中的变量都会被展开，得出的字符串被转换为命令
-</code></pre><pre tabindex=0><code>$ command_string=&quot;ps ax&quot;
-$ eval &quot;$command_string&quot;
+</code></pre><pre tabindex=0><code>$ command_string=&#34;ps ax&#34;
+$ eval &#34;$command_string&#34;
 </code></pre><pre><code>--&gt; 每次调用eval都会强制重新评估其参数
-</code></pre><pre tabindex=0><code>$ a=&quot;$b&quot;
-$ b=&quot;$c&quot;
+</code></pre><pre tabindex=0><code>$ a=&#34;$b&#34;
+$ b=&#34;$c&#34;
 $ c=d
 $ echo $a
 $ eval echo $a
 $ eval eval echo $a
 </code></pre><pre tabindex=0><code>params=$#
 param=1
-while [ &quot;$param&quot; -le &quot;$params&quot; ]
+while [ &#34;$param&#34; -le &#34;$params&#34; ]
 do
-    echo -n &quot;Command-line parameter &quot;
+    echo -n &#34;Command-line parameter &#34;
     echo -n \$$param
-    echo -n &quot; = &quot;
+    echo -n &#34; = &#34;
     eval echo \$$param
     (( param ++ ))
 done
@@ -820,22 +819,22 @@ set命令可用于更改脚本内部的变量值或者脚本选项，用法之�
 </code></pre><pre tabindex=0><code>set `uname -a`
 </code></pre><pre><code>--&gt; 当单独使用set命令时，终端显示所有的环境变量以及已经设置的变量
 --&gt; set后接--,表示将一个变量的内容设置为位置参数,当--后没有任何参数时,表示取消所有的位置参数
-</code></pre><pre tabindex=0><code>variable=&quot;one two three four five&quot;
+</code></pre><pre tabindex=0><code>variable=&#34;one two three four five&#34;
 set -- $variable
 first_param=$1
 second_param=$2
 shift; shift
 
-remaining_params=&quot;$*&quot;
-echo &quot;first parameter = $first_param&quot;                   # one
-echo &quot;second parameter = $second_param&quot;                 # two
-echo &quot;remaining parameters = $remaining_params&quot;         # three four five
+remaining_params=&#34;$*&#34;
+echo &#34;first parameter = $first_param&#34;                   # one
+echo &#34;second parameter = $second_param&#34;                 # two
+echo &#34;remaining parameters = $remaining_params&#34;         # three four five
 
 set --
 first_param=$1
 second_param=$2
-echo &quot;first parameter = $first_param&quot;                   # (null value)
-echo &quot;second parameter = $second_param&quot;                 # (null value)
+echo &#34;first parameter = $first_param&#34;                   # (null value)
+echo &#34;second parameter = $second_param&#34;                 # (null value)
 </code></pre><pre><code>unset:
 unset命令删除一个shell变量,将变量的值设置为null,改命令不影响位置参数
 --&gt; 大多数情况下,使用unset设置过的变量和undeclare设置过的变量是等效的;但对于${parameter:-default}还是有区分的
@@ -864,44 +863,44 @@ getopsts:
     命令行传递给脚本的参数前面必须接'-',存在'-'的前缀,让getopts识别命令行参数为选项;实际上,没有'-'时,getopts不会去处理这些参数,直接当作缺失选项处理
     getopts模板与while循环有些许差别
     getopts结构是外部命令getopt命令的替换
-</code></pre><pre tabindex=0><code>while getopts &quot;:abcde:fg&quot; Option
+</code></pre><pre tabindex=0><code>while getopts &#34;:abcde:fg&#34; Option
 # Initial declaration.
 # a, b, c, d, e, f, and g are the options (flags) expected.
 
-# The : after option 'e' shows it will have an argument passed with it.
+# The : after option &#39;e&#39; shows it will have an argument passed with it.
 do
     case $Option in
-    a ) # Do something with variable 'a'.
-    b ) # Do something with variable 'b'.
+    a ) # Do something with variable &#39;a&#39;.
+    b ) # Do something with variable &#39;b&#39;.
     ...
-    e) # Do something with 'e', and also with $OPTARG, 
-       # which is the associated argument passed with option 'e'.
+    e) # Do something with &#39;e&#39;, and also with $OPTARG, 
+       # which is the associated argument passed with option &#39;e&#39;.
     ...
-    g ) # Do something with variable 'g'.
+    g ) # Do something with variable &#39;g&#39;.
     esac
 done
 shift $(($OPTIND - 1))      # Move argument pointer to next.
                             # All this is not nearly as complicated as it looks &lt;grin&gt;.
 </code></pre><pre tabindex=0><code>NO_ARGS=0
 E_OPTERROR=85
-if [ $# -eq &quot;$NO_ARGS&quot; ]				# Script invoked with no command-line args?
+if [ $# -eq &#34;$NO_ARGS&#34; ]				# Script invoked with no command-line args?
 then
-	echo &quot;Usage: `basename $0` options (-mnopqrs)&quot;
+	echo &#34;Usage: `basename $0` options (-mnopqrs)&#34;
 	exit $E_OPTERROR
  										# Exit and explain usage.
 										# Usage: scriptname -options
 										# Note: dash (-) necessary
 fi
 
-while getopts &quot;:mnopq:rs&quot; Option
+while getopts &#34;:mnopq:rs&#34; Option
 do
 case $Option in
-	m)      echo &quot;Scenario #1: option -m- [OPTIND=${OPTIND}]&quot;;;
-	n | o ) echo &quot;Scenario #2: option -$Option- [OPTIND=${OPTIND}]&quot;;;
-	p)      echo &quot;Scenario #3: option -p- [OPTIND=${OPTIND}]&quot;;;
-	q)      echo &quot;Scenario #4: option -q- with argument \&quot;$OPTARG\&quot; [OPTIND=${OPTIND}]&quot;;;
-	r | s ) echo &quot;Scenario #5: option -$Option-&quot;;;
-	*)      echo &quot;Unimplemented option chosen.&quot;;; 		# Default.
+	m)      echo &#34;Scenario #1: option -m- [OPTIND=${OPTIND}]&#34;;;
+	n | o ) echo &#34;Scenario #2: option -$Option- [OPTIND=${OPTIND}]&#34;;;
+	p)      echo &#34;Scenario #3: option -p- [OPTIND=${OPTIND}]&#34;;;
+	q)      echo &#34;Scenario #4: option -q- with argument \&#34;$OPTARG\&#34; [OPTIND=${OPTIND}]&#34;;;
+	r | s ) echo &#34;Scenario #5: option -$Option-&#34;;;
+	*)      echo &#34;Unimplemented option chosen.&#34;;; 		# Default.
 esac
 done
 
@@ -918,10 +917,10 @@ exit $?
 </code></pre><pre><code>--&gt; 脚本甚至可以在执行时source自己,随然可能没有什么实际的应用场景
 </code></pre><pre tabindex=0><code>#!/bin/bash
 MAXPASSCNT=100
-echo -n &quot;$pass_count &quot;
-let &quot;pass_count += 1&quot;
+echo -n &#34;$pass_count &#34;
+let &#34;pass_count += 1&#34;
 
-while [ &quot;$pass_count&quot; -le $MAXPASSCNT ]; do
+while [ &#34;$pass_count&#34; -le $MAXPASSCNT ]; do
     . $0
 done
 
@@ -938,10 +937,10 @@ exec
 --&gt; 通常情况下,当shell遇到一个命令时,会fork一个子进程来执行该命令,当使用exec命令时,shell不再fork子进程,并且exec调用的命令替换了shell
 --&gt; 当exec在脚本中使用时,当exec调用的命令结束时,会强制退出脚本
 </code></pre><pre tabindex=0><code>#!/bin/bash
-exec echo &quot;Exiting \&quot;$0\&quot; at line $LINENO.&quot;     # Exit from script here.
-                                                # $LINENO is an internal Bash variable set to the line number it's on.
+exec echo &#34;Exiting \&#34;$0\&#34; at line $LINENO.&#34;     # Exit from script here.
+                                                # $LINENO is an internal Bash variable set to the line number it&#39;s on.
 # The following lines never execute.
-echo &quot;This echo fails to echo.&quot;
+echo &#34;This echo fails to echo.&#34;
 exit 99
 </code></pre><pre tabindex=0><code>#!/bin/bash
 # self-exec.sh
@@ -949,17 +948,17 @@ exit 99
 #		then call it with ./self-exec.sh or sh ./self-exec.sh.
 
 echo
-echo &quot;This line appears ONCE in the script, yet it keeps echoing.&quot;
-echo &quot;The PID of this instance of the script is still $$.&quot;
+echo &#34;This line appears ONCE in the script, yet it keeps echoing.&#34;
+echo &#34;The PID of this instance of the script is still $$.&#34;
 
 # Demonstrates that a subshell is not forked off.
 
-echo &quot;==================== Hit Ctl-C to exit ====================&quot;
+echo &#34;==================== Hit Ctl-C to exit ====================&#34;
 sleep 1
 exec $0 							# Spawns another instance of this same script
 									#+ that replaces the previous one.
 
-echo &quot;This line will never echo!&quot;	# Why not?
+echo &#34;This line will never echo!&#34;	# Why not?
 
 exit 99								# Will not exit here!
 									# Exit code will not be 99!
@@ -969,10 +968,10 @@ exit 99								# Will not exit here!
 shopt
 这个命令允许在运行的过程中更改shell选项,通常出现在bash启动文件中,同样在脚本中可以使用,需要version 2以上版本的bash
 </code></pre><pre tabindex=0><code>shopt -s cdspell
-# Allows minor misspelling of directory names with 'cd'
+# Allows minor misspelling of directory names with &#39;cd&#39;
 # Option -s sets, -u unsets.
 
-cd /hpme 	# Oops! Mistyped '/home'.
+cd /hpme 	# Oops! Mistyped &#39;/home&#39;.
 pwd 		# /home
 			# The shell corrected the misspelling.
 </code></pre><pre><code>caller
@@ -997,9 +996,9 @@ type[cmd]
 类似于which的外部命令,type命名用于鉴定cmd命令;
 --&gt; 不同于which,type是一个内建命令
 --&gt; type使用-a参数时,用于鉴定关键字和内建命令,同样定位命令在系统上的唯一名称
-</code></pre><pre tabindex=0><code>bash$ type '['
+</code></pre><pre tabindex=0><code>bash$ type &#39;[&#39;
 [ is a shell builtin
-bash$ type -a '['
+bash$ type -a &#39;[&#39;
 [ is a shell builtin
 [ is /usr/bin/[
 bash$ type type
@@ -1054,27 +1053,27 @@ wait
 ROOT_UID=0											# Only users with $UID 0 have root privileges.
 E_NOTROOT=65
 E_NOPARAMS=66
-if [ &quot;$UID&quot; -ne &quot;$ROOT_UID&quot; ]; then
-	echo &quot;Must be root to run this script.&quot;			# &quot;Run along kid, it's past your bedtime.&quot;
+if [ &#34;$UID&#34; -ne &#34;$ROOT_UID&#34; ]; then
+	echo &#34;Must be root to run this script.&#34;			# &#34;Run along kid, it&#39;s past your bedtime.&#34;
 	exit $E_NOTROOT
 fi
 
-if [ -z &quot;$1&quot; ]; then
-	echo &quot;Usage: `basename $0` find-string&quot;
+if [ -z &#34;$1&#34; ]; then
+	echo &#34;Usage: `basename $0` find-string&#34;
 	exit $E_NOPARAMS
 fi
 
-echo &quot;Updating 'locate' database...&quot;
-echo &quot;This may take a while.&quot;
+echo &#34;Updating &#39;locate&#39; database...&#34;
+echo &#34;This may take a while.&#34;
 updatedb /usr &amp;										# Must be run as root.
 
 wait
-# Don't run the rest of the script until 'updatedb' finished.
+# Don&#39;t run the rest of the script until &#39;updatedb&#39; finished.
 # You want the the database updated before looking up the file name.
 
 locate $1
-# Without the 'wait' command, in the worse case scenario,
-#+ the script would exit while 'updatedb' was still running,
+# Without the &#39;wait&#39; command, in the worse case scenario,
+#+ the script would exit while &#39;updatedb&#39; was still running,
 #+ leaving it as an orphan process.
 exit 0
 </code></pre><pre><code>--&gt; wait也可以后接一个任务识别号作为参数,例如: wait %1或者wait $PPID
@@ -1083,7 +1082,7 @@ exit 0
 # test.sh		  
 
 ls -l &amp;
-echo &quot;Done.&quot;
+echo &#34;Done.&#34;
 wait
 bash$ ./test.sh
 Done.
@@ -1105,10 +1104,10 @@ kill
 </code></pre><pre tabindex=0><code>#!/bin/bash
 # self-destruct.sh
 kill $$				# Script kills its own process here.
-					# Recall that &quot;$$&quot; is the script's PID.
+					# Recall that &#34;$$&#34; is the script&#39;s PID.
 
-echo &quot;This line will not echo.&quot;
-# Instead, the shell sends a &quot;Terminated&quot; message to stdout.
+echo &#34;This line will not echo.&#34;
+# Instead, the shell sends a &#34;Terminated&#34; message to stdout.
 
 exit 0				# Normal exit? No!
 
@@ -1230,12 +1229,12 @@ ln
 ln -s hello.sh goodbye
 HELLO_CALL=65
 GOODBYE_CALL=66
-if [ $0 = &quot;./goodbye&quot; ]; then
-	echo &quot;Good-bye!&quot;			# Some other goodbye-type commands, as appropriate.
+if [ $0 = &#34;./goodbye&#34; ]; then
+	echo &#34;Good-bye!&#34;			# Some other goodbye-type commands, as appropriate.
 	exit $GOODBYE_CALL
 fi
 
-echo &quot;Hello!&quot;
+echo &#34;Hello!&#34;
 exit $HELLO_CALL
 </code></pre><pre><code>man/info
 获取帮助文档,info文档一般描述信息会比man文档更详尽
@@ -1246,8 +1245,8 @@ exit $HELLO_CALL
 --&gt; 此处使用的-exec与shell自带命令exec别混淆了
 --&gt; 注意此处不是命令分隔使用到的';',find命令序列中';'是脱意的,为了确保shell将';'按照字面意思传递给find
 --&gt; 如果COMMAND中包含有{},则find将find匹配的路径或者文件名通过{}来替换;
-</code></pre><pre tabindex=0><code>find ~/ -name 'core*' -exec rm {} \;
-find /etc -exec grep '[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*' {} \;
+</code></pre><pre tabindex=0><code>find ~/ -name &#39;core*&#39; -exec rm {} \;
+find /etc -exec grep &#39;[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*&#39; {} \;
 find /home -type f -atime +5 -exec rm {} \;
 </code></pre><pre><code>时间匹配: find可以通过文件的时间戳进行查找匹配
 	mtime = last modification time of the target file
@@ -1259,9 +1258,9 @@ find /home -type f -atime +5 -exec rm {} \;
 	d = directory
 	l = symbolic link, etc.
 </code></pre><pre tabindex=0><code>## 删除当前目录下包含特殊字符的文件
-find . -name '*[+{;&quot;\\=?~()&lt;&gt;&amp;*|$ ]*' -maxdepth 0 -exec rm -f '{}' \;
+find . -name &#39;*[+{;&#34;\\=?~()&lt;&gt;&amp;*|$ ]*&#39; -maxdepth 0 -exec rm -f &#39;{}&#39; \;
 ## 通过inum删除文件
-inum=`ls -i | grep &quot;$1&quot; | awk '{print $1}'`
+inum=`ls -i | grep &#34;$1&#34; | awk &#39;{print $1}&#39;`
 find . -inum $inum -exec rm {} \;
 </code></pre><pre><code>xargs
 一个用来传递参数给命令的过滤器,同样也是一个集合命令的工具
@@ -1288,10 +1287,10 @@ grep -rliwZ GUI / | xargs -0 rm -f
 </code></pre><pre><code>--&gt; 在find中使用,一对花括号的作用是作为占位符使用的
 </code></pre><pre tabindex=0><code>ls . | xargs -i -t cp ./{} $1
 
-# -t is &quot;verbose&quot; (output command-line to stderr) option.
-# -i is &quot;replace strings&quot; option.
+# -t is &#34;verbose&#34; (output command-line to stderr) option.
+# -i is &#34;replace strings&#34; option.
 # {} is a placeholder for output text.
-# This is similar to the use of a curly-bracket pair in &quot;find.&quot;
+# This is similar to the use of a curly-bracket pair in &#34;find.&#34;
 </code></pre><pre><code>expr
 通用表达式求值运算命令
 连接并对给出的命令选项和参数进行求值操作(各个参数之间必须用空格隔开)
@@ -1308,9 +1307,9 @@ z=`expr substr $string $position $length`       # 获取变量string中position�
 --&gt; -u选项显示UTC时间
 --&gt; date可以用来计算不同时间之间的时间间隔
 --&gt; date有大量的输出选项可供选择;比如%N是给出当前时间的纳秒格式,这个形式可以用来获取随机数
-</code></pre><pre tabindex=0><code>date +%N | sed -e 's/000$//' -e 's/^0//'
-date --date='6 days ago'
-date --date='1 year ago'
+</code></pre><pre tabindex=0><code>date +%N | sed -e &#39;s/000$//&#39; -e &#39;s/^0//&#39;
+date --date=&#39;6 days ago&#39;
+date --date=&#39;1 year ago&#39;
 </code></pre><pre><code>zdump
 时区dump:打印指定时区的时间
 </code></pre><pre tabindex=0><code>bash$ zdump EST
@@ -1367,7 +1366,7 @@ uniq
 </code></pre><pre tabindex=0><code>cat list-1 list-2 list-3 | sort | uniq &gt; final.list
 </code></pre><pre><code>--&gt; 使用-c选项,在输出结果中显示重复出现的次数
 --&gt; sort INPUTFILE | uniq -c | sort -nr　命令打印出在INPUTFILE中出现的频次信息,使用场景为分析log文件或者字典列表等
-</code></pre><pre tabindex=0><code>sed -e 's/\.//g' -e 's/\,//g' -e 's/ //g' &quot;$1&quot; | tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr
+</code></pre><pre tabindex=0><code>sed -e &#39;s/\.//g&#39; -e &#39;s/\,//g&#39; -e &#39;s/ //g&#39; &#34;$1&#34; | tr &#39;A-Z&#39; &#39;a-z&#39; | sort | uniq -c | sort -nr
 </code></pre><pre><code>expand/unexpand
 命令expand用来将tab展开为空格,通常与管道结合使用
 命令unexpand将空格转换为tab,是expand的反转命令
@@ -1375,18 +1374,18 @@ uniq
 cut
 展开文件指定区域的命令.命令类似于在awk结构中的print $N,但相比较之下,限制更多.在脚本中使用cut命令会比使用awk更简单.cut重要的选项-f和-d
 </code></pre><pre tabindex=0><code># 使用cut来获取挂载文件系统列表
-cut -d ' ' -f1,2 /etc/mtab
+cut -d &#39; &#39; -f1,2 /etc/mtab
 # 使用cut列出OS和内核版本
-uname -a | cut -d&quot; &quot; -f1,3,11,12
+uname -a | cut -d&#34; &#34; -f1,3,11,12
 # 使用cut来解析email信息头部
-bash$ grep '^Subject:' read-messages | cut -c10-80
+bash$ grep &#39;^Subject:&#39; read-messages | cut -c10-80
 Re: Linux suitable for mission-critical apps?
 MAKE MILLIONS WORKING AT HOME!!!
 Spam complaint
 Re: Spam complaint
 </code></pre><pre><code>--&gt; 甚至可以指定换行符作为分隔符
-</code></pre><pre tabindex=0><code>bash$ cut -d'
-' -f3,7,19 testfile
+</code></pre><pre tabindex=0><code>bash$ cut -d&#39;
+&#39; -f3,7,19 testfile
 This is line 3 of testfile.
 This is line 7 of testfile.
 This is line 19 of testfile.
@@ -1451,16 +1450,16 @@ grep
 look
 look命令工作形式类似于grep,但是是基于字典(一个已排序的单词列表)进行查询;默认情况下,look在/usr/dict/words下进行匹配,但可以指定进行匹配的字典
 </code></pre><pre tabindex=0><code>file=words.database                  # Data file from which to read words to test.
-while [ &quot;$word&quot; != end ]; do         # Last word in data file.
+while [ &#34;$word&#34; != end ]; do         # Last word in data file.
     read word
     look $word &gt; /dev/null
     lookup=$?
-    if [ &quot;$lookup&quot; -eq 0 ]; then
-        echo &quot;\&quot;$word\&quot; is valid.&quot;
+    if [ &#34;$lookup&#34; -eq 0 ]; then
+        echo &#34;\&#34;$word\&#34; is valid.&#34;
     else
-        echo &quot;\&quot;$word\&quot; is invalid.&quot;
+        echo &#34;\&#34;$word\&#34; is invalid.&#34;
     fi
-done &lt;&quot;$file&quot;
+done &lt;&#34;$file&#34;
 </code></pre><pre><code>sed/awk
 脚本语言,非常适合用来处理文本文件和标准输出的内容
 sed
@@ -1475,14 +1474,14 @@ wc
 tr
 字符转化过滤器
 --&gt; 视情况决定是否需要使用引用或者括号,引号引用可以防止shell将属于tr的特殊字符先行处理了,括号必须被引起来,防止直接被展开
-</code></pre><pre tabindex=0><code>tr &quot;A-Z&quot; &quot;*&quot; &lt;filename 
+</code></pre><pre tabindex=0><code>tr &#34;A-Z&#34; &#34;*&#34; &lt;filename 
 tr A-Z \* &lt;filename
 </code></pre><pre><code>--&gt; 接上-d选项,用于删除一系列的指定字符
 --&gt; --squeeze-repeats(-s)选项用来删除连续的字符(保留第一个),这个选项用来移除多余的空白字符很有用
 --&gt; -c(补足)选项将未匹配的内容用指定的字符替代
-</code></pre><pre tabindex=0><code>bash$ echo &quot;acfdeb123&quot; | tr -c b-d +
+</code></pre><pre tabindex=0><code>bash$ echo &#34;acfdeb123&#34; | tr -c b-d +
 +c+d+b++++
-bash$ echo &quot;abcd2ef1&quot; | tr '[:alpha:]' -
+bash$ echo &#34;abcd2ef1&#34; | tr &#39;[:alpha:]&#39; -
 ----2--1
 </code></pre><pre><code>fold
 将输入的行折叠成指定宽度的过滤器
@@ -1600,12 +1599,12 @@ EOF
 `
 </code></pre><pre><code>awk
 另外一种进行浮点数运算的方式是使用awk命令
-</code></pre><pre tabindex=0><code>AWKSCRIPT=' { printf( &quot;%3.7f\n&quot;, sqrt($1*$1 + $2*$2) ) } '
+</code></pre><pre tabindex=0><code>AWKSCRIPT=&#39; { printf( &#34;%3.7f\n&#34;, sqrt($1*$1 + $2*$2) ) } &#39;
 #           command(s) / parameters passed to awk
 
 # Now, pipe the parameters to awk.
-echo -n &quot;Hypotenuse of $1 and $2 = &quot;
-echo $1 $2 | awk &quot;$AWKSCRIPT&quot;
+echo -n &#34;Hypotenuse of $1 and $2 = &#34;
+echo $1 $2 | awk &#34;$AWKSCRIPT&#34;
 </code></pre><pre><code>jot,seq
 生成一个整数序列,用户可以自定义步长和分隔符
 --&gt; seq -s : 5 指定分隔符为:,默认情况下是换行符
@@ -1630,8 +1629,8 @@ command ---&gt; command ---&gt; |tee ---&gt; command ---&gt; ---&gt; output of p
 
 mkfifo
 命令创建一个命名管道,一个临时的first-in-first-out用于在不同的进程之间传递数据,一般情况下,一个进程向FIFO中写数据,另一个进程则从FIFO中读取数据
-</code></pre><pre tabindex=0><code>(cut -d' ' -f1 | tr &quot;a-z&quot; &quot;A-Z&quot;) &gt;pipe2 &lt;pipe1 &amp;
-ls -l | tr -s ' ' | cut -d' ' -f3,9- | tee pipe1 | cut -d' ' -f2 | paste - pipe2
+</code></pre><pre tabindex=0><code>(cut -d&#39; &#39; -f1 | tr &#34;a-z&#34; &#34;A-Z&#34;) &gt;pipe2 &lt;pipe1 &amp;
+ls -l | tr -s &#39; &#39; | cut -d&#39; &#39; -f3,9- | tee pipe1 | cut -d&#39; &#39; -f2 | paste - pipe2
 rm -f pipe1
 rm -f pipe2
 </code></pre><h3 id=14-其他命令><a href=#14-其他命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a>#14. 其他命令</h3><pre><code>groups
@@ -1780,7 +1779,7 @@ ZZ
 x23LimitStringx23
 #----------End here document-----------#
 </code></pre><pre><code>可以使用vi +n的形式指定文件打开后在第几行
-</code></pre></div><ul class=post-copyright><li class="copyright-item author"><span class=copyright-item-text>作者</span>：<a href=https://ruisum.top class="p-author h-card" target=_blank rel=noopener>liawne</a></li><li class="copyright-item link"><span class=copyright-item-text>链接</span>：<a href=/tech/basics/bash%E5%AD%A6%E4%B9%A0/ target=_blank rel=noopener>https://liawne.github.io/tech/basics/bash学习/</a></li><li class="copyright-item license"><span class=copyright-item-text>许可</span>：<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a></li></ul></article><div class=updated-badge-container><span title="Updated @ 2022-03-13 21:52:20 CST" style=cursor:help><svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2022-03-13</text><text x="915" y="140" textLength="650" transform="scale(.1)">2022-03-13</text></g></svg></span></div><div class=related-posts><h2 class=related-title>相关文章：<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon related-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6.0-12-5.4-12-12v-92h-92c-6.6.0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6.0 12 5.4 12 12v92h92c6.6.0 12 5.4 12 12v56z"/></svg></h2><ul class=related-list><li class=related-item><a href=/life/plan/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/ class=related-link>计划写和做的内容</a></li><li class=related-item><a href=/tech/cloud/docker%E5%AD%A6%E4%B9%A0/ class=related-link>docker学习</a></li><li class=related-item><a href=/tech/ops/ansible%E5%AD%A6%E4%B9%A0/ class=related-link>ansible及ansible-playbook的使用</a></li><li class=related-item><a href=/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/ class=related-link>hexo多设备管理</a></li></ul></div><div class=post-tags><a href=/tags/bash/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>bash</a>
+</code></pre></div><ul class=post-copyright><li class="copyright-item author"><span class=copyright-item-text>作者</span>：<a href=https://ruisum.top class="p-author h-card" target=_blank rel=noopener>liawne</a></li><li class="copyright-item link"><span class=copyright-item-text>链接</span>：<a href=/tech/basics/bash%E5%AD%A6%E4%B9%A0/ target=_blank rel=noopener>https://liawne.github.io/tech/basics/bash学习/</a></li><li class="copyright-item license"><span class=copyright-item-text>许可</span>：<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a></li></ul></article><div class=updated-badge-container><span title="Updated @ 2022-03-13 21:52:20 CST" style=cursor:help><svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2022-03-13</text><text x="915" y="140" textLength="650" transform="scale(.1)">2022-03-13</text></g></svg></span></div><div class=related-posts><h2 class=related-title>相关文章：<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon related-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6.0-12-5.4-12-12v-92h-92c-6.6.0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6.0 12 5.4 12 12v92h92c6.6.0 12 5.4 12 12v56z"/></svg></h2><ul class=related-list><li class=related-item><a href=/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/ class=related-link>vim 打开 txt 文件乱码</a></li><li class=related-item><a href=/life/plan/%E7%B3%BB%E5%88%97%E5%B1%95%E5%BC%80/ class=related-link>系列展开</a></li><li class=related-item><a href=/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/ class=related-link>Kubernetes学习笔记</a></li><li class=related-item><a href=/life/plan/%E8%AE%A1%E5%88%92%E5%86%85%E5%AE%B9/ class=related-link>计划写和做的内容</a></li><li class=related-item><a href=/tech/cloud/docker%E5%AD%A6%E4%B9%A0/ class=related-link>docker学习</a></li></ul></div><div class=post-tags><a href=/tags/bash/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>bash</a>
 <a href=/tags/linux/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>linux</a>
-<a href=/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>基础知识</a></div></div></main><div id=back-to-top class=back-to-top><a href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6.0-33.9L207 39c9.4-9.4 24.6-9.4 33.9.0l194.3 194.3c9.4 9.4 9.4 24.6.0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3.0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a></div><footer id=footer class=footer><div class=footer-inner><div class=site-info>©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3.0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;liawne</div><div class=site-copyright><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a></div></div></footer></div><script src=https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js></script>
-<script>let imgNodes=document.querySelectorAll('div.post-body img');imgNodes=Array.from(imgNodes).filter(a=>a.parentNode.tagName!=="A"),mediumZoom(imgNodes,{background:'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'})</script><script src=https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js type=module defer></script></body></html>
+<a href=/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>基础知识</a></div><div class=load-comments><div id=load-comments>加载评论</div></div><div id=vcomments></div></div></main><div id=back-to-top class=back-to-top><a href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6.0-33.9L207 39c9.4-9.4 24.6-9.4 33.9.0l194.3 194.3c9.4 9.4 9.4 24.6.0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3.0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a></div><footer id=footer class=footer><div class=footer-inner><div class=site-info>©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3.0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;liawne</div><div class=site-copyright><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a></div></div></footer></div><script>function loadComments(){if(typeof Valine=="undefined"){var e=t=>{var e=document.createElement("script");e.defer=!0,e.crossOrigin="anonymous",Object.keys(t).forEach(n=>{e[n]=t[n]}),document.body.appendChild(e)};e({src:"https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js",onload:()=>{newValine()}})}else newValine()}function newValine(){new Valine({el:"#vcomments",appId:"vcDuMPUhVRWqDQ1hhpoM0FkX-gzGzoHsz",appKey:"BuTIa6PLYnI1Po1eBldfdcT1",placeholder:"Just go go",path:location.pathname,avatar:"mm",meta:["nick","mail","link"],pageSize:10,lang:"zh-cn",visitor:!1,highlight:!0,avatarForce:!1,recordIP:!0,serverURLs:'',emojiCDN:'',emojiMaps:{},enableQQ:!1,requiredFields:[]})}</script><script src=https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js></script>
+<script>let imgNodes=document.querySelectorAll("div.post-body img");imgNodes=Array.from(imgNodes).filter(e=>e.parentNode.tagName!=="A"),mediumZoom(imgNodes,{background:"hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)"})</script><script src=https://cdn.jsdelivr.net/npm/instant.page@5.1.0/instantpage.min.js type=module defer></script></body></html>
