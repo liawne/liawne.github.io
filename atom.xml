@@ -1,4 +1,286 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">LIAWNE</title><subtitle type="html">Liawne's blog</subtitle><updated>2022-03-20T16:07:14+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>liawne</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.93.2">Hugo</generator><entry><title type="text">vim 打开 txt 文件乱码</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/><id>https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</id><updated>2022-03-20T10:18:17+08:00</updated><published>2022-03-20T10:18:17+08:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">vim 打开 windows 上编辑的 txt 文件格式乱码</summary><content type="html">&lt;h2 id="背景">背景&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">LIAWNE</title><subtitle type="html">Liawne's blog</subtitle><updated>2022-03-22T23:23:11+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>liawne</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.93.2">Hugo</generator><entry><title type="text">认识PEM文件</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/certificate/%E8%AE%A4%E8%AF%86pem%E6%96%87%E4%BB%B6/"/><id>https://liawne.github.io/tech/certificate/%E8%AE%A4%E8%AF%86pem%E6%96%87%E4%BB%B6/</id><updated>2022-03-22T22:30:13+08:00</updated><published>2022-03-22T22:30:13+08:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">PEM 是什么, 我们有哪些日常使用的命令和 PEM 相关</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
+&lt;p>PEM (&lt;code>Privacy Enhanced Mail&lt;/code>的缩写)文件最初是为了确保电子邮件安全而发明的, 现在它是一个互联网安全标准. PEM 文件是 X.509 证书、CSR(&lt;code>certificate signing request&lt;/code>) 和加密密钥的最常见格式.&lt;/p>
+&lt;h2 id="什么是-pem-文件">什么是 PEM 文件&lt;/h2>
+&lt;p>PEM 文件是一个文本文件, 文件中包含一个或多个采用 Base64 ASCII 编码的条目, 每个条目都有纯文本的页眉和页脚&lt;/p>
+&lt;blockquote>
+&lt;p>例如: &lt;code>--BEGIN CERTIFICATE--&lt;/code> 和 &lt;code>--END CERTIFICATE--&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;p>PEM 是一种容器格式, 可能只包括公共证书, 也可能包括整个证书链, 包括公钥、私钥和根证书.&lt;/p>
+&lt;p>PEM可以有多种扩展名&lt;/p>
+&lt;blockquote>
+&lt;p>例如: .pem、.key、.cer、.cert 等&lt;/p>
+&lt;/blockquote>
+&lt;p>典型的 PEM 文件是：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>key.pem&lt;/code>: 包含私有加密密钥&lt;/li>
+&lt;li>&lt;code>cert.pem&lt;/code>: 包含证书信息&lt;/li>
+&lt;/ul>
+&lt;h2 id="pem-文件格式">PEM 文件格式&lt;/h2>
+&lt;p>页眉和页脚用于标识文件的类型, 但并非所有 PEM 文件都需要它们. 如下说明几种不同类型的PEM文件&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">&lt;strong>页眉页脚内容&lt;/strong>&lt;/th>
+&lt;th style="text-align:center">&lt;strong>文件类型&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>—–BEGIN CERTIFICATE REQUEST—–&lt;/code>&lt;br>....&lt;br>&lt;code>—–END CERTIFICATE REQUEST—–&lt;/code>&lt;/td>
+&lt;td style="text-align:center">CSR文件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>—–BEGIN RSA PRIVATE KEY—–&lt;/code>&lt;br>....&lt;br>&lt;code>—–END RSA PRIVATE KEY—–&lt;/code>&lt;/td>
+&lt;td style="text-align:center">私钥文件&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>—–BEGIN CERTIFICATE—–&lt;/code>&lt;br>....&lt;br>&lt;code>—–END CERTIFICATE—–&lt;/code>&lt;/td>
+&lt;td style="text-align:center">证书文件&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>如果 PEM 文件包含 SSL 证书链, 则格式如下所示:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">—–BEGIN CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">//end-user
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–END CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–BEGIN CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">//intermediate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–END CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–BEGIN CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">//root
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–END CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="文件示例">文件示例&lt;/h2>
+&lt;p>如下示例是一个私钥 pem 文件:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;span class="lnt">9
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">—–BEGIN PRIVATE KEY—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDBj08sp5++4anG
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">cmQxJjAkBgNVBAoTHVByb2dyZXNzIFNvZnR3YXJlIENvcnBvcmF0aW9uMSAwHgYD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">VQQDDBcqLmF3cy10ZXN0LnByb2dyZXNzLmNvbTCCASIwDQYJKoZIhvcNAQEBBQAD
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">…
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">bml6YXRpb252YWxzaGEyZzIuY3JsMIGgBggrBgEFBQcBAQSBkzCBkDBNBggrBgEF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">BQcwAoZBaHR0cDovL3NlY3VyZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3Nvcmdh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">z3P668YfhUbKdRF6S42Cg6zn
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–END PRIVATE KEY—–
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>如下是根证书 pem 文件的示例:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl"># Trust chain root certificate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–BEGIN CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">MIIDdTCCAl2gAwIBAgILBAAAAAABFUtaw5QwDQYJKoZIhvcNAQEFBQAwVzELMAkG
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">YWxTaWduIG52LXNhMRAwDgYDVQQLEwdSb290IENBMRswGQYDVQQDExJHbG9iYWxT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">aWduIFJvb3QgQ0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDaDuaZ
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">…
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jc6j40+Kfvvxi4Mla+pIH/EqsLmVEQS98GPR4mdmzxzdzxtIK+6NiY6arymAZavp
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">38NflNUVyRRBnMRddWQVDf9VMOyGj/8N7yy5Y0b2qvzfvGn9LhJIZJrglfCm7ymP
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">HMUfpIBvFSDJ3gyICh3WZlXi/EjJKSZp4A==
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">—–END CERTIFICATE—–
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="其他">其他&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>使用 &lt;code>openssl&lt;/code> 命令检查 PEM 证书文件&lt;/p>
+&lt;p>&lt;code>openssl&lt;/code> 是一个开源命令行工具, 通常用于生成私钥、创建 CSR、安装我们的 SSL/TLS 证书以及识别证书信息.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 命令格式是: openssl x509 -text -in server.pem -noout&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 示例: &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -in /etc/pki/fwupd/LVFS-CA.pem -text -noout
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Certificate:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Data:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Version: &lt;span class="m">3&lt;/span> &lt;span class="o">(&lt;/span>0x2&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Serial Number: &lt;span class="m">1&lt;/span> &lt;span class="o">(&lt;/span>0x1&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Signature Algorithm: sha256WithRSAEncryption
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Issuer: &lt;span class="nv">CN&lt;/span> &lt;span class="o">=&lt;/span> LVFS CA, &lt;span class="nv">O&lt;/span> &lt;span class="o">=&lt;/span> Linux Vendor Firmware Project
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Validity
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Not Before: Aug &lt;span class="m">1&lt;/span> 00:00:00 &lt;span class="m">2017&lt;/span> GMT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Not After : Aug &lt;span class="m">1&lt;/span> 00:00:00 &lt;span class="m">2047&lt;/span> GMT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Subject: &lt;span class="nv">CN&lt;/span> &lt;span class="o">=&lt;/span> LVFS CA, &lt;span class="nv">O&lt;/span> &lt;span class="o">=&lt;/span> Linux Vendor Firmware Project
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Subject Public Key Info:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Public Key Algorithm: rsaEncryption
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> RSA Public-Key: &lt;span class="o">(&lt;/span>&lt;span class="m">3072&lt;/span> bit&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Modulus:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 00:b5:f5:17:1f:73:70:0c:9c:d6:ca:19:0f:c8:f7:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Exponent: &lt;span class="m">65537&lt;/span> &lt;span class="o">(&lt;/span>0x10001&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 extensions:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 Basic Constraints: critical
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> CA:TRUE, pathlen:1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 Subject Alternative Name:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> URI:http://www.fwupd.org/, email:sign@fwupd.org
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 Extended Key Usage:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Code Signing
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 Key Usage: critical
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Certificate Sign, CRL Sign
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 Subject Key Identifier:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> B1:8D:EA:E4:23:A7:7E:09:8E:B5:EE:31:E0:6A:DD:9E:34:37:65:AC
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> X509v3 CRL Distribution Points:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Full Name:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> URI:http://www.fwupd.org/pki/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Signature Algorithm: sha256WithRSAEncryption
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ......
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>&lt;code>ssh&lt;/code> 使用的 PEM&lt;/p>
+&lt;p>PEM 文件也用于 ssh, 如果我们执行过 &lt;code>ssh-keygen&lt;/code> 用来配置 &lt;code>ssh&lt;/code> 的免密, 则 &lt;code>~/.ssh/id_rsa&lt;/code> 就是一个 PEM 文件, 只是没有扩展名.&lt;/p>
+&lt;p>我们可以在 &lt;code>ssh&lt;/code> 中使用 &lt;code>-i&lt;/code> 标志来指定我们要使用新密钥而不是 &lt;code>id_rsa&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 生成一对新公私钥对&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ssh-keygen -f ./test_rsa -t rsa -P &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Generating public/private rsa key pair.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Your identification has been saved in ./test_rsa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Your public key has been saved in ./test_rsa.pub
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The key fingerprint is:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SHA256:r+NkIS+z7wZcjYjsQ1q/mWDkBkbSXjE1W7mS74W69AE liawne@ruiwen
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The key&lt;span class="err">&amp;#39;&lt;/span>s randomart image is:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+---&lt;span class="o">[&lt;/span>RSA 3072&lt;span class="o">]&lt;/span>----+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> . ooo .. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>. o .. +. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> + o ..o + &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> + * + + . &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> . O oE+S. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> . B ++oo. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> o o+B&lt;span class="o">=&lt;/span>.. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> .&lt;span class="o">=&lt;/span>B+o &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> o**. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----&lt;span class="o">[&lt;/span>SHA256&lt;span class="o">]&lt;/span>-----+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用新生成的密钥对配置免密&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ssh-copy-id -i ./test_rsa.pub pi@192.168.8.106
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/usr/bin/ssh-copy-id: INFO: Source of key&lt;span class="o">(&lt;/span>s&lt;span class="o">)&lt;/span> to be installed: &lt;span class="s2">&amp;#34;./test_rsa.pub&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key&lt;span class="o">(&lt;/span>s&lt;span class="o">)&lt;/span>, to filter out any that are already installed
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用对应的私钥连接服务器&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ssh -i ./test_rsa pi@192.168.8.106
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Last login: Tue Mar &lt;span class="m">22&lt;/span> 23:10:35 &lt;span class="m">2022&lt;/span> from 192.168.8.102
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/certificate/" term="certificate" label="certificate"/><category scheme="https://liawne.github.io/tags/pem/" term="PEM" label="PEM"/><category scheme="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/" term="证书" label="证书"/><category scheme="https://liawne.github.io/tags/openssl/" term="openssl" label="openssl"/></entry><entry><title type="text">vim 打开 txt 文件乱码</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/"/><id>https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</id><updated>2022-03-20T10:18:17+08:00</updated><published>2022-03-20T10:18:17+08:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">vim 打开 windows 上编辑的 txt 文件格式乱码</summary><content type="html">&lt;h2 id="背景">背景&lt;/h2>
 &lt;p>使用 vim 打开 windows 上编辑的 txt 文件, 出现下面的乱码现象
 &lt;img src="https://raw.githubusercontent.com/liawne/blog_images/master/2022/03/20220320-1054.png" alt="vim显示乱码">
 在 manjaro 的 kate 中打开, 可以正常显示
@@ -4072,7 +4354,7 @@ ZZ
 x23LimitStringx23
 #----------End here document-----------#
 &lt;/code>&lt;/pre>&lt;pre>&lt;code>可以使用vi +n的形式指定文件打开后在第几行
-&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/basics/" term="basics" label="basics"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-15T23:19:21+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
+&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/basics/" term="basics" label="basics"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-20T16:16:23+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>liawne</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
 &lt;p>&lt;em>本文内容参考自&lt;a href="https://www.zsythink.net/archives/2481">朱双印ansible笔记&lt;/a>&lt;/em>&lt;/p>
 &lt;h3 id="配置主机清单">配置主机清单&lt;/h3>
 &lt;p>主机清单配置有两种方式&lt;/p>
