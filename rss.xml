@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://liawne.github.io/</link><description>newiur's blog</description><generator>Hugo 0.93.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 27 Mar 2022 18:02:18 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://liawne.github.io/rss.xml"/><item><title>Openssl Toolkit使用</title><link>https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</guid><pubDate>Thu, 24 Mar 2022 22:37:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://liawne.github.io/</link><description>newiur's blog</description><generator>Hugo 0.93.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 27 Mar 2022 22:52:36 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://liawne.github.io/rss.xml"/><item><title>Openssl Toolkit使用</title><link>https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</guid><pubDate>Thu, 24 Mar 2022 22:37:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
 &lt;p>工具下载: &lt;a href="https://liawne.github.io/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="说明">说明&lt;/h2>
@@ -55,18 +55,19 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Selection:
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>&lt;strong>支持的功能如下:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;code>Create certificates&lt;/code>(&lt;strong>创建证书&lt;/strong>):&lt;/p>
+&lt;/div>&lt;h3 id="create-certificates创建证书">&lt;code>Create certificates&lt;/code>(&lt;strong>创建证书&lt;/strong>)&lt;/h3>
 &lt;ul>
 &lt;li>
 &lt;p>Self-Signed SSL Certificate (key, csr, crt)&lt;/p>
 &lt;blockquote>
-&lt;p>生成自签名 SSL 证书&lt;br>
-自签名证书的优点:&lt;br>
-免费(自己生成),随时签发,方便(证书过期处理),对于测试场景&lt;/p>
+&lt;p>生成自签名 SSL 证书&lt;/p>
 &lt;/blockquote>
+&lt;p>自签名证书的优点:&lt;/p>
+&lt;ul>
+&lt;li>免费(自己生成)&lt;/li>
+&lt;li>随时签发&lt;/li>
+&lt;li>方便(证书过期处理)&lt;/li>
+&lt;/ul>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -191,9 +192,7 @@
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>Convert certificates&lt;/code>(&lt;strong>格式转换&lt;/strong>):&lt;/p>
+&lt;h3 id="convert-certificates格式转换">&lt;code>Convert certificates&lt;/code>(&lt;strong>格式转换&lt;/strong>)&lt;/h3>
 &lt;p>&lt;a href="need.todo2">不同格式证书说明&lt;/a>&lt;/p>
 &lt;ul>
 &lt;li>
@@ -337,9 +336,7 @@
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>Verify certificates&lt;/code>(&lt;strong>证书校验&lt;/strong>):&lt;/p>
+&lt;h3 id="verify-certificates证书校验">&lt;code>Verify certificates&lt;/code>(&lt;strong>证书校验&lt;/strong>)&lt;/h3>
 &lt;ul>
 &lt;li>
 &lt;p>CSR is a public key from the private key&lt;/p>
@@ -430,9 +427,7 @@
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>Test ssl server&lt;/code>(&lt;strong>测试 &lt;code>ssl&lt;/code> 服务器&lt;/strong>):&lt;/p>
+&lt;h3 id="test-ssl-server测试-ssl-服务器">&lt;code>Test ssl server&lt;/code>(&lt;strong>测试 &lt;code>ssl&lt;/code> 服务器&lt;/strong>)&lt;/h3>
 &lt;ul>
 &lt;li>
 &lt;p>SSL Certificate handshake&lt;/p>
@@ -485,9 +480,7 @@
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;code>Output certificate information&lt;/code>(&lt;strong>输出证书信息&lt;/strong>):&lt;/p>
+&lt;h3 id="output-certificate-information输出证书信息">&lt;code>Output certificate information&lt;/code>(&lt;strong>输出证书信息&lt;/strong>)&lt;/h3>
 &lt;ul>
 &lt;li>
 &lt;p>Output the details from a certifticate sign request&lt;/p>
@@ -522,9 +515,122 @@
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
+&lt;h2 id="什么是-dn">什么是 &lt;code>DN&lt;/code>&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>什么是 &lt;code>DN&lt;/code>: &lt;code>Distingusied Name&lt;/code>
+专有名称 (DN) 是描述证书中的标识信息的术语, 是证书本身的一部分.&lt;/p>
+&lt;p>证书包含证书所有者或请求者的 &lt;code>DN&lt;/code> 信息和颁发证书的 &lt;code>CA&lt;/code>（称为颁发者 &lt;code>DN&lt;/code>）. 根据颁发证书的 &lt;code>CA&lt;/code> 的标识策略, &lt;code>DN&lt;/code> 可以包含各种信息.&lt;/p>
+&lt;p>每个 &lt;code>CA&lt;/code> 都有一个策略来确定 &lt;code>CA&lt;/code> 需要哪些识别信息来颁发证书. 一些公共 &lt;code>Internet&lt;/code> 证书颁发机构可能需要很少的信息, 例如姓名和电子邮件地址. 其他公共 &lt;code>CA&lt;/code> 可能需要更多信息, 并要求在颁发证书之前更严格地证明该识别信息. 例如，支持公钥基础设施交换 (&lt;code>PKIX&lt;/code>) 标准的 &lt;code>CA&lt;/code> 可能要求请求者在颁发证书之前通过注册机构 (&lt;code>RA&lt;/code>) 验证身份信息. 因此, 如果划接受证书并将其用作凭证, 需要查看 &lt;code>CA&lt;/code> 的标识要求来确定其要求是否符合自身的安全需求.&lt;/p>
+&lt;p>可以使用数字证书管理器 (&lt;code>DCM&lt;/code>) 来操作私有证书颁发机构并颁发私有证书. 此外，还可以使用 &lt;code>DCM&lt;/code> 为公共 &lt;code>Internet CA&lt;/code> 为颁发的证书生成 &lt;code>DN&lt;/code> 信息和密钥对.&lt;/p>
+&lt;p>&lt;strong>为任一类型的证书提供的 DN 信息包括：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Certificate owner's common name&lt;/li>
+&lt;li>Organization&lt;/li>
+&lt;li>Organizational unit&lt;/li>
+&lt;li>Locality or city&lt;/li>
+&lt;li>State or province&lt;/li>
+&lt;li>Country or region&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>一些额外的 &lt;code>DN&lt;/code> 信息，包括：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Version 4 or 6 IP address&lt;/li>
+&lt;li>Fully qualified domain name&lt;/li>
+&lt;li>E-mail address&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>以下列出一些 &lt;code>DN&lt;/code> 首选项&lt;/p>
 &lt;/li>
 &lt;/ul>
-&lt;p>本文内容参考自: &lt;a href="https://community.microfocus.com/cyberres/edirectory/w/edirectorytips/25358/openssl-toolkit">OpenSSL Toolkit&lt;/a>&lt;/p></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>什么是PFX文件</title><link>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</guid><pubDate>Wed, 23 Mar 2022 22:30:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">&lt;strong>DN&lt;/strong>&lt;/th>
+&lt;th style="text-align:left">&lt;strong>信息&lt;/strong>&lt;/th>
+&lt;th style="text-align:left">&lt;strong>描述&lt;/strong>&lt;/th>
+&lt;th style="text-align:left">&lt;strong>示例&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">CN&lt;/td>
+&lt;td style="text-align:left">Common Name&lt;/td>
+&lt;td style="text-align:left">希望被保护的完全限定域名(&lt;code>FQDN&lt;/code>)&lt;/td>
+&lt;td style="text-align:left">&lt;code>*.wikipedia.org&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">O&lt;/td>
+&lt;td style="text-align:left">Organization Name&lt;/td>
+&lt;td style="text-align:left">通常是公司或实体的法定名称，应包含任何后缀，例如 &lt;code>Ltd. Inc.&lt;/code> 或 &lt;code>Corp.&lt;/code>&lt;/td>
+&lt;td style="text-align:left">Wikimedia Foundation, Inc.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">OU&lt;/td>
+&lt;td style="text-align:left">Organizational Unit&lt;/td>
+&lt;td style="text-align:left">内部组织部门/部门名称&lt;/td>
+&lt;td style="text-align:left">&lt;code>IT&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">L&lt;/td>
+&lt;td style="text-align:left">Locality&lt;/td>
+&lt;td style="text-align:left">镇、市、村等的名称&lt;/td>
+&lt;td style="text-align:left">&lt;code>ShenZhen&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">ST&lt;/td>
+&lt;td style="text-align:left">State&lt;/td>
+&lt;td style="text-align:left">省、地区、县或州, 不可以缩写&lt;/td>
+&lt;td style="text-align:left">&lt;code>GuangDong&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">C&lt;/td>
+&lt;td style="text-align:left">Country&lt;/td>
+&lt;td style="text-align:left">组织所在国家/地区的两个字母 &lt;code>ISO&lt;/code> 代码&lt;/td>
+&lt;td style="text-align:left">&lt;code>CN&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">EMAIL&lt;/td>
+&lt;td style="text-align:left">Email Address&lt;/td>
+&lt;td style="text-align:left">组织联系人，通常是证书管理员或 &lt;code>IT&lt;/code> 部门的联系人&lt;/td>
+&lt;td style="text-align:left">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="cacacrt单双向认证">&lt;code>CA&lt;/code>/&lt;code>ca.crt&lt;/code>/单双向认证&lt;/h2>
+&lt;blockquote>
+&lt;p>这一段是截取 &lt;a href="https://blog.csdn.net/espressif/article/details/78541410">SSL-TLS 双向认证：SSL-TLS 工作原理&lt;/a> 中的部分内容, 因为已经讲解的很清楚了, 就不再自己复述一遍了&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;code>CA&lt;/code> 全称为 &lt;code>Certificate Authotiry&lt;/code>, 证书授权中心, 又被成为根证书. 它类似于工商管理局, 给公司企业颁发营业执照.
+&lt;code>CA&lt;/code> 有两大主要特性：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>CA&lt;/code> 本身是受国际认可, 受信任的&lt;/li>
+&lt;li>&lt;code>CA&lt;/code> 需要给它受信任的对象颁发证书&lt;/li>
+&lt;/ul>
+&lt;p>哪里可以查看证书:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Chrome&lt;/code> 浏览器：设置 -&amp;gt; 高级 -&amp;gt; 管理证书 -&amp;gt; 授权中心&lt;/li>
+&lt;li>&lt;code>Ubuntu&lt;/code>: &lt;code>/etc/ssl/certs&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>&lt;code>CA&lt;/code> 的证书 &lt;code>ca.crt&lt;/code> 与 &lt;code>SSL Server&lt;/code> 的证书 &lt;code>Server.crt&lt;/code> 的关系&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>SSL Server&lt;/code> 自己生成一个密钥 &lt;code>KEY&lt;/code>, 内置包含 &lt;code>Private Key/Public Key&lt;/code>, 私钥加密, 公钥解密.&lt;/li>
+&lt;li>&lt;code>Server&lt;/code> 利用密钥生成一个请求文件 &lt;code>server.csr&lt;/code>, 请求文件中包含有 &lt;code>Server&lt;/code> 的一些信息, 如域名/申请者/公钥等.&lt;/li>
+&lt;li>&lt;code>Server&lt;/code> 将请求文件 &lt;code>server.csr&lt;/code> 递交给 &lt;code>CA&lt;/code>, 然后 &lt;code>CA&lt;/code> 对其验明正身后, 将用 &lt;code>ca.key&lt;/code> 和 &lt;code>server.csr&lt;/code> 加密生成 &lt;code>server.crt&lt;/code> 证书.&lt;/li>
+&lt;li>由于 &lt;code>ca.key&lt;/code> 和 &lt;code>ca.crt&lt;/code> 是一对, 于是以后客户端通过使用 &lt;code>ca.crt&lt;/code> 就可以解密认证 &lt;code>server.crt&lt;/code> 证书了.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>什么是 &lt;code>SSL/TLS&lt;/code> 单向认证/双向认证&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>单向认证, 指的是只有一个对象校验对端的证书合法性. 通常都是 &lt;code>client&lt;/code> 来校验服务器的合法性. 那么 &lt;code>client&lt;/code> 需要一个 &lt;code>ca.crt&lt;/code>, 服务器需要 &lt;code>server.crt，server.key&lt;/code>.&lt;/li>
+&lt;li>双向认证, 指的是相互校验, 服务器需要校验每个 &lt;code>client&lt;/code>, &lt;code>client&lt;/code> 也需要校验服务器. &lt;code>server&lt;/code> 需要 &lt;code>server.key&lt;/code>,&lt;code>server.crt&lt;/code>,&lt;code>ca.crt&lt;/code>；&lt;code>client&lt;/code> 需要 &lt;code>client.key&lt;/code>, &lt;code>client.crt&lt;/code>, &lt;code>ca.crt&lt;/code>.&lt;/li>
+&lt;/ul>
+&lt;p>本文内容参考自:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://community.microfocus.com/cyberres/edirectory/w/edirectorytips/25358/openssl-toolkit">OpenSSL Toolkit&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.ibm.com/docs/en/i/7.1?topic=concepts-distinguished-name">Distinguished name&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Certificate_signing_request&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://blog.csdn.net/espressif/article/details/78541410">SSL-TLS 双向认证：SSL-TLS 工作原理&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>什么是PFX文件</title><link>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</guid><pubDate>Wed, 23 Mar 2022 22:30:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>&lt;code>PFX&lt;/code> 文件是 &lt;code>PKCS#12&lt;/code> 格式的证书, 它包含 &lt;code>SSL&lt;/code> 证书（公钥）和相应的私钥.&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;code>PKCS#12&lt;/code> 是一个容器标准, 它可以保存 &lt;code>X509&lt;/code> 客户端证书和相应的私钥, 以及（可选）签署 &lt;code>X509&lt;/code> 客户端证书的 &lt;code>CA&lt;/code> 的 &lt;code>X509&lt;/code> 证书&lt;/p>
@@ -863,7 +969,79 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/pem/">PEM</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>vim 打开 txt 文件乱码</title><link>https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</link><guid isPermaLink="true">https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</guid><pubDate>Sun, 20 Mar 2022 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="背景">背景&lt;/h2>
+&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/pem/">PEM</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>几种不同的证书编码格式</title><link>https://liawne.github.io/tech/certificate/x509%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%81%E4%B9%A6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/x509%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%81%E4%B9%A6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</guid><pubDate>Tue, 22 Mar 2022 21:13:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;p>通常来说, 所有 &lt;code>SSL&lt;/code> 证书都被视为 &lt;code>X.509&lt;/code> 证书的类型. 这些数字证书具有不同的文件扩展名和格式.&lt;/p>
+&lt;h2 id="分类">分类&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;strong>Base64 (ASCII)&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>PEM&lt;/strong>
+&lt;ul>
+&lt;li>.pem&lt;/li>
+&lt;li>.crt&lt;/li>
+&lt;li>.ca-bundle&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>PKCS#7&lt;/strong>
+&lt;ul>
+&lt;li>.p7b&lt;/li>
+&lt;li>.p7s&lt;/li>
+&lt;li>.p7c&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>Binary&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>DER&lt;/strong>
+&lt;ul>
+&lt;li>.der&lt;/li>
+&lt;li>.cer&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>PKCS#12&lt;/strong>
+&lt;ul>
+&lt;li>.pfx&lt;/li>
+&lt;li>.p12&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>*.pem,*.crt,*.ca-bundle,*.cer,*.p7b,*.p7s&lt;/strong> 等文件是使用 &lt;code>base64 (ASCII)&lt;/code> 编码的 &lt;code>X.509&lt;/code> 数字证书文件.&lt;/p>
+&lt;p>&lt;strong>*.der,*.cer,*.p12,*.pfx&lt;/strong> 等文件是二进制编码&lt;/p>
+&lt;h2 id="单独说明">单独说明&lt;/h2>
+&lt;ul>
+&lt;li>&lt;code>PEM&lt;/code> 格式: 查看&lt;a href="https://www.ruisum.top/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/">什么是PEM文件&lt;/a>&lt;/li>
+&lt;li>&lt;code>P7B/PKCS#7&lt;/code> 格式: &lt;code>P7B/PKCS#7&lt;/code> 格式的证书以 &lt;code>Base64 ASCII&lt;/code> 编码进行编码, 它们通常具有 &lt;code>.p7b&lt;/code> 或 &lt;code>.p7c&lt;/code> 作为文件扩展名. 将 &lt;code>PKCS#7&lt;/code> 格式的证书分开的原因在于, 只有证书才能以这种格式存储, 而私钥则不能. 换句话说, 一个 &lt;code>P7B&lt;/code> 文件将只包含证书和链证书.
+&lt;blockquote>
+&lt;p>具有 &lt;code>P7B/PKCS#7&lt;/code> 格式的证书包含在&amp;quot;—-BEGIN PKCS7--&amp;quot;和&amp;quot;--END PKCS7--&amp;quot;语句之间. &lt;code>Microsoft Windows&lt;/code> 和 &lt;code>Java Tomcat&lt;/code> 是使用这种格式的 &lt;code>SSL&lt;/code> 证书的最常见平台.&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>&lt;code>DER&lt;/code> 格式: DER 证书格式代表 &lt;code>distinguished encoding rules&lt;/code>, 是 &lt;code>PEM&lt;/code> 格式证书的二进制形式. &lt;code>DER&lt;/code> 格式可以包含所有类型的证书和私钥, 大多使用 &lt;code>.cer&lt;/code> 和 &lt;code>.der&lt;/code> 扩展名. &lt;code>DER&lt;/code> 证书格式最常用于基于 &lt;code>Java&lt;/code> 的平台.&lt;/li>
+&lt;li>&lt;code>PFX/P12/PKCS#12&lt;/code> 格式: &lt;code>PFX/P12/PKCS#12&lt;/code> 格式 —— 都是指个人信息交换格式 —— 是存储服务器证书的二进制格式, 中间证书和私钥在一个受密码保护的 &lt;code>pfx&lt;/code> 或 &lt;code>.p12&lt;/code> 文件中. 这些文件通常在 &lt;code>Windows&lt;/code> 平台上使用，用来允许导入和导出证书及私钥.&lt;/li>
+&lt;/ul>
+&lt;h2 id="不同格式的转换">不同格式的转换&lt;/h2>
+&lt;p>因为以下两个原因, 存在不同编码格式证书的互相转换需求:&lt;/p>
+&lt;ul>
+&lt;li>不同证书颁发机构以不同的格式颁发证书&lt;/li>
+&lt;li>不同的服务器需要不同格式的证书&lt;/li>
+&lt;/ul>
+&lt;p>不同格式间的转换, 请查看: &lt;a href="https://www.ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8">openssl-toolkit使用&lt;/a>&lt;/p>
+&lt;h2 id="其他">其他&lt;/h2>
+&lt;p>一些名词的解释:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>SSL&lt;/code>: &lt;code>Secure Socket Layer&lt;/code> 安全套接字层&lt;/li>
+&lt;li>&lt;code>TLS&lt;/code>: &lt;code>Transport Layer Security&lt;/code> 传输层安全协议&lt;/li>
+&lt;/ul>
+&lt;p>本文内容参考自:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://comodosslstore.com/resources/a-ssl-certificate-file-extension-explanation-pem-pkcs7-der-and-pkcs12/">A SSL Certificate File Extension Explanation: PEM, PKCS7, DER, and PKCS#12
+&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://serverfault.com/questions/9708/what-is-a-pem-file-and-how-does-it-differ-from-other-openssl-generated-key-file">What is a Pem file and how does it differ from other OpenSSL Generated Key File Formats?&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/x509/">X509</category><category domain="https://liawne.github.io/tags/ca/">CA</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/%E5%8A%A0%E5%AF%86/">加密</category></item><item><title>vim 打开 txt 文件乱码</title><link>https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</link><guid isPermaLink="true">https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</guid><pubDate>Sun, 20 Mar 2022 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="背景">背景&lt;/h2>
 &lt;p>使用 vim 打开 windows 上编辑的 txt 文件, 出现下面的乱码现象
 &lt;img src="https://raw.githubusercontent.com/liawne/blog_images/master/2022/03/20220320-1054.png" alt="vim显示乱码">
 在 manjaro 的 kate 中打开, 可以正常显示
