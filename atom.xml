@@ -1,4 +1,587 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-03-27T14:48:25+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>newiur</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.93.2">Hugo</generator><entry><title type="text">什么是PEM文件</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/"/><id>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/</id><updated>2022-03-22T22:30:13+08:00</updated><published>2022-03-22T22:30:13+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">PEM 是什么, 我们有哪些日常使用的命令和 PEM 相关</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-03-27T18:02:12+08:00</updated><id>https://liawne.github.io/</id><link rel="alternate" type="text/html" href="https://liawne.github.io/"/><link rel="self" type="application/atom+xml" href="https://liawne.github.io/atom.xml"/><author><name>newiur</name><uri>https://liawne.github.io/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.93.2">Hugo</generator><entry><title type="text">Openssl Toolkit使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/"/><id>https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</id><updated>2022-03-24T22:37:26+08:00</updated><published>2022-03-24T22:37:26+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一种openssl 工具集, 满足各种证书生成和转换需求</summary><content type="html">&lt;blockquote>
+&lt;p>工具下载: &lt;a href="https://liawne.github.io/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="说明">说明&lt;/h2>
+&lt;p>&lt;code>openssl-toolkit&lt;/code> 是一个封装好的 &lt;code>openssl&lt;/code> 命令行工具(&lt;code>shell&lt;/code> 脚本), 可以用来执行证书管理等相关任务.&lt;/p>
+&lt;h2 id="工具使用">工具使用&lt;/h2>
+&lt;p>下载完成后, 上传文件至可执行 &lt;code>shell&lt;/code> 脚本的环境&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 执行脚本, 查看帮助/说明内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ bash openssl-toolkit.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ____ __________ ______ ____ _ __
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> / __ &lt;span class="se">\_&lt;/span>__ ___ ___ / __/ __/ / ___/_ __/__ ___ / / /__ &lt;span class="o">(&lt;/span>_&lt;span class="o">)&lt;/span> /_
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> / /_/ / _ &lt;span class="se">\/&lt;/span> -_&lt;span class="o">)&lt;/span> _ &lt;span class="se">\_\ \_\ \/&lt;/span> /_/___// / / _ &lt;span class="se">\/&lt;/span> _ &lt;span class="se">\/&lt;/span> / &lt;span class="err">&amp;#39;&lt;/span>_// / __/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="se">\_&lt;/span>___/ .__/&lt;span class="se">\_&lt;/span>_/_//_/___/___/____/ /_/ &lt;span class="se">\_&lt;/span>__/&lt;span class="se">\_&lt;/span>__/_/_/&lt;span class="se">\_\/&lt;/span>_/&lt;span class="se">\_&lt;/span>_/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> /_/
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Submenu options:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 1. Create certificates
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 2. Convert certificates
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 3. Locally verify certificates
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 4. Externally verify certificates &lt;span class="o">(&lt;/span>s_client&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> 5. Output certificate information
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> q. Quit
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> Selection:
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;strong>支持的功能如下:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;code>Create certificates&lt;/code>(&lt;strong>创建证书&lt;/strong>):&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Self-Signed SSL Certificate (key, csr, crt)&lt;/p>
+&lt;blockquote>
+&lt;p>生成自签名 SSL 证书&lt;br>
+自签名证书的优点:&lt;br>
+免费(自己生成),随时签发,方便(证书过期处理),对于测试场景&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为, 以下 ${pass} 为执行过程中需要手动输入的密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl genrsa -passout pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span> -des3 -out server.key &lt;span class="m">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 1. 生成密钥文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># genrsa : 生成一个 rsa key 文件, 也即密钥文件, 此处只会生成私钥文件, 不会生成公钥, 因为公钥提取自私钥&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -passout: 对生成的 RSA 秘钥文件施加密码保护, 结合 pass 使用&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pass:${pass} : ${pass} 为交互输入时给定的密码, 这里作用是设置私钥的密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -des3: Triple-DES Cipher, 指定加密私钥文件用的算法, 三重数据加密算法的意思, 对私钥加密密码 ${pass} 应用三次DES加密算法&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2048: 指生成多少位的私钥, 还可以为512/1024等&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl req -sha256 -new -key server.key -out server.csr -passin pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 通过 server.key 私钥, 生成 server.csr 文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 如果要一个 CA(Certificate Authority) 认证机构颁发 CRT 证书的话, 需要先提供一个 CSR(Certificate Signing Request) 请求文件.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 这个 CSR 请求文件中, 会包含公钥(Public Key), 以及一些申请者信息 (DN Distingusied Name).&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># DN 信息中最重要的部分是 Common Name (CN), 需要与后续安放 CRT 证书的服务器 FQDN(Fully Qualified Domain Name) 完全一致才行. &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># openssl-toolkit 会在执行过程中要求输入 DN 信息, 请按实际情况填写相应内容.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># req: PKCS#10 X.509 CSR 管理相关&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -new: 生成一个新的 CSR 请求文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -key: 指定已有的私钥文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -passin: 指定私钥文件的加密密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -req -sha256 -days &lt;span class="nv">$certDays&lt;/span> -in &lt;span class="nv">$csr&lt;/span> -signkey &lt;span class="nv">$key&lt;/span> -out &lt;span class="nv">$crt&lt;/span> -passin pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 3. 根据已有的密钥文件 ${key} 和请求文件 ${csr} 来产生自签名 CRT(certificate) 证书文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -days: 指定生成的证书有效时间&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -in: 指定 CSR 请求文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -signkey: 指定私钥文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -out: 指定生生成的 CRT 文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl rsa -in &lt;span class="nv">$key&lt;/span> -out nopassword.key -passin pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ cat nopassword.key &lt;span class="si">${&lt;/span>&lt;span class="nv">crt&lt;/span>&lt;span class="si">}&lt;/span> &amp;gt;&amp;gt; server.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ rm -f nopassword.key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 4. 生成 server.pem 文件, 保存不加密的私钥和 CRT 证书内容&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Private Key &amp;amp; Certificate Signing Request (key, csr)&lt;/p>
+&lt;blockquote>
+&lt;p>创建私钥和证书签名请求(&lt;code>CSR&lt;/code>)&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为, ${pass} 为执行时手动交互输入&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl genrsa -passout pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span> -des3 -out server.key &lt;span class="m">2048&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 1. 生成密钥文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl req -sha256 -new -key server.key -out server.csr -passin pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 通过 server.key 私钥, 生成 server.csr 文件, 需要交互输入 DN 内容&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>PEM with key and entire trust chain&lt;/p>
+&lt;blockquote>
+&lt;p>生成包含整个证书链和 &lt;code>key&lt;/code> 的 &lt;code>PEM&lt;/code> 文件&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 生成 server.pem 文件, 保存不加密的私钥和 CRT 证书内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 证书链有多少级, 则执行多少次如下内容, 注意区分每次的 ${key} 和 ${crt}: &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl rsa -in &lt;span class="nv">$key&lt;/span> -out nopassword.key -passin pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ cat nopassword.key &lt;span class="si">${&lt;/span>&lt;span class="nv">crt&lt;/span>&lt;span class="si">}&lt;/span> &amp;gt;&amp;gt; server.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ rm -f nopassword.key
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>Convert certificates&lt;/code>(&lt;strong>格式转换&lt;/strong>):&lt;/p>
+&lt;p>&lt;a href="need.todo2">不同格式证书说明&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>PEM -&amp;gt; DER&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>PEM&lt;/code> 转换为 &lt;code>DER&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -outform der -in server.pem -out server.der
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># x509: X.509证书数据管理&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>PEM -&amp;gt; P7B&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>PEM&lt;/code> 转换为 &lt;code>P7B&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl crl2pkcs7 -nocrl -certfile server.pem -out server.p7b
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># crl2pkcs7: CRL to PKCS#7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -nocrl: 通常 CRL 包含在输出文件中. 使用此选项时, 输出文件中不会包含 CRL, 并且不会从输入文件中读取 CRL.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># crl(Certificate Revocation List): 证书吊销列表, 是 PKI 系统中的一个结构化数据文件, 该文件包含了证书颁发机构 (CA) 已经吊销的证书的序列号及其吊销日期. &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># CRL 文件中还包含证书颁发机构信息、吊销列表失效时间和下一次更新时间, 以及采用的签名算法等.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>PEM -&amp;gt; PFX&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>PEM&lt;/code> 转换为 &lt;code>PFX&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs12 -export -out server.pfx -inkey server.pem -in server.pem -certfile server.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pkcs12: PKCS#12 数据管理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 转换为 PFX 格式, 需要交互输入加密密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -inkey: 私钥文件, 此处即 server.pem&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -in: 指定要解析的 PKCS＃12 文件的文件名, 此处为 server.pem&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -certfile: 要从中读取其他证书的文件名, 此处仍是 server.pem&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>DER -&amp;gt; PEM&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>DER&lt;/code> 转换为 &lt;code>PEM&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -inform der -in server.der -out server.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># x509: X.509 证书数据管理&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>P7B -&amp;gt; PEM&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>P7B&lt;/code> 转换为 &lt;code>PEM&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs7 -print_certs -in server.p7b -out server.pem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pkcs12: PKCS#7 数据管理&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -print_certs: 打印出文件中包含的任何证书或 CRL.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>P7B -&amp;gt; PFX&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>P7B&lt;/code> 转换为 &lt;code>PFX&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs7 -print_certs -in server.p7b -out server.pfx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>PFX -&amp;gt; PEM&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>PFX&lt;/code> 转换为 &lt;code>PEM&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs12 -in server.pfx -out server.pem -nodes
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -nodes: 不加密私钥&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>Verify certificates&lt;/code>(&lt;strong>证书校验&lt;/strong>):&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>CSR is a public key from the private key&lt;/p>
+&lt;blockquote>
+&lt;p>校验 &lt;code>CSR&lt;/code> 是来自私钥的公钥&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -noout: 防止输出请求的编码版本.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -modules: 打印出请求中包含的公钥的模值.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl rsa -noout -modulus -in server.key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl req -noout -modulus -in server.csr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Signed certificate is the public key from the private key&lt;/p>
+&lt;blockquote>
+&lt;p>校验签名证书是来自私钥的公钥&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -noout: 防止输出请求的编码版本.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -modules: 打印出请求中包含的公钥的模值.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -noout -modulus -in server.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl rsa -noout -modulus -in server.pem
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Chain file applies to the signed certificate (complete ssl chain)&lt;/p>
+&lt;blockquote>
+&lt;p>校验证书链适用于签​​名证书（包含完整的 &lt;code>ssl&lt;/code> 链）&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># verify: 证书校验&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -purpose: 证书的预期用途. 如果未指定此选项, verify 将不会在链验证期间考虑证书用途.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 当前接受的用途是 sslclient、sslserver、nssslserver、smimesign、smimeencrypt.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl verify -verbose -purpose sslserver -CAfile server.pem server.crt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Check date validity of certificates&lt;/p>
+&lt;blockquote>
+&lt;p>检查证书的日期有效性&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -noout: 防止输出请求的编码版本.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -enddate: 打印出证书的到期日期, 即 notAfter 日期.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -checkend &lt;span class="m">7776000&lt;/span> -in server.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -noout -enddate -in server.crt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>Test ssl server&lt;/code>(&lt;strong>测试 &lt;code>ssl&lt;/code> 服务器&lt;/strong>):&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>SSL Certificate handshake&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>SSL&lt;/code> 证书能否完成握手连接&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl s_client -connect &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$server&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>:&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$port&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>SSL Server date validity&lt;/p>
+&lt;blockquote>
+&lt;p>检查 &lt;code>SSL&lt;/code> 服务器日期有效性&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl s_client -connect &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$server&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> 2&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="p">|&lt;/span> openssl x509 -text &lt;span class="p">|&lt;/span> grep -i -B1 -A3 validity
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Permitted Protocols&lt;/p>
+&lt;blockquote>
+&lt;p>检查允许的协议&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ timeout &lt;span class="m">3&lt;/span> openssl s_client -connect www.baidu.com:443 -no_ssl3 -no_tls1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ timeout &lt;span class="m">3&lt;/span> openssl s_client -connect www.baidu.com:443 -cipher NULL,LOW
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;code>Output certificate information&lt;/code>(&lt;strong>输出证书信息&lt;/strong>):&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Output the details from a certifticate sign request&lt;/p>
+&lt;blockquote>
+&lt;p>从证书签名请求中(&lt;code>CSR&lt;/code>)输出详细信息&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl req -text -in &lt;span class="si">${&lt;/span>&lt;span class="nv">csr&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Output the details from a signed certificate&lt;/p>
+&lt;blockquote>
+&lt;p>从签名证书中输出详细信息&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl x509 -text -in &lt;span class="si">${&lt;/span>&lt;span class="nv">crt&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>本文内容参考自: &lt;a href="https://community.microfocus.com/cyberres/edirectory/w/edirectorytips/25358/openssl-toolkit">OpenSSL Toolkit&lt;/a>&lt;/p></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/certificate/" term="certificate" label="certificate"/><category scheme="https://liawne.github.io/tags/openssl/" term="openssl" label="openssl"/><category scheme="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/" term="证书" label="证书"/><category scheme="https://liawne.github.io/tags/ca/" term="CA" label="CA"/></entry><entry><title type="text">什么是PFX文件</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/"/><id>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</id><updated>2022-03-23T22:30:13+08:00</updated><published>2022-03-23T22:30:13+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">PFX 是什么, 我们日常有哪些场景会使用到</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
+&lt;p>&lt;code>PFX&lt;/code> 文件是 &lt;code>PKCS#12&lt;/code> 格式的证书, 它包含 &lt;code>SSL&lt;/code> 证书（公钥）和相应的私钥.&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>PKCS#12&lt;/code> 是一个容器标准, 它可以保存 &lt;code>X509&lt;/code> 客户端证书和相应的私钥, 以及（可选）签署 &lt;code>X509&lt;/code> 客户端证书的 &lt;code>CA&lt;/code> 的 &lt;code>X509&lt;/code> 证书&lt;/p>
+&lt;/blockquote>
+&lt;p>大多数证书颁发机构不会使用私钥颁发证书, 只会以 &lt;code>.cer、.crt &lt;/code>和&lt;code>.p7b&lt;/code>格式颁发或共享证书, 在绝大多数情况下, 这些格式的证书是不包含私钥的.&lt;/p>
+&lt;p>在有些场景下, 包含了私钥的 &lt;code>.pfx&lt;/code> 格式证书才能满足需求, 比如: &lt;a href="https://need.todo1/">kubernetes 作为 slave 对接 jenkins&lt;/a>&lt;/p>
+&lt;h2 id="证书和-pfx-文件的区别">证书和 PFX 文件的区别&lt;/h2>
+&lt;ul>
+&lt;li>证书名义上是公钥的容器. 证书内容包括公钥,服务器名称,有关服务器的一些额外信息及由证书颁发机构 (CA) 计算的签名. 当服务器将其公钥发送给客户端时, 实际上发送了它的证书和其他一些证书(包含签署其证书的 &lt;code>CA&lt;/code> 的公钥的证书, 以及签署 &lt;code>CA&lt;/code> 证书的 &lt;code>CA&lt;/code> 的证书, 依此类推). 证书本质上是公共对象.&lt;/li>
+&lt;li>&lt;code>.pfx&lt;/code> 文件是一个 &lt;code>PKCS#12&lt;/code> 存档：一个可以包含许多对象的包, 并且带有可选的密码保护；通常情况下, &lt;code>PKCS#12&lt;/code> 存档包含证书（可能带有各种 CA 证书）和相应的私钥.&lt;/li>
+&lt;/ul>
+&lt;h2 id="pfx-的安全性">PFX 的安全性&lt;/h2>
+&lt;p>因为 &lt;code>PFX&lt;/code> 包含了私钥, 在创建 &lt;code>PFX&lt;/code> 时, 需要确保&lt;code>PFX&lt;/code> 文件有设置密码, 避免证书被滥用. 设置的密码应该有一定复杂度, 不然设置了和没设置一样, 很容易被破解.&lt;/p>
+&lt;h2 id="pfx-的一些操作">PFX 的一些操作&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>使用 &lt;code>openssl&lt;/code> 创建 &lt;code>PFX&lt;/code>&lt;/p>
+&lt;p>todo: 在 &lt;code>openssl&lt;/code> 中, 必须在单个 &lt;code>PFX (PKCS#12)&lt;/code> 文件中使用单独存储的密钥, 如下将密钥加入 PFX：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 两次输入密码后, 将在当前目录中创建 output.pfx 文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs12 -export -in linux_cert+ca.pem -inkey privateky.key -out output.pfx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>从 &lt;code>pfx&lt;/code> 文件中提取内容&lt;/p>
+&lt;p>可以从 &lt;code>pfx&lt;/code> 文件中提取出私钥等, 需要知道创建 &lt;code>pfx&lt;/code> 文件时设置的密码.
+参数说明可以参考: &lt;a href="https://www.ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8">openssl-toolkit使用&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 第一步, 提取私钥; 系统会再次提示我们提供新密码来保护正在创建的 .key 文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs12 -in output.pfx -nocerts -out private.key
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 第二步, 提取证书&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl pkcs12 -in output.pfx -clcerts -nokeys -out certificate.crt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 第三步, 解密私钥；输入第一步中创建的用于保护私钥文件的密码&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl rsa -in private.key -out decrypted.key
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/certificate/" term="certificate" label="certificate"/><category scheme="https://liawne.github.io/tags/pfx/" term="PFX" label="PFX"/><category scheme="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/" term="证书" label="证书"/><category scheme="https://liawne.github.io/tags/openssl/" term="openssl" label="openssl"/><category scheme="https://liawne.github.io/tags/ca/" term="CA" label="CA"/></entry><entry><title type="text">什么是PEM文件</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/"/><id>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/</id><updated>2022-03-22T22:30:13+08:00</updated><published>2022-03-22T22:30:13+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">PEM 是什么, 我们有哪些日常使用的命令和 PEM 相关</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>PEM (&lt;code>Privacy Enhanced Mail&lt;/code>的缩写)文件最初是为了确保电子邮件安全而发明的, 现在它是一个互联网安全标准. PEM 文件是 X.509 证书、CSR(&lt;code>certificate signing request&lt;/code>) 和加密密钥的最常见格式.&lt;/p>
 &lt;h2 id="什么是-pem-文件">什么是 PEM 文件&lt;/h2>
 &lt;p>PEM 文件是一个文本文件, 文件中包含一个或多个采用 Base64 ASCII 编码的条目, 每个条目都有纯文本的页眉和页脚&lt;/p>
@@ -1260,7 +1843,7 @@ command: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;sed -i &amp;
 command: [&amp;#34;nginx&amp;#34;]
 args: [&amp;#34;-g&amp;#34;, &amp;#34;daemon off&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;/etc/nginx/nginx.conf&amp;#34;] -----------&amp;gt;注意不要和lifecycle的command有强依赖
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ul></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/kubernetes/" term="kubernetes" label="kubernetes"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T21:52:20+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h3 id="-容器是什么">#. 容器是什么&lt;/h3>
+&lt;/ul></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/kubernetes/" term="kubernetes" label="kubernetes"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-27T17:53:53+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
 &lt;p>1, LXC(linux container): linux容器&lt;/p>
 &lt;p>2, 虚拟化类型:&lt;/p>
 &lt;ul>
@@ -1380,7 +1963,7 @@ Type-II: virtualbox,vmware workstation,kvm等;先存在一个宿主机,安装好
 &lt;li>runc,容器运行时的环境标准&lt;/li>
 &lt;li>容器镜像格式标准OCF(open container format),事实上的工业标准&lt;/li>
 &lt;/ul>
-&lt;h3 id="-docker基础用法">#. docker基础用法&lt;/h3>
+&lt;h2 id="-docker基础用法">#. docker基础用法&lt;/h2>
 &lt;p>1, 相关名词&lt;/p>
 &lt;ul>
 &lt;li>OCI(open container initiative),开放容器协会,主要目的是围绕容器格式和运行时制定一个开放的工业化标准,由两部分组成:
@@ -1491,7 +2074,7 @@ c,centos7之前还有使用到dm(弱爆了),就是lvm的实现,使用dm的方式
 &lt;/li>
 &lt;li>启动一个容器时,不能让其跑在后台,不然启动就会停止(一个容器就是为了一个进程,如果跑后台,终端没有任何程序,那docker就认为已经结束了)&lt;/li>
 &lt;/ul>
-&lt;h3 id="-docker镜像管理基础">#. docker镜像管理基础&lt;/h3>
+&lt;h2 id="-docker镜像管理基础">#. docker镜像管理基础&lt;/h2>
 &lt;p>1, docker镜像含有启动容器所需要的文件系统及其内容,容器镜像用于创建并启动docker容器&lt;/p>
 &lt;ul>
 &lt;li>采用分层构建的机制,最底层为bootfs,其次为rootfs
@@ -1597,7 +2180,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;li>docker save -o &lt;filename>&lt;/li>
 &lt;li>docker load -i &lt;filename>&lt;/li>
 &lt;/ul>
-&lt;h3 id="-容器虚拟化网络">#. 容器虚拟化网络&lt;/h3>
+&lt;h2 id="-容器虚拟化网络">#. 容器虚拟化网络&lt;/h2>
 &lt;p>1,网络名称空间主要是实现网络设备(网卡,协议栈)的隔离&lt;/p>
 &lt;ul>
 &lt;li>当网络设备不够用时,可以通过命令生成虚拟网络设备,linux内核支持实现生成两种网络设备:
@@ -1644,7 +2227,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;li>docker container inspect &lt;container name>&lt;/li>
 &lt;li>docker volume inspect &lt;volume name>&lt;/li>
 &lt;/ul>
-&lt;h3 id="-容器网络">#. 容器网络&lt;/h3>
+&lt;h2 id="-容器网络">#. 容器网络&lt;/h2>
 &lt;p>1,容器间可以共享IPC,UTC,NET命名空间&lt;/p>
 &lt;p>2,可以手动操作网络名称空间,因为由ip命令&lt;/p>
 &lt;ul>
@@ -1784,7 +2367,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;/div>
 &lt;/div>&lt;/li>
 &lt;/ul>
-&lt;h3 id="-容器存储">#. 容器存储&lt;/h3>
+&lt;h2 id="-容器存储">#. 容器存储&lt;/h2>
 &lt;p>1,为什么要使用data volume&lt;/p>
 &lt;ul>
 &lt;li>docker镜像由多个只读层叠加而成,启动容器时,docker会加载只读镜像层并在镜像栈顶添加一个读写层&lt;/li>
@@ -1924,7 +2507,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;/div>&lt;/li>
 &lt;li>对于这种需求,可以使用docker-compose来实现,主要功能是单击编排(还可以做镜像,镜像现做,容器现启动)&lt;/li>
 &lt;/ul>
-&lt;h3 id="-dockerfile详解一">#. Dockerfile详解(一)&lt;/h3>
+&lt;h2 id="-dockerfile详解一">#. Dockerfile详解(一)&lt;/h2>
 &lt;p>1,生产环境下使用nginx场景,修改配置生效的几种方式&lt;/p>
 &lt;ul>
 &lt;li>docker exec CONTAINER vi, reload进入容器修改配置文件,再reload服务&lt;/li>
@@ -2216,7 +2799,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;p>5,Dockerfile中请惜字如金,因为每一条指令都会生成一个新的层&lt;/p>
-&lt;h3 id="-dockerfile详解二">#. Dockerfile详解(二)&lt;/h3>
+&lt;h2 id="-dockerfile详解二">#. Dockerfile详解(二)&lt;/h2>
 &lt;p>1,在docker的上下文当中,有一个重要的特点,一个容器只是为了运行单个程序或者单个应用&lt;/p>
 &lt;p>2,在命令行下通过&amp;amp;符放后台执行的程序都是当前shell的子进程,当退出当前shell时,该shell的子进程会被杀掉,相应的该shell下的后台进程也被关闭&lt;/p>
 &lt;ul>
@@ -2523,7 +3106,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;/div>&lt;/li>
 &lt;/ul>
 &lt;p>5,在写Dockerfile时,注意json传入时必须要写双引号,单引号会报错&lt;/p>
-&lt;h3 id="-docker私有registry">#. Docker私有registry&lt;/h3>
+&lt;h2 id="-docker私有registry">#. Docker私有registry&lt;/h2>
 &lt;p>1,registry用于保存docker镜像,包括镜像的层次结构和元数据&lt;/p>
 &lt;p>2,启动registry有几种方式&lt;/p>
 &lt;ul>
@@ -2562,7 +3145,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;li>实例间镜像拷贝&lt;/li>
 &lt;li>扩展API和web UI界面&lt;/li>
 &lt;/ul>
-&lt;h3 id="-docker的资源限制">#. Docker的资源限制&lt;/h3>
+&lt;h2 id="-docker的资源限制">#. Docker的资源限制&lt;/h2>
 &lt;p>1,默认情况下,容器是没有资源限制的,可以使用完宿主机上内核分配给该容器的所有资源&lt;/p>
 &lt;p>2,docker提供了一个途径,可以用来控制容器可以使用多少CPU,memory,块设备IO(限制有限);可以通过设置运行时(runtime)配置&lt;/p>
 &lt;ul>
@@ -2610,7 +3193,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;li>--cpuset-cpus 限制在哪些核上&lt;/li>
 &lt;li>-- cpu-shares 配置为共享方式(各个容器共享宿主机CPU)&lt;/li>
 &lt;/ul>
-&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T21:52:20+08:00</updated><published>2022-03-06T10:42:55+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
+&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://liawne.github.io/tags/docker/" term="docker" label="docker"/><category scheme="https://liawne.github.io/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-27T17:50:27+08:00</updated><published>2022-03-06T10:42:55+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
 &lt;h3 id="1-特殊字符使用">#1. 特殊字符使用&lt;/h3>
 &lt;pre tabindex="0">&lt;code># --&amp;gt; 注释(不包括#!)
 --&amp;gt; 变量替换使用 echo ${PATH#*:}
@@ -4354,11 +4937,11 @@ ZZ
 x23LimitStringx23
 #----------End here document-----------#
 &lt;/code>&lt;/pre>&lt;pre>&lt;code>可以使用vi +n的形式指定文件打开后在第几行
-&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/basics/" term="basics" label="basics"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-20T16:16:23+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
+&lt;/code>&lt;/pre></content><category scheme="https://liawne.github.io/tech/" term="tech" label="tech"/><category scheme="https://liawne.github.io/tech/basics/" term="basics" label="basics"/><category scheme="https://liawne.github.io/tags/bash/" term="bash" label="bash"/><category scheme="https://liawne.github.io/tags/linux/" term="linux" label="linux"/><category scheme="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" term="基础知识" label="基础知识"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-27T17:57:50+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
 &lt;p>&lt;em>本文内容参考自&lt;a href="https://www.zsythink.net/archives/2481">朱双印ansible笔记&lt;/a>&lt;/em>&lt;/p>
-&lt;h3 id="配置主机清单">配置主机清单&lt;/h3>
+&lt;h2 id="配置主机清单">配置主机清单&lt;/h2>
 &lt;p>主机清单配置有两种方式&lt;/p>
-&lt;h4 id="-ini方式"># ini方式&lt;/h4>
+&lt;h3 id="-ini方式"># ini方式&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -4387,7 +4970,7 @@ x23LimitStringx23
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="na">nova&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h4 id="--yaml方式"># yaml方式&lt;/h4>
+&lt;/div>&lt;h3 id="--yaml方式"># yaml方式&lt;/h3>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -4434,8 +5017,8 @@ x23LimitStringx23
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">ansible_pass&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;123.com&amp;#39;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="常用模块">常用模块&lt;/h3>
-&lt;h4 id="--文件类操作"># 文件类操作&lt;/h4>
+&lt;/div>&lt;h2 id="常用模块">常用模块&lt;/h2>
+&lt;h3 id="--文件类操作"># 文件类操作&lt;/h3>
 &lt;p>1,copy: 将ansible主机上的文件拷贝至远端主机&lt;/p>
 &lt;ul>
 &lt;li>同fetch类似,不过操作动作相反,fetch是从远端主机拿文件到ansible主机&lt;/li>
@@ -4471,7 +5054,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>使用方式ansible-doc -s replace查看&lt;/li>
 &lt;/ul>
-&lt;h4 id="--命令类操作"># 命令类操作&lt;/h4>
+&lt;h3 id="--命令类操作"># 命令类操作&lt;/h3>
 &lt;p>1,command: 在远端主机上执行命令&lt;/p>
 &lt;ul>
 &lt;li>使用command模块在远程主机中执行命令时，不会经过远程主机的shell处理，在使用command模块时，如果需要执行的命令中含有重定向、管道符等操作时，这些符号也会失效，比如”&amp;lt;“, “&amp;gt;”, “|”, “;” 和 “&amp;amp;” 这些符号，如果你需要这些功能，需要使用shell模块&lt;/li>
@@ -4485,7 +5068,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s scripts&lt;/li>
 &lt;/ul>
-&lt;h4 id="--系统类操作"># 系统类操作&lt;/h4>
+&lt;h3 id="--系统类操作"># 系统类操作&lt;/h3>
 &lt;p>1,cron: 管理远端主机上的定时任务,功能同crontab&lt;/p>
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s cron&lt;/li>
@@ -4503,7 +5086,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s group&lt;/li>
 &lt;/ul>
-&lt;h4 id="--包管理类操作"># 包管理类操作&lt;/h4>
+&lt;h3 id="--包管理类操作"># 包管理类操作&lt;/h3>
 &lt;p>1,yum_repository: 管理远端主机上的yum仓库&lt;/p>
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s yum_repository&lt;/li>
@@ -4512,7 +5095,7 @@ x23LimitStringx23
 &lt;ul>
 &lt;li>具体使用方式,参考ansible-doc -s yum&lt;/li>
 &lt;/ul>
-&lt;h3 id="认识ansible-playbook">认识ansible-playbook&lt;/h3>
+&lt;h2 id="认识ansible-playbook">#认识ansible-playbook&lt;/h2>
 &lt;p>1,ansible-playbook的使用,可以理解为ansible -m &amp;lt;module_name&amp;gt; -a 'xxxx'的转换,将命令行使用模块操作的内容写成脚本内容,按照脚本内容完成相关操作&lt;/p>
 &lt;p>2,上述脚本在ansible-playbook中称作为'playbook',即剧本&lt;/p>
 &lt;ul>
@@ -4524,7 +5107,7 @@ x23LimitStringx23
 &lt;li>在ansible调用模块或者ansible-playbook执行相应play时,输出内容会有颜色区分,黄色表示有修改,绿色表示么有修改;区别是远端的内容是否满足我们的预期&lt;/li>
 &lt;li>ansible是”以结果为导向的”，我们指定了一个”目标状态”，ansible会自动判断，”当前状态”是否与”目标状态”一致，如果一致，则不进行任何操作，如果不一致，那么就将”当前状态”变成”目标状态”，这就是”幂等性”，”幂等性”可以保证我们重复的执行同一项操作时，得到的结果是一样的&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用handlers">使用handlers&lt;/h3>
+&lt;h2 id="使用handlers">#使用handlers&lt;/h2>
 &lt;p>1,handlers的使用场景:&lt;/p>
 &lt;ul>
 &lt;li>有个任务需要修改nginx的配置文件,将listen端口由8080改为8088,使用handler可以在nginx配置文件有修改的环境上重启nginx,没有修改的不会出发重启nginx&lt;/li>
@@ -4778,7 +5361,7 @@ x23LimitStringx23
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">shell&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s1">&amp;#39;echo handler2&amp;#39;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用tags">使用tags&lt;/h3>
+&lt;/div>&lt;h2 id="使用tags">#使用tags&lt;/h2>
 &lt;p>1,写了一个很长的playbook,在调试时只想跑其中很少的一部分,tag在这种场景下可以使用,指定执行哪些任务,不执行哪些任务&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -4924,7 +5507,7 @@ x23LimitStringx23
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">state&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">started&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用变量一">使用变量(一)&lt;/h3>
+&lt;/div>&lt;h2 id="使用变量一">#使用变量(一)&lt;/h2>
 &lt;p>1,怎么定义变量&lt;/p>
 &lt;ul>
 &lt;li>变量由数字,字母,下划线组成,要以字母开头&lt;/li>
@@ -5097,7 +5680,7 @@ x23LimitStringx23
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">state&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">touch&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用变量二">使用变量(二)&lt;/h3>
+&lt;/div>&lt;h2 id="使用变量二">#使用变量(二)&lt;/h2>
 &lt;p>1,在playbook执行前,有一个Gathering Facts的动作,调用的是setup模块; 这些信息会保存在对应的变量中，我们在playbook中可以使用这些变量,我们可以称这些信息为facts信息&lt;/p>
 &lt;ul>
 &lt;li>setupa模块的返回值是json格式的,方便返回时内容展示&lt;/li>
@@ -5155,7 +5738,7 @@ tasks:
 - name: test debug
 debug:
 var: testvar
-&lt;/code>&lt;/pre>&lt;h3 id="使用变量三">使用变量(三)&lt;/h3>
+&lt;/code>&lt;/pre>&lt;h2 id="使用变量三">#使用变量(三)&lt;/h2>
 &lt;p>1,变量注册&lt;/p>
 &lt;ul>
 &lt;li>ansible模块在执行之后都会有一些返回值,默认情况下,这些返回值不会显示而已;我们可以把这些返回值写入到某个变量中,我们可以通过引用相应的变量获取到这些返回值,将模块的返回值写入到变量中,这种方式称为'注册变量'; 如下为变量注册的的一个范例&lt;/li>
@@ -5303,7 +5886,7 @@ var: testvar
 &lt;li>命令行传入,直接在ansible-playbook执行时增加-e 'key=value'即可,可有多个,变量赋值有多种方式,还可以是json格式&lt;/li>
 &lt;li>文件传入,类似命令行-e &amp;quot;@变量文件绝对路径&amp;quot;&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用变量四registerset_fact">使用变量(四),register,set_fact&lt;/h3>
+&lt;h2 id="使用变量四registerset_fact">#使用变量(四),register,set_fact&lt;/h2>
 &lt;p>1,配置主机清单时,可以配置主机或主机组变量,但只对配置的主机或主机组生效&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -5508,7 +6091,7 @@ var: testvar
 &lt;/div>&lt;ul>
 &lt;li>如果想要在tasks中给变量自定义信息，并且在之后的play操作同一个主机时能够使用到之前在tasks中定义的变量时，则可以使用set_facts定义对应的变量&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用变量五内置变量host_vars">使用变量(五),内置变量,host_vars&lt;/h3>
+&lt;h2 id="使用变量五内置变量host_vars">#使用变量(五),内置变量,host_vars&lt;/h2>
 &lt;p>1,ansible有一些内置变量可供使用,这些变量被ansible保留,我们定义变量时不能使用&lt;/p>
 &lt;ul>
 &lt;li>ansible_version&lt;/li>
@@ -5809,7 +6392,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>9,除了直接在hosts文件中定义主机变量和组变量，还有另外一种方法也可以定义主机变量和组变量，我们可以在清单文件的同级目录中创建两个目录，这两个目录的名字分别为”group_vars”和”host_vars”，我们可以将组变量文件放在”group_vars”目录中，将主机变量文件放在”host_vars”目录中，这样ansible就能获取到对应组变量和主机变量&lt;/p>
-&lt;h3 id="使用循环一with_items的使用">使用循环(一),with_items的使用&lt;/h3>
+&lt;h2 id="使用循环一with_items的使用">#使用循环(一),with_items的使用&lt;/h2>
 &lt;p>1,使用with_items处理循环的内容&lt;/p>
 &lt;ul>
 &lt;li>普通示例:&lt;/li>
@@ -5957,7 +6540,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 先使用循环重复的调用了shell模块，然后将shell模块每次执行后的返回值注册到了变量”returnvalue”中，之后，在使用debug模块时，通过返回值”results”获取到了之前每次执行shell模块的返回值（shell每次执行后的返回值已经被放入到item变量中），最后又通过返回值”stdout”获取到了每次shell模块执行后的标准输出&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环二对列表循环的操作">使用循环(二),对列表循环的操作&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环二对列表循环的操作">#使用循环(二),对列表循环的操作&lt;/h2>
 &lt;p>1,对序列循环有几个关键字&lt;/p>
 &lt;ul>
 &lt;li>with_items: 当循环的序列元素也是列表时,展开与预期的有差异,会将所有的列表展开&lt;/li>
@@ -6061,7 +6644,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>}&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环三嵌套循环">使用循环(三),嵌套循环&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环三嵌套循环">#使用循环(三),嵌套循环&lt;/h2>
 &lt;p>1,with_cartesian和with_nested&lt;/p>
 &lt;ul>
 &lt;li>当我们需要两个列表嵌套循环时,可以使用with_cartesian或者with_nested,将每个小列表中的元素按照”笛卡尔的方式”组合后，循环的处理每个组合,如下示例&lt;/li>
@@ -6096,7 +6679,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="p">[&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">test1, test2 ]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环四序列索引循环">使用循环(四),序列索引循环&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环四序列索引循环">#使用循环(四),序列索引循环&lt;/h2>
 &lt;p>1,使用到with_indexed_items,在处理列表中的每一项时，按照顺序为每一项添加了编号,如下示例:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -6200,7 +6783,7 @@ var: testvar
 &lt;li>”with_indexed_items”会将嵌套的两层列表”拉平”，”拉平”后按照顺序为每一项编号&lt;/li>
 &lt;li>当多加了一层嵌套以后，”with_indexed_items”并不能像”with_flattened”一样将嵌套的列表”完全拉平”，第二层列表中的项如果仍然是一个列表，”with_indexed_items”则不会拉平这个列表，而是将其当做一个整体进行编号&lt;/li>
 &lt;/ul>
-&lt;h3 id="使用循环五with_sequencewith_random_choice">使用循环(五),with_sequence,with_random_choice&lt;/h3>
+&lt;h2 id="使用循环五with_sequencewith_random_choice">#使用循环(五),with_sequence,with_random_choice&lt;/h2>
 &lt;p>1,with_sequence&lt;/p>
 &lt;ul>
 &lt;li>使用with_sequence生成序列,with_sequence可以按照顺序生成数字序列,如下示例:&lt;/li>
@@ -6294,7 +6877,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>- &lt;span class="m">5&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环六with_dictwith_subelementswith_file">使用循环(六),with_dict,with_subelements,with_file&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环六with_dictwith_subelementswith_file">#使用循环(六),with_dict,with_subelements,with_file&lt;/h2>
 &lt;p>1,with_dict,循环遍历字典元素,如下示例:&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -6637,7 +7220,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="nt">&amp;#34;msg&amp;#34;: &lt;/span>&lt;span class="s2">&amp;#34;alice &amp;#39;s hobby is Music&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="使用循环七-with_file-with_fileglob">使用循环(七) with_file, with_fileglob&lt;/h3>
+&lt;/div>&lt;h2 id="使用循环七-with_file-with_fileglob">#使用循环(七) with_file, with_fileglob&lt;/h2>
 &lt;p>1, ansible主机中有几个文件,若需要获取到这些文件的内容，可以使用with_file关键字，循环的获取到这些文件的内容&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -6724,7 +7307,7 @@ var: testvar
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 需要注意的是，with_fileglob只会匹配指定目录中的文件，而不会匹配指定目录中的目录&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断六with_dictwith_subelementswith_file">条件判断(六),with_dict,with_subelements,with_file&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断六with_dictwith_subelementswith_file">#条件判断(六),with_dict,with_subelements,with_file&lt;/h2>
 &lt;p>1,绝大多数语言中，都使用if作为条件判断的关键字，而在ansible中，条件判断的关键字是when&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -6952,7 +7535,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">when&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">returnmsg.rc != 0&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断与tests">条件判断与tests&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断与tests">#条件判断与tests&lt;/h2>
 &lt;p>1,在ansible中也有类似bash中test的用法,不过是借助jinja2的tests，借助tests，可以进行一些判断操作，tests会将判断后的布尔值返回，如果条件成立，返回true，否则返回false，通常在条件判断时使用到tests&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -7451,7 +8034,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c"># 上例playbook中只有testvar1和testvar3会被判断成数字,testvar2不会&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断与block">条件判断与block&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断与block">#条件判断与block&lt;/h2>
 &lt;p>1,在ansible中,可以使用&amp;quot;block&amp;quot;关键字将多个任务整合成一个&amp;quot;块&amp;quot;,这个&amp;quot;块&amp;quot;将被当做一个整体,我们可以对这个&amp;quot;块&amp;quot;添加判断条件,当条件成立时,则执行这个块中的所有任务&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -7637,7 +8220,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 如上例所示,block中有多个任务,rescue中也有多个任务,上例中故意执行&amp;#34;/bin/false&amp;#34;命令,模拟任务出错的情况,当block中的&amp;#39;/bin/false&amp;#39;执行后,其后的debug任务将不会被执行,因为&amp;#39;/bin/false&amp;#39;模拟出错,出错后直接执行rescue中的任务,在执行rescue中的任务时,会先输出 ‘I caught an error&amp;#39;,然后又在rescue中使用&amp;#39;/bin/false&amp;#39;模拟出错的情况,出错后之后的debug任务不会被执行,直接执行always中的任务,always中的任务一定会被执行,无论block中的任务是否出错&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="条件判断与错误处理">条件判断与错误处理&lt;/h3>
+&lt;/div>&lt;h2 id="条件判断与错误处理">#条件判断与错误处理&lt;/h2>
 &lt;p>1,使用fail模块来处理出错&lt;/p>
 &lt;ul>
 &lt;li>如下示例:&lt;/li>
@@ -7773,7 +8356,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 当将&amp;#39;changed_when&amp;#39;直接设置为false时,对应任务的状态将不会被设置为&amp;#39;changed&amp;#39;,如果任务原本的执行状态为&amp;#39;changed&amp;#39;,最终则会被设置为&amp;#39;ok&amp;#39;,所以,上例playbook执行后,shell模块的执行状态最终为&amp;#39;ok&amp;#39;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="过滤器">过滤器&lt;/h3>
+&lt;/div>&lt;h2 id="过滤器">#过滤器&lt;/h2>
 &lt;p>1,过滤器是一种能够帮助我们处理数据的工具,其实,ansible中的过滤器功能来自于jinja2模板引擎&lt;/p>
 &lt;p>2,过滤器有些是jinja2内置的,有些是ansible特有的,如果这些过滤器都不能满足你的需求,jinja2也支持自定义过滤器&lt;/p>
 &lt;p>3,一些常见的过滤器&lt;/p>
@@ -8305,7 +8888,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 没有对文件是否有mode属性进行判断,而是直接调用了file模块的mode参数,将mode参数的值设定为了&amp;#34;{{item.mode | default(omit)}}&amp;#34;,这是什么意思呢？它的意思是,如果item有mode属性,就把file模块的mode参数的值设置为item的mode属性的值,如果item没有mode属性,file模块就直接省略mode参数,&amp;#39;omit&amp;#39;的字面意思就是&amp;#34;省略&amp;#34;,换成大白话说就是:[有就用,没有就不用,可以有,也可以没有]&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="变量六include_vars">变量(六)include_vars&lt;/h3>
+&lt;/div>&lt;h2 id="变量六include_vars">#变量(六)include_vars&lt;/h2>
 &lt;p>1,通过'vars_files'可以将文件中的变量引入playbook,以便在task中使用,但是vars_files加载时是静态的引入变量,即后续在vars_files中新增的变量,无法被引用&lt;/p>
 &lt;ul>
 &lt;li>vars_files变量文件在ansible控制节点中,与目标主机无关&lt;/li>
@@ -8630,7 +9213,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{return_val.ansible_included_var_files}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="过滤器二-json_query">过滤器(二) json_query&lt;/h3>
+&lt;/div>&lt;h2 id="过滤器二-json_query">#过滤器(二) json_query&lt;/h2>
 &lt;p>1,ansible可以通过include_vars加载日志文件,debug格式化输出json/yaml内容,方便查看&lt;/p>
 &lt;ul>
 &lt;li>json是yaml的子集,yaml是json的超集,yaml格式的数据和json格式的数据是可以互相转换的&lt;/li>
@@ -9045,7 +9628,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">with_items&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ logs | json_query(&amp;#39;[*].files[*].logUrl&amp;#39;) }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="过滤器三-其他过滤器">过滤器(三) 其他过滤器&lt;/h3>
+&lt;/div>&lt;h2 id="过滤器三-其他过滤器">#过滤器(三) 其他过滤器&lt;/h2>
 &lt;p>1,其他一些常用的过滤器&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -9397,7 +9980,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{ &amp;#39;123123&amp;#39; | password_hash(&amp;#39;sha512&amp;#39;, 65534|random(seed=inventory_hostname)|string) }}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="lookup插件">lookup插件&lt;/h3>
+&lt;/div>&lt;h2 id="lookup插件">#lookup插件&lt;/h2>
 &lt;p>1,ansible中有很多种类的插件,比如之前总结的”tests”,也是插件的一种,ansible官网总结了各个插件的作用,并且将这些插件按照功能进行了分类&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://docs.ansible.com/ansible/latest/plugins/plugins.html">https://docs.ansible.com/ansible/latest/plugins/plugins.html&lt;/a>&lt;/li>
@@ -9692,7 +10275,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c">#https://docs.ansible.com/ansible/latest/plugins/lookup.html&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="循环八">循环(八)&lt;/h3>
+&lt;/div>&lt;h2 id="循环八">#循环(八)&lt;/h2>
 &lt;p>1,在新版本的ansible中,官方推荐的循环的使用方式不同,在2.6推荐的方式为loop加lookup和loop加filter&lt;/p>
 &lt;ul>
 &lt;li>loop的简单使用方式:&lt;/li>
@@ -10365,7 +10948,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">label&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;{{item.key}}&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="include">include&lt;/h3>
+&lt;/div>&lt;h2 id="include">#include&lt;/h2>
 &lt;p>1,ansible中有类似编程语言中类似函数调用的功能,就是include,通过include,可以在一个playbook中包含另一个文件&lt;/p>
 &lt;ul>
 &lt;li>include模块可以指定一个文件,这个文件中的内容是一个任务列表（一个或多个任务）,使用include模块引用对应的文件时,文件中的任务会在被引用处执行,就像写在被引用处一样&lt;/li>
@@ -10828,7 +11411,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c"># 将loop_var选项的值设置为&amp;#34;outer_item&amp;#34;,这表示,我们将外层循环的item值存放在了&amp;#34;outer_item&amp;#34;变量中,在B文件中的debug任务中,同时输出了&amp;#34;outer_item&amp;#34;变量和&amp;#34;item&amp;#34;变量的值&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="include二">include(二)&lt;/h3>
+&lt;/div>&lt;h2 id="include二">#include(二)&lt;/h2>
 &lt;p>1,&amp;quot;include&amp;quot;的某些原始用法在之后的版本中可能会被弃用,在之后的版本中,会使用一些新的关键字代替这些原始用法&lt;/p>
 &lt;p>2,include_task模块&lt;/p>
 &lt;ul>
@@ -11288,7 +11871,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">msg&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;test task in intest7.yml&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="jinja2模板一">jinja2模板(一)&lt;/h3>
+&lt;/div>&lt;h2 id="jinja2模板一">#jinja2模板(一)&lt;/h2>
 &lt;p>1,对远端机器进行操作时,很多场景下都需要根据主机信息进行配置,这个时候可以使用template模块来完成相应的目的&lt;/p>
 &lt;ul>
 &lt;li>示例如下:&lt;/li>
@@ -11565,25 +12148,25 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 一些基础的数据类型,都可以包含在&amp;#34;{{ }}&amp;#34;中,jinja2本身就是基于python的模板引擎,所以,python的基础数据类型都可以包含在&amp;#34;{{ }}&amp;#34;中&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># cat test.j2&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jinja2 &lt;span class="nb">test&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### str&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#str&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="s1">&amp;#39;testString&amp;#39;&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="s2">&amp;#34;testString&amp;#34;&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### num&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#num&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="m">15&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> 18.8 &lt;span class="o">}}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#list&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span>.1 &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">][&lt;/span>1&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### tuple&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#tuple&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>.0 &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)[&lt;/span>0&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### dic&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#dic&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>:&lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>:18&lt;span class="o">}&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>:&lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>:18&lt;span class="o">}&lt;/span>.name &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>:&lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>,&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>:18&lt;span class="o">}[&lt;/span>&lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span> &lt;span class="o">}}&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Boolean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#Boolean&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> True &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> &lt;span class="nb">true&lt;/span> &lt;span class="o">}}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{{&lt;/span> False &lt;span class="o">}}&lt;/span>
@@ -11593,25 +12176,25 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">生成文件内容如下:
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># cat test&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jinja2 &lt;span class="nb">test&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### str&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#str&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">testString
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">testString
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### num&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#num&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">15&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">18.8
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### list&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#list&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">]&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Bb
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Bb
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### tuple&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#tuple&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>&lt;span class="s1">&amp;#39;Aa&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Bb&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Cc&amp;#39;&lt;/span>, &lt;span class="s1">&amp;#39;Dd&amp;#39;&lt;/span>&lt;span class="o">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Aa
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Aa
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### dic&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#dic&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">{&lt;/span>&lt;span class="s1">&amp;#39;age&amp;#39;&lt;/span>: 18, &lt;span class="s1">&amp;#39;name&amp;#39;&lt;/span>: &lt;span class="s1">&amp;#39;bob&amp;#39;&lt;/span>&lt;span class="o">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">bob
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">bob
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">### Boolean&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## \#Boolean&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">True
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">True
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">False
@@ -11793,7 +12376,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">jinja2 &lt;span class="nb">test&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="jinja2模板二">jinja2模板(二)&lt;/h3>
+&lt;/div>&lt;h2 id="jinja2模板二">#jinja2模板(二)&lt;/h2>
 &lt;p>1,结合if的使用&lt;/p>
 &lt;ul>
 &lt;li>通用结构&lt;/li>
@@ -12150,7 +12733,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="x">tom&amp;#39;s son is jerry
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="jinja2模板三">jinja2模板(三)&lt;/h3>
+&lt;/div>&lt;h2 id="jinja2模板三">#jinja2模板(三)&lt;/h2>
 &lt;p>1,jinja2模板文件中需要使用特殊字符&lt;/p>
 &lt;ul>
 &lt;li>最简单的方法就是直接在&amp;quot;双花括号&amp;quot;中使用引号将这类符号引起,当做纯粹的字符串进行处理&lt;/li>
@@ -12318,7 +12901,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="x"> &lt;/span>&lt;span class="cp">{{&lt;/span> &lt;span class="nv">testfunc&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="m">666&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="cp">}}&lt;/span>&lt;span class="x">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="ansible中的role">ansible中的role&lt;/h3>
+&lt;/div>&lt;h2 id="ansible中的role">#ansible中的role&lt;/h2>
 &lt;p>1,ansible官方定义的规范&lt;/p>
 &lt;ul>
 &lt;li>role的标准目录结构&lt;/li>
@@ -12525,7 +13108,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> msg: &lt;span class="s2">&amp;#34;this is a test handler&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="常用技巧一">常用技巧(一)&lt;/h3>
+&lt;/div>&lt;h2 id="常用技巧一">#常用技巧(一)&lt;/h2>
 &lt;p>1,技巧一,在ansible中使用python字符串的一些特性&lt;/p>
 &lt;ul>
 &lt;li>ansible基于python实现,当我们在ansible中处理字符串时,能够借助一些python的字符串特性,比如,在python中可以使用中括号(方括号)截取字符串中的一部分,在ansible中也可以利用这一特性&lt;/li>
@@ -12812,7 +13395,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">dest&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;/tmp&amp;#34;&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="常用技巧二">常用技巧(二)&lt;/h3>
+&lt;/div>&lt;h2 id="常用技巧二">#常用技巧(二)&lt;/h2>
 &lt;p>1,向列表中追加项&lt;/p>
 &lt;ul>
 &lt;li>如下内容:&lt;/li>
