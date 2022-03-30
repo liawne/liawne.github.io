@@ -1,10 +1,10 @@
 <!doctype html><html lang=zh-cn><head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"><meta charset=utf-8><meta name=generator content="Hugo 0.93.2"><meta name=theme-color content="#fff"><meta name=color-scheme content="light dark"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=format-detection content="telephone=no, date=no, address=no, email=no"><meta http-equiv=cache-control content="no-transform"><meta http-equiv=cache-control content="no-siteapp"><title>learning bash via abs | NEWIUR</title><link rel=stylesheet href=/css/meme.min.css><script src=/js/meme.min.js></script>
-<link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript><meta name=author content="newiur"><meta name=description content="通过advanced-bash-scripting学习bash的笔记内容"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=mask-icon href=/icons/safari-pinned-tab.svg color=#2a6df4><link rel=apple-touch-icon sizes=180x180 href=/icons/apple-touch-icon.png><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-title content="NEWIUR"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=mobile-web-app-capable content="yes"><meta name=application-name content="NEWIUR"><meta name=msapplication-starturl content="../../../"><meta name=msapplication-TileColor content="#fff"><meta name=msapplication-TileImage content="../../../icons/mstile-150x150.png"><link rel=manifest href=/manifest.json><link rel=canonical href=https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2022-03-06T10:42:55+00:00","dateModified":"2022-03-27T17:50:27+08:00","url":"https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/","headline":"learning bash via abs","description":"通过advanced-bash-scripting学习bash的笔记内容","inLanguage":"zh-CN","articleSection":"tech","wordCount":26008,"image":"https://liawne.github.io/icons/apple-touch-icon.png","author":{"@type":"Person","description":"just go go","email":"rwen913@gmail.com","image":"https://liawne.github.io/icons/apple-touch-icon.png","url":"https://ruisum.top","name":"newiur"},"license":"[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)","publisher":{"@type":"Organization","name":"NEWIUR","logo":{"@type":"ImageObject","url":"https://liawne.github.io/icons/apple-touch-icon.png"},"url":"https://liawne.github.io/"},"mainEntityOfPage":{"@type":"WebSite","@id":"https://liawne.github.io/"}}</script><meta name=twitter:card content="summary"><meta property="og:title" content="learning bash via abs"><meta property="og:description" content="通过advanced-bash-scripting学习bash的笔记内容"><meta property="og:url" content="https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="NEWIUR"><meta property="og:locale" content="zh"><meta property="og:image" content="https://liawne.github.io/icons/apple-touch-icon.png"><meta property="og:type" content="article"><meta property="article:published_time" content="2022-03-06T10:42:55+00:00"><meta property="article:modified_time" content="2022-03-27T17:50:27+08:00"><meta property="article:section" content="tech"></head><body><div class=container><header class=header><div class=header-wrapper><div class="header-inner single"><div class=site-brand><a href=/ class=brand>NEWIUR</a></div><nav class=nav><ul class=menu id=menu><li class=menu-item><a href=/tags/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tags"><path d="M497.941 225.941 286.059 14.059A48 48 0 00252.118.0H48C21.49.0.0 21.49.0 48v204.118a48 48 0 0014.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882.0l204.118-204.118c18.745-18.745 18.745-49.137.0-67.882zM112 160c-26.51.0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882.0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397.0h48.721a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882z"/></svg><span class=menu-item-name>标签</span></a></li><li class=menu-item><a href=/categories/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255.0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255.0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255.0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255.0-24 10.745-24 24zm386.667-56H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24z"/></svg><span class=menu-item-name>分类</span></a></li><li class=menu-item><a href=/life/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon life"><path d="M301.1 212c4.4 4.4 4.4 11.9.0 16.3l-9.7 9.7c-4.4 4.7-11.9 4.7-16.6.0l-10.5-10.5c-4.4-4.7-4.4-11.9.0-16.6l9.7-9.7c4.4-4.4 11.9-4.4 16.6.0l10.5 10.8zm-30.2-19.7c3-3 3-7.8.0-10.5-2.8-3-7.5-3-10.5.0-2.8 2.8-2.8 7.5.0 10.5 3.1 2.8 7.8 2.8 10.5.0zm-26 5.3c-3 2.8-3 7.5.0 10.2 2.8 3 7.5 3 10.5.0 2.8-2.8 2.8-7.5.0-10.2-3-3-7.7-3-10.5.0zm72.5-13.3c-19.9-14.4-33.8-43.2-11.9-68.1 21.6-24.9 40.7-17.2 59.8.8 11.9 11.3 29.3 24.9 17.2 48.2-12.5 23.5-45.1 33.2-65.1 19.1zm47.7-44.5c-8.9-10-23.3 6.9-15.5 16.1 7.4 9 32.1 2.4 15.5-16.1zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-66.2 42.6c2.5-16.1-20.2-16.6-25.2-25.7-13.6-24.1-27.7-36.8-54.5-30.4 11.6-8 23.5-6.1 23.5-6.1.3-6.4.0-13-9.4-24.9 3.9-12.5.3-22.4.3-22.4 15.5-8.6 26.8-24.4 29.1-43.2 3.6-31-18.8-59.2-49.8-62.8-22.1-2.5-43.7 7.7-54.3 25.7-23.2 40.1 1.4 70.9 22.4 81.4-14.4-1.4-34.3-11.9-40.1-34.3-6.6-25.7 2.8-49.8 8.9-61.4.0.0-4.4-5.8-8-8.9.0.0-13.8.0-24.6 5.3 11.9-15.2 25.2-14.4 25.2-14.4.0-6.4-.6-14.9-3.6-21.6-5.4-11-23.8-12.9-31.7 2.8.1-.2.3-.4.4-.5-5 11.9-1.1 55.9 16.9 87.2-2.5 1.4-9.1 6.1-13 10-21.6 9.7-56.2 60.3-56.2 60.3-28.2 10.8-77.2 50.9-70.6 79.7.3 3 1.4 5.5 3 7.5-2.8 2.2-5.5 5-8.3 8.3-11.9 13.8-5.3 35.2 17.7 24.4 15.8-7.2 29.6-20.2 36.3-30.4.0.0-5.5-5-16.3-4.4 27.7-6.6 34.3-9.4 46.2-9.1 8 3.9 8-34.3 8-34.3.0-14.7-2.2-31-11.1-41.5 12.5 12.2 29.1 32.7 28 60.6-.8 18.3-15.2 23-15.2 23-9.1 16.6-43.2 65.9-30.4 106 0 0-9.7-14.9-10.2-22.1-17.4 19.4-46.5 52.3-24.6 64.5 26.6 14.7 108.8-88.6 126.2-142.3 34.6-20.8 55.4-47.3 63.9-65 22 43.5 95.3 94.5 101.1 59z"/></svg><span class=menu-item-name>生活</span></a></li><li class=menu-item><a href=/tech/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tech"><path d="M512 256c0 141.2-114.7 256-256 256C114.8 512 0 397.3.0 256S114.7.0 256 0s256 114.7 256 256zm-32 0c0-123.2-100.3-224-224-224C132.5 32 32 132.5 32 256s100.5 224 224 224 224-100.5 224-224zM160.9 124.6l86.9 37.1-37.1 86.9-86.9-37.1 37.1-86.9zm110 169.1 46.6 94h-14.6l-50-1e2-48.9 1e2h-14l51.1-106.9-22.3-9.4 6-14 68.6 29.1-6 14.3-16.5-7.1zm-11.8-116.3 68.6 29.4-29.4 68.3L230 246l29.1-68.6zm80.3 42.9 54.6 23.1-23.4 54.3-54.3-23.1 23.1-54.3z"/></svg><span class=menu-item-name>技术</span></a></li><li class=menu-item><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6.0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7.0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4.0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9s28-2.7 40.9-6.9c2.3-.7 4.7-1.1 7.1-1.1 42.9.0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class=menu-item-name>关于</span></a></li><li class=menu-item><a id=theme-switcher href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5 242 7a18 18 0 0128 0l48.8 97.5L422.2 70A18 18 0 01442 89.8l-34.5 103.4L505 242a18 18 0 010 28l-97.5 48.8L442 422.2A18 18 0 01422.2 442l-103.4-34.5L270 505a18 18 0 01-28 0l-48.8-97.5L89.8 442A18 18 0 0170 422.2l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8L70 89.8A18 18 0 0189.8 70zM256 128a128 128 0 10.01.0M256 160a96 96 0 10.01.0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412A256 256 0 10181 5a11.5 11.5.0 00-5 20A201.5 201.5.0 0142 399a11.5 11.5.0 00-15 13"/></svg></a></li></ul></nav></div></div><input type=checkbox id=nav-toggle aria-hidden=true>
+<link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" media=print onload='this.media="all"'><noscript><link rel=stylesheet href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"></noscript><meta name=author content="newiur"><meta name=description content="通过advanced-bash-scripting学习bash的笔记内容"><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=mask-icon href=/icons/safari-pinned-tab.svg color=#2a6df4><link rel=apple-touch-icon sizes=180x180 href=/icons/apple-touch-icon.png><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-title content="NEWIUR"><meta name=apple-mobile-web-app-status-bar-style content="black"><meta name=mobile-web-app-capable content="yes"><meta name=application-name content="NEWIUR"><meta name=msapplication-starturl content="../../../"><meta name=msapplication-TileColor content="#fff"><meta name=msapplication-TileImage content="../../../icons/mstile-150x150.png"><link rel=manifest href=/manifest.json><link rel=canonical href=https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","datePublished":"2021-03-20T10:18:17+08:00","dateModified":"2022-03-20T10:18:17+08:00","url":"https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/","headline":"learning bash via abs","description":"通过advanced-bash-scripting学习bash的笔记内容","inLanguage":"zh-CN","articleSection":"tech","wordCount":26162,"image":"https://ruisum.top/icons/apple-touch-icon.png","author":{"@type":"Person","description":"just go go","email":"rwen913@gmail.com","image":"https://ruisum.top/icons/apple-touch-icon.png","url":"https://ruisum.top","name":"newiur"},"license":"[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)","publisher":{"@type":"Organization","name":"NEWIUR","logo":{"@type":"ImageObject","url":"https://ruisum.top/icons/apple-touch-icon.png"},"url":"https://ruisum.top/"},"mainEntityOfPage":{"@type":"WebSite","@id":"https://ruisum.top/"}}</script><meta name=twitter:card content="summary"><meta property="og:title" content="learning bash via abs"><meta property="og:description" content="通过advanced-bash-scripting学习bash的笔记内容"><meta property="og:url" content="https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/"><meta property="og:site_name" content="NEWIUR"><meta property="og:locale" content="zh"><meta property="og:image" content="https://ruisum.top/icons/apple-touch-icon.png"><meta property="og:type" content="article"><meta property="article:published_time" content="2021-03-20T10:18:17+08:00"><meta property="article:modified_time" content="2022-03-20T10:18:17+08:00"><meta property="article:section" content="tech"></head><body><div class=container><header class=header><div class=header-wrapper><div class="header-inner single"><div class=site-brand><a href=/ class=brand>NEWIUR</a></div><nav class=nav><ul class=menu id=menu><li class=menu-item><a href=/tags/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon tags"><path d="M497.941 225.941 286.059 14.059A48 48 0 00252.118.0H48C21.49.0.0 21.49.0 48v204.118a48 48 0 0014.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882.0l204.118-204.118c18.745-18.745 18.745-49.137.0-67.882zM112 160c-26.51.0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882.0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397.0h48.721a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882z"/></svg><span class=menu-item-name>标签</span></a></li><li class=menu-item><a href=/categories/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon th"><path d="M149.333 56v80c0 13.255-10.745 24-24 24H24c-13.255.0-24-10.745-24-24V56c0-13.255 10.745-24 24-24h101.333c13.255.0 24 10.745 24 24zm181.334 240v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm32-240v80c0 13.255 10.745 24 24 24H488c13.255.0 24-10.745 24-24V56c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24zm-32 80V56c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.256.0 24.001-10.745 24.001-24zm-205.334 56H24c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24zM0 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H24c-13.255.0-24 10.745-24 24zm386.667-56H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zm0 160H488c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H386.667c-13.255.0-24 10.745-24 24v80c0 13.255 10.745 24 24 24zM181.333 376v80c0 13.255 10.745 24 24 24h101.333c13.255.0 24-10.745 24-24v-80c0-13.255-10.745-24-24-24H205.333c-13.255.0-24 10.745-24 24z"/></svg><span class=menu-item-name>分类</span></a></li><li class=menu-item><a href=/life/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon life"><path d="M301.1 212c4.4 4.4 4.4 11.9.0 16.3l-9.7 9.7c-4.4 4.7-11.9 4.7-16.6.0l-10.5-10.5c-4.4-4.7-4.4-11.9.0-16.6l9.7-9.7c4.4-4.4 11.9-4.4 16.6.0l10.5 10.8zm-30.2-19.7c3-3 3-7.8.0-10.5-2.8-3-7.5-3-10.5.0-2.8 2.8-2.8 7.5.0 10.5 3.1 2.8 7.8 2.8 10.5.0zm-26 5.3c-3 2.8-3 7.5.0 10.2 2.8 3 7.5 3 10.5.0 2.8-2.8 2.8-7.5.0-10.2-3-3-7.7-3-10.5.0zm72.5-13.3c-19.9-14.4-33.8-43.2-11.9-68.1 21.6-24.9 40.7-17.2 59.8.8 11.9 11.3 29.3 24.9 17.2 48.2-12.5 23.5-45.1 33.2-65.1 19.1zm47.7-44.5c-8.9-10-23.3 6.9-15.5 16.1 7.4 9 32.1 2.4 15.5-16.1zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-66.2 42.6c2.5-16.1-20.2-16.6-25.2-25.7-13.6-24.1-27.7-36.8-54.5-30.4 11.6-8 23.5-6.1 23.5-6.1.3-6.4.0-13-9.4-24.9 3.9-12.5.3-22.4.3-22.4 15.5-8.6 26.8-24.4 29.1-43.2 3.6-31-18.8-59.2-49.8-62.8-22.1-2.5-43.7 7.7-54.3 25.7-23.2 40.1 1.4 70.9 22.4 81.4-14.4-1.4-34.3-11.9-40.1-34.3-6.6-25.7 2.8-49.8 8.9-61.4.0.0-4.4-5.8-8-8.9.0.0-13.8.0-24.6 5.3 11.9-15.2 25.2-14.4 25.2-14.4.0-6.4-.6-14.9-3.6-21.6-5.4-11-23.8-12.9-31.7 2.8.1-.2.3-.4.4-.5-5 11.9-1.1 55.9 16.9 87.2-2.5 1.4-9.1 6.1-13 10-21.6 9.7-56.2 60.3-56.2 60.3-28.2 10.8-77.2 50.9-70.6 79.7.3 3 1.4 5.5 3 7.5-2.8 2.2-5.5 5-8.3 8.3-11.9 13.8-5.3 35.2 17.7 24.4 15.8-7.2 29.6-20.2 36.3-30.4.0.0-5.5-5-16.3-4.4 27.7-6.6 34.3-9.4 46.2-9.1 8 3.9 8-34.3 8-34.3.0-14.7-2.2-31-11.1-41.5 12.5 12.2 29.1 32.7 28 60.6-.8 18.3-15.2 23-15.2 23-9.1 16.6-43.2 65.9-30.4 106 0 0-9.7-14.9-10.2-22.1-17.4 19.4-46.5 52.3-24.6 64.5 26.6 14.7 108.8-88.6 126.2-142.3 34.6-20.8 55.4-47.3 63.9-65 22 43.5 95.3 94.5 101.1 59z"/></svg><span class=menu-item-name>生活</span></a></li><li class=menu-item><a href=/tech/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tech"><path d="M512 256c0 141.2-114.7 256-256 256C114.8 512 0 397.3.0 256S114.7.0 256 0s256 114.7 256 256zm-32 0c0-123.2-100.3-224-224-224C132.5 32 32 132.5 32 256s100.5 224 224 224 224-100.5 224-224zM160.9 124.6l86.9 37.1-37.1 86.9-86.9-37.1 37.1-86.9zm110 169.1 46.6 94h-14.6l-50-1e2-48.9 1e2h-14l51.1-106.9-22.3-9.4 6-14 68.6 29.1-6 14.3-16.5-7.1zm-11.8-116.3 68.6 29.4-29.4 68.3L230 246l29.1-68.6zm80.3 42.9 54.6 23.1-23.4 54.3-54.3-23.1 23.1-54.3z"/></svg><span class=menu-item-name>技术</span></a></li><li class=menu-item><a href=/about/><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" class="icon user-circle"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6.0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7.0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4.0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9s28-2.7 40.9-6.9c2.3-.7 4.7-1.1 7.1-1.1 42.9.0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"/></svg><span class=menu-item-name>关于</span></a></li><li class=menu-item><a id=theme-switcher href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-light"><path d="M193.2 104.5 242 7a18 18 0 0128 0l48.8 97.5L422.2 70A18 18 0 01442 89.8l-34.5 103.4L505 242a18 18 0 010 28l-97.5 48.8L442 422.2A18 18 0 01422.2 442l-103.4-34.5L270 505a18 18 0 01-28 0l-48.8-97.5L89.8 442A18 18 0 0170 422.2l34.5-103.4-97.5-48.8a18 18 0 010-28l97.5-48.8L70 89.8A18 18 0 0189.8 70zM256 128a128 128 0 10.01.0M256 160a96 96 0 10.01.0"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon theme-icon-dark"><path d="M27 412A256 256 0 10181 5a11.5 11.5.0 00-5 20A201.5 201.5.0 0142 399a11.5 11.5.0 00-15 13"/></svg></a></li></ul></nav></div></div><input type=checkbox id=nav-toggle aria-hidden=true>
 <label for=nav-toggle class=nav-toggle></label>
-<label for=nav-toggle class=nav-curtain></label></header><main class="main single" id=main><div class=main-inner><article class="content post h-entry" data-align=justify data-type=tech data-toc-num=true><h1 class="post-title p-name">learning bash via abs</h1><div class="post-description p-summary">通过advanced-bash-scripting学习bash的笔记内容</div><div class=post-meta><time datetime=2022-03-27T17:50:27+08:00 class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M4e2 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H48C21.49 64 0 85.49.0 112v352c0 26.51 21.49 48 48 48h352c26.51.0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 4e2H54a6 6 0 01-6-6V160h352v298a6 6 0 01-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.3.27</time>
+<label for=nav-toggle class=nav-curtain></label></header><main class="main single" id=main><div class=main-inner><article class="content post h-entry" data-align=justify data-type=tech data-toc-num=true><h1 class="post-title p-name">learning bash via abs</h1><div class="post-description p-summary">通过advanced-bash-scripting学习bash的笔记内容</div><div class=post-meta><time datetime=2022-03-20T10:18:17+08:00 class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M4e2 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627.0-12 5.373-12 12v52H48C21.49 64 0 85.49.0 112v352c0 26.51 21.49 48 48 48h352c26.51.0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 4e2H54a6 6 0 01-6-6V160h352v298a6 6 0 01-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2022.3.20</time>
 <span class="post-meta-item category"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M464 128H272l-54.63-54.63c-6-6-14.14-9.37-22.63-9.37H48C21.49 64 0 85.49.0 112v288c0 26.51 21.49 48 48 48h416c26.51.0 48-21.49 48-48V176c0-26.51-21.49-48-48-48zm0 272H48V112h140.12l54.63 54.63c6 6 14.14 9.37 22.63 9.37H464v224z"/></svg>&nbsp;<a href=/tech/ class="category-link p-category">技术</a>/<a href=/tech/basics/ class="category-link p-category">基础</a></span>
-<span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3.0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9.0l60.1 60.1c18.8 18.7 18.8 49.1.0 67.9zM284.2 99.8 21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3.0-17l-111-111c-4.8-4.7-12.4-4.7-17.1.0zM124.1 339.9c-5.5-5.5-5.5-14.3.0-19.8l154-154c5.5-5.5 14.3-5.5 19.8.0s5.5 14.3.0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8.0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;26008</span>
-<span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5.0-2e2-89.5-2e2-2e2S145.5 56 256 56s2e2 89.5 2e2 2e2-89.5 2e2-2e2 2e2zm61.8-104.4-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6.0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;52&nbsp;分钟</span>
+<span class="post-meta-item wordcount"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M497.9 142.1l-46.1 46.1c-4.7 4.7-12.3 4.7-17 0l-111-111c-4.7-4.7-4.7-12.3.0-17l46.1-46.1c18.7-18.7 49.1-18.7 67.9.0l60.1 60.1c18.8 18.7 18.8 49.1.0 67.9zM284.2 99.8 21.6 362.4.4 483.9c-2.9 16.4 11.4 30.6 27.8 27.8l121.5-21.3 262.6-262.6c4.7-4.7 4.7-12.3.0-17l-111-111c-4.8-4.7-12.4-4.7-17.1.0zM124.1 339.9c-5.5-5.5-5.5-14.3.0-19.8l154-154c5.5-5.5 14.3-5.5 19.8.0s5.5 14.3.0 19.8l-154 154c-5.5 5.5-14.3 5.5-19.8.0zM88 424h48v36.3l-64.5 11.3-31.1-31.1L51.7 376H88v48z"/></svg>&nbsp;26162</span>
+<span class="post-meta-item reading-time"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon post-meta-icon"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5.0-2e2-89.5-2e2-2e2S145.5 56 256 56s2e2 89.5 2e2 2e2-89.5 2e2-2e2 2e2zm61.8-104.4-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6.0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/></svg>&nbsp;53&nbsp;分钟</span>
 <span class="post-meta-item busuanzi-page-pv" id=busuanzi_container_page_pv><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon post-meta-icon"><path d="M288 144a110.94 110.94.0 00-31.24 5 55.4 55.4.0 017.24 27 56 56 0 01-56 56 55.4 55.4.0 01-27-7.24A111.71 111.71.0 10288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35.0 000 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35.0 000-29.19zM288 4e2c-98.65.0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 4e2 288 4e2z"/></svg>&nbsp;<span id=busuanzi_value_page_pv></span></span></div><nav class=contents><h2 id=contents class=contents-title>目录</h2><ol class=toc><li><a id=contents:变量及操作符 href=#变量及操作符>变量及操作符</a><ol><li><a id=contents:1-特殊字符使用 href=#1-特殊字符使用>#1. 特殊字符使用</a></li><li><a id=contents:2-变量及参数 href=#2-变量及参数>#2. 变量及参数</a></li><li><a id=contents:3--引用 href=#3--引用>#3. 引用</a></li><li><a id=contents:4--测试 href=#4--测试>#4. 测试</a></li><li><a id=contents:5--操作符 href=#5--操作符>#5. 操作符</a></li><li><a id=contents:6--其他变量视角 href=#6--其他变量视角>#6. 其他变量视角</a></li><li><a id=contents:7-循环和分支结构 href=#7-循环和分支结构>#7. 循环和分支结构</a></li><li><a id=contents:8-命令替换 href=#8-命令替换>#8. 命令替换</a></li><li><a id=contents:9-运算展开 href=#9-运算展开>#9. 运算展开</a></li></ol></li><li><a id=contents:linux命令 href=#linux命令>linux命令</a><ol><li><a id=contents:1-内部命令和内部指令 href=#1-内部命令和内部指令>#1. 内部命令和内部指令</a></li><li><a id=contents:2-io命令 href=#2-io命令>#2. IO命令</a></li><li><a id=contents:3-文件系统命令 href=#3-文件系统命令>#3. 文件系统命令</a></li><li><a id=contents:4-变量操作命令 href=#4-变量操作命令>#4. 变量操作命令</a></li><li><a id=contents:5-脚本行为命令 href=#5-脚本行为命令>#5. 脚本行为命令</a></li><li><a id=contents:6-常用命令 href=#6-常用命令>#6 常用命令</a></li><li><a id=contents:7-job控制命令 href=#7-job控制命令>#7. job控制命令</a></li><li><a id=contents:8-任务识别符 href=#8-任务识别符>#8. 任务识别符</a></li><li><a id=contents:9-外部过滤器程序及命令 href=#9-外部过滤器程序及命令>#9. 外部过滤器,程序及命令</a></li><li><a id=contents:10-基础命令 href=#10-基础命令>#10. 基础命令</a></li><li><a id=contents:11-高级命令 href=#11-高级命令>#11. 高级命令</a></li><li><a id=contents:12-时间日期命令 href=#12-时间日期命令>#12. 时间/日期命令</a></li><li><a id=contents:13-文本处理命令 href=#13-文本处理命令>#13. 文本处理命令</a></li><li><a id=contents:14-其他命令 href=#14-其他命令>#14. 其他命令</a></li></ol></li><li><a id=contents:特殊内容 href=#特殊内容>特殊内容</a><ol><li><a id=contents:1-here-document href=#1-here-document>#1. here document</a></li></ol></li></ol></nav><div class="post-body e-content"><h2 id=变量及操作符><a href=#变量及操作符 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:变量及操作符 class=headings>变量及操作符</a></h2><h3 id=1-特殊字符使用><a href=#1-特殊字符使用 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:1-特殊字符使用 class=headings>#1. 特殊字符使用</a></h3><pre tabindex=0><code>#   --&gt; 注释(不包括#!)
     --&gt; 变量替换使用 echo ${PATH#*:}
 ;   --&gt; 命令分隔符,用于连接多个命令
@@ -90,17 +90,19 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
     --&gt; &gt;&amp;2重定向到标准错误
     --&gt; &gt;&gt; 追加
     --&gt; [i]&lt;&gt;filename 打开文件filename读写,分配文件描述符i给文件,若i不存在,则默认使用stdin
-    #!/bin/bash
-    ## example 1-1
-    lock_file=/tmp/$(basename $0).lock
-
-    exec 300&lt;&gt;$lock_file 
-    if ! flock -x -n 300; then
-        echo &#34;already running&#34;
-    else
-        echo &#34;starting...&#34;
-        sleep 30
-    fi
+        ----------------------------------------------------------------
+        #!/bin/bash
+        ## example 1-1
+        lock_file=/tmp/$(basename $0).lock
+    
+        exec 300&lt;&gt;$lock_file 
+        if ! flock -x -n 300; then
+            echo &#34;already running&#34;
+        else
+            echo &#34;starting...&#34;
+            sleep 30
+        fi
+        ----------------------------------------------------------------
     --&gt; (command)&gt; 进程替换, 暂且记下,后续有具体讲解
     --&gt; &lt;&lt; here document
     --&gt; &lt;&lt;&lt; here string
@@ -131,6 +133,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
 --  --&gt; 命令长格式选项前缀
         ls --all
     --&gt; 与set结合使用,设置位置参数
+        ----------------------------------------------------------------
         variable=&#34;one two three four five&#34;
         set -- $variable;
         first_param=$1
@@ -138,6 +141,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
         shift; shift
         echo &#34;first parameter = $first_param&#34;    # one
         echo &#34;second parameter = $second_param&#34;  # two
+        ----------------------------------------------------------------
 =   --&gt; 赋值运算符;a=28
 +   --&gt; 逻辑运算符,相加
     --&gt; 正则表达式,1各或者多个
@@ -181,6 +185,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
 	--&gt; 被重新赋值的变量是move,不是copy(只有两个位置参数,shift后,$2不存在)
 	--&gt; shift可接受数字,表示每次偏移多少
 	--&gt; 如下示例:   
+	    ----------------------------------------------------------------
         # 脚本名称不变,使用软链接给创建多个脚本名称,调用不同的名称,执行不同的功能
         ln -s /usr/local/bin/wh /usr/local/bin/wh-ripe
         ln -s /usr/local/bin/wh /usr/local/bin/wh-apnic
@@ -200,6 +205,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
             &quot;wh-cw&quot; 	) whois $1@whois.cw.net;;
             * 			) echo &quot;Usage: `basename $0` [domain-name]&quot;;;
         esac
+        ----------------------------------------------------------------
 </code></pre><h3 id=3--引用><a href=#3--引用 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:3--引用 class=headings>#3. 引用</a></h3><pre><code>1, grep '[Ff]irst' *.txt;在''中的特殊情况,这里并不会去除[]的作用,而是作为被保护的内容传递给grep
 2, &quot;&quot;保护除过$,\,`的其他符号
 3, 可以引用\n
@@ -229,6 +235,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
    --&gt; -b 块设备
    --&gt; -c 字符设备
    --&gt; -p 管道文件
+        ----------------------------------------------------------------
         # 示例内容:
         function show_input_type()
         {
@@ -236,6 +243,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
         }
         show_input_type &quot;Input&quot;             # STDIN
         echo &quot;Input&quot; | show_input_type      # PIPE
+        ----------------------------------------------------------------
    --&gt; -h 符号链接
    --&gt; -L 符号链接
    --&gt; -S socket文件
@@ -279,8 +287,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
     # Unclear what's going on here...,不能有超过三个的叠加存在(-a/-o)
     if [[ &quot;$v1&quot; -gt &quot;$v2&quot; ]] || [[ &quot;$v1&quot; -lt &quot;$v2&quot; ]] &amp;&amp; [[ -e &quot;$filename&quot; ]]
     # Much better -- the condition tests are grouped in logical sections.
-</code></pre><h3 id=6--其他变量视角><a href=#6--其他变量视角 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:6--其他变量视角 class=headings>#6. 其他变量视角</a></h3><pre><code>内部变量
-1, $BASHPID(返回当前shell),不同于$$(返回父shell),虽然大部分时候两个值相同
+</code></pre><h3 id=6--其他变量视角><a href=#6--其他变量视角 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:6--其他变量视角 class=headings>#6. 其他变量视角</a></h3><p><strong>内部变量</strong></p><pre><code>1, $BASHPID(返回当前shell),不同于$$(返回父shell),虽然大部分时候两个值相同
 	echo $BASHPID;(echo $BASHPID)  ## output different
 	echo $$;(echo $$)			   ## output same
 2, $DIRSTACK,在目录栈中的第一个值,被pushd和popd影响
@@ -314,6 +321,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
 20,$SHELLOPTS,保存set -o的options项
 21,$TMOUT,设置为一个非零值之后,超时会自动登出
 	--&gt; 可以在脚本中设置超时,在一定时间内未输入,则退出
+	----------------------------------------------------------------
     TMOUT=3
     # Prompt times out at three seconds.
     echo &quot;What is your favorite song?&quot;
@@ -324,9 +332,8 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
         song=&quot;(no answer)&quot;
         # Default response.
     fi
-
-位置参数
-1, $0,$1,$2...,位置参数,从命令行传递给脚本,函数;或者使用set进行设置
+    ----------------------------------------------------------------
+</code></pre><p><strong>位置参数</strong></p><pre><code>1, $0,$1,$2...,位置参数,从命令行传递给脚本,函数;或者使用set进行设置
 2, $#,位置参数或者命令行参数的数目
 3, $*,所有的位置参数,视为一个word,需要使用&quot;&quot;外加
 4, $@,同$*,但每个参数单独使用&quot;&quot;括起来,同样也需要使用&quot;&quot;括起来
@@ -336,6 +343,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
     --&gt; 可用于任务控制
     	{ sleep ${TIMEOUT}; eval 'kill -9 $!' &amp;&gt; /dev/null; }
     --&gt; 另一种方式
+        ----------------------------------------------------------------
         TIMEOUT=30
         count=0
                  possibly_hanging_job &amp; {
@@ -350,19 +358,19 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
             eval '[ -d &quot;/proc/$!&quot; ] &amp;&amp; kill -15 $!'
             # If the hanging job is running, kill it.
         }
+        ----------------------------------------------------------------
 6, $_,映射为执行的上一个命令最后一项内容
 	--&gt; du &gt; /dev/null;echo $_ 			# du
 	--&gt; ls -al &gt; /dev/null;echo $_ 		# -al
 7, $?,命令,函数或者是脚本的执行状态返回值
 8, $$,脚本自己的pid号,常用于创建惟一的temp文件,相较于mktemp使用更简单
-
-变量归类
-1, 使用declare/typeset完成变量定义
+</code></pre><p><strong>变量归类</strong></p><pre><code>1, 使用declare/typeset完成变量定义
 2, declare/typeset属于内建命令
 3, -r,设置只读变量
 	--&gt; declare -r var1=xx 等效于 readonly var1=xx
 4, -i,设置为整数变量
 	--&gt; 设置为整数变量,允许直接进行运算,不需要expr结构
+	    ----------------------------------------------------------------
         n=6/3
         echo &quot;n = $n&quot;
         declare -i n
@@ -370,6 +378,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
         echo &quot;n = $n&quot;
         # n = 6/3
         # n = 2
+        ----------------------------------------------------------------
 5, -a,设置为数组变量
 6, -f,显示函数
 	--&gt; declare -f后未接任何参数,显示所有的函数;可以用在ssh远程连接,传递函数使用
@@ -379,9 +388,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
 9, 使用declare可以非常方便的辨别变量,尤其是在辨认数组时
 	--&gt; declare | grep HOME
 	--&gt; Colors=([0]=&quot;purple&quot; [1]=&quot;reddish-orange&quot; [2]=&quot;light green&quot;);declare |grep Colors
-
-变量操作
---&gt; bash允许大量字符串操作,部分属于变量替换操作,部分属于UNIX的expr功能
+</code></pre><p><strong>变量操作</strong></p><pre><code>--&gt; bash允许大量字符串操作,部分属于变量替换操作,部分属于UNIX的expr功能
 1, 字符串长度
 	--&gt; ${井号string},显示变量string的长度
 	--&gt; expr length $string,使用expr功能显示字符串长度
@@ -396,31 +403,31 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
 	--&gt; expr index $string $substring
 		echo `expr index &quot;$stringZ&quot; 1c`
 		# 'c' (in #3 position) matches before '1'.
-
-变量取出
-	1, 切片用法
+</code></pre><p><strong>变量取出</strong></p><pre><code>	1, 切片用法
 	--&gt; ${string:position}  					# 从position处开始抽取string,此处的position和length都可以是变量
 	--&gt; ${string:position:length}   			# 从position处抽取length个string字符
+	    ----------------------------------------------------------------
 		stringZ=abcABC123ABCabc
 		echo ${stringZ:7} 						# 23ABCabc
 		echo ${stringZ:7:3} 					# 23A
 		echo ${stringZ:(-4)} 					# Cabc 区别于${stringZ:-4},这种形式等效于${string:-default}
+		----------------------------------------------------------------
 	--&gt; ${*:position} 							# 从position处开始取位置参数
 	--&gt; ${@:position} 							# 同上一条
 	--&gt; ${*:position:length} 					# 同string 的用法,换成位置参数
    	--&gt; expr substr $string $position $length   # expr用法,切片用法
 	--&gt; expr match &quot;$string&quot; '\($substring\)'	# 获取第一次匹配的substring内容,substring为正则表达式
 	--&gt; expr &quot;$string&quot; : '\($substring\)'		# 同上
+	    ----------------------------------------------------------------
 		echo `expr match &quot;$stringZ&quot; '\(.[b-c]*[A-Z]..[0-9]\)'`	 # abcABC1
 		echo `expr &quot;$stringZ&quot; : '\(.[b-c]*[A-Z]..[0-9]\)'`  	 # abcABC1
 		echo `expr &quot;$stringZ&quot; : '\(.......\)'`  				 # abcABC1
+		----------------------------------------------------------------
 	--&gt; expr match &quot;$string&quot; '.*\($substring\)' # 获取尾部第一次匹配的substring内容,substring为正则表达式
 	--&gt; expr &quot;$string&quot; : '.*\($substring\)'     # 同上
 		echo `expr match &quot;$stringZ&quot; '.*\([A-C][A-C][A-C][a-c]*\)'`  # ABCabc
 		echo `expr &quot;$stringZ&quot; : '.*\(......\)'`						# ABCabc
-
-变量置换
-    file=/dir1/dir2/dir3/my.file.txt
+</code></pre><p><strong>变量置换</strong></p><pre><code>    file=/dir1/dir2/dir3/my.file.txt
     --&gt; ${file#*/}             # 拿掉第一条/及其左边的字串：dir1/dir2/dir3/my.file.txt
     --&gt; ${file##*/}            # 拿掉最后一条/及其左边的字串：my.file.txt
     --&gt; ${file#*.}             # 拿掉第一个.及其左边的字串：file.txt
@@ -452,9 +459,7 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
 
     --&gt; ${var,,}               # 更改var的大小写,将$var中的大写字符转换成小写
     --&gt; ${井号var}                # get the length of the variate of var
-
-变量替换
-    stringZ=abcABC123ABCabc
+</code></pre><p><strong>变量替换</strong></p><pre><code>    stringZ=abcABC123ABCabc
     --&gt; echo ${stringZ/abc/xyz}     # xyzABC123ABCabc,将开头的abc替换成xyz
     --&gt; echo ${stringZ//abc/xyz}    # xyzABC123ABCxyz,将字符串中的所有abc替换成xyz
         abc和xyz都可以使用变量替换
@@ -470,229 +475,251 @@ $[...] --&gt; 整数扩展符, 可用于整数的计算; &#39;echo $[3*5]&#39;
         c=${!b}                     # Now, the more familiar type of indirect reference.
         echo $c
 
-
-awk的使用,等效变量替换
-    String=23skidoo1
-    # 012345678 Bash 变量替换中bash的下标计算方式
-    # 123456789 awk  变量替换中awk的下标计算方式
-    --&gt; echo | awk '{ print substr(&quot;'&quot;${String}&quot;'&quot;,3,4) }'  # skid
-        前面使用空echo的作用是,所谓伪输入,不需要填写输入文件
-</code></pre><h3 id=7-循环和分支结构><a href=#7-循环和分支结构 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:7-循环和分支结构 class=headings>#7. 循环和分支结构</a></h3><div class=highlight><div class=chroma><div class=table-container><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>1, for循环
-</span></span><span class=line><span class=cl>    <span class=k>for</span> arg in <span class=o>[</span>list<span class=o>]</span><span class=p>;</span> <span class=k>do</span> command<span class=p>;</span><span class=k>done</span>
-</span></span><span class=line><span class=cl>    --&gt; for循环和set结合使用,会很方便,以下是例子
-</span></span></code></pre></td></tr></table></div></div></div><pre tabindex=0><code>    set `uname -a`; for item in $(seq $#); do echo ${!item}; done
-    for planet in &#34;Mercury 36&#34; &#34;Venus 67&#34; &#34;Earth 93&#34; &#34;Mars 142&#34; &#34;Jupiter 483&#34;; do
+    awk的使用,等效变量替换
+        String=23skidoo1
+        # 012345678 Bash 变量替换中bash的下标计算方式
+        # 123456789 awk  变量替换中awk的下标计算方式
+        --&gt; echo | awk '{ print substr(&quot;'&quot;${String}&quot;'&quot;,3,4) }'  # skid
+            前面使用空echo的作用是,所谓伪输入,不需要填写输入文件
+</code></pre><h3 id=7-循环和分支结构><a href=#7-循环和分支结构 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:7-循环和分支结构 class=headings>#7. 循环和分支结构</a></h3><p><strong>for循环</strong></p><pre><code>for arg in [list]; do command;done
+--&gt; for循环和set结合使用,会很方便,以下是例子
+    --------------------------------------------------------------------------------
+    set `uname -a`; for item in $(seq $#); do echo ${!item}; done
+    for planet in &quot;Mercury 36&quot; &quot;Venus 67&quot; &quot;Earth 93&quot; &quot;Mars 142&quot; &quot;Jupiter 483&quot;; do
         set -- $planet
-        echo &#34;$1    $2,000,000 miles from the sun&#34;
+        echo &quot;$1    $2,000,000 miles from the sun&quot;
     done
-</code></pre><pre><code>    --&gt; set中使用的--,避免难预测的bug,当后面的变量为空或者是以'-'开头
-    --&gt; [list]可以是一个变量,保存了多个值,用于for循环使用
-    --&gt; [list]也可以使用*通配符
-    --&gt; 无[list]项也可,循环使用的内容为位置参数
-        for a; do echo -n &quot;$a &quot;; done       # 写入脚本后,执行脚本时,后接参数或者不接参数,得出结果不同
-    --&gt; [list]内容同样可为命令替换后的结果
-        for name in $(awk 'BEGIN{FS=&quot;:&quot;}{print $1}' &lt; &quot;$PASSWORD_FILE&quot; )   # 系统上所有用户 
-        for word in $(generate_list)                                       # 函数运行结果
-    --&gt; for loop结束后,在done后面可直接使用管道进行操作,例如排序等
-        for file in &quot;$( find $directory -type l )&quot;;do echo &quot;$file&quot;; done | sort  # 对循环执行后的结果进行排序
-    --&gt; C风格的for循环,需要用到(());
-        LIMIT=10; for ((a=1; a &lt;= LIMIT ; a++)); do echo $a; done
-        for ((a=1, b=1; a &lt;= LIMIT ; a++, b++)); do echo -n &quot;$a-$b &quot;; done
-    --&gt; 一般情况下,do和done分割for循环的结构,但在特定情况下,省略do和done
-        for((n=1; n&lt;=10; n++))
-        {   # No do
-            echo -n &quot;* $n *&quot;
-        }   # No done!
-        
-        for n in 1 2 3
-        { echo -n &quot;$n &quot;; }          # 在经典的for结构中,花括号中需要包含;,用于结尾
-    --&gt; E_NOARGS=65 --&gt; The standards of variate naming, exit-because-no-arguments
-    --&gt; read command read reads a line every time, in the function 'while read i j', i stands for the first word, j stands for the rest of this line
-    --&gt; the difference between return and exit
-        若在script里，用exit RV来指定其值，若没指定，在结束时以最后一道命令之RV为值。
-        若在function里，则用return RV来代替exit RV即可。
-        若在loop里，则用break
+    --------------------------------------------------------------------------------
+--&gt; set中使用的--,避免难预测的bug,当后面的变量为空或者是以'-'开头
+--&gt; [list]可以是一个变量,保存了多个值,用于for循环使用
+--&gt; [list]也可以使用*通配符
+--&gt; 无[list]项也可,循环使用的内容为位置参数
+    for a; do echo -n &quot;$a &quot;; done       # 写入脚本后,执行脚本时,后接参数或者不接参数,得出结果不同
+--&gt; [list]内容同样可为命令替换后的结果
+    for name in $(awk 'BEGIN{FS=&quot;:&quot;}{print $1}' &lt; &quot;$PASSWORD_FILE&quot; )   # 系统上所有用户 
+    for word in $(generate_list)                                       # 函数运行结果
+--&gt; for loop结束后,在done后面可直接使用管道进行操作,例如排序等
+    for file in &quot;$( find $directory -type l )&quot;;do echo &quot;$file&quot;; done | sort  # 对循环执行后的结果进行排序
+--&gt; C风格的for循环,需要用到(());
+    LIMIT=10; for ((a=1; a &lt;= LIMIT ; a++)); do echo $a; done
+    for ((a=1, b=1; a &lt;= LIMIT ; a++, b++)); do echo -n &quot;$a-$b &quot;; done
+--&gt; 一般情况下,do和done分割for循环的结构,但在特定情况下,省略do和done
+    ----------------------------------------------------------------
+    for((n=1; n&lt;=10; n++))
+    {   # No do
+        echo -n &quot;* $n *&quot;
+    }   # No done!
+    
+    for n in 1 2 3
+    { echo -n &quot;$n &quot;; }          # 在经典的for结构中,花括号中需要包含;,用于结尾
+    ----------------------------------------------------------------
+--&gt; E_NOARGS=65 --&gt; The standards of variate naming, exit-because-no-arguments
+--&gt; read command read reads a line every time, in the function 'while read i j', i stands for the first word, j stands for the rest of this line
+--&gt; the difference between return and exit
+    若在script里，用exit RV来指定其值，若没指定，在结束时以最后一道命令之RV为值。
+    若在function里，则用return RV来代替exit RV即可。
+    若在loop里，则用break
+</code></pre><p><strong>while循环</strong></p><pre><code>相对于for循环,while循环更适合用于不确定condition情况下进行的循环
+while [condition]; do command(s); done
+--&gt; 在while循环中可能存在多个条件,但只有最后一个条件决定什么时候终止循环
+    ----------------------------------------------------------------
+    while echo &quot;previous-variable = $previous&quot;
+        echo
+        previous=$var1
+        [ &quot;$var1&quot; != end ]; do ...
+    ----------------------------------------------------------------
+--&gt; 同for循环一样,while可以接收C风格的条件格式
+    ----------------------------------------------------------------
+    while (( a &lt;= LIMIT ))
+    do
+        echo -n &quot;$a&quot;
+        ((a += 1))      # let &quot;a+=1&quot;
+    done
+    ----------------------------------------------------------------
+--&gt; while的条件可以直接接函数
+    ----------------------------------------------------------------
+    condition(){
+        ((t++))
 
-2, while循环
-    相对于for循环,while循环更适合用于不确定condition情况下进行的循环
-    while [condition]; do command(s); done
-    --&gt; 在while循环中可能存在多个条件,但只有最后一个条件决定什么时候终止循环
-        while echo &quot;previous-variable = $previous&quot;
-            echo
-            previous=$var1
-            [ &quot;$var1&quot; != end ]; do ...
-    --&gt; 同for循环一样,while可以接收C风格的条件格式
-        while (( a &lt;= LIMIT ))
-        do
-            echo -n &quot;$a&quot;
-            ((a += 1))      # let &quot;a+=1&quot;
-        done
-    --&gt; while的条件可以直接接函数
-        condition(){
-            ((t++))
+        if [ $t -lt 5 ]; then
+            return 0 # true
+        else
+            return 1 # false
+        fi
+    }
+    while condition
+    ----------------------------------------------------------------
+--&gt; 与read一起结合使用,得到while read结构
+    cat file | while read line      # 同时是以管道作为输入内容
+--&gt; while可以在done后使用'&lt;'来作为内容输入
+</code></pre><p><strong>until循环</strong></p><pre><code>循环体在顶部,直到条件正确,才退出执行循环结构中的内容;与while循环相反
+until [ condition-is-true ]; do command(s); done
+until循环结构格式类同于for循环
+--&gt; 条件为真才退出
+    ----------------------------------------------------------------
+    END_CONDITION=end
+    until [ &quot;$var1&quot; = &quot;$END_CONDITION&quot; ]
+        # Tests condition here, at top of loop.
+    do
+        echo &quot;Input variable #1 &quot;
+        echo &quot;($END_CONDITION to exit)&quot;
+        read var1
+        echo &quot;variable #1 = $var1&quot;
+        echo
+    done
+    ----------------------------------------------------------------
+--&gt; until同样接受C风格的判断条件,使用双括号的格式(())
+    until (( var &gt; LIMIT ))
+</code></pre><p><strong>嵌套循环</strong></p><pre><code>一个循环结构属于另一个循环结构的构成部分,称为嵌套循环
+</code></pre><p><strong>循环控制</strong></p><pre><code>影响循环行为的命令
+break;continue
+--&gt; break的作用为终止当前循环
+--&gt; continue的作用为跳过当前这次的循环,在该分支中,跳过该分支后面需要执行的命令和操作
+    ----------------------------------------------------------------
+    while [ $a -le &quot;$LIMIT&quot; ]; do
+        a=$(($a+1))
+        if [ &quot;$a&quot; -eq 3 ] || [ &quot;$a&quot; -eq 11 ]; then 			# Excludes 3 and 11.
+            continue										# Skip rest of this particular loop iteration.
+        fi
+        echo -n &quot;$a&quot;										# This will not execute for 3 and 11.
+    done
 
-            if [ $t -lt 5 ]; then
-                return 0 # true
-            else
-                return 1 # false
-            fi
-        }
-        while condition
-    --&gt; 与read一起结合使用,得到while read结构
-        cat file | while read line      # 同时是以管道作为输入内容
-    --&gt; while可以在done后使用'&lt;'来作为内容输入
-3, until循环
-    循环体在顶部,直到条件正确,才退出执行循环结构中的内容;与while循环相反
-    until [ condition-is-true ]; do command(s); done
-    until循环结构格式类同于for循环
-    --&gt; 条件为真才退出
-        END_CONDITION=end
-		until [ &quot;$var1&quot; = &quot;$END_CONDITION&quot; ]
-		    # Tests condition here, at top of loop.
-		do
-		    echo &quot;Input variable #1 &quot;
-		    echo &quot;($END_CONDITION to exit)&quot;
-		    read var1
-		    echo &quot;variable #1 = $var1&quot;
-		    echo
-		done
-	--&gt; until同样接受C风格的判断条件,使用双括号的格式(())
-		until (( var &gt; LIMIT ))
-4, 嵌套循环
-	一个循环结构属于另一个循环结构的构成部分,称为嵌套循环
-5, 循环控制
-	影响循环行为的命令
-	break;continue
-	--&gt; break的作用为终止当前循环
-	--&gt; continue的作用为跳过当前这次的循环,在该分支中,跳过该分支后面需要执行的命令和操作
-</code></pre><pre tabindex=0><code>        while [ $a -le &#34;$LIMIT&#34; ]; do
-            a=$(($a+1))
-            if [ &#34;$a&#34; -eq 3 ] || [ &#34;$a&#34; -eq 11 ]; then 			# Excludes 3 and 11.
-                continue										# Skip rest of this particular loop iteration.
-            fi
-            echo -n &#34;$a&#34;										# This will not execute for 3 and 11.
-        done
+    while [ &quot;$a&quot; -le &quot;$LIMIT&quot; ]; do
+        a=$(($a+1))
+        if [ &quot;$a&quot; -gt 2 ]; then
+            break 											# Skip entire rest of loop.
+        fi
+        echo -n &quot;$a&quot;
+    done
+    ----------------------------------------------------------------
+--&gt; break可以后接参数,单个的break表示终止当前循环;break N表示终止几层循环
+--&gt; continue也可以接参数,单个的continue表示此次循环,continue N会终止当前层级的循环,开始下一次的循环,从N层开始
+</code></pre><p><strong>测试和分支</strong></p><pre><code>case和select结构不属于循环结构,但他们通过条件判断引导程序流向
+--&gt; case对标的是C/C++中的switch结构;case可以说是简化版的if/elif/elif/.../else结构,case可以用于设置程序接口
+    ----------------------------------------------------------------
+    case &quot;$variable&quot; in
+    &quot;$condition1&quot;)
+        command...
+        ;;
+    &quot;$condition2&quot;)	
+        command...
+        ;;
+    esac
+    ----------------------------------------------------------------
+    
+--&gt; 判断后接参数
+    ----------------------------------------------------------------
+    E_PARAM=1
+    case &quot;$1&quot; in
+    &quot;&quot;) echo &quot;Usage: ${0##*/} &lt;filename&gt;&quot;; exit $E_PARAM;;  # 提示信息,精简化
+    -*) FILENAME=./$1;;                                     # 如果后面所接参数包含破折号,将其替换为./$1,这样后面的命令嗯就不会把其当做$1
+    * ) FILENAME=$1;;
+    esac
+    ----------------------------------------------------------------
 
-        while [ &#34;$a&#34; -le &#34;$LIMIT&#34; ]; do
-            a=$(($a+1))
-            if [ &#34;$a&#34; -gt 2 ]; then
-                break 											# Skip entire rest of loop.
-            fi
-            echo -n &#34;$a&#34;
-        done
-</code></pre><pre><code>	--&gt; break可以后接参数,单个的break表示终止当前循环;break N表示终止几层循环
-	--&gt; continue也可以接参数,单个的continue表示此次循环,continue N会终止当前层级的循环,开始下一次的循环,从N层开始
-6, 测试和分支
-    case和select结构不属于循环结构,但他们通过条件判断引导程序流向
-
-    --&gt; case对标的是C/C++中的switch结构;case可以说是简化版的if/elif/elif/.../else结构,case可以用于设置程序接口
-        case &quot;$variable&quot; in
-        &quot;$condition1&quot;)
-            command...
-            ;;
-        &quot;$condition2&quot;)	
-            command...
-            ;;
-        esac
-	
-	--&gt; 判断后接参数
-        E_PARAM=1
+--&gt; while和case一起使用:
+    ----------------------------------------------------------------
+    while [ $# -gt 0 ]; do
         case &quot;$1&quot; in
-        &quot;&quot;) echo &quot;Usage: ${0##*/} &lt;filename&gt;&quot;; exit $E_PARAM;;  # 提示信息,精简化
-        -*) FILENAME=./$1;;                                     # 如果后面所接参数包含破折号,将其替换为./$1,这样后面的命令嗯就不会把其当做$1
-        * ) FILENAME=$1;;
+            -d|--debug)
+                DEBUG=1
+                ;;
+            -c|--conf)
+                CONFFILE=&quot;$2&quot;
+                shift
+                if [ ! -f $CONFFILE ]; then
+                    echo &quot;Error: Supplied file doesn't exist!&quot;
+                    exit $E_CONFFILE
+                fi
+                ;;
         esac
-</code></pre><pre tabindex=0><code>    --&gt; while和case一起使用:
-        while [ $# -gt 0 ]; do
-            case &#34;$1&#34; in
-                -d|--debug)
-                    DEBUG=1
-                    ;;
-                -c|--conf)
-                    CONFFILE=&#34;$2&#34;
-                    shift
-                    if [ ! -f $CONFFILE ]; then
-                        echo &#34;Error: Supplied file doesn&#39;t exist!&#34;
-                        exit $E_CONFFILE
-                    fi
-                    ;;
-            esac
-            shift
-        done
+        shift
+    done
+    ----------------------------------------------------------------
 
-    --&gt; 做匹配函数:
-                match_string (){
-                    MATCH=0
-                    E_NOMATCH=90
-                    PARAMS=2
-                    E_BAD_PARAMS=91
+--&gt; 做匹配函数:
+    ----------------------------------------------------------------
+    match_string (){
+        MATCH=0
+        E_NOMATCH=90
+        PARAMS=2
+        E_BAD_PARAMS=91
 
-                    [ $# -eq $PARAMS ] || return $E_BAD_PARAMS
+        [ $# -eq $PARAMS ] || return $E_BAD_PARAMS
 
-                    case &#34;$1&#34; in
-                        &#34;$2&#34;) return $MATCH;;
-                        *   ) return $E_NOMATCH;;
-                    esac
-                }
+        case &quot;$1&quot; in
+            &quot;$2&quot;) return $MATCH;;
+            *   ) return $E_NOMATCH;;
+        esac
+    }
+    ----------------------------------------------------------------
 
-    --&gt; select继承自ksh,同样是一个可用于构建入口的工具
-        select variable [in list]
-        do
-            command...
-            break
-        done
-</code></pre><p>​</p><pre tabindex=0><code></code></pre><pre><code>	--&gt; select结构提示用户输入给定的选项之一,默认情况下使用环境变量PS3作为提示符,但这个可以被改变
-</code></pre><pre tabindex=0><code>		PS3=&#39;Choose your favorite vegetable: &#39; 	 # Sets the prompt string.
-											  	 # Otherwise it defaults to #? .
+--&gt; select继承自ksh,同样是一个可用于构建入口的工具
+    ----------------------------------------------------------------
+    select variable [in list]
+    do
+        command...
+        break
+    done
+    ----------------------------------------------------------------
 
-		select vegetable in &#34;beans&#34; &#34;carrots&#34; &#34;potatoes&#34; &#34;onions&#34; &#34;rutabagas&#34;
-		do
-			echo
-			echo &#34;Your favorite veggie is $vegetable.&#34;
-			echo &#34;Yuck!&#34;
-			echo
-			break 								 # What happens if there is no &#39;break&#39; here?
-		done
-</code></pre><pre><code>	--&gt; 如果结构中list不存在,select会使用传递给脚本或包含select结构的函数的位置参数$@;可类比for variable [in list]
-</code></pre><pre tabindex=0><code>        PS3=&#39;Choose your favorite vegetable: &#39;
-		choice_of(){
-		select vegetable							# [in list] omitted, so &#39;select&#39; uses arguments passed to function.
-		do
-			echo
-			echo &#34;Your favorite veggie is $vegetable.&#34;
-			echo &#34;Yuck!&#34;
-			echo
-			break
-		done
-		}
-		choice_of beans rice carrots radishes rutabaga spinach
-		------------------------------------------------------------------------------------------------------
+--&gt; select结构提示用户输入给定的选项之一,默认情况下使用环境变量PS3作为提示符,但这个可以被改变
+    ----------------------------------------------------------------
+    PS3='Choose your favorite vegetable: ' 	 # Sets the prompt string.
+                                             # Otherwise it defaults to #? .
+
+    select vegetable in &quot;beans&quot; &quot;carrots&quot; &quot;potatoes&quot; &quot;onions&quot; &quot;rutabagas&quot;
+    do
+        echo
+        echo &quot;Your favorite veggie is $vegetable.&quot;
+        echo &quot;Yuck!&quot;
+        echo
+        break 								 # What happens if there is no 'break' here?
+    done
+    ----------------------------------------------------------------
+
+--&gt; 如果结构中list不存在,select会使用传递给脚本或包含select结构的函数的位置参数$@;可类比for variable [in list]
+    ----------------------------------------------------------------
+    PS3='Choose your favorite vegetable: '
+    choice_of(){
+    select vegetable							# [in list] omitted, so 'select' uses arguments passed to function.
+    do
+        echo
+        echo &quot;Your favorite veggie is $vegetable.&quot;
+        echo &quot;Yuck!&quot;
+        echo
+        break
+    done
+    }
+    choice_of beans rice carrots radishes rutabaga spinach
+    ----------------------------------------------------------------
 </code></pre><h3 id=8-命令替换><a href=#8-命令替换 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:8-命令替换 class=headings>#8. 命令替换</a></h3><pre><code>命令替换重新单个甚至多个命令的输出结果,逐字的将输出内容传递给另一个上下文
 --&gt; 命令的输出结果可以是传递给其他命令的参数,可以是设置变量,甚至生成for循环需要使用的内容参数
 --&gt; 命令替换有两种形式:`commands`,$(commands),两种方式等效
 --&gt; 命令替换生成一个子shell
 --&gt; 命令替换可能把输出结果分片
-	COMMAND `echo a b` 		 # 2 args: a and b
-	COMMAND &quot;`echo a b`&quot;	 # 1 arg: &quot;a b&quot;
+    ----------------------------------------------------------------
+    COMMAND `echo a b` 		 # 2 args: a and b
+    COMMAND &quot;`echo a b`&quot;	 # 1 arg: &quot;a b&quot;
     note: 有时命令替换会出现不期望的结果
     mkdir 'dir with trailing newline
     '
     cd &quot;`pwd`&quot;      # error inform
     cd &quot;$PWD&quot;       # works fine
+    ----------------------------------------------------------------
 --&gt; 使用echo输出命令替换厚的未括变量,echo会将换行符去除
 --&gt; 命令替换允许使用重定向或者cat来获取文件内容作为变量内容
     echo ` &lt;$0`     # 输出脚本内容
 --&gt; 不要将一个长文本内容作为值赋给一个变量，也不要将二进制文件内容作为变量的值 
 --&gt; 没有缓冲溢出的情况出现，这是翻译性语言的特性，相较编译语言提供更多的保护
 --&gt; 变量声明甚至可以通过一个循环结构来赋值
-</code></pre><pre tabindex=0><code>    variable1=`for i in 1 2 3 4 5
+    ----------------------------------------------------------------
+    variable1=`for i in 1 2 3 4 5
     do
-    echo -n &#34;$i&#34;
+    echo -n &quot;$i&quot;
     done`
-</code></pre><pre><code>--&gt; 命令替换使用$()替换掉反引号的使用
+    ----------------------------------------------------------------
+--&gt; 命令替换使用$()替换掉反引号的使用
     允许这种形式：content=$(&lt;$File2)
 --&gt; $()的形式允许多重嵌套
 </code></pre><h3 id=9-运算展开><a href=#9-运算展开 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:9-运算展开 class=headings>#9. 运算展开</a></h3><pre><code>算数展开提供了一个强大的工具，用于在脚本中进行算数运算；常用的有反引号、双括号、let
@@ -705,22 +732,26 @@ awk的使用,等效变量替换
     (( n += 1 ))是正确的；(( $n += 1 ))是错误的
     let z=z+3是正确的；let &quot;z += 3&quot;也可以
 </code></pre><h2 id=linux命令><a href=#linux命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:linux命令 class=headings>linux命令</a></h2><h3 id=1-内部命令和内部指令><a href=#1-内部命令和内部指令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:1-内部命令和内部指令 class=headings>#1. 内部命令和内部指令</a></h3><p>​ 内建指令是指包含在bash工具集内部的命令；内建命令的作用一方面是为了提升性能，常用于需要fork新进程的命令，另一方面是出于某些命令需要直接访问shell内部</p><pre><code>--&gt; 父进程获取到子进程的pid后，可以传递参数给子进程，反过来则不行；这个需要注意，出现这种问题时，一般难以排查
-</code></pre><pre tabindex=0><code>    PIDS=$(pidof sh $0) # Process IDs of the various instances of this script.
+    ----------------------------------------------------------------
+    PIDS=$(pidof sh $0) # Process IDs of the various instances of this script.
     P_array=( $PIDS )
     echo $PIDS
 
-    let &#34;instances = ${井号P_array[*]} - 1&#34; 
-    echo &#34;$instances instance(s) of this script running.&#34;
-    echo &#34;[Hit Ctl-C to exit.]&#34;; 
+    let &quot;instances = ${井号P_array[*]} - 1&quot; 
+    echo &quot;$instances instance(s) of this script running.&quot;
+    echo &quot;[Hit Ctl-C to exit.]&quot;; 
     echo
 
     sleep 1
     sh $0
     exit 0
-</code></pre><pre><code>--&gt; 一般来说，bash内建指令不会自动fork新的进程，外部命令或者管道过滤时会fork新进程
+    ----------------------------------------------------------------
+--&gt; 一般来说，bash内建指令不会自动fork新的进程，外部命令或者管道过滤时会fork新进程
 --&gt; 内建指令可能和系统命令有同样的名字，但bash会使用内建命令，echo和/bin/echo并不一样
+    ----------------------------------------------------------------
     echo &quot;This line uses the \&quot;echo\&quot; builtin.&quot;
     /bin/echo &quot;This line uses the /bin/echo system command.&quot;
+    ----------------------------------------------------------------
 --&gt; 关键字是预留字、符号，或者是操作符；关键字对shell来说具有特殊的含义，是shell的语句块的构成部分；关键字属于bash的硬编码部分，不同于内建指令，关键字是命令的子单元
 </code></pre><h3 id=2-io命令><a href=#2-io命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:2-io命令 class=headings>#2. IO命令</a></h3><pre><code>echo：打印表达式或者变量到标准输出
 --&gt; 和-e使用，用来打印脱意符
@@ -729,47 +760,58 @@ awk的使用,等效变量替换
     变量$IFS默认情况下降'\n'作为分隔符之一，bash将换行符后面的内容作为参数传递给echo，echo将这些参数打印出来，使用空格分隔
 
 printf：格式化打印，增强型的echo，是一个C语言中printf()函数的限制型变体，部分内容与原函数使用不同
-printf format-string... parameter...
+    printf format-string... parameter...
 --&gt; 格式化输出
-</code></pre><pre tabindex=0><code>declare -r PI=3.14159265358979
-printf &#34;Pi to 2 decimal places = %1.2f&#34; $PI
-printf &#34;Pi to 9 decimal places = %1.9f&#34; $PI
-</code></pre><pre><code>--&gt; 格式化输出错误内容很实用
-</code></pre><pre tabindex=0><code># 注意$&#39;strings...&#39;的格式，在此处与%s的使用
-error()
-{
-    printf &#34;$@&#34; &gt;&amp;2 # Formats positional params passed, and sends them to stderr.
-    echo
-    exit $E_BADDIR
-}
-cd $var || error $&#34;Can&#39;t cd to %s.&#34; &#34;$var&#34;
-</code></pre><pre><code>read：通过标准输入读取变量值，动态的通过键盘获取值，与-a选项一起使用时可获取数组变量
+    ----------------------------------------------------------------
+    declare -r PI=3.14159265358979
+    printf &quot;Pi to 2 decimal places = %1.2f&quot; $PI
+    printf &quot;Pi to 9 decimal places = %1.9f&quot; $PI
+    ----------------------------------------------------------------
+--&gt; 格式化输出错误内容很实用
+    ----------------------------------------------------------------
+    # 注意$'strings...'的格式，在此处与%s的使用
+    error()
+    {
+        printf &quot;$@&quot; &gt;&amp;2 # Formats positional params passed, and sends them to stderr.
+        echo
+        exit $E_BADDIR
+    }
+    cd $var || error $&quot;Can't cd to %s.&quot; &quot;$var&quot;
+    ----------------------------------------------------------------
+
+read：通过标准输入读取变量值，动态的通过键盘获取值，与-a选项一起使用时可获取数组变量
 --&gt; read通常情况下，'\'会去除换行的含义，当与-r参数一同使用时，'\'按照原意进行输出
 --&gt; -s：不显示输入内容到屏幕上
 --&gt; -n：设置仅接收多少字符，-n同样能接受特殊按键，但需要清楚特殊按键对应的字符，但不能获取到回车的字符
-        arrowup='\[A'
-        arrowdown='\[B'
-        arrowrt='\[C'
-        arrowleft='\[D'
-        insert='\[2'
-        delete='\[3'
+    ----------------------------------------------------------------
+    arrowup='\[A'
+    arrowdown='\[B'
+    arrowrt='\[C'
+    arrowleft='\[D'
+    insert='\[2'
+    delete='\[3'
+    ----------------------------------------------------------------
 --&gt; -p：在接收输入内容前，打印后续内容到屏幕上，作为提示用
 --&gt; -t：用在设置超时时间的场景下
 --&gt; -u：获取目标文件的文件描述符
 --&gt; read命令同样可以通过重定向到标准输入的文件来读取变量，如果文件内容超过一行，则只有第一行内容会被用于变量读取；
 --&gt; 当read后接的参数多余一个时，默认会以空格（或者连续空格）作为分隔符来读取变量，此行为可通过更改环境变量$IFS来改变
-</code></pre><pre tabindex=0><code>read var1 &lt; /tmp/file1
-read var1 var2 &lt; /tmp/file1
-while read line; do echo $line; done &lt; /tmp/file1
+    ----------------------------------------------------------------
+    read var1 &lt; /tmp/file1
+    read var1 var2 &lt; /tmp/file1
+    while read line; do echo $line; done &lt; /tmp/file1
+    ----------------------------------------------------------------
 </code></pre><h3 id=3-文件系统命令><a href=#3-文件系统命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:3-文件系统命令 class=headings>#3. 文件系统命令</a></h3><pre><code>cd：切换路径命令
 --&gt; 使用-P参数，忽略链接文件
 --&gt; cd -,切换到上一个目录，$OLDPWD变量保存的内容
 --&gt; 使用两个斜杠时，cd命令会出现我们不期望的情况
-</code></pre><pre tabindex=0><code># 以下的问题在命令行和脚本中都存在，需要注意
-$ cd //
-$ pwd
-//
-</code></pre><pre><code>pwd：显示当前工作目录路径
+    ----------------------------------------------------------------
+    # 以下的问题在命令行和脚本中都存在，需要注意
+    $ cd //
+    $ pwd
+    //
+    ----------------------------------------------------------------
+pwd：显示当前工作目录路径
 --&gt;使用该命令的效果同$PWD完全相同
 
 pushd,popd,dirs：这个命令集合是一个工作目录书签工具，用于在工作目录中有序的来回切换；后进先出的堆栈方式处理工作目录组，允许对这个堆栈进行各种不同的操作
@@ -779,63 +821,80 @@ pushd,popd,dirs：这个命令集合是一个工作目录书签工具，用于�
 
 在脚本中需要切换多个目录工作时，使用这个命令集可以方便的进行管理，$DIRSTACK数组包含有目录的列表栈内容
 </code></pre><h3 id=4-变量操作命令><a href=#4-变量操作命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:4-变量操作命令 class=headings>#4. 变量操作命令</a></h3><pre><code>let：let命令执行对变量的算数运算操作，在很多种情况下，let相当于简化版的expr命令
-</code></pre><pre tabindex=0><code>let a=11; let a=a+5
-let &#34;a &lt;&lt;= 3&#34;
-let &#34;a += 5&#34;
-let a++(++a)
-let &#34;t = a&lt;7?7:11&#34;
-</code></pre><pre><code>--&gt; 使用let命令，在特定情况下，命令返回值和通常情况不同
-</code></pre><pre tabindex=0><code>$ var=0
-$ echo $?
-0
-$ let var++
-$ echo $?
-1
-</code></pre><pre><code>eval：
+    ----------------------------------------------------------------
+    let a=11; let a=a+5
+    let &quot;a &lt;&lt;= 3&quot;
+    let &quot;a += 5&quot;
+    let a++(++a)
+    let &quot;t = a&lt;7?7:11&quot;
+    ----------------------------------------------------------------
+--&gt; 使用let命令，在特定情况下，命令返回值和通常情况不同
+    ----------------------------------------------------------------
+    $ var=0
+    $ echo $?
+    0
+    $ let var++
+    $ echo $?
+    1
+    ----------------------------------------------------------------
+
+eval：
 eval arg1 [arg2] ... [argN]
 结合一个表达式或者一列表达式中的参数，是这些参数联合；所有在表达式中的变量都会被展开，得出的字符串被转换为命令
-</code></pre><pre tabindex=0><code>$ command_string=&#34;ps ax&#34;
-$ eval &#34;$command_string&#34;
-</code></pre><pre><code>--&gt; 每次调用eval都会强制重新评估其参数
-</code></pre><pre tabindex=0><code>$ a=&#34;$b&#34;
-$ b=&#34;$c&#34;
-$ c=d
-$ echo $a
-$ eval echo $a
-$ eval eval echo $a
-</code></pre><pre tabindex=0><code>params=$#
-param=1
-while [ &#34;$param&#34; -le &#34;$params&#34; ]
-do
-    echo -n &#34;Command-line parameter &#34;
-    echo -n \$$param
-    echo -n &#34; = &#34;
-    eval echo \$$param
-    (( param ++ ))
-done
-</code></pre><pre><code>--&gt; 使用eval命令有一定的风险，如果存在替换的方案，尽量使用替换方案来实现目的；像是eval $COMMANDS，在命令的返回结果中可能存在危险的内容如rm -rf *等
+    ----------------------------------------------------------------
+    $ command_string=&quot;ps ax&quot;
+    $ eval &quot;$command_string&quot;
+    ----------------------------------------------------------------
+--&gt; 每次调用eval都会强制重新评估其参数
+    ----------------------------------------------------------------
+    $ a=&quot;$b&quot;
+    $ b=&quot;$c&quot;
+    $ c=d
+    $ echo $a
+    $ eval echo $a
+    $ eval eval echo $a
+    ----------------------------------------------------------------
+    ----------------------------------------------------------------
+    params=$#
+    param=1
+    while [ &quot;$param&quot; -le &quot;$params&quot; ]
+    do
+        echo -n &quot;Command-line parameter &quot;
+        echo -n \$$param
+        echo -n &quot; = &quot;
+        eval echo \$$param
+        (( param ++ ))
+    done
+    ----------------------------------------------------------------
+--&gt; 使用eval命令有一定的风险，如果存在替换的方案，尽量使用替换方案来实现目的；像是eval $COMMANDS，在命令的返回结果中可能存在危险的内容如rm -rf *等
+
 set：
 set命令可用于更改脚本内部的变量值或者脚本选项，用法之一是可以设置option flags来更改脚本执行的动作；另一个用法是可以是将命令的输出结果设置为位置参数。  
-</code></pre><pre tabindex=0><code>set `uname -a`
-</code></pre><pre><code>--&gt; 当单独使用set命令时，终端显示所有的环境变量以及已经设置的变量
+    ----------------------------------------------------------------
+    set `uname -a`
+    ----------------------------------------------------------------
+--&gt; 当单独使用set命令时，终端显示所有的环境变量以及已经设置的变量
 --&gt; set后接--,表示将一个变量的内容设置为位置参数,当--后没有任何参数时,表示取消所有的位置参数
-</code></pre><pre tabindex=0><code>variable=&#34;one two three four five&#34;
-set -- $variable
-first_param=$1
-second_param=$2
-shift; shift
+    ----------------------------------------------------------------
+    variable=&quot;one two three four five&quot;
+    set -- $variable
+    first_param=$1
+    second_param=$2
+    shift; shift
+    
+    remaining_params=&quot;$*&quot;
+    echo &quot;first parameter = $first_param&quot;                   # one
+    echo &quot;second parameter = $second_param&quot;                 # two
+    echo &quot;remaining parameters = $remaining_params&quot;         # three four five
+    
+    set --
+    first_param=$1
+    second_param=$2
+    echo &quot;first parameter = $first_param&quot;                   # (null value)
+    echo &quot;second parameter = $second_param&quot;                 # (null value)
+    ----------------------------------------------------------------
 
-remaining_params=&#34;$*&#34;
-echo &#34;first parameter = $first_param&#34;                   # one
-echo &#34;second parameter = $second_param&#34;                 # two
-echo &#34;remaining parameters = $remaining_params&#34;         # three four five
-
-set --
-first_param=$1
-second_param=$2
-echo &#34;first parameter = $first_param&#34;                   # (null value)
-echo &#34;second parameter = $second_param&#34;                 # (null value)
-</code></pre><pre><code>unset:
+unset:
 unset命令删除一个shell变量,将变量的值设置为null,改命令不影响位置参数
 --&gt; 大多数情况下,使用unset设置过的变量和undeclare设置过的变量是等效的;但对于${parameter:-default}还是有区分的
 
@@ -843,19 +902,25 @@ export:
 export命令将变量的值声明至所有由脚本生成的子shell或者是shell,令其都可使用;在开机启动脚本中使用是export一个重要使用场景,有初始化环境的作用,让后启用的脚本能够继承环境变量
 --&gt; 父进程是没有办法获取到子进程的变量的
 --&gt; 大部分情况下,export var=xxx和var=xxx;export var是等效的,但在某些情况下有差别
-</code></pre><pre tabindex=0><code>bash$ export var=(a b); echo ${var[0]}
-(a b)
-bash$ var=(a b); export var; echo ${var[0]}
-a
-</code></pre><pre><code>declare/typeset:
+    ----------------------------------------------------------------
+    bash$ export var=(a b); echo ${var[0]}
+    (a b)
+    bash$ var=(a b); export var; echo ${var[0]}
+    a
+    ----------------------------------------------------------------
+
+declare/typeset:
 这两个命令用来设定或者限制变量的属性
+
 readonly:
 等效于declare -r,将一个变量设置为只读,或者实际效用为设置成一个常量,这个命令类似于C中的const
 
 getopsts:
 这个强大的命令解析命令行参数,传递给脚本使用,这个命令类似于C中的外部命令getopt,getopt库函数;命令允许传递和连接多个选项,并且为脚本联合多个参数,如下所示:
-</code></pre><pre tabindex=0><code>scriptname -abc -e /usr/local
-</code></pre><pre><code>--&gt; getopts使用两个默认的变量:
+    ----------------------------------------------------------------
+    scriptname -abc -e /usr/local
+    ----------------------------------------------------------------
+--&gt; getopts使用两个默认的变量:
     $OPTIND(OPTion INDex)是参数指针
     $OPTARG(OPTion ARGument)是参数指定一个选项
     选项名声明时后接冒号表明这个选项有一个指定的参数
@@ -863,49 +928,53 @@ getopsts:
     命令行传递给脚本的参数前面必须接'-',存在'-'的前缀,让getopts识别命令行参数为选项;实际上,没有'-'时,getopts不会去处理这些参数,直接当作缺失选项处理
     getopts模板与while循环有些许差别
     getopts结构是外部命令getopt命令的替换
-</code></pre><pre tabindex=0><code>while getopts &#34;:abcde:fg&#34; Option
-# Initial declaration.
-# a, b, c, d, e, f, and g are the options (flags) expected.
-
-# The : after option &#39;e&#39; shows it will have an argument passed with it.
-do
+    ----------------------------------------------------------------
+    while getopts &quot;:abcde:fg&quot; Option
+    # Initial declaration.
+    # a, b, c, d, e, f, and g are the options (flags) expected.
+    
+    # The : after option 'e' shows it will have an argument passed with it.
+    do
+        case $Option in
+        a ) # Do something with variable 'a'.
+        b ) # Do something with variable 'b'.
+        ...
+        e) # Do something with 'e', and also with $OPTARG, 
+           # which is the associated argument passed with option 'e'.
+        ...
+        g ) # Do something with variable 'g'.
+        esac
+    done
+    shift $(($OPTIND - 1))      # Move argument pointer to next.
+                                # All this is not nearly as complicated as it looks &lt;grin&gt;.
+    ----------------------------------------------------------------
+    ----------------------------------------------------------------
+    NO_ARGS=0
+    E_OPTERROR=85
+    if [ $# -eq &quot;$NO_ARGS&quot; ]				# Script invoked with no command-line args?
+    then
+        echo &quot;Usage: `basename $0` options (-mnopqrs)&quot;
+        exit $E_OPTERROR
+                                            # Exit and explain usage.
+                                            # Usage: scriptname -options
+                                            # Note: dash (-) necessary
+    fi
+    
+    while getopts &quot;:mnopq:rs&quot; Option
+    do
     case $Option in
-    a ) # Do something with variable &#39;a&#39;.
-    b ) # Do something with variable &#39;b&#39;.
-    ...
-    e) # Do something with &#39;e&#39;, and also with $OPTARG, 
-       # which is the associated argument passed with option &#39;e&#39;.
-    ...
-    g ) # Do something with variable &#39;g&#39;.
+        m)      echo &quot;Scenario #1: option -m- [OPTIND=${OPTIND}]&quot;;;
+        n | o ) echo &quot;Scenario #2: option -$Option- [OPTIND=${OPTIND}]&quot;;;
+        p)      echo &quot;Scenario #3: option -p- [OPTIND=${OPTIND}]&quot;;;
+        q)      echo &quot;Scenario #4: option -q- with argument \&quot;$OPTARG\&quot; [OPTIND=${OPTIND}]&quot;;;
+        r | s ) echo &quot;Scenario #5: option -$Option-&quot;;;
+        *)      echo &quot;Unimplemented option chosen.&quot;;; 		# Default.
     esac
-done
-shift $(($OPTIND - 1))      # Move argument pointer to next.
-                            # All this is not nearly as complicated as it looks &lt;grin&gt;.
-</code></pre><pre tabindex=0><code>NO_ARGS=0
-E_OPTERROR=85
-if [ $# -eq &#34;$NO_ARGS&#34; ]				# Script invoked with no command-line args?
-then
-	echo &#34;Usage: `basename $0` options (-mnopqrs)&#34;
-	exit $E_OPTERROR
- 										# Exit and explain usage.
-										# Usage: scriptname -options
-										# Note: dash (-) necessary
-fi
-
-while getopts &#34;:mnopq:rs&#34; Option
-do
-case $Option in
-	m)      echo &#34;Scenario #1: option -m- [OPTIND=${OPTIND}]&#34;;;
-	n | o ) echo &#34;Scenario #2: option -$Option- [OPTIND=${OPTIND}]&#34;;;
-	p)      echo &#34;Scenario #3: option -p- [OPTIND=${OPTIND}]&#34;;;
-	q)      echo &#34;Scenario #4: option -q- with argument \&#34;$OPTARG\&#34; [OPTIND=${OPTIND}]&#34;;;
-	r | s ) echo &#34;Scenario #5: option -$Option-&#34;;;
-	*)      echo &#34;Unimplemented option chosen.&#34;;; 		# Default.
-esac
-done
-
-shift $(($OPTIND - 1))
-exit $?
+    done
+    
+    shift $(($OPTIND - 1))
+    exit $?
+    ----------------------------------------------------------------
 </code></pre><h3 id=5-脚本行为命令><a href=#5-脚本行为命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:5-脚本行为命令 class=headings>#5. 脚本行为命令</a></h3><pre><code>source/. (点命令)
 这个命令,当在脚本外使用时,作用为调用一个脚本;
 在脚本内部使用,source file-name的作用为加载file-name的内容;
@@ -913,20 +982,25 @@ exit $?
 --&gt; 最终结果是,一个被source过的文件,代码就像在当前脚本物理上包含了被source过的文件的代码内容;当多个脚本使用同一个数据文件时,这种方式很有用
 --&gt; 如果被source的文件本身是一个可执行脚本,当source后,脚本会执行,然后将控制权交回调用其的脚本;一个可执行的source文件可以使用return来实现目的
 --&gt; 参数(可选)可以传递给被source的文件作为位置参数
-</code></pre><pre tabindex=0><code>source $filename $args1 $args2
-</code></pre><pre><code>--&gt; 脚本甚至可以在执行时source自己,随然可能没有什么实际的应用场景
-</code></pre><pre tabindex=0><code>#!/bin/bash
-MAXPASSCNT=100
-echo -n &#34;$pass_count &#34;
-let &#34;pass_count += 1&#34;
+    ----------------------------------------------------------------
+    source $filename $args1 $args2
+    ----------------------------------------------------------------
+--&gt; 脚本甚至可以在执行时source自己,随然可能没有什么实际的应用场景
+    ----------------------------------------------------------------
+    #!/bin/bash
+    MAXPASSCNT=100
+    echo -n &quot;$pass_count &quot;
+    let &quot;pass_count += 1&quot;
+    
+    while [ &quot;$pass_count&quot; -le $MAXPASSCNT ]; do
+        . $0
+    done
+    
+    echo
+    exit 0
+    ----------------------------------------------------------------
 
-while [ &#34;$pass_count&#34; -le $MAXPASSCNT ]; do
-    . $0
-done
-
-echo
-exit 0
-</code></pre><pre><code>exit
+exit
 无条件的终止一个脚本;exit命令可以选择性的后接一个整数参数,用作脚本的exit返回状态
 --&gt; 最简单的方式是直接使用exit 0, 指明此次运行成功
 --&gt; 如果一个脚本以未接参数的exit作为结尾,那么脚本的返回值则为最后一条命令的返回值,等效于exit $?
@@ -936,53 +1010,62 @@ exec
 这个shell内建命令替换当前进程为一个指定的命令
 --&gt; 通常情况下,当shell遇到一个命令时,会fork一个子进程来执行该命令,当使用exec命令时,shell不再fork子进程,并且exec调用的命令替换了shell
 --&gt; 当exec在脚本中使用时,当exec调用的命令结束时,会强制退出脚本
-</code></pre><pre tabindex=0><code>#!/bin/bash
-exec echo &#34;Exiting \&#34;$0\&#34; at line $LINENO.&#34;     # Exit from script here.
-                                                # $LINENO is an internal Bash variable set to the line number it&#39;s on.
-# The following lines never execute.
-echo &#34;This echo fails to echo.&#34;
-exit 99
-</code></pre><pre tabindex=0><code>#!/bin/bash
-# self-exec.sh
-# Note: Set permissions on this script to 555 or 755,
-#		then call it with ./self-exec.sh or sh ./self-exec.sh.
-
-echo
-echo &#34;This line appears ONCE in the script, yet it keeps echoing.&#34;
-echo &#34;The PID of this instance of the script is still $$.&#34;
-
-# Demonstrates that a subshell is not forked off.
-
-echo &#34;==================== Hit Ctl-C to exit ====================&#34;
-sleep 1
-exec $0 							# Spawns another instance of this same script
-									#+ that replaces the previous one.
-
-echo &#34;This line will never echo!&#34;	# Why not?
-
-exit 99								# Will not exit here!
-									# Exit code will not be 99!
-</code></pre><pre><code>--&gt; exec同时还具有重新声明文件描述符的功能,例如:exec &lt;zzz-file用文件zzz-file内容替换标准输入
+    ----------------------------------------------------------------
+    #!/bin/bash
+    exec echo &quot;Exiting \&quot;$0\&quot; at line $LINENO.&quot;     # Exit from script here.
+                                                    # $LINENO is an internal Bash variable set to the line number it's on.
+    # The following lines never execute.
+    echo &quot;This echo fails to echo.&quot;
+    exit 99
+    ----------------------------------------------------------------
+    ----------------------------------------------------------------
+    #!/bin/bash
+    # self-exec.sh
+    # Note: Set permissions on this script to 555 or 755,
+    #		then call it with ./self-exec.sh or sh ./self-exec.sh.
+    
+    echo
+    echo &quot;This line appears ONCE in the script, yet it keeps echoing.&quot;
+    echo &quot;The PID of this instance of the script is still $$.&quot;
+    
+    # Demonstrates that a subshell is not forked off.
+    
+    echo &quot;==================== Hit Ctl-C to exit ====================&quot;
+    sleep 1
+    exec $0 							# Spawns another instance of this same script
+                                        #+ that replaces the previous one.
+    
+    echo &quot;This line will never echo!&quot;	# Why not?
+    
+    exit 99								# Will not exit here!
+                                        # Exit code will not be 99!
+    ----------------------------------------------------------------
+--&gt; exec同时还具有重新声明文件描述符的功能,例如:exec &lt;zzz-file用文件zzz-file内容替换标准输入
 --&gt; 在find命令中使用的-exec选项和shell内建命令exec不同,需要注意
 
 shopt
 这个命令允许在运行的过程中更改shell选项,通常出现在bash启动文件中,同样在脚本中可以使用,需要version 2以上版本的bash
-</code></pre><pre tabindex=0><code>shopt -s cdspell
-# Allows minor misspelling of directory names with &#39;cd&#39;
-# Option -s sets, -u unsets.
+    ----------------------------------------------------------------
+    shopt -s cdspell
+    # Allows minor misspelling of directory names with 'cd'
+    # Option -s sets, -u unsets.
+    
+    cd /hpme 	# Oops! Mistyped '/home'.
+    pwd 		# /home
+                # The shell corrected the misspelling.
+    ----------------------------------------------------------------
 
-cd /hpme 	# Oops! Mistyped &#39;/home&#39;.
-pwd 		# /home
-			# The shell corrected the misspelling.
-</code></pre><pre><code>caller
+caller
 在一个函数中放置一个caller命令,会打印出是在第几行调用这个函数,不再函数中使用没有作用
-</code></pre><pre tabindex=0><code>#!/bin/bash
-function1 ()
-{
-	caller 0	# Tell me about it.
-}
-function1
-</code></pre><pre><code>--&gt; caller命令在被source后,同样能够打印出在被source文件中的位置,类似于一个函数,这个被称作为子程序
+    ----------------------------------------------------------------
+    #!/bin/bash
+    function1 ()
+    {
+        caller 0	# Tell me about it.
+    }
+    function1
+    ----------------------------------------------------------------
+--&gt; caller命令在被source后,同样能够打印出在被source文件中的位置,类似于一个函数,这个被称作为子程序
 --&gt; caller在debug中比较有用
 </code></pre><h3 id=6-常用命令><a href=#6-常用命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:6-常用命令 class=headings>#6 常用命令</a></h3><pre><code>true
 一个返回成功(0)的退出状态码命令,不做任何其他动作
@@ -996,18 +1079,23 @@ type[cmd]
 类似于which的外部命令,type命名用于鉴定cmd命令;
 --&gt; 不同于which,type是一个内建命令
 --&gt; type使用-a参数时,用于鉴定关键字和内建命令,同样定位命令在系统上的唯一名称
-</code></pre><pre tabindex=0><code>bash$ type &#39;[&#39;
-[ is a shell builtin
-bash$ type -a &#39;[&#39;
-[ is a shell builtin
-[ is /usr/bin/[
-bash$ type type
-type is a shell builtin
-</code></pre><pre><code>--&gt; 在测试一个命令是否存在时,type命令非常有用,可以在判断结构中使用
-</code></pre><pre tabindex=0><code>bash$ type bogus_command &amp;&gt;/dev/null
-bash$ echo $?
-1
-</code></pre><pre><code>hash [cmds]
+    ----------------------------------------------------------------
+    bash$ type '['
+    [ is a shell builtin
+    bash$ type -a '['
+    [ is a shell builtin
+    [ is /usr/bin/[
+    bash$ type type
+    type is a shell builtin
+    ----------------------------------------------------------------
+--&gt; 在测试一个命令是否存在时,type命令非常有用,可以在判断结构中使用
+    ----------------------------------------------------------------
+    bash$ type bogus_command &amp;&gt;/dev/null
+    bash$ echo $?
+    1
+    ----------------------------------------------------------------
+
+hash [cmds]
 记录指定命令的path名--在shell的哈希表中--因此shell或者脚本不需要逐次的查找$PATH变量目录来调用这些命令
 --&gt; 当hash命令后不接参数时,则仅仅将已经hash的命令列出来
 --&gt; 使用-r参数是清空hash表操作
@@ -1024,71 +1112,80 @@ help命令在bash v4后显示的信息详尽很多
 jobs
 列出当前在后台运行的所有job,给出job数字,没有ps有用
 --&gt; job和process的概念很容易混淆;一些特定的内建命令,像kill,disown,wait后接job号或者进程号作为参数;但fg,bg和jobs命令则仅接收任务号(job号)作为参数
-</code></pre><pre tabindex=0><code>bash$ sleep 100 &amp;
-[1] 1384
-bash $ jobs
-[1]+ Running	 sleep 100 &amp;
-</code></pre><pre><code>上面的命令及其输出中,数字1是任务号(由当前shell获取的job号),1384是进程号(由系统获取),杀掉job/process,使用kill %1或者kill 1384
+    ----------------------------------------------------------------
+    bash$ sleep 100 &amp;
+    [1] 1384
+    bash $ jobs
+    [1]+ Running	 sleep 100 &amp;
+    ----------------------------------------------------------------
+上面的命令及其输出中,数字1是任务号(由当前shell获取的job号),1384是进程号(由系统获取),杀掉job/process,使用kill %1或者kill 1384
 
 disown
 移除shell中table内正在运行的job
-</code></pre><pre tabindex=0><code>$ jobs
-[1]   Running                 sleep 1000 &amp;
-[2]   Running                 sleep 1000 &amp;
-[3]-  Running                 sleep 1000 &amp;
-[4]+  Running                 sleep 1000 &amp;
-$ disown
-$ jobs
-[1]   Running                 sleep 1000 &amp;
-[2]-  Running                 sleep 1000 &amp;
-[3]+  Running                 sleep 1000 &amp;
-</code></pre><pre><code>fg,bg
+    ----------------------------------------------------------------
+    $ jobs
+    [1]   Running                 sleep 1000 &amp;
+    [2]   Running                 sleep 1000 &amp;
+    [3]-  Running                 sleep 1000 &amp;
+    [4]+  Running                 sleep 1000 &amp;
+    $ disown
+    $ jobs
+    [1]   Running                 sleep 1000 &amp;
+    [2]-  Running                 sleep 1000 &amp;
+    [3]+  Running                 sleep 1000 &amp;
+    ----------------------------------------------------------------
+
+fg,bg
 fg命令将一个运行在后台的任务切换至前台. bg命令重新启动一个挂起的任务,并在后台执行
 --&gt; 如果没有指定任务号,则默认fg和bg会作用与当前正在running状态的任务
 
 wait
 暂时挂起脚本的执行过程,直到所有的后台运行任务已经结束,或者是作为参数的任务号/进程号已经终止,返回wait后接命令的返回状态码
 --&gt; 使用wait的场景通常为:指定的后台任务已完成,再继续执行脚本后续内容
-</code></pre><pre tabindex=0><code>#!/bin/bash
-ROOT_UID=0											# Only users with $UID 0 have root privileges.
-E_NOTROOT=65
-E_NOPARAMS=66
-if [ &#34;$UID&#34; -ne &#34;$ROOT_UID&#34; ]; then
-	echo &#34;Must be root to run this script.&#34;			# &#34;Run along kid, it&#39;s past your bedtime.&#34;
-	exit $E_NOTROOT
-fi
-
-if [ -z &#34;$1&#34; ]; then
-	echo &#34;Usage: `basename $0` find-string&#34;
-	exit $E_NOPARAMS
-fi
-
-echo &#34;Updating &#39;locate&#39; database...&#34;
-echo &#34;This may take a while.&#34;
-updatedb /usr &amp;										# Must be run as root.
-
-wait
-# Don&#39;t run the rest of the script until &#39;updatedb&#39; finished.
-# You want the the database updated before looking up the file name.
-
-locate $1
-# Without the &#39;wait&#39; command, in the worse case scenario,
-#+ the script would exit while &#39;updatedb&#39; was still running,
-#+ leaving it as an orphan process.
-exit 0
-</code></pre><pre><code>--&gt; wait也可以后接一个任务识别号作为参数,例如: wait %1或者wait $PPID
+    ----------------------------------------------------------------
+    #!/bin/bash
+    ROOT_UID=0											# Only users with $UID 0 have root privileges.
+    E_NOTROOT=65
+    E_NOPARAMS=66
+    if [ &quot;$UID&quot; -ne &quot;$ROOT_UID&quot; ]; then
+        echo &quot;Must be root to run this script.&quot;			# &quot;Run along kid, it's past your bedtime.&quot;
+        exit $E_NOTROOT
+    fi
+    
+    if [ -z &quot;$1&quot; ]; then
+        echo &quot;Usage: `basename $0` find-string&quot;
+        exit $E_NOPARAMS
+    fi
+    
+    echo &quot;Updating 'locate' database...&quot;
+    echo &quot;This may take a while.&quot;
+    updatedb /usr &amp;										# Must be run as root.
+    
+    wait
+    # Don't run the rest of the script until 'updatedb' finished.
+    # You want the the database updated before looking up the file name.
+    
+    locate $1
+    # Without the 'wait' command, in the worse case scenario,
+    #+ the script would exit while 'updatedb' was still running,
+    #+ leaving it as an orphan process.
+    exit 0
+    ----------------------------------------------------------------
+--&gt; wait也可以后接一个任务识别号作为参数,例如: wait %1或者wait $PPID
 --&gt; 在一个脚本中,使用&amp;符号让命令在后台执行可能会导致脚本hang死直到按下enter键,这种情况主要出现在需要输出到标准输出的命令,这种情况的出现比较让人烦;在这种命令后接wait
-</code></pre><pre tabindex=0><code>#!/bin/bash
-# test.sh		  
-
-ls -l &amp;
-echo &#34;Done.&#34;
-wait
-bash$ ./test.sh
-Done.
- [bozo@localhost test-scripts]$ total 1
- -rwxr-xr-x    1 bozo     bozo           34 Oct 11 15:09 test.sh
-</code></pre><pre><code>将命令输出写入到文件或者/dev/null中也可以解决这个问题
+    ----------------------------------------------------------------
+    #!/bin/bash
+    # test.sh		  
+    
+    ls -l &amp;
+    echo &quot;Done.&quot;
+    wait
+    bash$ ./test.sh
+    Done.
+     [bozo@localhost test-scripts]$ total 1
+     -rwxr-xr-x    1 bozo     bozo           34 Oct 11 15:09 test.sh
+    ----------------------------------------------------------------
+将命令输出写入到文件或者/dev/null中也可以解决这个问题
 
 suspend
 改命令与ctrl+Z有相似的效果,但是这个命令是挂起shell(shell的父进程应该在合适的时候恢复该shell的运行)
@@ -1101,26 +1198,29 @@ times
 
 kill
 强制终止一个进程,通过传递合适的终止信号
-</code></pre><pre tabindex=0><code>#!/bin/bash
-# self-destruct.sh
-kill $$				# Script kills its own process here.
-					# Recall that &#34;$$&#34; is the script&#39;s PID.
+    ----------------------------------------------------------------
+    #!/bin/bash
+    # self-destruct.sh
+    kill $$				# Script kills its own process here.
+                        # Recall that &quot;$$&quot; is the script's PID.
+    
+    echo &quot;This line will not echo.&quot;
+    # Instead, the shell sends a &quot;Terminated&quot; message to stdout.
+    
+    exit 0				# Normal exit? No!
+    
+    # After this script terminates prematurely,
+    #+ what exit status does it return?
+    #
+    # sh self-destruct.sh
+    # echo $?
+    # 143
+    #
+    # 143 = 128 + 15
+    #					TERM signal
+    ----------------------------------------------------------------
 
-echo &#34;This line will not echo.&#34;
-# Instead, the shell sends a &#34;Terminated&#34; message to stdout.
-
-exit 0				# Normal exit? No!
-
-# After this script terminates prematurely,
-#+ what exit status does it return?
-#
-# sh self-destruct.sh
-# echo $?
-# 143
-#
-# 143 = 128 + 15
-#					TERM signal
-</code></pre><pre><code>--&gt; kill -l列出所有支持的信号列表(包含在文件/usr/include/asm/signal.h)
+--&gt; kill -l列出所有支持的信号列表(包含在文件/usr/include/asm/signal.h)
 --&gt; kill -9是一个确认杀死,通常使用在单独使用kill命令无法杀死的场景下,有时,kill -15也能生效
 --&gt; 僵尸进程是一个子进程已经终止,但父进程还没有被kill,无法被一个loged-on用户杀死--你无法杀死一个已经死的物件--但是init迟早会清理这些进程
 
@@ -1159,9 +1259,11 @@ cat是concatenate的缩写,获取一个文件的内容,显示到标准输出,当
 --&gt; -s参数是将多行空行显示为一行空行
 
 --&gt; 在一个管道中,直接使用重定向会比cat的效率更高
-</code></pre><pre tabindex=0><code>cat filename | tr a-z A-Z
-tr a-z A-Z &lt; filename
-</code></pre><pre><code>--&gt; tac是cat的反向命令,反向输出一个文件的内容(最后一行变为第一行,依次向上)
+    ----------------------------------------------------------------
+    cat filename | tr a-z A-Z
+    tr a-z A-Z &lt; filename
+    ----------------------------------------------------------------
+--&gt; tac是cat的反向命令,反向输出一个文件的内容(最后一行变为第一行,依次向上)
 
 rev
 将文件的每一行内容反向输出到标准输出,注意这个通tac功能是不一样的
@@ -1185,9 +1287,11 @@ rm
 --&gt; 当一个文件以'-'开头时,使用rm删除会失败;rm将以'-'的内容作为参数使用
     a.解决方式之一是在要删除文件的前面加上'--'(选项结束标识符)
     b.另一种方式是,在文件名前加上./,表示是在当前目录下的文件
-</code></pre><pre tabindex=0><code>rm -- -badname
-rm ./-badname
-</code></pre><pre><code>--&gt; 当使用-r参数时,表示从当前指定目录递归删除
+    ----------------------------------------------------------------
+    rm -- -badname
+    rm ./-badname
+    ----------------------------------------------------------------
+--&gt; 当使用-r参数时,表示从当前指定目录递归删除
     a.使用路径名称中包含变量的时候,尤其小心,当变量不存在时,有可能就变成了rm -rf /
     b.使用rm -rf *时需要注意;若命令执行时,当前工作路径不对,改命令结束后,效果将等同如rm -rf /
 
@@ -1224,19 +1328,22 @@ ln
 	a.删除或者重命名被链接文件后,硬链接不受影响,源文件的存储块内容并没有发生变化;但对于指向源文件名称的软链接来说,旧文件名称已经不存在,软链接将失效
 	b.软链接的优点是可以跨越文件系统进行链接,并且,不同于硬链接,软链接还可以指向文件夹,硬链接则不行
 --&gt; 链接的存在可以让脚本(或其他任何可执行的文件)通过不同的名称来调用(eg:/sbin/iptables -&gt; xtables-multi),通过名称来限定脚本执行哪部分功能
-</code></pre><pre tabindex=0><code>#!/bin/bash
-# hello.sh
-ln -s hello.sh goodbye
-HELLO_CALL=65
-GOODBYE_CALL=66
-if [ $0 = &#34;./goodbye&#34; ]; then
-	echo &#34;Good-bye!&#34;			# Some other goodbye-type commands, as appropriate.
-	exit $GOODBYE_CALL
-fi
+    ----------------------------------------------------------------
+    #!/bin/bash
+    # hello.sh
+    ln -s hello.sh goodbye
+    HELLO_CALL=65
+    GOODBYE_CALL=66
+    if [ $0 = &quot;./goodbye&quot; ]; then
+        echo &quot;Good-bye!&quot;			# Some other goodbye-type commands, as appropriate.
+        exit $GOODBYE_CALL
+    fi
+    
+    echo &quot;Hello!&quot;
+    exit $HELLO_CALL
+    ----------------------------------------------------------------
 
-echo &#34;Hello!&#34;
-exit $HELLO_CALL
-</code></pre><pre><code>man/info
+man/info
 获取帮助文档,info文档一般描述信息会比man文档更详尽
 --&gt; man文档的书写可以通过脚本来优化(abs-709)
 </code></pre><h3 id=11-高级命令><a href=#11-高级命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:11-高级命令 class=headings>#11. 高级命令</a></h3><pre><code>find 
@@ -1245,83 +1352,108 @@ exit $HELLO_CALL
 --&gt; 此处使用的-exec与shell自带命令exec别混淆了
 --&gt; 注意此处不是命令分隔使用到的';',find命令序列中';'是脱意的,为了确保shell将';'按照字面意思传递给find
 --&gt; 如果COMMAND中包含有{},则find将find匹配的路径或者文件名通过{}来替换;
-</code></pre><pre tabindex=0><code>find ~/ -name &#39;core*&#39; -exec rm {} \;
-find /etc -exec grep &#39;[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*&#39; {} \;
-find /home -type f -atime +5 -exec rm {} \;
-</code></pre><pre><code>时间匹配: find可以通过文件的时间戳进行查找匹配
+    ----------------------------------------------------------------
+    find ~/ -name 'core*' -exec rm {} \;
+    find /etc -exec grep '[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*' {} \;
+    find /home -type f -atime +5 -exec rm {} \;
+    ----------------------------------------------------------------
+--&gt; 时间匹配: find可以通过文件的时间戳进行查找匹配
 	mtime = last modification time of the target file
 	ctime = last status change time (via 'chmod' or otherwise)
 	atime = last access time
 	(-mtime -1表示前一天被修改过的文件)
-文件匹配: find可以通过文件类型进行查找匹配
+--&gt; 文件匹配: find可以通过文件类型进行查找匹配
 	f = regular file
 	d = directory
 	l = symbolic link, etc.
-</code></pre><pre tabindex=0><code>## 删除当前目录下包含特殊字符的文件
-find . -name &#39;*[+{;&#34;\\=?~()&lt;&gt;&amp;*|$ ]*&#39; -maxdepth 0 -exec rm -f &#39;{}&#39; \;
-## 通过inum删除文件
-inum=`ls -i | grep &#34;$1&#34; | awk &#39;{print $1}&#39;`
-find . -inum $inum -exec rm {} \;
-</code></pre><pre><code>xargs
+    ----------------------------------------------------------------
+    ## 删除当前目录下包含特殊字符的文件
+    find . -name '*[+{;&quot;\\=?~()&lt;&gt;&amp;*|$ ]*' -maxdepth 0 -exec rm -f '{}' \;
+    ## 通过inum删除文件
+    inum=`ls -i | grep &quot;$1&quot; | awk '{print $1}'`
+    find . -inum $inum -exec rm {} \;
+    ----------------------------------------------------------------
+
+xargs
 一个用来传递参数给命令的过滤器,同样也是一个集合命令的工具
 --&gt; xargs将数据流打散成足够小的块,用来给命令或者进程处理,可以将这个命令想成更加强大的后向引用
 --&gt; 在有些场景下,命令替换报too many arguements时,用xargs却可以使用
 --&gt; 一般场景下,xargs通过管道或者标准输入读取数据,但也可以通过一个文件的内容来获取
 --&gt; 默认传递给xargs的命令是echo,这表示当输入管道给到xargs时,换行符和一些其他空白字符会被跳过
-</code></pre><pre tabindex=0><code>bash$ ls -l | xargs
-total 0 -rw-rw-r-- 1 bozo bozo 0 Jan 29 23:58 file1 -rw-rw-r-- 1 bozo bozo 0 Jan...
-</code></pre><pre><code>--&gt; 命令ls | xargs -p -l gzip 将当前目录下的每个文件用gzip打包,每次一个,每进行一次会提示一次
+    ----------------------------------------------------------------
+    bash$ ls -l | xargs
+    total 0 -rw-rw-r-- 1 bozo bozo 0 Jan 29 23:58 file1 -rw-rw-r-- 1 bozo bozo 0 Jan...
+    ----------------------------------------------------------------
+--&gt; 命令ls | xargs -p -l gzip 将当前目录下的每个文件用gzip打包,每次一个,每进行一次会提示一次
 --&gt; xargs依次序处理传递给其的参数,一次一项
 --&gt; -n NN形式;限制每次传递给命令的参数数目,ls | xargs -n 3 echo -- 每次打印三个名字
 --&gt; 另外一个有用的参数是-0,通常和find -print0或者grep -lZ一同使用;这个场景下允许处理的参数中包含空白字符或者引用
-</code></pre><pre tabindex=0><code>find / -type f -print0 | xargs -0 grep -liwZ GUI | xargs -0 rm -f
-grep -rliwZ GUI / | xargs -0 rm -f
-</code></pre><pre><code>--&gt; -P选项允许并行执行命令,在多核机器中能够提高执行速度
-</code></pre><pre tabindex=0><code>ls *gif | xargs -t -n1 -P2 gif2png
-# Converts all the gif images in current directory to png.
-# Options:
-# =======
-# -t  Print command to stderr.
-# -n1 At most 1 argument per command line.
-# -P2 Run up to 2 processes simultaneously.
-</code></pre><pre><code>--&gt; 在find中使用,一对花括号的作用是作为占位符使用的
-</code></pre><pre tabindex=0><code>ls . | xargs -i -t cp ./{} $1
+    ----------------------------------------------------------------
+    find / -type f -print0 | xargs -0 grep -liwZ GUI | xargs -0 rm -f
+    grep -rliwZ GUI / | xargs -0 rm -f
+    ----------------------------------------------------------------
+--&gt; -P选项允许并行执行命令,在多核机器中能够提高执行速度
+    ----------------------------------------------------------------
+    ls *gif | xargs -t -n1 -P2 gif2png
+    # Converts all the gif images in current directory to png.
+    # Options:
+    # =======
+    # -t  Print command to stderr.
+    # -n1 At most 1 argument per command line.
+    # -P2 Run up to 2 processes simultaneously.
+    ----------------------------------------------------------------
+--&gt; 在find中使用,一对花括号的作用是作为占位符使用的
+    ----------------------------------------------------------------
+    ls . | xargs -i -t cp ./{} $1
+    
+    # -t is &quot;verbose&quot; (output command-line to stderr) option.
+    # -i is &quot;replace strings&quot; option.
+    # {} is a placeholder for output text.
+    # This is similar to the use of a curly-bracket pair in &quot;find.&quot;
+    ----------------------------------------------------------------
 
-# -t is &#34;verbose&#34; (output command-line to stderr) option.
-# -i is &#34;replace strings&#34; option.
-# {} is a placeholder for output text.
-# This is similar to the use of a curly-bracket pair in &#34;find.&#34;
-</code></pre><pre><code>expr
+expr
 通用表达式求值运算命令
 连接并对给出的命令选项和参数进行求值操作(各个参数之间必须用空格隔开)
 --&gt; 可进行的操作包括有: 算数运算,比较,字符或者逻辑运算
-</code></pre><pre tabindex=0><code>expr 3 + 5
-expr 5 % 3
-expr 1 / 0
-expr 5 \* 3                                     # 乘法运算,在expr表达式中,乘号需要脱意
-y=`expr $y + 1`                                 # 变量自增,等效于 let y=y+1 and y=$(($y+1))
-z=`expr substr $string $position $length`       # 获取变量string中position位置length长度的字符
-</code></pre><pre><code>--&gt; ':'运算符可以用来替代match;命令 b=`expr $a : [0-9]*`等效于 b=`expr match $a [0-9]*`
+    ----------------------------------------------------------------
+    expr 3 + 5
+    expr 5 % 3
+    expr 1 / 0
+    expr 5 \* 3                                     # 乘法运算,在expr表达式中,乘号需要脱意
+    y=`expr $y + 1`                                 # 变量自增,等效于 let y=y+1 and y=$(($y+1))
+    z=`expr substr $string $position $length`       # 获取变量string中position位置length长度的字符
+    ----------------------------------------------------------------
+--&gt; ':'运算符可以用来替代match;命令 b=`expr $a : [0-9]*`等效于 b=`expr match $a [0-9]*`
 </code></pre><h3 id=12-时间日期命令><a href=#12-时间日期命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:12-时间日期命令 class=headings>#12. 时间/日期命令</a></h3><pre><code>date
 打印当前时间和日期信息到标准输出,这个命令的格式化输出和解析选项很有用
 --&gt; -u选项显示UTC时间
 --&gt; date可以用来计算不同时间之间的时间间隔
 --&gt; date有大量的输出选项可供选择;比如%N是给出当前时间的纳秒格式,这个形式可以用来获取随机数
-</code></pre><pre tabindex=0><code>date +%N | sed -e &#39;s/000$//&#39; -e &#39;s/^0//&#39;
-date --date=&#39;6 days ago&#39;
-date --date=&#39;1 year ago&#39;
-</code></pre><pre><code>zdump
+    ----------------------------------------------------------------
+    date +%N | sed -e 's/000$//' -e 's/^0//'
+    date --date='6 days ago'
+    date --date='1 year ago'
+    ----------------------------------------------------------------
+
+zdump
 时区dump:打印指定时区的时间
-</code></pre><pre tabindex=0><code>bash$ zdump EST
-EST Tue Sep 18 22:09:22 2001 EST
-</code></pre><pre><code>time
+    ----------------------------------------------------------------
+    bash$ zdump EST
+    EST Tue Sep 18 22:09:22 2001 EST
+    ----------------------------------------------------------------
+
+time
 显示执行一个命令的准确时间
 --&gt; time不同于命令times,注意
-</code></pre><pre tabindex=0><code>bash$ time ls -l /
-real    0m0.004s
-user    0m0.004s
-sys     0m0.001s
-</code></pre><pre><code>touch
+    ----------------------------------------------------------------
+    bash$ time ls -l /
+    real    0m0.004s
+    user    0m0.004s
+    sys     0m0.001s
+    ----------------------------------------------------------------
+
+touch
 更新文件的访问/修改时间为系统/指定时间,同时具有新建一个文件的功能
 --&gt; 当文件zzz不存在时,touch zzz会创建一个大小为0的文件zzz;这种方式用来存储日期/时间戳很有用
 --&gt; touch命令等效于:&gt;&gt; newfile或者&gt;&gt; newfile(普通文件)
@@ -1331,9 +1463,12 @@ at
 at任务控制命令在指定的时间执行一系列指定的命令;命令类似于cron,at命令很适合只执行一次的命令
 --&gt; 使用-f选项或者&lt;输入重定向,at充文件中读取命令;文件应该是一个可执行的shell脚本,同时是非交互式脚本
 --&gt; 需要执行较多内容时,可以结合run-parts命令来实现
-</code></pre><pre tabindex=0><code>bash$ at 2:30 am Friday &lt; at-jobs.list
-job 2 at 2000-10-27 02:30
-</code></pre><pre><code>batch
+    ----------------------------------------------------------------
+    bash$ at 2:30 am Friday &lt; at-jobs.list
+    job 2 at 2000-10-27 02:30
+    ----------------------------------------------------------------
+
+batch
 batch命令类似于at命令,但要求在系统负载低于0.8时执行;类似于at,可以接-f选项
 
 cal
@@ -1363,33 +1498,42 @@ tsort
 
 uniq
 该命令移除文件中重复出现的行,通常会结合sort和管道一同使用
-</code></pre><pre tabindex=0><code>cat list-1 list-2 list-3 | sort | uniq &gt; final.list
-</code></pre><pre><code>--&gt; 使用-c选项,在输出结果中显示重复出现的次数
+    ----------------------------------------------------------------
+    cat list-1 list-2 list-3 | sort | uniq &gt; final.list
+    ----------------------------------------------------------------
+--&gt; 使用-c选项,在输出结果中显示重复出现的次数
 --&gt; sort INPUTFILE | uniq -c | sort -nr　命令打印出在INPUTFILE中出现的频次信息,使用场景为分析log文件或者字典列表等
-</code></pre><pre tabindex=0><code>sed -e &#39;s/\.//g&#39; -e &#39;s/\,//g&#39; -e &#39;s/ //g&#39; &#34;$1&#34; | tr &#39;A-Z&#39; &#39;a-z&#39; | sort | uniq -c | sort -nr
-</code></pre><pre><code>expand/unexpand
+    ----------------------------------------------------------------
+    sed -e 's/\.//g' -e 's/\,//g' -e 's/ //g' &quot;$1&quot; | tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr
+    ----------------------------------------------------------------
+
+expand/unexpand
 命令expand用来将tab展开为空格,通常与管道结合使用
 命令unexpand将空格转换为tab,是expand的反转命令
 
 cut
 展开文件指定区域的命令.命令类似于在awk结构中的print $N,但相比较之下,限制更多.在脚本中使用cut命令会比使用awk更简单.cut重要的选项-f和-d
-</code></pre><pre tabindex=0><code># 使用cut来获取挂载文件系统列表
-cut -d &#39; &#39; -f1,2 /etc/mtab
-# 使用cut列出OS和内核版本
-uname -a | cut -d&#34; &#34; -f1,3,11,12
-# 使用cut来解析email信息头部
-bash$ grep &#39;^Subject:&#39; read-messages | cut -c10-80
-Re: Linux suitable for mission-critical apps?
-MAKE MILLIONS WORKING AT HOME!!!
-Spam complaint
-Re: Spam complaint
-</code></pre><pre><code>--&gt; 甚至可以指定换行符作为分隔符
-</code></pre><pre tabindex=0><code>bash$ cut -d&#39;
-&#39; -f3,7,19 testfile
-This is line 3 of testfile.
-This is line 7 of testfile.
-This is line 19 of testfile.
-</code></pre><pre><code>--&gt; cut -d ' ' -f2,3 filename的结果等效于awk -F'[ ]' '{ print $2, $3 }' filename
+    ----------------------------------------------------------------
+    # 使用cut来获取挂载文件系统列表
+    cut -d ' ' -f1,2 /etc/mtab
+    # 使用cut列出OS和内核版本
+    uname -a | cut -d&quot; &quot; -f1,3,11,12
+    # 使用cut来解析email信息头部
+    bash$ grep '^Subject:' read-messages | cut -c10-80
+    Re: Linux suitable for mission-critical apps?
+    MAKE MILLIONS WORKING AT HOME!!!
+    Spam complaint
+    Re: Spam complaint
+    ----------------------------------------------------------------
+--&gt; 甚至可以指定换行符作为分隔符
+    ----------------------------------------------------------------
+    bash$ cut -d'
+    ' -f3,7,19 testfile
+    This is line 3 of testfile.
+    This is line 7 of testfile.
+    This is line 19 of testfile.
+    ----------------------------------------------------------------
+--&gt; cut -d ' ' -f2,3 filename的结果等效于awk -F'[ ]' '{ print $2, $3 }' filename
 
 paste
 用于将多个文件合成为一个文件,将合成的结果输出到标准输出
@@ -1398,23 +1542,26 @@ join
 这是一个特殊形式的paste命令;这个强大的程序允许按照一定的关联关系来合并两个文件内容,这实际上已经是一个简化版的关系数据库形式了
 --&gt; join命令只对两个文件进行操作，但只粘贴那些带有公共标记字段（通常是数字标签）的行，并将结果写入stdout
 --&gt; 要加入的文件应根据标记字段进行排序，以使匹配正常工作
-</code></pre><pre tabindex=0><code>File: 1.data
-100200300Shoes
-Laces
-Socks
+    ----------------------------------------------------------------
+    File: 1.data
+    100200300Shoes
+    Laces
+    Socks
+    
+    File: 2.data
+    100200300$40.00
+    $1.00
+    $2.00
+    
+    bash$ join 1.data 2.data
+    File: 1.data 2.data
+    100 Shoes $40.00
+    200 Laces $1.00
+    300 Socks $2.00
+    # 标识字段只出现一次
+    ----------------------------------------------------------------
 
-File: 2.data
-100200300$40.00
-$1.00
-$2.00
-
-bash$ join 1.data 2.data
-File: 1.data 2.data
-100 Shoes $40.00
-200 Laces $1.00
-300 Socks $2.00
-# 标识字段只出现一次
-</code></pre><pre><code>head
+head
 打印一个文件的启示内容到标准输出,默认行数是10,但允许设置不同数字
 --&gt; head有多个不同的参数可以使用,如-c(字符数),-n(行数)
 
@@ -1437,8 +1584,10 @@ grep
 --&gt; -o选项,仅打印匹配到的内容,不显示一整行
 --&gt; -q选项,不打印任何内容,在判断结构中使用很方便
 --&gt; 当仅搜索一个文件时,在输出结果中要将文件名一同打印,可以后接/dev/null作为第二个文件名
-</code></pre><pre tabindex=0><code>bash$ grep Linux osinfo.txt /dev/null
-</code></pre><pre><code>--&gt; grep匹配到相关内容后,返回值为0,这样可以结合判断结构来使用
+    ----------------------------------------------------------------
+    bash$ grep Linux osinfo.txt /dev/null
+    ----------------------------------------------------------------
+--&gt; grep匹配到相关内容后,返回值为0,这样可以结合判断结构来使用
 --&gt; 使用sed命令可以仿真grep的行为: sed -n /&quot;$1&quot;/p $file
 --&gt; 怎样让grep匹配两个不同的匹配模式,可以使用方式grep pattern1 | grep pattern2来实现
 --&gt; egrep等效于grep -E,允许使用扩展正则表达式来进行匹配,形式更加灵活
@@ -1449,18 +1598,21 @@ grep
 
 look
 look命令工作形式类似于grep,但是是基于字典(一个已排序的单词列表)进行查询;默认情况下,look在/usr/dict/words下进行匹配,但可以指定进行匹配的字典
-</code></pre><pre tabindex=0><code>file=words.database                  # Data file from which to read words to test.
-while [ &#34;$word&#34; != end ]; do         # Last word in data file.
-    read word
-    look $word &gt; /dev/null
-    lookup=$?
-    if [ &#34;$lookup&#34; -eq 0 ]; then
-        echo &#34;\&#34;$word\&#34; is valid.&#34;
-    else
-        echo &#34;\&#34;$word\&#34; is invalid.&#34;
-    fi
-done &lt;&#34;$file&#34;
-</code></pre><pre><code>sed/awk
+    ----------------------------------------------------------------
+    file=words.database                  # Data file from which to read words to test.
+    while [ &quot;$word&quot; != end ]; do         # Last word in data file.
+        read word
+        look $word &gt; /dev/null
+        lookup=$?
+        if [ &quot;$lookup&quot; -eq 0 ]; then
+            echo &quot;\&quot;$word\&quot; is valid.&quot;
+        else
+            echo &quot;\&quot;$word\&quot; is invalid.&quot;
+        fi
+    done &lt;&quot;$file&quot;
+    ----------------------------------------------------------------
+
+sed/awk
 脚本语言,非常适合用来处理文本文件和标准输出的内容
 sed
 非交互式的流编辑器,在batch(不需要用户介入的情况下运行一组命令)模式下允许使用很多ex命令,在脚本中使用很广泛
@@ -1474,25 +1626,33 @@ wc
 tr
 字符转化过滤器
 --&gt; 视情况决定是否需要使用引用或者括号,引号引用可以防止shell将属于tr的特殊字符先行处理了,括号必须被引起来,防止直接被展开
-</code></pre><pre tabindex=0><code>tr &#34;A-Z&#34; &#34;*&#34; &lt;filename 
-tr A-Z \* &lt;filename
-</code></pre><pre><code>--&gt; 接上-d选项,用于删除一系列的指定字符
+    ----------------------------------------------------------------
+    tr &quot;A-Z&quot; &quot;*&quot; &lt;filename 
+    tr A-Z \* &lt;filename
+    ----------------------------------------------------------------
+--&gt; 接上-d选项,用于删除一系列的指定字符
 --&gt; --squeeze-repeats(-s)选项用来删除连续的字符(保留第一个),这个选项用来移除多余的空白字符很有用
 --&gt; -c(补足)选项将未匹配的内容用指定的字符替代
-</code></pre><pre tabindex=0><code>bash$ echo &#34;acfdeb123&#34; | tr -c b-d +
-+c+d+b++++
-bash$ echo &#34;abcd2ef1&#34; | tr &#39;[:alpha:]&#39; -
-----2--1
-</code></pre><pre><code>fold
+    ----------------------------------------------------------------
+    bash$ echo &quot;acfdeb123&quot; | tr -c b-d +
+    +c+d+b++++
+    bash$ echo &quot;abcd2ef1&quot; | tr '[:alpha:]' -
+    ----2--1
+    ----------------------------------------------------------------
+
+fold
 将输入的行折叠成指定宽度的过滤器
 --&gt; 使用-s选项用来以空格作为隔断符,防止直接截断字符
-</code></pre><pre tabindex=0><code>b=`ls /usr/local/bin`
-$ echo $b | fold - -s -w 40
-cnpm compile cops-cli gitbook pacvim
-ptyping qr-filetransfer runenpass sle
-study s-tui t termtosvg tget tiv
-# 等效于echo $b | fmt -w $WIDTH
-</code></pre><pre><code>fmt
+    ----------------------------------------------------------------
+    b=`ls /usr/local/bin`
+    $ echo $b | fold - -s -w 40
+    cnpm compile cops-cli gitbook pacvim
+    ptyping qr-filetransfer runenpass sle
+    study s-tui t termtosvg tget tiv
+    # 等效于echo $b | fmt -w $WIDTH
+    ----------------------------------------------------------------
+
+fmt
 简单的格式化工具,用于将长行分割为多行
 
 column
@@ -1593,19 +1753,24 @@ bc
 bash无法进行浮点数计算,且缺少一些重要的运算功能,bc可以满足部分需求
 --&gt; bc可以用在脚本中,用来对变量进行计算获值variable=$(echo &quot;OPTIONS; OPERATIONS&quot; | bc)
 --&gt; 另外一种形式是结合here document的方式来作为输入
-</code></pre><pre tabindex=0><code>&lt;&lt; EOF
-18.33 * 19.78
-EOF
-`
-</code></pre><pre><code>awk
-另外一种进行浮点数运算的方式是使用awk命令
-</code></pre><pre tabindex=0><code>AWKSCRIPT=&#39; { printf( &#34;%3.7f\n&#34;, sqrt($1*$1 + $2*$2) ) } &#39;
-#           command(s) / parameters passed to awk
+    ----------------------------------------------------------------
+    &lt;&lt; EOF
+    18.33 * 19.78
+    EOF
+    ----------------------------------------------------------------
 
-# Now, pipe the parameters to awk.
-echo -n &#34;Hypotenuse of $1 and $2 = &#34;
-echo $1 $2 | awk &#34;$AWKSCRIPT&#34;
-</code></pre><pre><code>jot,seq
+awk
+另外一种进行浮点数运算的方式是使用awk命令
+    ----------------------------------------------------------------
+    AWKSCRIPT=' { printf( &quot;%3.7f\n&quot;, sqrt($1*$1 + $2*$2) ) } '
+    #           command(s) / parameters passed to awk
+    
+    # Now, pipe the parameters to awk.
+    echo -n &quot;Hypotenuse of $1 and $2 = &quot;
+    echo $1 $2 | awk &quot;$AWKSCRIPT&quot;
+    ----------------------------------------------------------------
+
+jot,seq
 生成一个整数序列,用户可以自定义步长和分隔符
 --&gt; seq -s : 5 指定分隔符为:,默认情况下是换行符
 --&gt; jot和seq都可以用在for循环中
@@ -1629,10 +1794,12 @@ command ---&gt; command ---&gt; |tee ---&gt; command ---&gt; ---&gt; output of p
 
 mkfifo
 命令创建一个命名管道,一个临时的first-in-first-out用于在不同的进程之间传递数据,一般情况下,一个进程向FIFO中写数据,另一个进程则从FIFO中读取数据
-</code></pre><pre tabindex=0><code>(cut -d&#39; &#39; -f1 | tr &#34;a-z&#34; &#34;A-Z&#34;) &gt;pipe2 &lt;pipe1 &amp;
-ls -l | tr -s &#39; &#39; | cut -d&#39; &#39; -f3,9- | tee pipe1 | cut -d&#39; &#39; -f2 | paste - pipe2
-rm -f pipe1
-rm -f pipe2
+    ----------------------------------------------------------------
+    (cut -d' ' -f1 | tr &quot;a-z&quot; &quot;A-Z&quot;) &gt;pipe2 &lt;pipe1 &amp;
+    ls -l | tr -s ' ' | cut -d' ' -f3,9- | tee pipe1 | cut -d' ' -f2 | paste - pipe2
+    rm -f pipe1
+    rm -f pipe2
+    ----------------------------------------------------------------
 </code></pre><h3 id=14-其他命令><a href=#14-其他命令 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:14-其他命令 class=headings>#14. 其他命令</a></h3><pre><code>groups
 显示当前用户属于哪些组
 
@@ -1689,13 +1856,16 @@ fuser
 获取当前正在访问给定文件,文件集,或者目录的进程(通过进程号显示)
 --&gt; 同-k选项一同使用时,杀掉这些进程,在插拔可移动设备的场景下使用较多
 --&gt; 同-n选项一同使用时,获取到当前在访问指定端口的进程,与nmap一同搭配使用非常有用
-</code></pre><pre tabindex=0><code># nmap localhost 
-PORT    STATE   SERVICE
-25/tcp  open    smtp
+    ----------------------------------------------------------------
+    # nmap localhost 
+    PORT    STATE   SERVICE
+    25/tcp  open    smtp
+    
+    # fuser -un tcp 25
+    25/tcp: 2095(root)
+    ----------------------------------------------------------------
 
-# fuser -un tcp 25
-25/tcp: 2095(root)
-</code></pre><pre><code>nmap
+nmap
 network mapper and port scanner,网络映射和端口扫描,查看指定主机开放的端口
 
 sync
@@ -1733,10 +1903,12 @@ lockfile
 
 flock
 命令给文件设置一个锁信息的公告,当命令执行完成之后,其他命令或者进程才能操作刚才的文件
-</code></pre><pre tabindex=0><code>flock $0 cat $0 &gt; lockfile__$0
-# Set a lock on the script the above line appears in,
-#+ while listing the script to stdout.
-</code></pre><pre><code>--&gt; 与lockfile命令不同的是,flock命令不会自动创建一个lock文件
+    ----------------------------------------------------------------
+    flock $0 cat $0 &gt; lockfile__$0
+    # Set a lock on the script the above line appears in,
+    #+ while listing the script to stdout.
+    ----------------------------------------------------------------
+--&gt; 与lockfile命令不同的是,flock命令不会自动创建一个lock文件
 
 mknod
 创建一个块设备或者字符设备(当在系统上新增了一个新的设备之后可能有必要这样做),MAKEDEV工具比mknod更容易使用,且具备相应的功能
@@ -1768,20 +1940,22 @@ ldd
 watch
 以特定间隔运行一个命令
 </code></pre><h2 id=特殊内容><a href=#特殊内容 class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:特殊内容 class=headings>特殊内容</a></h2><h3 id=1-here-document><a href=#1-here-document class=anchor-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96.0-59.27-59.26-59.27-155.7.0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757.0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037.0 01-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482.0 0120.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96.0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454.0 0020.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037.0 00-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639.0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href=#contents:1-here-document class=headings>#1. here document</a></h3><pre><code>&lt;&lt; 可以结合vi一同使用,如下所示:
-</code></pre><pre tabindex=0><code># Insert 2 lines in file, then save.
-#--------Begin here document-----------#
-vi $TARGETFILE &lt;&lt;x23LimitStringx23
-i
-This is line 1 of the example file.
-This is line 2 of the example file.
-^[
-ZZ
-x23LimitStringx23
-#----------End here document-----------#
-</code></pre><pre><code>可以使用vi +n的形式指定文件打开后在第几行
-</code></pre></div><ul class=post-copyright><li class="copyright-item author"><span class=copyright-item-text>作者</span>：<a href=https://ruisum.top class="p-author h-card" target=_blank rel=noopener>newiur</a></li><li class="copyright-item link"><span class=copyright-item-text>链接</span>：<a href=/tech/basics/bash%E5%AD%A6%E4%B9%A0/ target=_blank rel=noopener>https://liawne.github.io/tech/basics/bash学习/</a></li><li class="copyright-item license"><span class=copyright-item-text>许可</span>：<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a></li></ul></article><div class=updated-badge-container><span title="Updated @ 2022-03-27 17:50:27 CST" style=cursor:help><svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2022-03-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2022-03-27</text></g></svg></span></div><div class=post-tags><a href=/tags/bash/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>bash</a>
+    ----------------------------------------------------------------
+    # Insert 2 lines in file, then save.
+    #--------Begin here document-----------#
+    vi $TARGETFILE &lt;&lt;x23LimitStringx23
+    i
+    This is line 1 of the example file.
+    This is line 2 of the example file.
+    ^[
+    ZZ
+    x23LimitStringx23
+    #----------End here document-----------#
+    ----------------------------------------------------------------
+可以使用vi +n的形式指定文件打开后在第几行
+</code></pre></div><ul class=post-copyright><li class="copyright-item author"><span class=copyright-item-text>作者</span>：<a href=https://ruisum.top class="p-author h-card" target=_blank rel=noopener>newiur</a></li><li class="copyright-item link"><span class=copyright-item-text>链接</span>：<a href=/tech/basics/bash%E5%AD%A6%E4%B9%A0/ target=_blank rel=noopener>https://ruisum.top/tech/basics/bash学习/</a></li><li class="copyright-item license"><span class=copyright-item-text>许可</span>：<a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a></li></ul></article><div class=updated-badge-container><span title="Updated @ 2022-03-20 10:18:17 CST" style=cursor:help><svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2022-03-20</text><text x="915" y="140" textLength="650" transform="scale(.1)">2022-03-20</text></g></svg></span></div><div class=post-tags><a href=/tags/bash/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>bash</a>
 <a href=/tags/linux/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>linux</a>
-<a href=/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>基础知识</a></div><ul class=post-nav><li class=post-nav-prev><a href=/tech/cloud/docker%E5%AD%A6%E4%B9%A0/ rel=prev>&lt; docker学习</a></li><li class=post-nav-next><a href=/tech/ops/ansible%E5%AD%A6%E4%B9%A0/ rel=next>ansible及ansible-playbook的使用 ></a></li></ul><div class=load-comments><div id=load-comments>加载评论</div></div><div id=vcomments></div></div></main><div id=back-to-top class=back-to-top><a href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6.0-33.9L207 39c9.4-9.4 24.6-9.4 33.9.0l194.3 194.3c9.4 9.4 9.4 24.6.0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3.0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a></div><footer id=footer class=footer><div class=footer-inner><div class=site-info>©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3.0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;newiur</div><div class=busuanzi-site-uv-and-pv><span id=busuanzi_container_site_uv>本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7.0 128-57.3 128-128S294.7.0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2.0 422.4V464c0 26.5 21.5 48 48 48h352c26.5.0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id=busuanzi_value_site_uv></span></span>&nbsp;|&nbsp;<span id=busuanzi_container_site_pv>本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94.0 00-31.24 5 55.4 55.4.0 017.24 27 56 56 0 01-56 56 55.4 55.4.0 01-27-7.24A111.71 111.71.0 10288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35.0 000 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35.0 000-29.19zM288 4e2c-98.65.0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 4e2 288 4e2z"/></svg>&nbsp;<span id=busuanzi_value_site_pv></span></span></div><script src=https://sdk.jinrishici.com/v2/browser/jinrishici.js></script>
+<a href=/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/ rel=tag class=post-tags-link><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon tag-icon"><path d="M0 252.118V48C0 21.49 21.49.0 48 0h204.118a48 48 0 0133.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137.0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882.0L14.059 286.059A48 48 0 010 252.118zM112 64c-26.51.0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"/></svg>基础知识</a></div><ul class=post-nav><li class=post-nav-prev><a href=/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/ rel=prev>&lt; hexo多设备管理</a></li></ul><div class=load-comments><div id=load-comments>加载评论</div></div><div id=vcomments></div></div></main><div id=back-to-top class=back-to-top><a href=#><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon arrow-up"><path d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6.0-33.9L207 39c9.4-9.4 24.6-9.4 33.9.0l194.3 194.3c9.4 9.4 9.4 24.6.0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3.0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"/></svg></a></div><footer id=footer class=footer><div class=footer-inner><div class=site-info>©&nbsp;2022–2022&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon footer-icon"><path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3.0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/></svg>&nbsp;newiur</div><div class=busuanzi-site-uv-and-pv><span id=busuanzi_container_site_uv>本站访客数&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon busuanzi-site-uv"><path d="M224 256c70.7.0 128-57.3 128-128S294.7.0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2.0 422.4V464c0 26.5 21.5 48 48 48h352c26.5.0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>&nbsp;<span id=busuanzi_value_site_uv></span></span>&nbsp;|&nbsp;<span id=busuanzi_container_site_pv>本站访问量&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon busuanzi-site-pv"><path d="M288 144a110.94 110.94.0 00-31.24 5 55.4 55.4.0 017.24 27 56 56 0 01-56 56 55.4 55.4.0 01-27-7.24A111.71 111.71.0 10288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35.0 000 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35.0 000-29.19zM288 4e2c-98.65.0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 4e2 288 4e2z"/></svg>&nbsp;<span id=busuanzi_value_site_pv></span></span></div><script src=https://sdk.jinrishici.com/v2/browser/jinrishici.js></script>
 <text class=poem_sentence></text>
 <text class=poem_info></text>
 <script type=text/javascript>jinrishici.load(function(e){var t=document.querySelector(".poem_sentence"),n=document.querySelector(".poem_info");t.innerHTML=e.data.content,n.innerHTML="—  "+e.data.origin.title})</script></div></footer></div><script>function loadComments(){if(typeof Valine=="undefined"){var e=t=>{var e=document.createElement("script");e.defer=!0,e.crossOrigin="anonymous",Object.keys(t).forEach(n=>{e[n]=t[n]}),document.body.appendChild(e)};e({src:"https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js",onload:()=>{newValine()}})}else newValine()}function newValine(){new Valine({el:"#vcomments",appId:"vcDuMPUhVRWqDQ1hhpoM0FkX-gzGzoHsz",appKey:"BuTIa6PLYnI1Po1eBldfdcT1",placeholder:"Just go go",path:location.pathname,avatar:"mm",meta:["nick","mail","link"],pageSize:10,lang:"zh-cn",visitor:!1,highlight:!0,avatarForce:!1,recordIP:!0,serverURLs:'',emojiCDN:'',emojiMaps:{},enableQQ:!1,requiredFields:[]})}</script><script src=https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js></script>

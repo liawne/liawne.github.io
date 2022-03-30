@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://liawne.github.io/</link><description>newiur's blog</description><generator>Hugo 0.93.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 27 Mar 2022 22:52:36 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://liawne.github.io/rss.xml"/><item><title>Openssl Toolkit使用</title><link>https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</guid><pubDate>Thu, 24 Mar 2022 22:37:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
-&lt;p>工具下载: &lt;a href="https://liawne.github.io/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.93.2 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 30 Mar 2022 23:37:11 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>Openssl Toolkit使用</title><link>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</guid><pubDate>Thu, 24 Mar 2022 22:37:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
+&lt;p>工具下载: &lt;a href="https://ruisum.top/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="说明">说明&lt;/h2>
 &lt;p>&lt;code>openssl-toolkit&lt;/code> 是一个封装好的 &lt;code>openssl&lt;/code> 命令行工具(&lt;code>shell&lt;/code> 脚本), 可以用来执行证书管理等相关任务.&lt;/p>
@@ -102,6 +102,10 @@
 &lt;/span>&lt;span class="lnt">30
 &lt;/span>&lt;span class="lnt">31
 &lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为, 以下 ${pass} 为执行过程中需要手动输入的密码&lt;/span>
@@ -111,15 +115,19 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># genrsa : 生成一个 rsa key 文件, 也即密钥文件, 此处只会生成私钥文件, 不会生成公钥, 因为公钥提取自私钥&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -passout: 对生成的 RSA 秘钥文件施加密码保护, 结合 pass 使用&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pass:${pass} : ${pass} 为交互输入时给定的密码, 这里作用是设置私钥的密码&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -des3: Triple-DES Cipher, 指定加密私钥文件用的算法, 三重数据加密算法的意思, 对私钥加密密码 ${pass} 应用三次DES加密算法&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -des3: Triple-DES Cipher, 指定加密私钥文件用的算法, 三重数据加密算法的意思, 对私钥加密密码 ${pass} &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 应用三次DES加密算法&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2048: 指生成多少位的私钥, 还可以为512/1024等&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl req -sha256 -new -key server.key -out server.csr -passin pass:&lt;span class="si">${&lt;/span>&lt;span class="nv">pass&lt;/span>&lt;span class="si">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 2. 通过 server.key 私钥, 生成 server.csr 文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 如果要一个 CA(Certificate Authority) 认证机构颁发 CRT 证书的话, 需要先提供一个 CSR(Certificate Signing Request) 请求文件.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 如果要一个 CA(Certificate Authority) 认证机构颁发 CRT 证书的话, 需要先提供&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 一个 CSR(Certificate Signing Request) 请求文件.&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 这个 CSR 请求文件中, 会包含公钥(Public Key), 以及一些申请者信息 (DN Distingusied Name).&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># DN 信息中最重要的部分是 Common Name (CN), 需要与后续安放 CRT 证书的服务器 FQDN(Fully Qualified Domain Name) 完全一致才行. &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># DN 信息中最重要的部分是 Common Name (CN), 需要与后续安放 CRT 证书的服务器 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># FQDN(Fully Qualified Domain Name) 完全一致才行. &lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># openssl-toolkit 会在执行过程中要求输入 DN 信息, 请按实际情况填写相应内容.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># req: PKCS#10 X.509 CSR 管理相关&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -new: 生成一个新的 CSR 请求文件&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -key: 指定已有的私钥文件&lt;/span>
@@ -226,14 +234,16 @@
 &lt;/span>&lt;span class="lnt">4
 &lt;/span>&lt;span class="lnt">5
 &lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 实际使用命令为&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ openssl crl2pkcs7 -nocrl -certfile server.pem -out server.p7b
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># crl2pkcs7: CRL to PKCS#7&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># -nocrl: 通常 CRL 包含在输出文件中. 使用此选项时, 输出文件中不会包含 CRL, 并且不会从输入文件中读取 CRL.&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># crl(Certificate Revocation List): 证书吊销列表, 是 PKI 系统中的一个结构化数据文件, 该文件包含了证书颁发机构 (CA) 已经吊销的证书的序列号及其吊销日期. &lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># CRL 文件中还包含证书颁发机构信息、吊销列表失效时间和下一次更新时间, 以及采用的签名算法等.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># crl: (Certificate Revocation List)证书吊销列表, 是 PKI 系统中的一个结构化数据文件, &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 该文件包含了证书颁发机构 (CA) 已经吊销的证书的序列号及其吊销日期. CRL 文件中还包含证书颁发机构信息、&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 吊销列表失效时间和下一次更新时间, 以及采用的签名算法等.&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
@@ -520,9 +530,8 @@
 &lt;li>
 &lt;p>什么是 &lt;code>DN&lt;/code>: &lt;code>Distingusied Name&lt;/code>
 专有名称 (DN) 是描述证书中的标识信息的术语, 是证书本身的一部分.&lt;/p>
-&lt;p>证书包含证书所有者或请求者的 &lt;code>DN&lt;/code> 信息和颁发证书的 &lt;code>CA&lt;/code>（称为颁发者 &lt;code>DN&lt;/code>）. 根据颁发证书的 &lt;code>CA&lt;/code> 的标识策略, &lt;code>DN&lt;/code> 可以包含各种信息.&lt;/p>
-&lt;p>每个 &lt;code>CA&lt;/code> 都有一个策略来确定 &lt;code>CA&lt;/code> 需要哪些识别信息来颁发证书. 一些公共 &lt;code>Internet&lt;/code> 证书颁发机构可能需要很少的信息, 例如姓名和电子邮件地址. 其他公共 &lt;code>CA&lt;/code> 可能需要更多信息, 并要求在颁发证书之前更严格地证明该识别信息. 例如，支持公钥基础设施交换 (&lt;code>PKIX&lt;/code>) 标准的 &lt;code>CA&lt;/code> 可能要求请求者在颁发证书之前通过注册机构 (&lt;code>RA&lt;/code>) 验证身份信息. 因此, 如果划接受证书并将其用作凭证, 需要查看 &lt;code>CA&lt;/code> 的标识要求来确定其要求是否符合自身的安全需求.&lt;/p>
-&lt;p>可以使用数字证书管理器 (&lt;code>DCM&lt;/code>) 来操作私有证书颁发机构并颁发私有证书. 此外，还可以使用 &lt;code>DCM&lt;/code> 为公共 &lt;code>Internet CA&lt;/code> 为颁发的证书生成 &lt;code>DN&lt;/code> 信息和密钥对.&lt;/p>
+&lt;p>向不同的 &lt;code>CA&lt;/code> 申请证书, 对应要求的 &lt;code>DN&lt;/code> 信息不一样.&lt;/p>
+&lt;p>每个 &lt;code>CA&lt;/code> 都有一个策略来确定 &lt;code>CA&lt;/code> 需要哪些识别信息来颁发证书. 像电子邮件地址这类需要的信息就很少, 其他的一些公共 &lt;code>CA&lt;/code> 可能需要更多的信息, 并在颁发证书之前要严格地证明该识别信息.&lt;/p>
 &lt;p>&lt;strong>为任一类型的证书提供的 DN 信息包括：&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Certificate owner's common name&lt;/li>
@@ -599,13 +608,13 @@
 &lt;/table>
 &lt;h2 id="cacacrt单双向认证">&lt;code>CA&lt;/code>/&lt;code>ca.crt&lt;/code>/单双向认证&lt;/h2>
 &lt;blockquote>
-&lt;p>这一段是截取 &lt;a href="https://blog.csdn.net/espressif/article/details/78541410">SSL-TLS 双向认证：SSL-TLS 工作原理&lt;/a> 中的部分内容, 因为已经讲解的很清楚了, 就不再自己复述一遍了&lt;/p>
+&lt;p>这一段是截取 &lt;a href="https://blog.csdn.net/espressif/article/details/78541410">SSL-TLS 双向认证：SSL-TLS 工作原理&lt;/a> 中的部分内容, 因为已经讲解的很清楚, 直接粘贴了&lt;/p>
 &lt;/blockquote>
-&lt;p>&lt;code>CA&lt;/code> 全称为 &lt;code>Certificate Authotiry&lt;/code>, 证书授权中心, 又被成为根证书. 它类似于工商管理局, 给公司企业颁发营业执照.
+&lt;p>&lt;code>CA&lt;/code> 全称为 &lt;code>Certificate Authotiry&lt;/code>, 证书授权中心, 又被称为根证书. 它类似于工商管理局, 给公司企业颁发营业执照.
 &lt;code>CA&lt;/code> 有两大主要特性：&lt;/p>
 &lt;ul>
-&lt;li>&lt;code>CA&lt;/code> 本身是受国际认可, 受信任的&lt;/li>
-&lt;li>&lt;code>CA&lt;/code> 需要给它受信任的对象颁发证书&lt;/li>
+&lt;li>&lt;code>CA&lt;/code> 本身是受国际认可, 可以被信任的&lt;/li>
+&lt;li>&lt;code>CA&lt;/code> 需要给信任的对象颁发证书&lt;/li>
 &lt;/ul>
 &lt;p>哪里可以查看证书:&lt;/p>
 &lt;ul>
@@ -630,7 +639,7 @@
 &lt;li>&lt;a href="https://www.ibm.com/docs/en/i/7.1?topic=concepts-distinguished-name">Distinguished name&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://en.wikipedia.org/wiki/Certificate_signing_request">Certificate_signing_request&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://blog.csdn.net/espressif/article/details/78541410">SSL-TLS 双向认证：SSL-TLS 工作原理&lt;/a>&lt;/li>
-&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>什么是PFX文件</title><link>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</guid><pubDate>Wed, 23 Mar 2022 22:30:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/certificate/">certificate</category><category domain="https://ruisum.top/tags/openssl/">openssl</category><category domain="https://ruisum.top/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://ruisum.top/tags/ca/">CA</category></item><item><title>什么是PFX文件</title><link>https://ruisum.top/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</link><guid isPermaLink="true">https://ruisum.top/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpfx%E6%96%87%E4%BB%B6/</guid><pubDate>Wed, 23 Mar 2022 22:30:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>&lt;code>PFX&lt;/code> 文件是 &lt;code>PKCS#12&lt;/code> 格式的证书, 它包含 &lt;code>SSL&lt;/code> 证书（公钥）和相应的私钥.&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;code>PKCS#12&lt;/code> 是一个容器标准, 它可以保存 &lt;code>X509&lt;/code> 客户端证书和相应的私钥, 以及（可选）签署 &lt;code>X509&lt;/code> 客户端证书的 &lt;code>CA&lt;/code> 的 &lt;code>X509&lt;/code> 证书&lt;/p>
@@ -687,7 +696,7 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/pfx/">PFX</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>什么是PEM文件</title><link>https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/</guid><pubDate>Tue, 22 Mar 2022 22:30:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/certificate/">certificate</category><category domain="https://ruisum.top/tags/pfx/">PFX</category><category domain="https://ruisum.top/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://ruisum.top/tags/openssl/">openssl</category><category domain="https://ruisum.top/tags/ca/">CA</category></item><item><title>什么是PEM文件</title><link>https://ruisum.top/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/</link><guid isPermaLink="true">https://ruisum.top/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/</guid><pubDate>Tue, 22 Mar 2022 22:30:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>PEM (&lt;code>Privacy Enhanced Mail&lt;/code>的缩写)文件最初是为了确保电子邮件安全而发明的, 现在它是一个互联网安全标准. PEM 文件是 X.509 证书、CSR(&lt;code>certificate signing request&lt;/code>) 和加密密钥的最常见格式.&lt;/p>
 &lt;h2 id="什么是-pem-文件">什么是 PEM 文件&lt;/h2>
 &lt;p>PEM 文件是一个文本文件, 文件中包含一个或多个采用 Base64 ASCII 编码的条目, 每个条目都有纯文本的页眉和页脚&lt;/p>
@@ -969,21 +978,21 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;/li>
-&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/pem/">PEM</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/openssl/">openssl</category><category domain="https://liawne.github.io/tags/ca/">CA</category></item><item><title>几种不同的证书编码格式</title><link>https://liawne.github.io/tech/certificate/x509%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%81%E4%B9%A6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</link><guid isPermaLink="true">https://liawne.github.io/tech/certificate/x509%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%81%E4%B9%A6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</guid><pubDate>Tue, 22 Mar 2022 21:13:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="介绍">介绍&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/certificate/">certificate</category><category domain="https://ruisum.top/tags/pem/">PEM</category><category domain="https://ruisum.top/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://ruisum.top/tags/openssl/">openssl</category><category domain="https://ruisum.top/tags/ca/">CA</category></item><item><title>几种不同的证书编码格式</title><link>https://ruisum.top/tech/certificate/x509%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%81%E4%B9%A6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</link><guid isPermaLink="true">https://ruisum.top/tech/certificate/x509%E5%87%A0%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E8%AF%81%E4%B9%A6%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/</guid><pubDate>Tue, 22 Mar 2022 21:13:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="介绍">介绍&lt;/h2>
 &lt;p>通常来说, 所有 &lt;code>SSL&lt;/code> 证书都被视为 &lt;code>X.509&lt;/code> 证书的类型. 这些数字证书具有不同的文件扩展名和格式.&lt;/p>
 &lt;h2 id="分类">分类&lt;/h2>
 &lt;ul>
 &lt;li>
 &lt;p>&lt;strong>Base64 (ASCII)&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>PEM&lt;/strong>
+&lt;li>&lt;strong>PEM&lt;/strong>: 由 &lt;code>RFC&lt;/code> 管理, 开源软件优先使用, 因为它是基于文本的, 因此不太容易出现翻译/传输错误. 可以有多种扩展名（&lt;code>.pem、.key、.cer、.cert&lt;/code> 等）
 &lt;ul>
 &lt;li>.pem&lt;/li>
 &lt;li>.crt&lt;/li>
 &lt;li>.ca-bundle&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>&lt;strong>PKCS#7&lt;/strong>
+&lt;li>&lt;strong>PKCS#7&lt;/strong>: &lt;code>Java&lt;/code> 使用并受 &lt;code>Windows&lt;/code> 支持的开放标准. 不包含私钥内容.
 &lt;ul>
 &lt;li>.p7b&lt;/li>
 &lt;li>.p7s&lt;/li>
@@ -995,13 +1004,13 @@
 &lt;li>
 &lt;p>&lt;strong>Binary&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>DER&lt;/strong>
+&lt;li>&lt;strong>DER&lt;/strong>: &lt;code>PEM&lt;/code> 的父格式, 可以将其视为 &lt;code>base64&lt;/code> 编码的 &lt;code>PEM&lt;/code> 文件的二进制版本. 在 &lt;code>Windows&lt;/code> 之外不经常使用.
 &lt;ul>
 &lt;li>.der&lt;/li>
 &lt;li>.cer&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;li>&lt;strong>PKCS#12&lt;/strong>
+&lt;li>&lt;strong>PKCS#12&lt;/strong>: 一种 &lt;code>Microsoft&lt;/code> 私有标准, 后被纳入 &lt;code>RFC&lt;/code>, 与纯文本 &lt;code>PEM&lt;/code> 格式相比, 安全性得到增强. 可以包含私钥和证书链内容. &lt;code>Windows&lt;/code> 系统优先使用, 可通过 &lt;code>openssl&lt;/code> 自由转换为PEM格式.
 &lt;ul>
 &lt;li>.pfx&lt;/li>
 &lt;li>.p12&lt;/li>
@@ -1010,18 +1019,16 @@
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>*.pem,*.crt,*.ca-bundle,*.cer,*.p7b,*.p7s&lt;/strong> 等文件是使用 &lt;code>base64 (ASCII)&lt;/code> 编码的 &lt;code>X.509&lt;/code> 数字证书文件.&lt;/p>
-&lt;p>&lt;strong>*.der,*.cer,*.p12,*.pfx&lt;/strong> 等文件是二进制编码&lt;/p>
 &lt;h2 id="单独说明">单独说明&lt;/h2>
 &lt;ul>
 &lt;li>&lt;code>PEM&lt;/code> 格式: 查看&lt;a href="https://www.ruisum.top/tech/certificate/%E4%BB%80%E4%B9%88%E6%98%AFpem%E6%96%87%E4%BB%B6/">什么是PEM文件&lt;/a>&lt;/li>
 &lt;li>&lt;code>P7B/PKCS#7&lt;/code> 格式: &lt;code>P7B/PKCS#7&lt;/code> 格式的证书以 &lt;code>Base64 ASCII&lt;/code> 编码进行编码, 它们通常具有 &lt;code>.p7b&lt;/code> 或 &lt;code>.p7c&lt;/code> 作为文件扩展名. 将 &lt;code>PKCS#7&lt;/code> 格式的证书分开的原因在于, 只有证书才能以这种格式存储, 而私钥则不能. 换句话说, 一个 &lt;code>P7B&lt;/code> 文件将只包含证书和链证书.
 &lt;blockquote>
-&lt;p>具有 &lt;code>P7B/PKCS#7&lt;/code> 格式的证书包含在&amp;quot;—-BEGIN PKCS7--&amp;quot;和&amp;quot;--END PKCS7--&amp;quot;语句之间. &lt;code>Microsoft Windows&lt;/code> 和 &lt;code>Java Tomcat&lt;/code> 是使用这种格式的 &lt;code>SSL&lt;/code> 证书的最常见平台.&lt;/p>
+&lt;p>具有 &lt;code>P7B/PKCS#7&lt;/code> 格式的证书包含在&amp;quot;--BEGIN PKCS7--&amp;quot;和&amp;quot;--END PKCS7--&amp;quot;语句之间. &lt;code>Microsoft Windows&lt;/code> 和 &lt;code>Java Tomcat&lt;/code> 是使用这种格式的 &lt;code>SSL&lt;/code> 证书的最常见平台.&lt;/p>
 &lt;/blockquote>
 &lt;/li>
 &lt;li>&lt;code>DER&lt;/code> 格式: DER 证书格式代表 &lt;code>distinguished encoding rules&lt;/code>, 是 &lt;code>PEM&lt;/code> 格式证书的二进制形式. &lt;code>DER&lt;/code> 格式可以包含所有类型的证书和私钥, 大多使用 &lt;code>.cer&lt;/code> 和 &lt;code>.der&lt;/code> 扩展名. &lt;code>DER&lt;/code> 证书格式最常用于基于 &lt;code>Java&lt;/code> 的平台.&lt;/li>
-&lt;li>&lt;code>PFX/P12/PKCS#12&lt;/code> 格式: &lt;code>PFX/P12/PKCS#12&lt;/code> 格式 —— 都是指个人信息交换格式 —— 是存储服务器证书的二进制格式, 中间证书和私钥在一个受密码保护的 &lt;code>pfx&lt;/code> 或 &lt;code>.p12&lt;/code> 文件中. 这些文件通常在 &lt;code>Windows&lt;/code> 平台上使用，用来允许导入和导出证书及私钥.&lt;/li>
+&lt;li>&lt;code>PFX/P12/PKCS#12&lt;/code> 格式: 是一种受密码保护的容器格式, 包含公共和私有证书对. 和 &lt;code>.pem&lt;/code> 文件不同, 这个容器是完全加密的.&lt;code>PFX/P12/PKCS#12&lt;/code> 格式 —— 都是指个人信息交换格式 —— 是存储服务器证书的二进制格式. 这些文件通常在 &lt;code>Windows&lt;/code> 平台上使用，用来导入和导出证书及私钥.&lt;/li>
 &lt;/ul>
 &lt;h2 id="不同格式的转换">不同格式的转换&lt;/h2>
 &lt;p>因为以下两个原因, 存在不同编码格式证书的互相转换需求:&lt;/p>
@@ -1035,13 +1042,17 @@
 &lt;ul>
 &lt;li>&lt;code>SSL&lt;/code>: &lt;code>Secure Socket Layer&lt;/code> 安全套接字层&lt;/li>
 &lt;li>&lt;code>TLS&lt;/code>: &lt;code>Transport Layer Security&lt;/code> 传输层安全协议&lt;/li>
+&lt;li>&lt;code>CSR&lt;/code>: &lt;code>Certificate Signing Request&lt;/code> 证书签名请求, 实际格式是 &lt;a href="https://www.rfc-editor.org/rfc/rfc2986">RFC 2986&lt;/a> 中定义的 &lt;code>PKCS10&lt;/code>, 它包括所请求证书的部分/全部关键细节, 例如&lt;code>subject, organization, state&lt;/code>诸如此类, 以及要签署的证书的公钥. 这些由 CA 签名并返回证书, 返回的证书是公共证书（包括公钥但不包括私钥）,返回的证书可以有多种格式.&lt;/li>
+&lt;li>&lt;code>key&lt;/code>: 这是一个（通常）&lt;code>PEM&lt;/code> 格式的文件, 仅包含特定证书的私钥, 并且只是一个惯用名称, 而不是标准化名称. 安装 &lt;code>apache&lt;/code> 相关软件时, 通常可以在 &lt;code>/etc/ssl/private&lt;/code> 中找到. 这些文件的权限非常重要, 如果设置错误, 有些程序会拒绝加载这些证书.&lt;/li>
+&lt;li>&lt;code>PKCS&lt;/code>: &lt;code>Public-Key Cryptography Standards&lt;/code> 公钥密码标准&lt;/li>
+&lt;li>&lt;code>CRL&lt;/code>: &lt;code>certificate revocation list&lt;/code> 证书吊销清单, 证书颁发机构生成这些内容作为证书到期前, 取消授权证书的一种方式.&lt;/li>
 &lt;/ul>
 &lt;p>本文内容参考自:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://comodosslstore.com/resources/a-ssl-certificate-file-extension-explanation-pem-pkcs7-der-and-pkcs12/">A SSL Certificate File Extension Explanation: PEM, PKCS7, DER, and PKCS#12
 &lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://serverfault.com/questions/9708/what-is-a-pem-file-and-how-does-it-differ-from-other-openssl-generated-key-file">What is a Pem file and how does it differ from other OpenSSL Generated Key File Formats?&lt;/a>&lt;/li>
-&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/certificate/">certificate</category><category domain="https://liawne.github.io/tags/x509/">X509</category><category domain="https://liawne.github.io/tags/ca/">CA</category><category domain="https://liawne.github.io/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://liawne.github.io/tags/%E5%8A%A0%E5%AF%86/">加密</category></item><item><title>vim 打开 txt 文件乱码</title><link>https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</link><guid isPermaLink="true">https://liawne.github.io/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</guid><pubDate>Sun, 20 Mar 2022 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="背景">背景&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/certificate/">certificate</category><category domain="https://ruisum.top/tags/x509/">X509</category><category domain="https://ruisum.top/tags/ca/">CA</category><category domain="https://ruisum.top/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://ruisum.top/tags/%E5%8A%A0%E5%AF%86/">加密</category></item><item><title>vim 打开 txt 文件乱码</title><link>https://ruisum.top/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</guid><pubDate>Sun, 20 Mar 2022 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="背景">背景&lt;/h2>
 &lt;p>使用 vim 打开 windows 上编辑的 txt 文件, 出现下面的乱码现象
 &lt;img src="https://raw.githubusercontent.com/liawne/blog_images/master/2022/03/20220320-1054.png" alt="vim显示乱码">
 在 manjaro 的 kate 中打开, 可以正常显示
@@ -1126,7 +1137,7 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">fileencodings&lt;/span>&lt;span class="o">=&lt;/span>utf-8,ucs-bom,gb2312,cp936
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/miscell/">miscell</category><category domain="https://liawne.github.io/tags/vim/">vim</category><category domain="https://liawne.github.io/tags/%E8%A7%A3%E7%A0%81/">解码</category></item><item><title>Kubernetes学习笔记</title><link>https://liawne.github.io/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><guid isPermaLink="true">https://liawne.github.io/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid><pubDate>Sun, 13 Mar 2022 22:04:30 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="devops核心要点及kubernetes架构概述">Devops核心要点及kubernetes架构概述&lt;/h2>
+&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/miscell/">miscell</category><category domain="https://ruisum.top/tags/vim/">vim</category><category domain="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/">解码</category></item><item><title>Kubernetes学习笔记</title><link>https://ruisum.top/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link><guid isPermaLink="true">https://ruisum.top/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid><pubDate>Sun, 13 Mar 2022 22:04:30 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="devops核心要点及kubernetes架构概述">Devops核心要点及kubernetes架构概述&lt;/h2>
 &lt;p>1, ansible:应用编排工具&lt;/p>
 &lt;ul>
 &lt;li>可以安装,配置应用&lt;/li>
@@ -2021,7 +2032,7 @@ command: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;sed -i &amp;
 command: [&amp;#34;nginx&amp;#34;]
 args: [&amp;#34;-g&amp;#34;, &amp;#34;daemon off&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;/etc/nginx/nginx.conf&amp;#34;] -----------&amp;gt;注意不要和lifecycle的command有强依赖
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ul></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/cloud/">cloud</category><category domain="https://liawne.github.io/tags/cloud/">cloud</category><category domain="https://liawne.github.io/tags/docker/">docker</category><category domain="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</category><category domain="https://liawne.github.io/tags/kubernetes/">kubernetes</category></item><item><title>docker学习</title><link>https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://liawne.github.io/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</guid><pubDate>Thu, 10 Mar 2022 22:01:26 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/cloud/">cloud</category><category domain="https://ruisum.top/tags/cloud/">cloud</category><category domain="https://ruisum.top/tags/docker/">docker</category><category domain="https://ruisum.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</category><category domain="https://ruisum.top/tags/kubernetes/">kubernetes</category></item><item><title>docker学习</title><link>https://ruisum.top/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://ruisum.top/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</guid><pubDate>Thu, 10 Mar 2022 22:01:26 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
 &lt;p>1, LXC(linux container): linux容器&lt;/p>
 &lt;p>2, 虚拟化类型:&lt;/p>
 &lt;ul>
@@ -3371,1751 +3382,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;li>--cpuset-cpus 限制在哪些核上&lt;/li>
 &lt;li>-- cpu-shares 配置为共享方式(各个容器共享宿主机CPU)&lt;/li>
 &lt;/ul>
-&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/cloud/">cloud</category><category domain="https://liawne.github.io/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</category><category domain="https://liawne.github.io/tags/docker/">docker</category><category domain="https://liawne.github.io/tags/cloud/">cloud</category></item><item><title>learning bash via abs</title><link>https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://liawne.github.io/tech/basics/bash%E5%AD%A6%E4%B9%A0/</guid><pubDate>Sun, 06 Mar 2022 10:42:55 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
-&lt;h3 id="1-特殊字符使用">#1. 特殊字符使用&lt;/h3>
-&lt;pre tabindex="0">&lt;code># --&amp;gt; 注释(不包括#!)
---&amp;gt; 变量替换使用 echo ${PATH#*:}
-; --&amp;gt; 命令分隔符,用于连接多个命令
-;; --&amp;gt; 用于终止一个case语句
-. --&amp;gt; 等同于source命令
---&amp;gt; 可作为隐藏文件的文件名开头
---&amp;gt; 相对路径的表示,当前路径和父目录路径
---&amp;gt; 匹配单个字符
-&amp;#39;&amp;#39; --&amp;gt; 忽略所有特殊字符,全部引用
-&amp;#34;&amp;#34; --&amp;gt; 忽略除去`,$,\外所有的特殊字符,部分引用
-, --&amp;gt; 连接一串运算,只返回最后一个的结果
-let &amp;#34;t2 = ((a = 9, 15 / 3))&amp;#34; ## set &amp;#34;a=9&amp;#34; and &amp;#34;t2 = 15 / 3&amp;#34;
---&amp;gt; for file in /{,usr/}bin/*calc ## 与{}一起使用,用作选择的一种,简略代码
-1.1 变量替换中的大小写替换
-echo ${var,} --&amp;gt; 第一个字符小写
-echo ${var,,} --&amp;gt; 所有字符小写
-echo ${var^} --&amp;gt; 第一个字符大写
-echo ${var^^} --&amp;gt; 所有字符大写
-\ --&amp;gt; 脱意符,除去特殊字符的含义,\X等效与&amp;#39;X&amp;#39;
-` --&amp;gt; 运算符,将命令的输出结果作为内容传递给变量
-: --&amp;gt; 空命令,no op,执行结果返回值为0
---&amp;gt; 在if/then记过中作为占位符使用
-if condition;then :;else action;done
---&amp;gt; 为需要二进制文件存在的场合提供占位符
-: ${username=`whoami`} | : ${1?&amp;#34;Usage: $0 ARGUMENT&amp;#34;}
---&amp;gt; 作为切片使用,同python中的切片
-${var:1} ${var:3:3}
---&amp;gt; 同重定向一同使用,用于清空一个文件而不更改其权限,如果文件不存在,则创建该文件
-: &amp;gt; /tmp/testfile
---&amp;gt; 可以用作注释符使用,但与#不同,:仍然会检查注释内容中命令是否正确
---&amp;gt; 用作/etc/passwd文件和$PATH的分隔符
-! --&amp;gt; 更改命令返回值,反转test命令的含义
---&amp;gt; ${!variable},获取变量$variable的变量值
---&amp;gt; 调用历史命令,在脚本中无法使用
-* --&amp;gt; 通配符,用以指代在给定的目录下的任何文件
---&amp;gt; 在正则表达式中,表示任意数量的(包括0)xxx
---&amp;gt; 运算符,**便是乘方
-? --&amp;gt; 在双括号结构中,可以用做判断
-(( var0 = var1&amp;lt;98?9:21 ))
---&amp;gt; 变量替换,当parameter不存在是,打印err_msg内容,返回值为1,两种形式的差别仅当parameter被声明且为空值时有差别
-${parameter?err_msg}, ${parameter:?err_msg}
---&amp;gt; 通配符,给定目录中的单字符文件名,在扩展正则表达式中代表单个字符
-$ --&amp;gt; 变量替换
---&amp;gt; 锚定符,代表行尾
-${} --&amp;gt; 参数替换
-$* --&amp;gt; 位置参数
-$@ --&amp;gt; 位置参数
-$? --&amp;gt; 命令返回值
-$$ --&amp;gt; 进程ID
-() --&amp;gt; 小括号中的一组命令开启一个子shell,在脚本当中,其他部分无法读取括号中定义的变量
---&amp;gt; 用于数组的初始化
-Array=(e1 e2 e3)
-{} --&amp;gt; 大括号展开
-echo {file1,file2}\ :{\ A,&amp;#34; B&amp;#34;,&amp;#39; C&amp;#39;}
---&amp;gt; 扩展大括号展开
-echo {a..e}
-echo {1..10..2} 显示10以内的奇数，步长为2
---&amp;gt; 代码块,内联组(inline group), anonymous function, the variate in the inline group \
-can be seen in the scripts anywhere
-{ read line1
-read line2
-} &amp;lt; /tmp/passwd line1和line2可以直接读取passwd中的文件内容
-在{}中的代码块,一般情况下不会开启一个新的子shell
---&amp;gt; {}可以用在非标准的for循环当中
-for ((n=1; n&amp;lt;=10; n++)); { echo -n &amp;#34;* $n *&amp;#34;; }
---&amp;gt; many commands can be used in a {} section, just like a function, return the outcome
---&amp;gt; 占位符, use with xargs; &amp;#39;ls . | xargs -i -t cp ./{} $1&amp;#39;
-{} \; --&amp;gt; 该结构用在find架构当中,不作为shell的关键字存在
-The &amp;#34;;&amp;#34; ends the -exec option of a find command sequence. It needs to be escaped to protect it from interpretation by the shell.
-[] --&amp;gt; test命令,[是test命令的内置指令(test的同义字),并不是test的链接
---&amp;gt; 数组元素,用于展开各个序号的数组元素
---&amp;gt; 正则表达式中使用,用于表示一个序列
-&amp;#34;[B-Pk-y]&amp;#34;
-$[] --&amp;gt; 运算符,等效与(())
-echo $[$a+$b]
-$[...] --&amp;gt; 整数扩展符, 可用于整数的计算; &amp;#39;echo $[3*5]&amp;#39;
-(())--&amp;gt; 运算符
-(( a = 23 )); (( a++ ))
-&amp;lt;&amp;gt; --&amp;gt; 重定向,包含&amp;gt;,&amp;amp;&amp;gt;,&amp;gt;&amp;amp;,&amp;gt;&amp;gt;,&amp;lt;,&amp;lt;&amp;gt;
---&amp;gt; &amp;amp;&amp;gt; 把标准输出和标准错误都重定向
---&amp;gt; &amp;gt;&amp;amp;2重定向到标准错误
---&amp;gt; &amp;gt;&amp;gt; 追加
---&amp;gt; [i]&amp;lt;&amp;gt;filename 打开文件filename读写,分配文件描述符i给文件,若i不存在,则默认使用stdin
-#!/bin/bash
-## example 1-1
-lock_file=/tmp/$(basename $0).lock
-exec 300&amp;lt;&amp;gt;$lock_file
-if ! flock -x -n 300; then
-echo &amp;#34;already running&amp;#34;
-else
-echo &amp;#34;starting...&amp;#34;
-sleep 30
-fi
---&amp;gt; (command)&amp;gt; 进程替换, 暂且记下,后续有具体讲解
---&amp;gt; &amp;lt;&amp;lt; here document
---&amp;gt; &amp;lt;&amp;lt;&amp;lt; here string
---&amp;gt; askii 比较,对比文本字符顺序
-\&amp;gt; --&amp;gt; 单词边界,同时还有\&amp;lt;
-grep &amp;#39;\&amp;lt;the\&amp;gt;&amp;#39; textfile
-[[]]--&amp;gt; test,比[]更灵活
-| --&amp;gt; 管道,将命令的输出作为输入传递给下一个命令
-echo ls -l | sh ## 可以作为一种方式执行命令
---&amp;gt; 管道运行在子shell当中,所以不能在管道中定义变量
-variable=&amp;#34;initial_value&amp;#34;;echo &amp;#34;new_value&amp;#34; | read variable;echo &amp;#34;variable = $variable&amp;#34; # variable = initial_value
-&amp;gt;| --&amp;gt; 强制重定向,强制清空文件内容,即使已经设置了noclobber属性已经设置了
-|| --&amp;gt; 或逻辑运算符,在test结构中使用
-&amp;amp; --&amp;gt; 在后台运行任务,在脚本中,命令甚至是循环结构可以运行在后台中
-for i in {1..10};do echo -n &amp;#34;$i&amp;#34;; done &amp;amp;
-脚本中包含后台运行的命令可能会导致脚本hang死,可以设置补救措施;
-a,在后台命令后面增加一个wait命令可以解决该问题
-b,在将结果重定向至/dev/null或者一个文件也可
-ls -l &amp;amp;; ehco &amp;#34;Done.&amp;#34;; wait
-&amp;amp;&amp;amp; --&amp;gt; 逻辑和运算符,用于test结构中
-- --&amp;gt; 选项前缀, ls -l
---&amp;gt; 从stdin重定向输入或从stdout重定向输入
-1, (cd /source/directory &amp;amp;&amp;amp; tar cf - . ) | (cd /dest/directory &amp;amp;&amp;amp; tar xpvf -)
-2, bunzip2 -c linux-2.6.16.tar.bz2 | tar xvf -
-3, grep Linux file1 | diff file2 -
---&amp;gt; 前一个工作目录,由$OLDPWD变量保存
---&amp;gt; 减号,用作逻辑运算符
--- --&amp;gt; 命令长格式选项前缀
-ls --all
---&amp;gt; 与set结合使用,设置位置参数
-variable=&amp;#34;one two three four five&amp;#34;
-set -- $variable;
-first_param=$1
-second_param=$2
-shift; shift
-echo &amp;#34;first parameter = $first_param&amp;#34; # one
-echo &amp;#34;second parameter = $second_param&amp;#34; # two
-= --&amp;gt; 赋值运算符;a=28
-+ --&amp;gt; 逻辑运算符,相加
---&amp;gt; 正则表达式,1各或者多个
---&amp;gt; 特定命令的参数前缀,+为开启,-为关闭,如set命令
-% --&amp;gt; 逻辑运算符,余
-~ --&amp;gt; 家目录,由$HOME保存
-~+ --&amp;gt; 当前工作目录,由$PWD保存
-~- --&amp;gt; 上一个工作目录,由$OLDPWD保存
-=~ --&amp;gt; 正则表达式中匹配
-variable=&amp;#34;This is a fine mess.&amp;#34;
-if [[ &amp;#34;$variable&amp;#34; =~ T.........fin*es* ]]
-^ --&amp;gt; 行开头
---&amp;gt; 参数替换中,大写替换
-^^ --&amp;gt; 参数替换中,大写替换
-&amp;#39; &amp;#39; --&amp;gt; 空格,用作命令或者是变量的分隔
-&lt;/code>&lt;/pre>&lt;h3 id="2-变量及参数">#2. 变量及参数&lt;/h3>
-&lt;pre>&lt;code>1, 变量名是变量值的占位符,获取变量值的操作称之为变量替换
-2, 变量裸露的情况(没有前缀'$'符)
---&amp;gt; 变量声明或者是赋值的时候
---&amp;gt; 取消变量unset
---&amp;gt; 被export
---&amp;gt; 逻辑运算表达式(())中
-3, 变量的赋值可以在如下结构中
---&amp;gt; '='中
---&amp;gt; read结构
---&amp;gt; 类似for var in xx的循环结构中
-4, 变量引用中
---&amp;gt; 使用$a,不用&amp;quot;&amp;quot;括起来,移除变量中的tab和newline
---&amp;gt; 使用&amp;quot;$a&amp;quot;,保存whitespace(空白)
-5, 使用$(...)替换`...`来进行变量赋值
-6, shell变量没有类型
-7, 特殊类型的变量
---&amp;gt; 本地变量: 只在代码块或者是函数中可见
---&amp;gt; 环境变量: 影响shell动作的变量,如PATH或者是PS1等
---&amp;gt; 位置参数: $0,$1这些,$0表示脚本;$*和$@代表所有的位置参数
-8, 每次新建shell,在shell中会创建相应的环境变量
-9, 使用export命令来将本地变量变成环境变量
---&amp;gt; 脚本中,变量只能export给子子进程,也即在脚本中声明的变量无法作用于脚本之外
-10,shift命令的作用是重新赋值位置参数,每执行一次,位置参数向左偏移一位
---&amp;gt; 默认可调用10个
---&amp;gt; $0不参与
---&amp;gt; 被重新赋值的变量是move,不是copy(只有两个位置参数,shift后,$2不存在)
---&amp;gt; shift可接受数字,表示每次偏移多少
---&amp;gt; 如下示例:
-# 脚本名称不变,使用软链接给创建多个脚本名称,调用不同的名称,执行不同的功能
-ln -s /usr/local/bin/wh /usr/local/bin/wh-ripe
-ln -s /usr/local/bin/wh /usr/local/bin/wh-apnic
-ln -s /usr/local/bin/wh /usr/local/bin/wh-tucows
-E_NOARGS=75
-if [ -z &amp;quot;$1&amp;quot; ]; then
-echo &amp;quot;Usage: `basename $0` [domain-name]&amp;quot;
-exit $E_NOARGS
-fi
-case `basenam $0` in # Or: case ${0##*/} in
-&amp;quot;wh&amp;quot; ) whois $1@whois.tucows.com;;
-&amp;quot;wh-ripe&amp;quot; ) whois $1@whois.ripe.net;;
-&amp;quot;wh-apnic&amp;quot; ) whois $1@whois.apnic.net;;
-&amp;quot;wh-cw&amp;quot; ) whois $1@whois.cw.net;;
-* ) echo &amp;quot;Usage: `basename $0` [domain-name]&amp;quot;;;
-esac
-&lt;/code>&lt;/pre>
-&lt;h3 id="3--引用">#3. 引用&lt;/h3>
-&lt;pre>&lt;code>1, grep '[Ff]irst' *.txt;在''中的特殊情况,这里并不会去除[]的作用,而是作为被保护的内容传递给grep
-2, &amp;quot;&amp;quot;保护除过$,\,`的其他符号
-3, 可以引用\n
-quote=$'\116'
-echo -e '\'${quote,}
-4, $'...'可以将8进制或者16进制数转换成ascii字符保存到变量中
-quote=$'\042'
-5, echo -e用于转换特殊含义字符
-&lt;/code>&lt;/pre>
-&lt;h3 id="4--测试">#4. 测试&lt;/h3>
-&lt;pre>&lt;code>测试结构:
-1, if/then/elif/else结构,结合if后面的返回值确定执行顺序
---&amp;gt; if结构不仅仅只能判断[]结构,后面可借命令
---&amp;gt; if和then都是关键字参数,关键字开启代码块,在同一行开启一行新语句,就语句必须终结
-2, []结构,等效于test
-3, [[]]关键字结构,类比于test
-4, ((...))和let ...结构,运算结果为非零时,返回值为0;运算结果为零时,返回值为非零
-5, test是bash的内建命令,因此在一个脚本中使用test,使用的并不是/usr/bin/test二进制文件
---&amp;gt; 在脚本中需要使用/usr/bin/test命令,需要写全路径
-6, 使用[[]]替换[]做测试结构可以防止很多脚本中的逻辑错误
---&amp;gt; &amp;amp;&amp;amp;, ||, &amp;lt;, &amp;gt;可以用在[[]]中,但无法在[]中使用
---&amp;gt; 8进制,10进制,16进制可在[[]]中进行比较,[]会报错
-7, (())也可用于测试,展开并对括号中的变量进行运算;当运算结果非零或为0或者'true';当运算结果为零时返回1或者'false'
-8, 文件测试,如下不同场景返回true
---&amp;gt; -e 文件存在
---&amp;gt; -f 是普通文件,不是目录或设备文件
---&amp;gt; -s 大小不为零
---&amp;gt; -d 是个目录
---&amp;gt; -b 块设备
---&amp;gt; -c 字符设备
---&amp;gt; -p 管道文件
-# 示例内容:
-function show_input_type()
-{
-[ -p /dev/fd/0 ] &amp;amp;&amp;amp; echo PIPE || echo STDIN
-}
-show_input_type &amp;quot;Input&amp;quot; # STDIN
-echo &amp;quot;Input&amp;quot; | show_input_type # PIPE
---&amp;gt; -h 符号链接
---&amp;gt; -L 符号链接
---&amp;gt; -S socket文件
---&amp;gt; -t 文件绑定一个终端设备
-[ -t 0 ]用来测试脚本执行是不是在终端上
---&amp;gt; -r/w/x/g/u/k 检测文件是否具有相应的权限
---&amp;gt; -O/G你是文件所属者(组)
---&amp;gt; f1 -nt f2 文件f1比f2新
---&amp;gt; f1 -ot f2 文件f1比f2旧
---&amp;gt; f1 -ef f2 文件f1和f2是指向同一个文件的硬链接
---&amp;gt; ! 非
-&lt;/code>&lt;/pre>
-&lt;h3 id="5--操作符">#5. 操作符&lt;/h3>
-&lt;pre>&lt;code>--&amp;gt; bash不明白浮点数的运算,会将浮点数当作字符处理;需要处理浮点数的运算,可以使用bc操作
---&amp;gt; 逻辑运算符:
-1, &amp;amp;&amp;amp; 和/与
---&amp;gt; if [ $condition1 ] &amp;amp;&amp;amp; [ $condition2 ] Same as: if [ $condition1 -a $condition2 ]
-2, ! 非
---&amp;gt; if [ ! -f $file ]
-3, || 或
---&amp;gt; if [ $condition1 ] || [ $condition2 ] Same as: if [ $condition1 -o $condition2 ]
-4, &amp;amp;&amp;amp;/||在判断结构中的使用
---&amp;gt; if [[ $a -eq 24 &amp;amp;&amp;amp; $b -eq 24 ]] works.
---&amp;gt; if [ &amp;quot;$a&amp;quot; -eq 24 &amp;amp;&amp;amp; &amp;quot;$b&amp;quot; -eq 47 ] error
-5, 进制换算
---&amp;gt; 可以使用$((...))结构对各个进制数进行换算
-echo $((0x9abc))
---&amp;gt; 在shell中,默认使用10进制,当把8进制或者16进制数使用let赋值存储在变量中,打印后变为10进制
-let 'hex = 0x32';echo $hex
---&amp;gt; 不限制进制数格式,可以使用let进行换算,可以使用10 digits + 26 lowercase characters + 26 uppercase characters + @ + _
-echo $((36#zz)) $((2#10101010)) $((16#AF16)) $((53#1aA)) # 1295 170 44822 3375
---&amp;gt; 双括号结构:
-同let,(())结构允许逻辑展开和运算
-1, (( a = 23 )) 赋值,等号左右两侧都要有空格
-2, (( --a ))和(( a-- ))都可以进行运算
-3, (( t = a&amp;lt;45?7:11 ))
-echo &amp;quot;if a &amp;lt; 45;then t = 7;else t = 11;fi&amp;quot; # a = 23
-echo &amp;quot;t = $t &amp;quot; # t = 7
---&amp;gt; 运算符优先顺序:
-if [ &amp;quot;$v1&amp;quot; -gt &amp;quot;$v2&amp;quot; -o &amp;quot;$v1&amp;quot; -lt &amp;quot;$v2&amp;quot; -a -e &amp;quot;$filename&amp;quot; ]
-# Unclear what's going on here...,不能有超过三个的叠加存在(-a/-o)
-if [[ &amp;quot;$v1&amp;quot; -gt &amp;quot;$v2&amp;quot; ]] || [[ &amp;quot;$v1&amp;quot; -lt &amp;quot;$v2&amp;quot; ]] &amp;amp;&amp;amp; [[ -e &amp;quot;$filename&amp;quot; ]]
-# Much better -- the condition tests are grouped in logical sections.
-&lt;/code>&lt;/pre>
-&lt;h3 id="6--其他变量视角">#6. 其他变量视角&lt;/h3>
-&lt;pre>&lt;code>内部变量
-1, $BASHPID(返回当前shell),不同于$$(返回父shell),虽然大部分时候两个值相同
-echo $BASHPID;(echo $BASHPID) ## output different
-echo $$;(echo $$) ## output same
-2, $DIRSTACK,在目录栈中的第一个值,被pushd和popd影响
-内置变量响应dirs命令,dirs会显示栈中所有的信息
-3, $EDITOR,默认被脚本引用的编辑器,一般是vi或者emacs,nano
-4, $EUID,有效UID
-5, $FUNCNAME,在函数中,显示当前函数的名字
-6, $GROUPS,当前用户所属用户组,是一个数组
-echo ${GROUPS[1]}
-7, $HOSTTYPE,检查当前系统的硬件类型
-echo $HOSTTYPE # i686
-8, $IFS,内部边界分隔符;这个变量决定bash怎样判断词组,字符串的边界
---&amp;gt; 默认为空白符(空格,tab,新行)
---&amp;gt; 这个值可以被更改
-bash -c 'set w x y z; IFS=&amp;quot;:-;&amp;quot;; echo &amp;quot;$*&amp;quot;' ## w:x:y:z
---&amp;gt; 在设置IFS时需要注意,IFS对待空格和其他字符不一样
-var=&amp;quot; a b c &amp;quot;使用for循环打印出来时,会变成三行,而不是和','一样,变为多行(超过三行)
-对于使用在awk中的FS也存在同样的问题
-9, $PATH,二进制文件路径
-10,$PIPESTATUS,保存上一条命令的执行返回值
-11,$PPID,父进程的PID号
-12,$PROMPT_COMMAND,保存将要被执行的命令(是否为该含义待查)
-13,$PS1,主提示符,命令行界面显示
-14,$PS2,备提示符,在需要输入额外输入是显示,显示为'&amp;gt;'
-15,$PS3,select loop中使用
-16,$PS4,set -x后界面显示的提示符'+'
-17,$PWD,pwd命令显示结果
-18,$REPLY,当且仅当上一条read命令无变量时,保存read的变量值
-19,$SECONDS,当前脚本运行了多长时间
-while [ &amp;quot;$SECONDS&amp;quot; -le &amp;quot;$TIME_LIMIT&amp;quot; ]
-20,$SHELLOPTS,保存set -o的options项
-21,$TMOUT,设置为一个非零值之后,超时会自动登出
---&amp;gt; 可以在脚本中设置超时,在一定时间内未输入,则退出
-TMOUT=3
-# Prompt times out at three seconds.
-echo &amp;quot;What is your favorite song?&amp;quot;
-echo &amp;quot;Quickly now, you only have $TMOUT seconds to answer!&amp;quot;
-read song
-if [ -z &amp;quot;$song&amp;quot; ]
-then
-song=&amp;quot;(no answer)&amp;quot;
-# Default response.
-fi
-位置参数
-1, $0,$1,$2...,位置参数,从命令行传递给脚本,函数;或者使用set进行设置
-2, $#,位置参数或者命令行参数的数目
-3, $*,所有的位置参数,视为一个word,需要使用&amp;quot;&amp;quot;外加
-4, $@,同$*,但每个参数单独使用&amp;quot;&amp;quot;括起来,同样也需要使用&amp;quot;&amp;quot;括起来
---&amp;gt; 使用IFS和$@,$*时需要注意
---&amp;gt; $@和$*仅在使用双引号引用的时候有差别
-5, $!,上一个跑在后台的job的进程号
---&amp;gt; 可用于任务控制
-{ sleep ${TIMEOUT}; eval 'kill -9 $!' &amp;amp;&amp;gt; /dev/null; }
---&amp;gt; 另一种方式
-TIMEOUT=30
-count=0
-possibly_hanging_job &amp;amp; {
-while ((count &amp;lt; TIMEOUT )); do
-eval '[ ! -d &amp;quot;/proc/$!&amp;quot; ] &amp;amp;&amp;amp; ((count = TIMEOUT))'
-# /proc is where information about running processes is found.
-# &amp;quot;-d&amp;quot; tests whether it exists (whether directory exists).
-# So, we're waiting for the job in question to show up.
-((count++))
-sleep 1
-done
-eval '[ -d &amp;quot;/proc/$!&amp;quot; ] &amp;amp;&amp;amp; kill -15 $!'
-# If the hanging job is running, kill it.
-}
-6, $_,映射为执行的上一个命令最后一项内容
---&amp;gt; du &amp;gt; /dev/null;echo $_ # du
---&amp;gt; ls -al &amp;gt; /dev/null;echo $_ # -al
-7, $?,命令,函数或者是脚本的执行状态返回值
-8, $$,脚本自己的pid号,常用于创建惟一的temp文件,相较于mktemp使用更简单
-变量归类
-1, 使用declare/typeset完成变量定义
-2, declare/typeset属于内建命令
-3, -r,设置只读变量
---&amp;gt; declare -r var1=xx 等效于 readonly var1=xx
-4, -i,设置为整数变量
---&amp;gt; 设置为整数变量,允许直接进行运算,不需要expr结构
-n=6/3
-echo &amp;quot;n = $n&amp;quot;
-declare -i n
-echo &amp;quot;n = $n&amp;quot;
-# n = 6/3
-# n = 2
-5, -a,设置为数组变量
-6, -f,显示函数
---&amp;gt; declare -f后未接任何参数,显示所有的函数;可以用在ssh远程连接,传递函数使用
---&amp;gt; declare -f func_name仅显示func_name函数内容
-7, -x,等效于export
-8, 使用declare声明一个变量会限制其scope
-9, 使用declare可以非常方便的辨别变量,尤其是在辨认数组时
---&amp;gt; declare | grep HOME
---&amp;gt; Colors=([0]=&amp;quot;purple&amp;quot; [1]=&amp;quot;reddish-orange&amp;quot; [2]=&amp;quot;light green&amp;quot;);declare |grep Colors
-变量操作
---&amp;gt; bash允许大量字符串操作,部分属于变量替换操作,部分属于UNIX的expr功能
-1, 字符串长度
---&amp;gt; ${井号string},显示变量string的长度
---&amp;gt; expr length $string,使用expr功能显示字符串长度
---&amp;gt; expr &amp;quot;$string&amp;quot; : '.*',同样是显示变量string中字符串的长度值
-2, substring从string开头匹配的字符数,substring是正则表达式
---&amp;gt; expr match &amp;quot;$string&amp;quot; '$substring'
-stringZ=abcABC123ABCabc
---&amp;gt; expr &amp;quot;$string&amp;quot; : '$substring'
-echo `expr match &amp;quot;$stringZ&amp;quot; 'abc[A-Z]*.2'` # 8
-echo `expr &amp;quot;$stringZ&amp;quot; : 'abc[A-Z]*.2'` # 8
-3, substring在string中第一次匹配的下标号
---&amp;gt; expr index $string $substring
-echo `expr index &amp;quot;$stringZ&amp;quot; 1c`
-# 'c' (in #3 position) matches before '1'.
-变量取出
-1, 切片用法
---&amp;gt; ${string:position} # 从position处开始抽取string,此处的position和length都可以是变量
---&amp;gt; ${string:position:length} # 从position处抽取length个string字符
-stringZ=abcABC123ABCabc
-echo ${stringZ:7} # 23ABCabc
-echo ${stringZ:7:3} # 23A
-echo ${stringZ:(-4)} # Cabc 区别于${stringZ:-4},这种形式等效于${string:-default}
---&amp;gt; ${*:position} # 从position处开始取位置参数
---&amp;gt; ${@:position} # 同上一条
---&amp;gt; ${*:position:length} # 同string 的用法,换成位置参数
---&amp;gt; expr substr $string $position $length # expr用法,切片用法
---&amp;gt; expr match &amp;quot;$string&amp;quot; '\($substring\)' # 获取第一次匹配的substring内容,substring为正则表达式
---&amp;gt; expr &amp;quot;$string&amp;quot; : '\($substring\)' # 同上
-echo `expr match &amp;quot;$stringZ&amp;quot; '\(.[b-c]*[A-Z]..[0-9]\)'` # abcABC1
-echo `expr &amp;quot;$stringZ&amp;quot; : '\(.[b-c]*[A-Z]..[0-9]\)'` # abcABC1
-echo `expr &amp;quot;$stringZ&amp;quot; : '\(.......\)'` # abcABC1
---&amp;gt; expr match &amp;quot;$string&amp;quot; '.*\($substring\)' # 获取尾部第一次匹配的substring内容,substring为正则表达式
---&amp;gt; expr &amp;quot;$string&amp;quot; : '.*\($substring\)' # 同上
-echo `expr match &amp;quot;$stringZ&amp;quot; '.*\([A-C][A-C][A-C][a-c]*\)'` # ABCabc
-echo `expr &amp;quot;$stringZ&amp;quot; : '.*\(......\)'` # ABCabc
-变量置换
-file=/dir1/dir2/dir3/my.file.txt
---&amp;gt; ${file#*/} # 拿掉第一条/及其左边的字串：dir1/dir2/dir3/my.file.txt
---&amp;gt; ${file##*/} # 拿掉最后一条/及其左边的字串：my.file.txt
---&amp;gt; ${file#*.} # 拿掉第一个.及其左边的字串：file.txt
---&amp;gt; ${file##*.} # 拿掉最后一个.及其左边的字串：txt
---&amp;gt; ${file%/*} # 拿掉最后一条/及其右边的字串：/dir1/dir2/dir3
---&amp;gt; ${file%%/*} # 拿掉第一条/及其右边的字串：（空值）
---&amp;gt; ${file%.*} # 拿掉最后一个.及其右边的字串：/dir1/dir2/dir3/my.file
---&amp;gt; ${file%%.*} # 拿掉第一个.及其右边的字串：/dir1/dir2/dir3/my
-mv $filename ${filename%$1}$2 # 可以用作重命名
---&amp;gt; ${file:0:5} # 提取最左边的5个字节：/dir1
---&amp;gt; ${file:5:5} # 提取第5个字节右边的连续5个字节：/dir2
---&amp;gt; ${file-my.file.txt} # 假如$file没有设定，则使用my.file.txt作传回值。（空值及非空值时不作处理）
---&amp;gt; ${file:-my.file.txt} # 假如$file没有设定或为空值，则使用my.file.txt作传回值。（非空值时不作处理）
-${username-`whoami`} # when username has not been set, return the value of result of whoami
-filename=${1:-DEFAULT_FILENAME}
---&amp;gt; ${file+my.file.txt} # 假如$file设为空值或非空值，均使用my.file.txt作传回值。（没设定时不作处理）
---&amp;gt; ${file:+my.file.txt} # 若$file为非空值，则使用my.file.txt作传回值。（没设定及空值时不作处理）
---&amp;gt; ${file=my.file.txt} # 若$file没设定，则使用my.file.txt作传回值，同时将$file赋值为my.file.txt。\
-（空值及非空值时不作处理）
---&amp;gt; ${file:=my.file.txt} # 若$file没设定或为空值，则使用my.file.txt作传回值，同时将$file赋值为my.file.txt。\
-（非空值时不作处理）
---&amp;gt; ${file?my.file.txt} # 若$file没设定，则将my.file.txt输出至STDERR,用于变量报错设置（空值及非空值时不作处理）
---&amp;gt; ${file:?my.file.txt} # 若$file没设定或为空值，则将my.file.txt输出至STDERR。（非空值时不作处理）
---&amp;gt; 要分清楚unset与null及non-null这三种赋值状态。一般而言，: 与null有关，若不带 : 的话，null不受影响，若带 : 则连null \
-也受影响。
---&amp;gt; ${var,,} # 更改var的大小写,将$var中的大写字符转换成小写
---&amp;gt; ${井号var} # get the length of the variate of var
-变量替换
-stringZ=abcABC123ABCabc
---&amp;gt; echo ${stringZ/abc/xyz} # xyzABC123ABCabc,将开头的abc替换成xyz
---&amp;gt; echo ${stringZ//abc/xyz} # xyzABC123ABCxyz,将字符串中的所有abc替换成xyz
-abc和xyz都可以使用变量替换
---&amp;gt; echo ${stringZ/abc} # ABC123ABCabc,不包含replacement时,则是直接删除第一处匹配内容
---&amp;gt; echo ${stringZ//abc} # ABC123ABC,同上,删除所有的匹配内容
---&amp;gt; echo ${stringZ/#abc/XYZ} # XYZABC123ABCabc,匹配前端的第一个,进行替换
---&amp;gt; echo ${stringZ/%abc/XYZ} # abcABC123ABCXYZ,匹配后端的最后一个,进行替换
---&amp;gt; echo ${!varprefix*} # 匹配所有已声明已xyz开头的变量
---&amp;gt; echo ${!varprefix@} # 匹配所有已声明已xyz开头的变量
-abc23=something_else
-b=${!abc*}
-echo &amp;quot;b = $b&amp;quot; # b = abc23
-c=${!b} # Now, the more familiar type of indirect reference.
-echo $c
-awk的使用,等效变量替换
-String=23skidoo1
-# 012345678 Bash 变量替换中bash的下标计算方式
-# 123456789 awk 变量替换中awk的下标计算方式
---&amp;gt; echo | awk '{ print substr(&amp;quot;'&amp;quot;${String}&amp;quot;'&amp;quot;,3,4) }' # skid
-前面使用空echo的作用是,所谓伪输入,不需要填写输入文件
-&lt;/code>&lt;/pre>
-&lt;h3 id="7-循环和分支结构">#7. 循环和分支结构&lt;/h3>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">1, for循环
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> arg in &lt;span class="o">[&lt;/span>list&lt;span class="o">]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span> command&lt;span class="p">;&lt;/span>&lt;span class="k">done&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> --&amp;gt; for循环和set结合使用,会很方便,以下是例子
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;pre tabindex="0">&lt;code> set `uname -a`; for item in $(seq $#); do echo ${!item}; done
-for planet in &amp;#34;Mercury 36&amp;#34; &amp;#34;Venus 67&amp;#34; &amp;#34;Earth 93&amp;#34; &amp;#34;Mars 142&amp;#34; &amp;#34;Jupiter 483&amp;#34;; do
-set -- $planet
-echo &amp;#34;$1 $2,000,000 miles from the sun&amp;#34;
-done
-&lt;/code>&lt;/pre>&lt;pre>&lt;code> --&amp;gt; set中使用的--,避免难预测的bug,当后面的变量为空或者是以'-'开头
---&amp;gt; [list]可以是一个变量,保存了多个值,用于for循环使用
---&amp;gt; [list]也可以使用*通配符
---&amp;gt; 无[list]项也可,循环使用的内容为位置参数
-for a; do echo -n &amp;quot;$a &amp;quot;; done # 写入脚本后,执行脚本时,后接参数或者不接参数,得出结果不同
---&amp;gt; [list]内容同样可为命令替换后的结果
-for name in $(awk 'BEGIN{FS=&amp;quot;:&amp;quot;}{print $1}' &amp;lt; &amp;quot;$PASSWORD_FILE&amp;quot; ) # 系统上所有用户
-for word in $(generate_list) # 函数运行结果
---&amp;gt; for loop结束后,在done后面可直接使用管道进行操作,例如排序等
-for file in &amp;quot;$( find $directory -type l )&amp;quot;;do echo &amp;quot;$file&amp;quot;; done | sort # 对循环执行后的结果进行排序
---&amp;gt; C风格的for循环,需要用到(());
-LIMIT=10; for ((a=1; a &amp;lt;= LIMIT ; a++)); do echo $a; done
-for ((a=1, b=1; a &amp;lt;= LIMIT ; a++, b++)); do echo -n &amp;quot;$a-$b &amp;quot;; done
---&amp;gt; 一般情况下,do和done分割for循环的结构,但在特定情况下,省略do和done
-for((n=1; n&amp;lt;=10; n++))
-{ # No do
-echo -n &amp;quot;* $n *&amp;quot;
-} # No done!
-for n in 1 2 3
-{ echo -n &amp;quot;$n &amp;quot;; } # 在经典的for结构中,花括号中需要包含;,用于结尾
---&amp;gt; E_NOARGS=65 --&amp;gt; The standards of variate naming, exit-because-no-arguments
---&amp;gt; read command read reads a line every time, in the function 'while read i j', i stands for the first word, j stands for the rest of this line
---&amp;gt; the difference between return and exit
-若在script里，用exit RV来指定其值，若没指定，在结束时以最后一道命令之RV为值。
-若在function里，则用return RV来代替exit RV即可。
-若在loop里，则用break
-2, while循环
-相对于for循环,while循环更适合用于不确定condition情况下进行的循环
-while [condition]; do command(s); done
---&amp;gt; 在while循环中可能存在多个条件,但只有最后一个条件决定什么时候终止循环
-while echo &amp;quot;previous-variable = $previous&amp;quot;
-echo
-previous=$var1
-[ &amp;quot;$var1&amp;quot; != end ]; do ...
---&amp;gt; 同for循环一样,while可以接收C风格的条件格式
-while (( a &amp;lt;= LIMIT ))
-do
-echo -n &amp;quot;$a&amp;quot;
-((a += 1)) # let &amp;quot;a+=1&amp;quot;
-done
---&amp;gt; while的条件可以直接接函数
-condition(){
-((t++))
-if [ $t -lt 5 ]; then
-return 0 # true
-else
-return 1 # false
-fi
-}
-while condition
---&amp;gt; 与read一起结合使用,得到while read结构
-cat file | while read line # 同时是以管道作为输入内容
---&amp;gt; while可以在done后使用'&amp;lt;'来作为内容输入
-3, until循环
-循环体在顶部,直到条件正确,才退出执行循环结构中的内容;与while循环相反
-until [ condition-is-true ]; do command(s); done
-until循环结构格式类同于for循环
---&amp;gt; 条件为真才退出
-END_CONDITION=end
-until [ &amp;quot;$var1&amp;quot; = &amp;quot;$END_CONDITION&amp;quot; ]
-# Tests condition here, at top of loop.
-do
-echo &amp;quot;Input variable #1 &amp;quot;
-echo &amp;quot;($END_CONDITION to exit)&amp;quot;
-read var1
-echo &amp;quot;variable #1 = $var1&amp;quot;
-echo
-done
---&amp;gt; until同样接受C风格的判断条件,使用双括号的格式(())
-until (( var &amp;gt; LIMIT ))
-4, 嵌套循环
-一个循环结构属于另一个循环结构的构成部分,称为嵌套循环
-5, 循环控制
-影响循环行为的命令
-break;continue
---&amp;gt; break的作用为终止当前循环
---&amp;gt; continue的作用为跳过当前这次的循环,在该分支中,跳过该分支后面需要执行的命令和操作
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code> while [ $a -le &amp;#34;$LIMIT&amp;#34; ]; do
-a=$(($a+1))
-if [ &amp;#34;$a&amp;#34; -eq 3 ] || [ &amp;#34;$a&amp;#34; -eq 11 ]; then # Excludes 3 and 11.
-continue # Skip rest of this particular loop iteration.
-fi
-echo -n &amp;#34;$a&amp;#34; # This will not execute for 3 and 11.
-done
-while [ &amp;#34;$a&amp;#34; -le &amp;#34;$LIMIT&amp;#34; ]; do
-a=$(($a+1))
-if [ &amp;#34;$a&amp;#34; -gt 2 ]; then
-break # Skip entire rest of loop.
-fi
-echo -n &amp;#34;$a&amp;#34;
-done
-&lt;/code>&lt;/pre>&lt;pre>&lt;code> --&amp;gt; break可以后接参数,单个的break表示终止当前循环;break N表示终止几层循环
---&amp;gt; continue也可以接参数,单个的continue表示此次循环,continue N会终止当前层级的循环,开始下一次的循环,从N层开始
-6, 测试和分支
-case和select结构不属于循环结构,但他们通过条件判断引导程序流向
---&amp;gt; case对标的是C/C++中的switch结构;case可以说是简化版的if/elif/elif/.../else结构,case可以用于设置程序接口
-case &amp;quot;$variable&amp;quot; in
-&amp;quot;$condition1&amp;quot;)
-command...
-;;
-&amp;quot;$condition2&amp;quot;)
-command...
-;;
-esac
---&amp;gt; 判断后接参数
-E_PARAM=1
-case &amp;quot;$1&amp;quot; in
-&amp;quot;&amp;quot;) echo &amp;quot;Usage: ${0##*/} &amp;lt;filename&amp;gt;&amp;quot;; exit $E_PARAM;; # 提示信息,精简化
--*) FILENAME=./$1;; # 如果后面所接参数包含破折号,将其替换为./$1,这样后面的命令嗯就不会把其当做$1
-* ) FILENAME=$1;;
-esac
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code> --&amp;gt; while和case一起使用:
-while [ $# -gt 0 ]; do
-case &amp;#34;$1&amp;#34; in
--d|--debug)
-DEBUG=1
-;;
--c|--conf)
-CONFFILE=&amp;#34;$2&amp;#34;
-shift
-if [ ! -f $CONFFILE ]; then
-echo &amp;#34;Error: Supplied file doesn&amp;#39;t exist!&amp;#34;
-exit $E_CONFFILE
-fi
-;;
-esac
-shift
-done
---&amp;gt; 做匹配函数:
-match_string (){
-MATCH=0
-E_NOMATCH=90
-PARAMS=2
-E_BAD_PARAMS=91
-[ $# -eq $PARAMS ] || return $E_BAD_PARAMS
-case &amp;#34;$1&amp;#34; in
-&amp;#34;$2&amp;#34;) return $MATCH;;
-* ) return $E_NOMATCH;;
-esac
-}
---&amp;gt; select继承自ksh,同样是一个可用于构建入口的工具
-select variable [in list]
-do
-command...
-break
-done
-&lt;/code>&lt;/pre>&lt;p>​&lt;/p>
-&lt;pre tabindex="0">&lt;code>&lt;/code>&lt;/pre>&lt;pre>&lt;code> --&amp;gt; select结构提示用户输入给定的选项之一,默认情况下使用环境变量PS3作为提示符,但这个可以被改变
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code> PS3=&amp;#39;Choose your favorite vegetable: &amp;#39; # Sets the prompt string.
-# Otherwise it defaults to #? .
-select vegetable in &amp;#34;beans&amp;#34; &amp;#34;carrots&amp;#34; &amp;#34;potatoes&amp;#34; &amp;#34;onions&amp;#34; &amp;#34;rutabagas&amp;#34;
-do
-echo
-echo &amp;#34;Your favorite veggie is $vegetable.&amp;#34;
-echo &amp;#34;Yuck!&amp;#34;
-echo
-break # What happens if there is no &amp;#39;break&amp;#39; here?
-done
-&lt;/code>&lt;/pre>&lt;pre>&lt;code> --&amp;gt; 如果结构中list不存在,select会使用传递给脚本或包含select结构的函数的位置参数$@;可类比for variable [in list]
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code> PS3=&amp;#39;Choose your favorite vegetable: &amp;#39;
-choice_of(){
-select vegetable # [in list] omitted, so &amp;#39;select&amp;#39; uses arguments passed to function.
-do
-echo
-echo &amp;#34;Your favorite veggie is $vegetable.&amp;#34;
-echo &amp;#34;Yuck!&amp;#34;
-echo
-break
-done
-}
-choice_of beans rice carrots radishes rutabaga spinach
-------------------------------------------------------------------------------------------------------
-&lt;/code>&lt;/pre>&lt;h3 id="8-命令替换">#8. 命令替换&lt;/h3>
-&lt;pre>&lt;code>命令替换重新单个甚至多个命令的输出结果,逐字的将输出内容传递给另一个上下文
---&amp;gt; 命令的输出结果可以是传递给其他命令的参数,可以是设置变量,甚至生成for循环需要使用的内容参数
---&amp;gt; 命令替换有两种形式:`commands`,$(commands),两种方式等效
---&amp;gt; 命令替换生成一个子shell
---&amp;gt; 命令替换可能把输出结果分片
-COMMAND `echo a b` # 2 args: a and b
-COMMAND &amp;quot;`echo a b`&amp;quot; # 1 arg: &amp;quot;a b&amp;quot;
-note: 有时命令替换会出现不期望的结果
-mkdir 'dir with trailing newline
-'
-cd &amp;quot;`pwd`&amp;quot; # error inform
-cd &amp;quot;$PWD&amp;quot; # works fine
---&amp;gt; 使用echo输出命令替换厚的未括变量,echo会将换行符去除
---&amp;gt; 命令替换允许使用重定向或者cat来获取文件内容作为变量内容
-echo ` &amp;lt;$0` # 输出脚本内容
---&amp;gt; 不要将一个长文本内容作为值赋给一个变量，也不要将二进制文件内容作为变量的值
---&amp;gt; 没有缓冲溢出的情况出现，这是翻译性语言的特性，相较编译语言提供更多的保护
---&amp;gt; 变量声明甚至可以通过一个循环结构来赋值
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code> variable1=`for i in 1 2 3 4 5
-do
-echo -n &amp;#34;$i&amp;#34;
-done`
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 命令替换使用$()替换掉反引号的使用
-允许这种形式：content=$(&amp;lt;$File2)
---&amp;gt; $()的形式允许多重嵌套
-&lt;/code>&lt;/pre>
-&lt;h3 id="9-运算展开">#9. 运算展开&lt;/h3>
-&lt;pre>&lt;code>算数展开提供了一个强大的工具，用于在脚本中进行算数运算；常用的有反引号、双括号、let
-变种：
---&amp;gt; 使用反引号的算数运算，常常和expr结合使用
-z=`expr $z + 3`
---&amp;gt; 算数展开使用双括号和let，反引号的结构已经被(())，$(())和let替换
-z=$(($z+3))或者z=$((z+3))也可以
-(( n += 1 ))是正确的；(( $n += 1 ))是错误的
-let z=z+3是正确的；let &amp;quot;z += 3&amp;quot;也可以
-&lt;/code>&lt;/pre>
-&lt;h2 id="linux命令">linux命令&lt;/h2>
-&lt;h3 id="1-内部命令和内部指令">#1. 内部命令和内部指令&lt;/h3>
-&lt;p>​ 内建指令是指包含在bash工具集内部的命令；内建命令的作用一方面是为了提升性能，常用于需要fork新进程的命令，另一方面是出于某些命令需要直接访问shell内部&lt;/p>
-&lt;pre>&lt;code>--&amp;gt; 父进程获取到子进程的pid后，可以传递参数给子进程，反过来则不行；这个需要注意，出现这种问题时，一般难以排查
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code> PIDS=$(pidof sh $0) # Process IDs of the various instances of this script.
-P_array=( $PIDS )
-echo $PIDS
-let &amp;#34;instances = ${井号P_array[*]} - 1&amp;#34;
-echo &amp;#34;$instances instance(s) of this script running.&amp;#34;
-echo &amp;#34;[Hit Ctl-C to exit.]&amp;#34;;
-echo
-sleep 1
-sh $0
-exit 0
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 一般来说，bash内建指令不会自动fork新的进程，外部命令或者管道过滤时会fork新进程
---&amp;gt; 内建指令可能和系统命令有同样的名字，但bash会使用内建命令，echo和/bin/echo并不一样
-echo &amp;quot;This line uses the \&amp;quot;echo\&amp;quot; builtin.&amp;quot;
-/bin/echo &amp;quot;This line uses the /bin/echo system command.&amp;quot;
---&amp;gt; 关键字是预留字、符号，或者是操作符；关键字对shell来说具有特殊的含义，是shell的语句块的构成部分；关键字属于bash的硬编码部分，不同于内建指令，关键字是命令的子单元
-&lt;/code>&lt;/pre>
-&lt;h3 id="2-io命令">#2. IO命令&lt;/h3>
-&lt;pre>&lt;code>echo：打印表达式或者变量到标准输出
---&amp;gt; 和-e使用，用来打印脱意符
---&amp;gt; 默认情况下，每个echo会打印一个终端换行符，当与-n一起使用时，会将换行符省略掉
---&amp;gt; echo `command`的形式会删除所有由command生成的换行符
-变量$IFS默认情况下降'\n'作为分隔符之一，bash将换行符后面的内容作为参数传递给echo，echo将这些参数打印出来，使用空格分隔
-printf：格式化打印，增强型的echo，是一个C语言中printf()函数的限制型变体，部分内容与原函数使用不同
-printf format-string... parameter...
---&amp;gt; 格式化输出
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>declare -r PI=3.14159265358979
-printf &amp;#34;Pi to 2 decimal places = %1.2f&amp;#34; $PI
-printf &amp;#34;Pi to 9 decimal places = %1.9f&amp;#34; $PI
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 格式化输出错误内容很实用
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code># 注意$&amp;#39;strings...&amp;#39;的格式，在此处与%s的使用
-error()
-{
-printf &amp;#34;$@&amp;#34; &amp;gt;&amp;amp;2 # Formats positional params passed, and sends them to stderr.
-echo
-exit $E_BADDIR
-}
-cd $var || error $&amp;#34;Can&amp;#39;t cd to %s.&amp;#34; &amp;#34;$var&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>read：通过标准输入读取变量值，动态的通过键盘获取值，与-a选项一起使用时可获取数组变量
---&amp;gt; read通常情况下，'\'会去除换行的含义，当与-r参数一同使用时，'\'按照原意进行输出
---&amp;gt; -s：不显示输入内容到屏幕上
---&amp;gt; -n：设置仅接收多少字符，-n同样能接受特殊按键，但需要清楚特殊按键对应的字符，但不能获取到回车的字符
-arrowup='\[A'
-arrowdown='\[B'
-arrowrt='\[C'
-arrowleft='\[D'
-insert='\[2'
-delete='\[3'
---&amp;gt; -p：在接收输入内容前，打印后续内容到屏幕上，作为提示用
---&amp;gt; -t：用在设置超时时间的场景下
---&amp;gt; -u：获取目标文件的文件描述符
---&amp;gt; read命令同样可以通过重定向到标准输入的文件来读取变量，如果文件内容超过一行，则只有第一行内容会被用于变量读取；
---&amp;gt; 当read后接的参数多余一个时，默认会以空格（或者连续空格）作为分隔符来读取变量，此行为可通过更改环境变量$IFS来改变
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>read var1 &amp;lt; /tmp/file1
-read var1 var2 &amp;lt; /tmp/file1
-while read line; do echo $line; done &amp;lt; /tmp/file1
-&lt;/code>&lt;/pre>&lt;h3 id="3-文件系统命令">#3. 文件系统命令&lt;/h3>
-&lt;pre>&lt;code>cd：切换路径命令
---&amp;gt; 使用-P参数，忽略链接文件
---&amp;gt; cd -,切换到上一个目录，$OLDPWD变量保存的内容
---&amp;gt; 使用两个斜杠时，cd命令会出现我们不期望的情况
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code># 以下的问题在命令行和脚本中都存在，需要注意
-$ cd //
-$ pwd
-//
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>pwd：显示当前工作目录路径
---&amp;gt;使用该命令的效果同$PWD完全相同
-pushd,popd,dirs：这个命令集合是一个工作目录书签工具，用于在工作目录中有序的来回切换；后进先出的堆栈方式处理工作目录组，允许对这个堆栈进行各种不同的操作
---&amp;gt; pushd dir-name把目录dir-name放入到到堆栈中（栈顶），同时切换当前目录到dir-name中去
---&amp;gt; popd 将目录栈顶的目录从栈中移除，同时将工作目录切换至此时的栈顶目录中去
---&amp;gt; dirs 列出栈中的目录列表，popd和pushd会引用到dirs
-在脚本中需要切换多个目录工作时，使用这个命令集可以方便的进行管理，$DIRSTACK数组包含有目录的列表栈内容
-&lt;/code>&lt;/pre>
-&lt;h3 id="4-变量操作命令">#4. 变量操作命令&lt;/h3>
-&lt;pre>&lt;code>let：let命令执行对变量的算数运算操作，在很多种情况下，let相当于简化版的expr命令
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>let a=11; let a=a+5
-let &amp;#34;a &amp;lt;&amp;lt;= 3&amp;#34;
-let &amp;#34;a += 5&amp;#34;
-let a++(++a)
-let &amp;#34;t = a&amp;lt;7?7:11&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 使用let命令，在特定情况下，命令返回值和通常情况不同
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>$ var=0
-$ echo $?
-0
-$ let var++
-$ echo $?
-1
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>eval：
-eval arg1 [arg2] ... [argN]
-结合一个表达式或者一列表达式中的参数，是这些参数联合；所有在表达式中的变量都会被展开，得出的字符串被转换为命令
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>$ command_string=&amp;#34;ps ax&amp;#34;
-$ eval &amp;#34;$command_string&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 每次调用eval都会强制重新评估其参数
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>$ a=&amp;#34;$b&amp;#34;
-$ b=&amp;#34;$c&amp;#34;
-$ c=d
-$ echo $a
-$ eval echo $a
-$ eval eval echo $a
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>params=$#
-param=1
-while [ &amp;#34;$param&amp;#34; -le &amp;#34;$params&amp;#34; ]
-do
-echo -n &amp;#34;Command-line parameter &amp;#34;
-echo -n \$$param
-echo -n &amp;#34; = &amp;#34;
-eval echo \$$param
-(( param ++ ))
-done
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 使用eval命令有一定的风险，如果存在替换的方案，尽量使用替换方案来实现目的；像是eval $COMMANDS，在命令的返回结果中可能存在危险的内容如rm -rf *等
-set：
-set命令可用于更改脚本内部的变量值或者脚本选项，用法之一是可以设置option flags来更改脚本执行的动作；另一个用法是可以是将命令的输出结果设置为位置参数。
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>set `uname -a`
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 当单独使用set命令时，终端显示所有的环境变量以及已经设置的变量
---&amp;gt; set后接--,表示将一个变量的内容设置为位置参数,当--后没有任何参数时,表示取消所有的位置参数
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>variable=&amp;#34;one two three four five&amp;#34;
-set -- $variable
-first_param=$1
-second_param=$2
-shift; shift
-remaining_params=&amp;#34;$*&amp;#34;
-echo &amp;#34;first parameter = $first_param&amp;#34; # one
-echo &amp;#34;second parameter = $second_param&amp;#34; # two
-echo &amp;#34;remaining parameters = $remaining_params&amp;#34; # three four five
-set --
-first_param=$1
-second_param=$2
-echo &amp;#34;first parameter = $first_param&amp;#34; # (null value)
-echo &amp;#34;second parameter = $second_param&amp;#34; # (null value)
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>unset:
-unset命令删除一个shell变量,将变量的值设置为null,改命令不影响位置参数
---&amp;gt; 大多数情况下,使用unset设置过的变量和undeclare设置过的变量是等效的;但对于${parameter:-default}还是有区分的
-export:
-export命令将变量的值声明至所有由脚本生成的子shell或者是shell,令其都可使用;在开机启动脚本中使用是export一个重要使用场景,有初始化环境的作用,让后启用的脚本能够继承环境变量
---&amp;gt; 父进程是没有办法获取到子进程的变量的
---&amp;gt; 大部分情况下,export var=xxx和var=xxx;export var是等效的,但在某些情况下有差别
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ export var=(a b); echo ${var[0]}
-(a b)
-bash$ var=(a b); export var; echo ${var[0]}
-a
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>declare/typeset:
-这两个命令用来设定或者限制变量的属性
-readonly:
-等效于declare -r,将一个变量设置为只读,或者实际效用为设置成一个常量,这个命令类似于C中的const
-getopsts:
-这个强大的命令解析命令行参数,传递给脚本使用,这个命令类似于C中的外部命令getopt,getopt库函数;命令允许传递和连接多个选项,并且为脚本联合多个参数,如下所示:
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>scriptname -abc -e /usr/local
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; getopts使用两个默认的变量:
-$OPTIND(OPTion INDex)是参数指针
-$OPTARG(OPTion ARGument)是参数指定一个选项
-选项名声明时后接冒号表明这个选项有一个指定的参数
---&amp;gt; getopts结构一般会同while循环使用,每次处理一个选项和参数,然后变量$OPTIND指针指向下一个值
-命令行传递给脚本的参数前面必须接'-',存在'-'的前缀,让getopts识别命令行参数为选项;实际上,没有'-'时,getopts不会去处理这些参数,直接当作缺失选项处理
-getopts模板与while循环有些许差别
-getopts结构是外部命令getopt命令的替换
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>while getopts &amp;#34;:abcde:fg&amp;#34; Option
-# Initial declaration.
-# a, b, c, d, e, f, and g are the options (flags) expected.
-# The : after option &amp;#39;e&amp;#39; shows it will have an argument passed with it.
-do
-case $Option in
-a ) # Do something with variable &amp;#39;a&amp;#39;.
-b ) # Do something with variable &amp;#39;b&amp;#39;.
-...
-e) # Do something with &amp;#39;e&amp;#39;, and also with $OPTARG,
-# which is the associated argument passed with option &amp;#39;e&amp;#39;.
-...
-g ) # Do something with variable &amp;#39;g&amp;#39;.
-esac
-done
-shift $(($OPTIND - 1)) # Move argument pointer to next.
-# All this is not nearly as complicated as it looks &amp;lt;grin&amp;gt;.
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>NO_ARGS=0
-E_OPTERROR=85
-if [ $# -eq &amp;#34;$NO_ARGS&amp;#34; ] # Script invoked with no command-line args?
-then
-echo &amp;#34;Usage: `basename $0` options (-mnopqrs)&amp;#34;
-exit $E_OPTERROR
-# Exit and explain usage.
-# Usage: scriptname -options
-# Note: dash (-) necessary
-fi
-while getopts &amp;#34;:mnopq:rs&amp;#34; Option
-do
-case $Option in
-m) echo &amp;#34;Scenario #1: option -m- [OPTIND=${OPTIND}]&amp;#34;;;
-n | o ) echo &amp;#34;Scenario #2: option -$Option- [OPTIND=${OPTIND}]&amp;#34;;;
-p) echo &amp;#34;Scenario #3: option -p- [OPTIND=${OPTIND}]&amp;#34;;;
-q) echo &amp;#34;Scenario #4: option -q- with argument \&amp;#34;$OPTARG\&amp;#34; [OPTIND=${OPTIND}]&amp;#34;;;
-r | s ) echo &amp;#34;Scenario #5: option -$Option-&amp;#34;;;
-*) echo &amp;#34;Unimplemented option chosen.&amp;#34;;; # Default.
-esac
-done
-shift $(($OPTIND - 1))
-exit $?
-&lt;/code>&lt;/pre>&lt;h3 id="5-脚本行为命令">#5. 脚本行为命令&lt;/h3>
-&lt;pre>&lt;code>source/. (点命令)
-这个命令,当在脚本外使用时,作用为调用一个脚本;
-在脚本内部使用,source file-name的作用为加载file-name的内容;
---&amp;gt; source一个文件,将该文件的代码加载进入当前脚本(作用内容于C里面的#include作用)
---&amp;gt; 最终结果是,一个被source过的文件,代码就像在当前脚本物理上包含了被source过的文件的代码内容;当多个脚本使用同一个数据文件时,这种方式很有用
---&amp;gt; 如果被source的文件本身是一个可执行脚本,当source后,脚本会执行,然后将控制权交回调用其的脚本;一个可执行的source文件可以使用return来实现目的
---&amp;gt; 参数(可选)可以传递给被source的文件作为位置参数
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>source $filename $args1 $args2
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 脚本甚至可以在执行时source自己,随然可能没有什么实际的应用场景
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-MAXPASSCNT=100
-echo -n &amp;#34;$pass_count &amp;#34;
-let &amp;#34;pass_count += 1&amp;#34;
-while [ &amp;#34;$pass_count&amp;#34; -le $MAXPASSCNT ]; do
-. $0
-done
-echo
-exit 0
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>exit
-无条件的终止一个脚本;exit命令可以选择性的后接一个整数参数,用作脚本的exit返回状态
---&amp;gt; 最简单的方式是直接使用exit 0, 指明此次运行成功
---&amp;gt; 如果一个脚本以未接参数的exit作为结尾,那么脚本的返回值则为最后一条命令的返回值,等效于exit $?
---&amp;gt; 一个exit命令也可以用于终止一个子shell
-exec
-这个shell内建命令替换当前进程为一个指定的命令
---&amp;gt; 通常情况下,当shell遇到一个命令时,会fork一个子进程来执行该命令,当使用exec命令时,shell不再fork子进程,并且exec调用的命令替换了shell
---&amp;gt; 当exec在脚本中使用时,当exec调用的命令结束时,会强制退出脚本
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-exec echo &amp;#34;Exiting \&amp;#34;$0\&amp;#34; at line $LINENO.&amp;#34; # Exit from script here.
-# $LINENO is an internal Bash variable set to the line number it&amp;#39;s on.
-# The following lines never execute.
-echo &amp;#34;This echo fails to echo.&amp;#34;
-exit 99
-&lt;/code>&lt;/pre>&lt;pre tabindex="0">&lt;code>#!/bin/bash
-# self-exec.sh
-# Note: Set permissions on this script to 555 or 755,
-# then call it with ./self-exec.sh or sh ./self-exec.sh.
-echo
-echo &amp;#34;This line appears ONCE in the script, yet it keeps echoing.&amp;#34;
-echo &amp;#34;The PID of this instance of the script is still $$.&amp;#34;
-# Demonstrates that a subshell is not forked off.
-echo &amp;#34;==================== Hit Ctl-C to exit ====================&amp;#34;
-sleep 1
-exec $0 # Spawns another instance of this same script
-#+ that replaces the previous one.
-echo &amp;#34;This line will never echo!&amp;#34; # Why not?
-exit 99 # Will not exit here!
-# Exit code will not be 99!
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; exec同时还具有重新声明文件描述符的功能,例如:exec &amp;lt;zzz-file用文件zzz-file内容替换标准输入
---&amp;gt; 在find命令中使用的-exec选项和shell内建命令exec不同,需要注意
-shopt
-这个命令允许在运行的过程中更改shell选项,通常出现在bash启动文件中,同样在脚本中可以使用,需要version 2以上版本的bash
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>shopt -s cdspell
-# Allows minor misspelling of directory names with &amp;#39;cd&amp;#39;
-# Option -s sets, -u unsets.
-cd /hpme # Oops! Mistyped &amp;#39;/home&amp;#39;.
-pwd # /home
-# The shell corrected the misspelling.
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>caller
-在一个函数中放置一个caller命令,会打印出是在第几行调用这个函数,不再函数中使用没有作用
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-function1 ()
-{
-caller 0 # Tell me about it.
-}
-function1
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; caller命令在被source后,同样能够打印出在被source文件中的位置,类似于一个函数,这个被称作为子程序
---&amp;gt; caller在debug中比较有用
-&lt;/code>&lt;/pre>
-&lt;h3 id="6-常用命令">#6 常用命令&lt;/h3>
-&lt;pre>&lt;code>true
-一个返回成功(0)的退出状态码命令,不做任何其他动作
-常用与无限循环结构中: while true
-false
-一个返回失败(非0)退出状态码命令,不做任何其他动作
-常用场景同样为无限循环结构: while false
-type[cmd]
-类似于which的外部命令,type命名用于鉴定cmd命令;
---&amp;gt; 不同于which,type是一个内建命令
---&amp;gt; type使用-a参数时,用于鉴定关键字和内建命令,同样定位命令在系统上的唯一名称
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ type &amp;#39;[&amp;#39;
-[ is a shell builtin
-bash$ type -a &amp;#39;[&amp;#39;
-[ is a shell builtin
-[ is /usr/bin/[
-bash$ type type
-type is a shell builtin
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 在测试一个命令是否存在时,type命令非常有用,可以在判断结构中使用
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ type bogus_command &amp;amp;&amp;gt;/dev/null
-bash$ echo $?
-1
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>hash [cmds]
-记录指定命令的path名--在shell的哈希表中--因此shell或者脚本不需要逐次的查找$PATH变量目录来调用这些命令
---&amp;gt; 当hash命令后不接参数时,则仅仅将已经hash的命令列出来
---&amp;gt; 使用-r参数是清空hash表操作
-bind
-内建命令bind显示或者修改readline关键子绑定
-readline:The readline library is what Bash uses for reading input in an interactive shell.
-help
-获取简短的shell内建命令帮助信息,这个命令whatis的副本,但是是一个内建命令
-help命令在bash v4后显示的信息详尽很多
-&lt;/code>&lt;/pre>
-&lt;h3 id="7-job控制命令">#7. job控制命令&lt;/h3>
-&lt;pre>&lt;code>该部分内容的部分命令需要后接任务鉴定符作为参数
-jobs
-列出当前在后台运行的所有job,给出job数字,没有ps有用
---&amp;gt; job和process的概念很容易混淆;一些特定的内建命令,像kill,disown,wait后接job号或者进程号作为参数;但fg,bg和jobs命令则仅接收任务号(job号)作为参数
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ sleep 100 &amp;amp;
-[1] 1384
-bash $ jobs
-[1]+ Running sleep 100 &amp;amp;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>上面的命令及其输出中,数字1是任务号(由当前shell获取的job号),1384是进程号(由系统获取),杀掉job/process,使用kill %1或者kill 1384
-disown
-移除shell中table内正在运行的job
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>$ jobs
-[1] Running sleep 1000 &amp;amp;
-[2] Running sleep 1000 &amp;amp;
-[3]- Running sleep 1000 &amp;amp;
-[4]+ Running sleep 1000 &amp;amp;
-$ disown
-$ jobs
-[1] Running sleep 1000 &amp;amp;
-[2]- Running sleep 1000 &amp;amp;
-[3]+ Running sleep 1000 &amp;amp;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>fg,bg
-fg命令将一个运行在后台的任务切换至前台. bg命令重新启动一个挂起的任务,并在后台执行
---&amp;gt; 如果没有指定任务号,则默认fg和bg会作用与当前正在running状态的任务
-wait
-暂时挂起脚本的执行过程,直到所有的后台运行任务已经结束,或者是作为参数的任务号/进程号已经终止,返回wait后接命令的返回状态码
---&amp;gt; 使用wait的场景通常为:指定的后台任务已完成,再继续执行脚本后续内容
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-ROOT_UID=0 # Only users with $UID 0 have root privileges.
-E_NOTROOT=65
-E_NOPARAMS=66
-if [ &amp;#34;$UID&amp;#34; -ne &amp;#34;$ROOT_UID&amp;#34; ]; then
-echo &amp;#34;Must be root to run this script.&amp;#34; # &amp;#34;Run along kid, it&amp;#39;s past your bedtime.&amp;#34;
-exit $E_NOTROOT
-fi
-if [ -z &amp;#34;$1&amp;#34; ]; then
-echo &amp;#34;Usage: `basename $0` find-string&amp;#34;
-exit $E_NOPARAMS
-fi
-echo &amp;#34;Updating &amp;#39;locate&amp;#39; database...&amp;#34;
-echo &amp;#34;This may take a while.&amp;#34;
-updatedb /usr &amp;amp; # Must be run as root.
-wait
-# Don&amp;#39;t run the rest of the script until &amp;#39;updatedb&amp;#39; finished.
-# You want the the database updated before looking up the file name.
-locate $1
-# Without the &amp;#39;wait&amp;#39; command, in the worse case scenario,
-#+ the script would exit while &amp;#39;updatedb&amp;#39; was still running,
-#+ leaving it as an orphan process.
-exit 0
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; wait也可以后接一个任务识别号作为参数,例如: wait %1或者wait $PPID
---&amp;gt; 在一个脚本中,使用&amp;amp;符号让命令在后台执行可能会导致脚本hang死直到按下enter键,这种情况主要出现在需要输出到标准输出的命令,这种情况的出现比较让人烦;在这种命令后接wait
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-# test.sh
-ls -l &amp;amp;
-echo &amp;#34;Done.&amp;#34;
-wait
-bash$ ./test.sh
-Done.
-[bozo@localhost test-scripts]$ total 1
--rwxr-xr-x 1 bozo bozo 34 Oct 11 15:09 test.sh
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>将命令输出写入到文件或者/dev/null中也可以解决这个问题
-suspend
-改命令与ctrl+Z有相似的效果,但是这个命令是挂起shell(shell的父进程应该在合适的时候恢复该shell的运行)
-logout
-退出一个登录shell,后面可借参数n,指定登出shell的状态返回码
-times
-显示进程执行用时数据,区别于time命令;得出的信息价值有限,对于profile和基础shell脚本并不通用
-kill
-强制终止一个进程,通过传递合适的终止信号
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-# self-destruct.sh
-kill $$ # Script kills its own process here.
-# Recall that &amp;#34;$$&amp;#34; is the script&amp;#39;s PID.
-echo &amp;#34;This line will not echo.&amp;#34;
-# Instead, the shell sends a &amp;#34;Terminated&amp;#34; message to stdout.
-exit 0 # Normal exit? No!
-# After this script terminates prematurely,
-#+ what exit status does it return?
-#
-# sh self-destruct.sh
-# echo $?
-# 143
-#
-# 143 = 128 + 15
-# TERM signal
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; kill -l列出所有支持的信号列表(包含在文件/usr/include/asm/signal.h)
---&amp;gt; kill -9是一个确认杀死,通常使用在单独使用kill命令无法杀死的场景下,有时,kill -15也能生效
---&amp;gt; 僵尸进程是一个子进程已经终止,但父进程还没有被kill,无法被一个loged-on用户杀死--你无法杀死一个已经死的物件--但是init迟早会清理这些进程
-killall
-killall命令通过名字杀死一个运行进程,而不是通过pid
---&amp;gt; 如果同时存在多个命令运行实例,则执行killall命令会将所有的这些实例全部杀死
---&amp;gt; 此处的killall是指在/usr/bin/下的命令,而不是/etc/rc.d/init.d下的killall脚本
-command
-command命令禁用接在其后的命令的alias和function
---&amp;gt; 这个命令是三个影响脚本命令执行的指令之一,其他两个分别是builtin和enable
-builtin
-使用命令builtin BUILTIN_COMMAND将命令BUILTIN_COMMAND当作一个shell内建命令来执行;临时禁用与调用命令同名的functions或者是系统外部命令
-enable
-改命令能够启用或者禁用一个shell内建命令
-例如: 命令enable -n kill禁用了shell内建命令kill,当bash继续调用kill时,调用的是外部命令kill
---&amp;gt; enable的-a选项列出所有的shell内建命令,指示这些命令是否被enable
---&amp;gt; -f filename选项让enable加载一个内建命令作为一个共享库模块从一个正确编译的二进制文件
-&lt;/code>&lt;/pre>
-&lt;h3 id="8-任务识别符">#8. 任务识别符&lt;/h3>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">内容&lt;/th>
-&lt;th style="text-align:left">含义&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">%N&lt;/td>
-&lt;td style="text-align:left">任务号&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">%S&lt;/td>
-&lt;td style="text-align:left">引用以S开头的job&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">%?S&lt;/td>
-&lt;td style="text-align:left">引用包含S的job&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">%%&lt;/td>
-&lt;td style="text-align:left">当前job(最后一个在前台停止的任务或者是最后一个在后台启动的任务)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">%+&lt;/td>
-&lt;td style="text-align:left">当前job(最后一个在前台停止的任务或者是最后一个在后台启动的任务)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">%-&lt;/td>
-&lt;td style="text-align:left">上一个job&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">$!&lt;/td>
-&lt;td style="text-align:left">上一个后台任务&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3 id="9-外部过滤器程序及命令">#9. 外部过滤器,程序及命令&lt;/h3>
-&lt;p>标准的UNIX命令让shell脚本更加灵活,shell脚本的能力通过多个系统命令和shell指令的整合来实现&lt;/p>
-&lt;h3 id="10-基础命令">#10. 基础命令&lt;/h3>
-&lt;pre>&lt;code>ls
-基础文件罗列命令.很容易理解这个命令的低调;
-用-R参数是递归的罗列出当前目录下的内容
-用-S参数是按照文件的大小来排序
-用-t参数是按照文件的修改时间来排序
-用-v参数是文件名逆序罗列(依照数值顺序)
-用-b参数是显示脱意字符
-用-i参数是显示inode信息
---&amp;gt; ls返回一个非零返回值,当目标文件不存在时
-cat/tac
-cat是concatenate的缩写,获取一个文件的内容,显示到标准输出,当与重定向符(&amp;gt;或者&amp;gt;&amp;gt;)一同使用时,一般用来连接文件
---&amp;gt; -n参数是在文件的前面加上行号
---&amp;gt; -b参数是只显示非空行内容
---&amp;gt; -v参数是显示不可打印字符
---&amp;gt; -s参数是将多行空行显示为一行空行
---&amp;gt; 在一个管道中,直接使用重定向会比cat的效率更高
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>cat filename | tr a-z A-Z
-tr a-z A-Z &amp;lt; filename
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; tac是cat的反向命令,反向输出一个文件的内容(最后一行变为第一行,依次向上)
-rev
-将文件的每一行内容反向输出到标准输出,注意这个通tac功能是不一样的
-cp
-文件复制命令
-cp file1 file2 --&amp;gt; 将file1复制到文件file2,如果file2存在,则覆盖文件file2内容
---&amp;gt; 尤其注意-a(archive)参数的使用,可以用于将一个目录完整复制
---&amp;gt; -u(update)参数避免覆盖
---&amp;gt; -r/-R 递归的复制
-move
-文件移动命令
-命令等效与cp和rm的结合体,用来将多个文件移动到一个文件夹中,或者重命名文件夹;
---&amp;gt; 当mv用在一个非交互的脚本中时,mv会使用-f(force)参数来忽略用户的输入内容
---&amp;gt; 当把一个目录mv为另一个已经存在目录名称时,该目录会变成已存在目录的子目录
-rm
-删除文件命令
---&amp;gt; -f(force)参数用于强制删除文件,即使该文件为只读,在脚本中使用,用来绕开用户输入非常有用
---&amp;gt; 当一个文件以'-'开头时,使用rm删除会失败;rm将以'-'的内容作为参数使用
-a.解决方式之一是在要删除文件的前面加上'--'(选项结束标识符)
-b.另一种方式是,在文件名前加上./,表示是在当前目录下的文件
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>rm -- -badname
-rm ./-badname
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 当使用-r参数时,表示从当前指定目录递归删除
-a.使用路径名称中包含变量的时候,尤其小心,当变量不存在时,有可能就变成了rm -rf /
-b.使用rm -rf *时需要注意;若命令执行时,当前工作路径不对,改命令结束后,效果将等同如rm -rf /
-rmdir
-删除文件夹命令
-当使用这个命令删除文件夹时,目录必须为空(包括.文件--隐藏文件)
---&amp;gt; 特定场景下使用这个命令来替代rm -rf dirname,防止误删错误文件夹
-mkdir
-创建文件夹命令
-创建一个新的文件夹,如: mkdir -p project/programs/December; -p参数会自动创建任何必需的父目录
-chmod
-更改已存在文件或者文件夹的属性命令
---&amp;gt; 数字方式 chmod 755 /dirname
---&amp;gt; 字符方式 chmod u+rwx /filename
-chattr
-更改文件属性命令,这个命令与chmod的功能类似,但是使用不同的选项和语法方式,(仅在ext文件系统上使用?)
---&amp;gt; chattr的一个特殊的参数'i'(immutable),当一个文件具有了i属性,表示这个文件是不可更改的,不能被修改,删除,链接(root也不行)
---&amp;gt; 当一个文件具有了's'(secure)属性时,文件被删除后,之前文件占用的块将被二进制0填充
---&amp;gt; 当一个文件具有了'u'(undelete)属性时,文件被删除后,文件内容仍能够获取到(状态为undeleted)
---&amp;gt; 当一个文件具有了'c'(compress)属性时,当文件被写时,自动压缩到磁盘文件,当文件被读时,自动从磁盘解压读取
---&amp;gt; chattr包含的文件属性不同使用ls -l显示出来
-ln
-为存在的文件创建链接,链接是一个文件的映射,文件的别名
---&amp;gt; ln命令允许被链接的文件包含不止一个映射名
---&amp;gt; ln命令还可以用作别名来使用,在脚本中充作别名(abs-p38)
---&amp;gt; ln只创建文件的映射,指向文件的指针大小只有几个字节大小
---&amp;gt; ln命令最常与-s选项一同使用(符号链接或者称为软链接);软链接的优势之一是可以跨越文件系统创建
-ln -s oldfile newfile将oldfile链接一个新的文件名称newfile
---&amp;gt; 更改文件被链接文件的内容时,软链接和硬链接同时能够体现更改的文件内容;不同点是
-a.删除或者重命名被链接文件后,硬链接不受影响,源文件的存储块内容并没有发生变化;但对于指向源文件名称的软链接来说,旧文件名称已经不存在,软链接将失效
-b.软链接的优点是可以跨越文件系统进行链接,并且,不同于硬链接,软链接还可以指向文件夹,硬链接则不行
---&amp;gt; 链接的存在可以让脚本(或其他任何可执行的文件)通过不同的名称来调用(eg:/sbin/iptables -&amp;gt; xtables-multi),通过名称来限定脚本执行哪部分功能
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>#!/bin/bash
-# hello.sh
-ln -s hello.sh goodbye
-HELLO_CALL=65
-GOODBYE_CALL=66
-if [ $0 = &amp;#34;./goodbye&amp;#34; ]; then
-echo &amp;#34;Good-bye!&amp;#34; # Some other goodbye-type commands, as appropriate.
-exit $GOODBYE_CALL
-fi
-echo &amp;#34;Hello!&amp;#34;
-exit $HELLO_CALL
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>man/info
-获取帮助文档,info文档一般描述信息会比man文档更详尽
---&amp;gt; man文档的书写可以通过脚本来优化(abs-709)
-&lt;/code>&lt;/pre>
-&lt;h3 id="11-高级命令">#11. 高级命令&lt;/h3>
-&lt;pre>&lt;code>find
-命令形式: -exec COMMAND \;
-为每一行find匹配的内容执行COMMAND命令,命令序列是以';'结尾
---&amp;gt; 此处使用的-exec与shell自带命令exec别混淆了
---&amp;gt; 注意此处不是命令分隔使用到的';',find命令序列中';'是脱意的,为了确保shell将';'按照字面意思传递给find
---&amp;gt; 如果COMMAND中包含有{},则find将find匹配的路径或者文件名通过{}来替换;
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>find ~/ -name &amp;#39;core*&amp;#39; -exec rm {} \;
-find /etc -exec grep &amp;#39;[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*&amp;#39; {} \;
-find /home -type f -atime +5 -exec rm {} \;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>时间匹配: find可以通过文件的时间戳进行查找匹配
-mtime = last modification time of the target file
-ctime = last status change time (via 'chmod' or otherwise)
-atime = last access time
-(-mtime -1表示前一天被修改过的文件)
-文件匹配: find可以通过文件类型进行查找匹配
-f = regular file
-d = directory
-l = symbolic link, etc.
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>## 删除当前目录下包含特殊字符的文件
-find . -name &amp;#39;*[+{;&amp;#34;\\=?~()&amp;lt;&amp;gt;&amp;amp;*|$ ]*&amp;#39; -maxdepth 0 -exec rm -f &amp;#39;{}&amp;#39; \;
-## 通过inum删除文件
-inum=`ls -i | grep &amp;#34;$1&amp;#34; | awk &amp;#39;{print $1}&amp;#39;`
-find . -inum $inum -exec rm {} \;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>xargs
-一个用来传递参数给命令的过滤器,同样也是一个集合命令的工具
---&amp;gt; xargs将数据流打散成足够小的块,用来给命令或者进程处理,可以将这个命令想成更加强大的后向引用
---&amp;gt; 在有些场景下,命令替换报too many arguements时,用xargs却可以使用
---&amp;gt; 一般场景下,xargs通过管道或者标准输入读取数据,但也可以通过一个文件的内容来获取
---&amp;gt; 默认传递给xargs的命令是echo,这表示当输入管道给到xargs时,换行符和一些其他空白字符会被跳过
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ ls -l | xargs
-total 0 -rw-rw-r-- 1 bozo bozo 0 Jan 29 23:58 file1 -rw-rw-r-- 1 bozo bozo 0 Jan...
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 命令ls | xargs -p -l gzip 将当前目录下的每个文件用gzip打包,每次一个,每进行一次会提示一次
---&amp;gt; xargs依次序处理传递给其的参数,一次一项
---&amp;gt; -n NN形式;限制每次传递给命令的参数数目,ls | xargs -n 3 echo -- 每次打印三个名字
---&amp;gt; 另外一个有用的参数是-0,通常和find -print0或者grep -lZ一同使用;这个场景下允许处理的参数中包含空白字符或者引用
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>find / -type f -print0 | xargs -0 grep -liwZ GUI | xargs -0 rm -f
-grep -rliwZ GUI / | xargs -0 rm -f
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; -P选项允许并行执行命令,在多核机器中能够提高执行速度
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>ls *gif | xargs -t -n1 -P2 gif2png
-# Converts all the gif images in current directory to png.
-# Options:
-# =======
-# -t Print command to stderr.
-# -n1 At most 1 argument per command line.
-# -P2 Run up to 2 processes simultaneously.
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 在find中使用,一对花括号的作用是作为占位符使用的
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>ls . | xargs -i -t cp ./{} $1
-# -t is &amp;#34;verbose&amp;#34; (output command-line to stderr) option.
-# -i is &amp;#34;replace strings&amp;#34; option.
-# {} is a placeholder for output text.
-# This is similar to the use of a curly-bracket pair in &amp;#34;find.&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>expr
-通用表达式求值运算命令
-连接并对给出的命令选项和参数进行求值操作(各个参数之间必须用空格隔开)
---&amp;gt; 可进行的操作包括有: 算数运算,比较,字符或者逻辑运算
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>expr 3 + 5
-expr 5 % 3
-expr 1 / 0
-expr 5 \* 3 # 乘法运算,在expr表达式中,乘号需要脱意
-y=`expr $y + 1` # 变量自增,等效于 let y=y+1 and y=$(($y+1))
-z=`expr substr $string $position $length` # 获取变量string中position位置length长度的字符
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; ':'运算符可以用来替代match;命令 b=`expr $a : [0-9]*`等效于 b=`expr match $a [0-9]*`
-&lt;/code>&lt;/pre>
-&lt;h3 id="12-时间日期命令">#12. 时间/日期命令&lt;/h3>
-&lt;pre>&lt;code>date
-打印当前时间和日期信息到标准输出,这个命令的格式化输出和解析选项很有用
---&amp;gt; -u选项显示UTC时间
---&amp;gt; date可以用来计算不同时间之间的时间间隔
---&amp;gt; date有大量的输出选项可供选择;比如%N是给出当前时间的纳秒格式,这个形式可以用来获取随机数
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>date +%N | sed -e &amp;#39;s/000$//&amp;#39; -e &amp;#39;s/^0//&amp;#39;
-date --date=&amp;#39;6 days ago&amp;#39;
-date --date=&amp;#39;1 year ago&amp;#39;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>zdump
-时区dump:打印指定时区的时间
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ zdump EST
-EST Tue Sep 18 22:09:22 2001 EST
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>time
-显示执行一个命令的准确时间
---&amp;gt; time不同于命令times,注意
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ time ls -l /
-real 0m0.004s
-user 0m0.004s
-sys 0m0.001s
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>touch
-更新文件的访问/修改时间为系统/指定时间,同时具有新建一个文件的功能
---&amp;gt; 当文件zzz不存在时,touch zzz会创建一个大小为0的文件zzz;这种方式用来存储日期/时间戳很有用
---&amp;gt; touch命令等效于:&amp;gt;&amp;gt; newfile或者&amp;gt;&amp;gt; newfile(普通文件)
---&amp;gt; 可以结合cp -a一起使用,使用touch更新不想被覆盖的文件时间戳,再用cp -u
-at
-at任务控制命令在指定的时间执行一系列指定的命令;命令类似于cron,at命令很适合只执行一次的命令
---&amp;gt; 使用-f选项或者&amp;lt;输入重定向,at充文件中读取命令;文件应该是一个可执行的shell脚本,同时是非交互式脚本
---&amp;gt; 需要执行较多内容时,可以结合run-parts命令来实现
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ at 2:30 am Friday &amp;lt; at-jobs.list
-job 2 at 2000-10-27 02:30
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>batch
-batch命令类似于at命令,但要求在系统负载低于0.8时执行;类似于at,可以接-f选项
-cal
-打印简化版的日历到标准输出,可接不同选项,显示不同年份和月份的日历
-sleep
-这个是shell形势下的wait循环;命令暂停指定秒数的时间,什么都不做
---&amp;gt; 对于后台运行的命令或者定时进程很有用,定时检查事件
---&amp;gt; sleep命令默认情况下是使用秒,但也可以用分钟,小时或者天来定时
---&amp;gt; watch命令比sleep命令更适合周期性检查命令执行情况
-usleep
-类似与sleep,但默认时间为微秒,用在对时间更加精准或查询更加频繁的场景下
-hwclock/clock
-命令hwclock获取或者调整机器的硬件时间,某些选项需要root权限才能使用
---&amp;gt; 在rhel6中,启动时,/etc/rc.d/rc.sysinit启动文件通过hwclock获取硬件时间来设置系统时间
---&amp;gt; clock是hwclock的同义词
-&lt;/code>&lt;/pre>
-&lt;h3 id="13-文本处理命令">#13. 文本处理命令&lt;/h3>
-&lt;pre>&lt;code>sort
-文件归类工具,通常用在管道后过滤使用
---&amp;gt; 命令用来正序,逆序或者指定位置关键字/字符位置来处理文本流或者文件
---&amp;gt; 使用-m选项,合入预处理过的文件
---&amp;gt; 可以查看info文档来获取sort的使用场景
-tsort
-拓扑排序,读取以空格分隔的字符串对，并根据输入模式进行排序;通常情况下tsort命令排序的结果与sort排序结果有较大差别
-uniq
-该命令移除文件中重复出现的行,通常会结合sort和管道一同使用
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>cat list-1 list-2 list-3 | sort | uniq &amp;gt; final.list
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 使用-c选项,在输出结果中显示重复出现的次数
---&amp;gt; sort INPUTFILE | uniq -c | sort -nr　命令打印出在INPUTFILE中出现的频次信息,使用场景为分析log文件或者字典列表等
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>sed -e &amp;#39;s/\.//g&amp;#39; -e &amp;#39;s/\,//g&amp;#39; -e &amp;#39;s/ //g&amp;#39; &amp;#34;$1&amp;#34; | tr &amp;#39;A-Z&amp;#39; &amp;#39;a-z&amp;#39; | sort | uniq -c | sort -nr
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>expand/unexpand
-命令expand用来将tab展开为空格,通常与管道结合使用
-命令unexpand将空格转换为tab,是expand的反转命令
-cut
-展开文件指定区域的命令.命令类似于在awk结构中的print $N,但相比较之下,限制更多.在脚本中使用cut命令会比使用awk更简单.cut重要的选项-f和-d
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code># 使用cut来获取挂载文件系统列表
-cut -d &amp;#39; &amp;#39; -f1,2 /etc/mtab
-# 使用cut列出OS和内核版本
-uname -a | cut -d&amp;#34; &amp;#34; -f1,3,11,12
-# 使用cut来解析email信息头部
-bash$ grep &amp;#39;^Subject:&amp;#39; read-messages | cut -c10-80
-Re: Linux suitable for mission-critical apps?
-MAKE MILLIONS WORKING AT HOME!!!
-Spam complaint
-Re: Spam complaint
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 甚至可以指定换行符作为分隔符
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ cut -d&amp;#39;
-&amp;#39; -f3,7,19 testfile
-This is line 3 of testfile.
-This is line 7 of testfile.
-This is line 19 of testfile.
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; cut -d ' ' -f2,3 filename的结果等效于awk -F'[ ]' '{ print $2, $3 }' filename
-paste
-用于将多个文件合成为一个文件,将合成的结果输出到标准输出
-join
-这是一个特殊形式的paste命令;这个强大的程序允许按照一定的关联关系来合并两个文件内容,这实际上已经是一个简化版的关系数据库形式了
---&amp;gt; join命令只对两个文件进行操作，但只粘贴那些带有公共标记字段（通常是数字标签）的行，并将结果写入stdout
---&amp;gt; 要加入的文件应根据标记字段进行排序，以使匹配正常工作
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>File: 1.data
-100200300Shoes
-Laces
-Socks
-File: 2.data
-100200300$40.00
-$1.00
-$2.00
-bash$ join 1.data 2.data
-File: 1.data 2.data
-100 Shoes $40.00
-200 Laces $1.00
-300 Socks $2.00
-# 标识字段只出现一次
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>head
-打印一个文件的启示内容到标准输出,默认行数是10,但允许设置不同数字
---&amp;gt; head有多个不同的参数可以使用,如-c(字符数),-n(行数)
-tail
-打印一个文件的尾部到标准输出,默认行数是10,但该数字可以通过接-n选项更改;通常用来追踪一个文件内容的变化
---&amp;gt; tail -f等效于tailf,动态实时的显示文件内容
---&amp;gt; 显示某个文件的指定行内容,其中一种方式: head -n 8 database.txt | tail -n 1 l
---&amp;gt; 使用新的 tail -n $LINES filename 代替旧有形式tail -$LINES filename
-grep
-一个多功能的搜索工具,可以使用正则表达式;命令形式grep pattern [file...]
---&amp;gt; -i选项,忽略大小写
---&amp;gt; -w选项,仅匹配整个单词
---&amp;gt; -l选项,仅显示匹配相关内容的文件名
---&amp;gt; -r选项,递归搜索
---&amp;gt; -n选项,显示匹配到的内容所在行,并将行数显示在匹配内容的前面
---&amp;gt; -v选项,不显示匹配到的内容
---&amp;gt; -c选项,显示匹配到的次数
---&amp;gt; --color选项,将匹配到的内容上色显示
---&amp;gt; -o选项,仅打印匹配到的内容,不显示一整行
---&amp;gt; -q选项,不打印任何内容,在判断结构中使用很方便
---&amp;gt; 当仅搜索一个文件时,在输出结果中要将文件名一同打印,可以后接/dev/null作为第二个文件名
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ grep Linux osinfo.txt /dev/null
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; grep匹配到相关内容后,返回值为0,这样可以结合判断结构来使用
---&amp;gt; 使用sed命令可以仿真grep的行为: sed -n /&amp;quot;$1&amp;quot;/p $file
---&amp;gt; 怎样让grep匹配两个不同的匹配模式,可以使用方式grep pattern1 | grep pattern2来实现
---&amp;gt; egrep等效于grep -E,允许使用扩展正则表达式来进行匹配,形式更加灵活
---&amp;gt; fgrep等效于grep -F,逐字匹配(不使用正则表达式),速度会更快一些
---&amp;gt; agrep(近似匹配/模糊匹配),扩展grep的能力,使其能够进行模糊匹配
---&amp;gt; 匹配压缩文件内容时,使用zgrep/zegrep/zfgrep,这些命令同样能用在普通文件,虽然速度慢一些,但对于包含多种文件类型(普通文件/压缩文件)的场景下操作则更方便
---&amp;gt; 匹配bzip文件时使用bzgrep命令
-look
-look命令工作形式类似于grep,但是是基于字典(一个已排序的单词列表)进行查询;默认情况下,look在/usr/dict/words下进行匹配,但可以指定进行匹配的字典
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>file=words.database # Data file from which to read words to test.
-while [ &amp;#34;$word&amp;#34; != end ]; do # Last word in data file.
-read word
-look $word &amp;gt; /dev/null
-lookup=$?
-if [ &amp;#34;$lookup&amp;#34; -eq 0 ]; then
-echo &amp;#34;\&amp;#34;$word\&amp;#34; is valid.&amp;#34;
-else
-echo &amp;#34;\&amp;#34;$word\&amp;#34; is invalid.&amp;#34;
-fi
-done &amp;lt;&amp;#34;$file&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>sed/awk
-脚本语言,非常适合用来处理文本文件和标准输出的内容
-sed
-非交互式的流编辑器,在batch(不需要用户介入的情况下运行一组命令)模式下允许使用很多ex命令,在脚本中使用很广泛
-awk
-可编程式文件内容提取及格式化程序,适合用来操作或展开格式化的文本文件的列,语法格式类似于C语言
-wc
-计数程序
---&amp;gt; -w:单词数;-l:行数;-c:字节数;-m:字符数;-L:给出最长行的长度
-tr
-字符转化过滤器
---&amp;gt; 视情况决定是否需要使用引用或者括号,引号引用可以防止shell将属于tr的特殊字符先行处理了,括号必须被引起来,防止直接被展开
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>tr &amp;#34;A-Z&amp;#34; &amp;#34;*&amp;#34; &amp;lt;filename
-tr A-Z \* &amp;lt;filename
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 接上-d选项,用于删除一系列的指定字符
---&amp;gt; --squeeze-repeats(-s)选项用来删除连续的字符(保留第一个),这个选项用来移除多余的空白字符很有用
---&amp;gt; -c(补足)选项将未匹配的内容用指定的字符替代
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>bash$ echo &amp;#34;acfdeb123&amp;#34; | tr -c b-d +
-+c+d+b++++
-bash$ echo &amp;#34;abcd2ef1&amp;#34; | tr &amp;#39;[:alpha:]&amp;#39; -
-----2--1
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>fold
-将输入的行折叠成指定宽度的过滤器
---&amp;gt; 使用-s选项用来以空格作为隔断符,防止直接截断字符
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>b=`ls /usr/local/bin`
-$ echo $b | fold - -s -w 40
-cnpm compile cops-cli gitbook pacvim
-ptyping qr-filetransfer runenpass sle
-study s-tui t termtosvg tget tiv
-# 等效于echo $b | fmt -w $WIDTH
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>fmt
-简单的格式化工具,用于将长行分割为多行
-column
-列格式化工具,将列类型的文本输出转换成格式友好的打印形式,在合适的位置插入tab
---&amp;gt; 对于文件中存在多列内容,但未对齐的格式,使用column -t处理会很方便
-colrm
-列删除处理器,该命令删除文件中的列内容并直接写该文件
---&amp;gt; colrm 2 4 &amp;lt;filename 删除文件中的第二到第四列内容
---&amp;gt; 上列命令使用时,若文件中包含有tab之类的不可打印字符,则可能导致无法预估的结果,考虑使用expand/unexpand命令处理之后再管道传输给colrm
-nl
-打印文件内容并附上行号
---&amp;gt; 打印的是非空行内容
---&amp;gt; nl的操作非常类似于cat -b,同样是不打印非空行
-cpio
-这个特定的归档复制命令已经很少用了,基本已经被tar/gzip取代;但在某些场景下,还是能够使用
---&amp;gt; 指定块大小进行复制,速度会比tar更快
-find &amp;quot;$source&amp;quot; -depth | cpio -admvp &amp;quot;$destination&amp;quot;
-rpm2cpio
-这个命令从rpm包中解压一个cpio文件出来
-gzip
-结合-c选项使用时,将gzip的输出写入到标准输出,结合管道使用非常有用
-zcat/bzcat
-可以用来查看gzip/bzip文件中的内容,相当与bzip/gzip文件下的cat
-readlink
-获取符号链接指向的文件
-strings
-用来获取二进制文件或其他数据文件中的可打印字符
-diff
-逐行打印两个对比文件的不同内容
---&amp;gt; 使用--side-by-side选项,每个文件内容显示一列,相较原来的形式更方便对比查看
---&amp;gt; 使用-c和-u选项可以让输出结果更适合查看
---&amp;gt; 可以在判断结构中使用diff命令,当比较的两个文件同一的时候,命令返回值为0,当比较的两个文件不一样时,返回值非零
-patch
-一个非常灵活的版本记录命令,结合diff使用比较常见,可以给出一个由diff命令创建的差异文件
-diff3
-diff命令的升级版命令,可以一次比较三个文件,正常执行后命令返回值为0,但改命令不会打印文件差异内容出来
-split/csplit
-用于将一个文件切片为小块的工具,使用场景一般为文件太大,需要切片后邮件发送或者拷贝到移动磁盘
-csplit命令通过文件内容来进行分片
-sum,cksum,md5sum,sha1sum
-以上命令是用于创建校验和的工具,校验和是通过对一个文件内容进行数学计算得出的字符串,用于检查文件的完整性
-openssl
-可以用于加密使用,结合tar一同使用,可以方便的加密相关目录和文件
-shred
-用随机字符多次重写文件,可用在安全要求高的场景下
-mktemp
-创建一个拥有唯一名称的临时文件,不使用其他参数是,在/tmp目录下创建一个大小为0的文件
---&amp;gt; tempfile=`mktemp $PREFIX.XXXXXX` 指定创建的新文件包含有多少个随机字符
-ptx
-ptx[targetfile]命令输出目标文件的排列索引（交叉引用列表）。如有必要，可以在管道中进一步过滤和格式化。
-ipcalc
-用于换算和查看ip相关的内容
-traceroute
-通过发送的包追踪路由
-sx,rx
-命令集通过xmodem协议与远端服务器传输文件
-sz,rz
-命令集通过zmodem协议与远端服务器传输文件,zmodem的速度相对xmodem更快
-ssh
---&amp;gt; 在循环中使用ssh时,可能出现不可预期的情况,可以后接-f或者-n选项来避免
-tput
---&amp;gt; 初始化终端和/或从terminfo数据中获取有关它的信息。各种选项允许某些终端操作：tput clear等于clear；tput reset等于reset。
---&amp;gt; tput可以用来对终端进行操作,更改字符显示方式等
-reset
-重置终端参数并且清屏
-script
-记录键盘敲击记录,执行该命令后,会在当前目录下生成一个文件,用于记录后面敲击的键盘记录
-factor
-后接一个数字,将该数字的各个因数打印出来
-bc
-bash无法进行浮点数计算,且缺少一些重要的运算功能,bc可以满足部分需求
---&amp;gt; bc可以用在脚本中,用来对变量进行计算获值variable=$(echo &amp;quot;OPTIONS; OPERATIONS&amp;quot; | bc)
---&amp;gt; 另外一种形式是结合here document的方式来作为输入
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>&amp;lt;&amp;lt; EOF
-18.33 * 19.78
-EOF
-`
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>awk
-另外一种进行浮点数运算的方式是使用awk命令
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>AWKSCRIPT=&amp;#39; { printf( &amp;#34;%3.7f\n&amp;#34;, sqrt($1*$1 + $2*$2) ) } &amp;#39;
-# command(s) / parameters passed to awk
-# Now, pipe the parameters to awk.
-echo -n &amp;#34;Hypotenuse of $1 and $2 = &amp;#34;
-echo $1 $2 | awk &amp;#34;$AWKSCRIPT&amp;#34;
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>jot,seq
-生成一个整数序列,用户可以自定义步长和分隔符
---&amp;gt; seq -s : 5 指定分隔符为:,默认情况下是换行符
---&amp;gt; jot和seq都可以用在for循环中
-run-parts
-run-parts命令会执行目标目录下的所有脚本,默认依照ascii字母顺序执行,当然,脚本需要有执行权限
-yes
-yes默认的动作为返回y及换行符到标准输出,需要使用ctrl+C来终止
---&amp;gt; 使用yes string,则后面会不断重复出现string
---&amp;gt; 使用场景: yes | rm -r dirname
-tee
-类似与重定向,但与重定向不同
-(redirection)
-|----&amp;gt; to file
-|
-==========================|====================
-command ---&amp;gt; command ---&amp;gt; |tee ---&amp;gt; command ---&amp;gt; ---&amp;gt; output of pipe
-===============================================
-mkfifo
-命令创建一个命名管道,一个临时的first-in-first-out用于在不同的进程之间传递数据,一般情况下,一个进程向FIFO中写数据,另一个进程则从FIFO中读取数据
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>(cut -d&amp;#39; &amp;#39; -f1 | tr &amp;#34;a-z&amp;#34; &amp;#34;A-Z&amp;#34;) &amp;gt;pipe2 &amp;lt;pipe1 &amp;amp;
-ls -l | tr -s &amp;#39; &amp;#39; | cut -d&amp;#39; &amp;#39; -f3,9- | tee pipe1 | cut -d&amp;#39; &amp;#39; -f2 | paste - pipe2
-rm -f pipe1
-rm -f pipe2
-&lt;/code>&lt;/pre>&lt;h3 id="14-其他命令">#14. 其他命令&lt;/h3>
-&lt;pre>&lt;code>groups
-显示当前用户属于哪些组
-lid
-命令将显示给出的用户名所属的groups列表
-logname
-显示登录当前终端登录系统的用户名称,即使su之后,改命令仍显示为源用户
-ac
-显示用户登录的时长
-newgrp
-更改当前用户的组id而不需要登出系统
-tty
-显示当前终端所在的文件名称
-stty
-显示或者是更改终端的设置,改命令较复杂,在脚本中使用时,可以控制终端的行为以及其输出内容的形式
-setterm
-设置指定的终端属性,这条命令会更改输出到标准输出结果的显示情况
-getty/agetty
-使用getty/agetty来初始化终端进程,这些命令不能在脚本中使用,脚本中可使用的是stty
-lastcomm
-显示上一条执行命令的一些相关信息,内容是存储在/var/accounut/pacct文件中的
-strace(system trace)
-用于诊断和debug系统调用的工具,该命令和ltrace可用来查找一个程序运行失败的原因
-itrace(library trace)
-用于诊断和debug库调用的工具
-nc(netcat)
-nc工具集是一个用来连接和监听TCP/UDP端口的工具
-dmesg
-打印所有的系统启动日志信息到标准输出
-size
-size /path/to/binary 会给出一个二进制文件的各个段大小,对于程序员来说,需要使用
-logger
-追加用户自定义的内容到/var/log/messages中去,普通用户也可以使用
---&amp;gt; 该命令可以用来在脚本中增加debug信息到日志中
-logrotate
-该工具用于管理系统的日志文件,轮转,压缩,删除或者email发送等,一般是结合cron一起使用来实现日志管理的
-fuser
-获取当前正在访问给定文件,文件集,或者目录的进程(通过进程号显示)
---&amp;gt; 同-k选项一同使用时,杀掉这些进程,在插拔可移动设备的场景下使用较多
---&amp;gt; 同-n选项一同使用时,获取到当前在访问指定端口的进程,与nmap一同搭配使用非常有用
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code># nmap localhost
-PORT STATE SERVICE
-25/tcp open smtp
-# fuser -un tcp 25
-25/tcp: 2095(root)
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>nmap
-network mapper and port scanner,网络映射和端口扫描,查看指定主机开放的端口
-sync
-执行命令后,强制当前环境下,将buffer中的数据写入到磁盘中
-losetup
-创建或者配置loop设备
-mkswap
-创建一个swap分区或者文件,swap区域启动需要使用swapon命令
-swapon/swapoff
-启用/关闭swap设备
-dumpe2fs
-打印显示详细的文件系统相关信息,必须由root用户调用
-hdparm
-显示/更改磁盘参数,必须由root用户使用,错误使用很危险
-badblocks
-检查一个存储设备的坏块,在一个刚格式化后的设备或者备份文件时使用
-lsusb,usbmodules
-显示所有的usb设备信息
-lspci
-列出当前使用到的pci总线
-chroot
-顾名思义,更改当前的根目录位置
-lockfile
-属于procmail包的一部分,他创建一个lock 文件,用于作为一个标记文件存在,控制文件,设备或者资源的可获取性
-flock
-命令给文件设置一个锁信息的公告,当命令执行完成之后,其他命令或者进程才能操作刚才的文件
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code>flock $0 cat $0 &amp;gt; lockfile__$0
-# Set a lock on the script the above line appears in,
-#+ while listing the script to stdout.
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>--&amp;gt; 与lockfile命令不同的是,flock命令不会自动创建一个lock文件
-mknod
-创建一个块设备或者字符设备(当在系统上新增了一个新的设备之后可能有必要这样做),MAKEDEV工具比mknod更容易使用,且具备相应的功能
-MAKEDEV
-用于创建设备文件的命令,必须由root用户来执行,文件保存在/dev下,是高级版的mknod
-tmpwatch
-自动删除有一段时间没有被访问过的文件,通常结合cron一同使用,用于删除log文件
-dump/restore
-dump命令是设计用于备份文件系统的命令,命令读取磁盘分区的裸数据并写一个二进制文件
-ulimit
-设置一个更高的系统使用极值
-quota
-显示用户或者组的磁盘配额信息
-setquota
-设置用户或者组的磁盘配额
-depmod
-生成模块依赖文件,通常会被启动脚本调用
-ldd
-显示一个可执行文件需要使用到的共享库依赖
-watch
-以特定间隔运行一个命令
-&lt;/code>&lt;/pre>
-&lt;h2 id="特殊内容">特殊内容&lt;/h2>
-&lt;h3 id="1-here-document">#1. here document&lt;/h3>
-&lt;pre>&lt;code>&amp;lt;&amp;lt; 可以结合vi一同使用,如下所示:
-&lt;/code>&lt;/pre>
-&lt;pre tabindex="0">&lt;code># Insert 2 lines in file, then save.
-#--------Begin here document-----------#
-vi $TARGETFILE &amp;lt;&amp;lt;x23LimitStringx23
-i
-This is line 1 of the example file.
-This is line 2 of the example file.
-^[
-ZZ
-x23LimitStringx23
-#----------End here document-----------#
-&lt;/code>&lt;/pre>&lt;pre>&lt;code>可以使用vi +n的形式指定文件打开后在第几行
-&lt;/code>&lt;/pre></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/basics/">basics</category><category domain="https://liawne.github.io/tags/bash/">bash</category><category domain="https://liawne.github.io/tags/linux/">linux</category><category domain="https://liawne.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</category></item><item><title>ansible及ansible-playbook的使用</title><link>https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://liawne.github.io/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</guid><pubDate>Sat, 05 Mar 2022 12:07:21 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
+&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/cloud/">cloud</category><category domain="https://ruisum.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/">云原生</category><category domain="https://ruisum.top/tags/docker/">docker</category><category domain="https://ruisum.top/tags/cloud/">cloud</category></item><item><title>ansible及ansible-playbook的使用</title><link>https://ruisum.top/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://ruisum.top/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</guid><pubDate>Sat, 05 Mar 2022 12:07:21 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
 &lt;p>&lt;em>本文内容参考自&lt;a href="https://www.zsythink.net/archives/2481">朱双印ansible笔记&lt;/a>&lt;/em>&lt;/p>
 &lt;h2 id="配置主机清单">配置主机清单&lt;/h2>
 &lt;p>主机清单配置有两种方式&lt;/p>
@@ -13858,7 +12125,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">var&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">tlist&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/ops/">ops</category><category domain="https://liawne.github.io/tags/ansible/">ansible</category><category domain="https://liawne.github.io/tags/ops/">ops</category></item><item><title>hexo多设备管理</title><link>https://liawne.github.io/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://liawne.github.io/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</guid><pubDate>Tue, 01 Mar 2022 22:13:11 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
+&lt;/div></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/ops/">ops</category><category domain="https://ruisum.top/tags/ansible/">ansible</category><category domain="https://ruisum.top/tags/ops/">ops</category></item><item><title>hexo多设备管理</title><link>https://ruisum.top/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</guid><pubDate>Tue, 01 Mar 2022 22:13:11 +0000</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
 在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在 hexo 分支,hexo 基于更改内容生成的文件提交到 master 分支
 下列内容记录在 raspberry 上配置实现 hexo 编辑提交内容的过程&lt;/p>
 &lt;h3 id="1安装基础包">1.安装基础包&lt;/h3>
@@ -14042,4 +12309,1862 @@ raspberry 安装系统是&amp;quot;Raspbian GNU/Linux 10 (buster)&amp;quot;，�
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo d
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></description><category domain="https://liawne.github.io/tech/">tech</category><category domain="https://liawne.github.io/tech/miscell/">miscell</category><category domain="https://liawne.github.io/tags/hexo/">hexo</category></item></channel></rss>
+&lt;/div></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/miscell/">miscell</category><category domain="https://ruisum.top/tags/hexo/">hexo</category></item><item><title>learning bash via abs</title><link>https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/</guid><pubDate>Sat, 20 Mar 2021 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
+&lt;h3 id="1-特殊字符使用">#1. 特殊字符使用&lt;/h3>
+&lt;pre tabindex="0">&lt;code># --&amp;gt; 注释(不包括#!)
+--&amp;gt; 变量替换使用 echo ${PATH#*:}
+; --&amp;gt; 命令分隔符,用于连接多个命令
+;; --&amp;gt; 用于终止一个case语句
+. --&amp;gt; 等同于source命令
+--&amp;gt; 可作为隐藏文件的文件名开头
+--&amp;gt; 相对路径的表示,当前路径和父目录路径
+--&amp;gt; 匹配单个字符
+&amp;#39;&amp;#39; --&amp;gt; 忽略所有特殊字符,全部引用
+&amp;#34;&amp;#34; --&amp;gt; 忽略除去`,$,\外所有的特殊字符,部分引用
+, --&amp;gt; 连接一串运算,只返回最后一个的结果
+let &amp;#34;t2 = ((a = 9, 15 / 3))&amp;#34; ## set &amp;#34;a=9&amp;#34; and &amp;#34;t2 = 15 / 3&amp;#34;
+--&amp;gt; for file in /{,usr/}bin/*calc ## 与{}一起使用,用作选择的一种,简略代码
+1.1 变量替换中的大小写替换
+echo ${var,} --&amp;gt; 第一个字符小写
+echo ${var,,} --&amp;gt; 所有字符小写
+echo ${var^} --&amp;gt; 第一个字符大写
+echo ${var^^} --&amp;gt; 所有字符大写
+\ --&amp;gt; 脱意符,除去特殊字符的含义,\X等效与&amp;#39;X&amp;#39;
+` --&amp;gt; 运算符,将命令的输出结果作为内容传递给变量
+: --&amp;gt; 空命令,no op,执行结果返回值为0
+--&amp;gt; 在if/then记过中作为占位符使用
+if condition;then :;else action;done
+--&amp;gt; 为需要二进制文件存在的场合提供占位符
+: ${username=`whoami`} | : ${1?&amp;#34;Usage: $0 ARGUMENT&amp;#34;}
+--&amp;gt; 作为切片使用,同python中的切片
+${var:1} ${var:3:3}
+--&amp;gt; 同重定向一同使用,用于清空一个文件而不更改其权限,如果文件不存在,则创建该文件
+: &amp;gt; /tmp/testfile
+--&amp;gt; 可以用作注释符使用,但与#不同,:仍然会检查注释内容中命令是否正确
+--&amp;gt; 用作/etc/passwd文件和$PATH的分隔符
+! --&amp;gt; 更改命令返回值,反转test命令的含义
+--&amp;gt; ${!variable},获取变量$variable的变量值
+--&amp;gt; 调用历史命令,在脚本中无法使用
+* --&amp;gt; 通配符,用以指代在给定的目录下的任何文件
+--&amp;gt; 在正则表达式中,表示任意数量的(包括0)xxx
+--&amp;gt; 运算符,**便是乘方
+? --&amp;gt; 在双括号结构中,可以用做判断
+(( var0 = var1&amp;lt;98?9:21 ))
+--&amp;gt; 变量替换,当parameter不存在是,打印err_msg内容,返回值为1,两种形式的差别仅当parameter被声明且为空值时有差别
+${parameter?err_msg}, ${parameter:?err_msg}
+--&amp;gt; 通配符,给定目录中的单字符文件名,在扩展正则表达式中代表单个字符
+$ --&amp;gt; 变量替换
+--&amp;gt; 锚定符,代表行尾
+${} --&amp;gt; 参数替换
+$* --&amp;gt; 位置参数
+$@ --&amp;gt; 位置参数
+$? --&amp;gt; 命令返回值
+$$ --&amp;gt; 进程ID
+() --&amp;gt; 小括号中的一组命令开启一个子shell,在脚本当中,其他部分无法读取括号中定义的变量
+--&amp;gt; 用于数组的初始化
+Array=(e1 e2 e3)
+{} --&amp;gt; 大括号展开
+echo {file1,file2}\ :{\ A,&amp;#34; B&amp;#34;,&amp;#39; C&amp;#39;}
+--&amp;gt; 扩展大括号展开
+echo {a..e}
+echo {1..10..2} 显示10以内的奇数，步长为2
+--&amp;gt; 代码块,内联组(inline group), anonymous function, the variate in the inline group \
+can be seen in the scripts anywhere
+{ read line1
+read line2
+} &amp;lt; /tmp/passwd line1和line2可以直接读取passwd中的文件内容
+在{}中的代码块,一般情况下不会开启一个新的子shell
+--&amp;gt; {}可以用在非标准的for循环当中
+for ((n=1; n&amp;lt;=10; n++)); { echo -n &amp;#34;* $n *&amp;#34;; }
+--&amp;gt; many commands can be used in a {} section, just like a function, return the outcome
+--&amp;gt; 占位符, use with xargs; &amp;#39;ls . | xargs -i -t cp ./{} $1&amp;#39;
+{} \; --&amp;gt; 该结构用在find架构当中,不作为shell的关键字存在
+The &amp;#34;;&amp;#34; ends the -exec option of a find command sequence. It needs to be escaped to protect it from interpretation by the shell.
+[] --&amp;gt; test命令,[是test命令的内置指令(test的同义字),并不是test的链接
+--&amp;gt; 数组元素,用于展开各个序号的数组元素
+--&amp;gt; 正则表达式中使用,用于表示一个序列
+&amp;#34;[B-Pk-y]&amp;#34;
+$[] --&amp;gt; 运算符,等效与(())
+echo $[$a+$b]
+$[...] --&amp;gt; 整数扩展符, 可用于整数的计算; &amp;#39;echo $[3*5]&amp;#39;
+(())--&amp;gt; 运算符
+(( a = 23 )); (( a++ ))
+&amp;lt;&amp;gt; --&amp;gt; 重定向,包含&amp;gt;,&amp;amp;&amp;gt;,&amp;gt;&amp;amp;,&amp;gt;&amp;gt;,&amp;lt;,&amp;lt;&amp;gt;
+--&amp;gt; &amp;amp;&amp;gt; 把标准输出和标准错误都重定向
+--&amp;gt; &amp;gt;&amp;amp;2重定向到标准错误
+--&amp;gt; &amp;gt;&amp;gt; 追加
+--&amp;gt; [i]&amp;lt;&amp;gt;filename 打开文件filename读写,分配文件描述符i给文件,若i不存在,则默认使用stdin
+----------------------------------------------------------------
+#!/bin/bash
+## example 1-1
+lock_file=/tmp/$(basename $0).lock
+exec 300&amp;lt;&amp;gt;$lock_file
+if ! flock -x -n 300; then
+echo &amp;#34;already running&amp;#34;
+else
+echo &amp;#34;starting...&amp;#34;
+sleep 30
+fi
+----------------------------------------------------------------
+--&amp;gt; (command)&amp;gt; 进程替换, 暂且记下,后续有具体讲解
+--&amp;gt; &amp;lt;&amp;lt; here document
+--&amp;gt; &amp;lt;&amp;lt;&amp;lt; here string
+--&amp;gt; askii 比较,对比文本字符顺序
+\&amp;gt; --&amp;gt; 单词边界,同时还有\&amp;lt;
+grep &amp;#39;\&amp;lt;the\&amp;gt;&amp;#39; textfile
+[[]]--&amp;gt; test,比[]更灵活
+| --&amp;gt; 管道,将命令的输出作为输入传递给下一个命令
+echo ls -l | sh ## 可以作为一种方式执行命令
+--&amp;gt; 管道运行在子shell当中,所以不能在管道中定义变量
+variable=&amp;#34;initial_value&amp;#34;;echo &amp;#34;new_value&amp;#34; | read variable;echo &amp;#34;variable = $variable&amp;#34; # variable = initial_value
+&amp;gt;| --&amp;gt; 强制重定向,强制清空文件内容,即使已经设置了noclobber属性已经设置了
+|| --&amp;gt; 或逻辑运算符,在test结构中使用
+&amp;amp; --&amp;gt; 在后台运行任务,在脚本中,命令甚至是循环结构可以运行在后台中
+for i in {1..10};do echo -n &amp;#34;$i&amp;#34;; done &amp;amp;
+脚本中包含后台运行的命令可能会导致脚本hang死,可以设置补救措施;
+a,在后台命令后面增加一个wait命令可以解决该问题
+b,在将结果重定向至/dev/null或者一个文件也可
+ls -l &amp;amp;; ehco &amp;#34;Done.&amp;#34;; wait
+&amp;amp;&amp;amp; --&amp;gt; 逻辑和运算符,用于test结构中
+- --&amp;gt; 选项前缀, ls -l
+--&amp;gt; 从stdin重定向输入或从stdout重定向输入
+1, (cd /source/directory &amp;amp;&amp;amp; tar cf - . ) | (cd /dest/directory &amp;amp;&amp;amp; tar xpvf -)
+2, bunzip2 -c linux-2.6.16.tar.bz2 | tar xvf -
+3, grep Linux file1 | diff file2 -
+--&amp;gt; 前一个工作目录,由$OLDPWD变量保存
+--&amp;gt; 减号,用作逻辑运算符
+-- --&amp;gt; 命令长格式选项前缀
+ls --all
+--&amp;gt; 与set结合使用,设置位置参数
+----------------------------------------------------------------
+variable=&amp;#34;one two three four five&amp;#34;
+set -- $variable;
+first_param=$1
+second_param=$2
+shift; shift
+echo &amp;#34;first parameter = $first_param&amp;#34; # one
+echo &amp;#34;second parameter = $second_param&amp;#34; # two
+----------------------------------------------------------------
+= --&amp;gt; 赋值运算符;a=28
++ --&amp;gt; 逻辑运算符,相加
+--&amp;gt; 正则表达式,1各或者多个
+--&amp;gt; 特定命令的参数前缀,+为开启,-为关闭,如set命令
+% --&amp;gt; 逻辑运算符,余
+~ --&amp;gt; 家目录,由$HOME保存
+~+ --&amp;gt; 当前工作目录,由$PWD保存
+~- --&amp;gt; 上一个工作目录,由$OLDPWD保存
+=~ --&amp;gt; 正则表达式中匹配
+variable=&amp;#34;This is a fine mess.&amp;#34;
+if [[ &amp;#34;$variable&amp;#34; =~ T.........fin*es* ]]
+^ --&amp;gt; 行开头
+--&amp;gt; 参数替换中,大写替换
+^^ --&amp;gt; 参数替换中,大写替换
+&amp;#39; &amp;#39; --&amp;gt; 空格,用作命令或者是变量的分隔
+&lt;/code>&lt;/pre>&lt;h3 id="2-变量及参数">#2. 变量及参数&lt;/h3>
+&lt;pre>&lt;code>1, 变量名是变量值的占位符,获取变量值的操作称之为变量替换
+2, 变量裸露的情况(没有前缀'$'符)
+--&amp;gt; 变量声明或者是赋值的时候
+--&amp;gt; 取消变量unset
+--&amp;gt; 被export
+--&amp;gt; 逻辑运算表达式(())中
+3, 变量的赋值可以在如下结构中
+--&amp;gt; '='中
+--&amp;gt; read结构
+--&amp;gt; 类似for var in xx的循环结构中
+4, 变量引用中
+--&amp;gt; 使用$a,不用&amp;quot;&amp;quot;括起来,移除变量中的tab和newline
+--&amp;gt; 使用&amp;quot;$a&amp;quot;,保存whitespace(空白)
+5, 使用$(...)替换`...`来进行变量赋值
+6, shell变量没有类型
+7, 特殊类型的变量
+--&amp;gt; 本地变量: 只在代码块或者是函数中可见
+--&amp;gt; 环境变量: 影响shell动作的变量,如PATH或者是PS1等
+--&amp;gt; 位置参数: $0,$1这些,$0表示脚本;$*和$@代表所有的位置参数
+8, 每次新建shell,在shell中会创建相应的环境变量
+9, 使用export命令来将本地变量变成环境变量
+--&amp;gt; 脚本中,变量只能export给子子进程,也即在脚本中声明的变量无法作用于脚本之外
+10,shift命令的作用是重新赋值位置参数,每执行一次,位置参数向左偏移一位
+--&amp;gt; 默认可调用10个
+--&amp;gt; $0不参与
+--&amp;gt; 被重新赋值的变量是move,不是copy(只有两个位置参数,shift后,$2不存在)
+--&amp;gt; shift可接受数字,表示每次偏移多少
+--&amp;gt; 如下示例:
+----------------------------------------------------------------
+# 脚本名称不变,使用软链接给创建多个脚本名称,调用不同的名称,执行不同的功能
+ln -s /usr/local/bin/wh /usr/local/bin/wh-ripe
+ln -s /usr/local/bin/wh /usr/local/bin/wh-apnic
+ln -s /usr/local/bin/wh /usr/local/bin/wh-tucows
+E_NOARGS=75
+if [ -z &amp;quot;$1&amp;quot; ]; then
+echo &amp;quot;Usage: `basename $0` [domain-name]&amp;quot;
+exit $E_NOARGS
+fi
+case `basenam $0` in # Or: case ${0##*/} in
+&amp;quot;wh&amp;quot; ) whois $1@whois.tucows.com;;
+&amp;quot;wh-ripe&amp;quot; ) whois $1@whois.ripe.net;;
+&amp;quot;wh-apnic&amp;quot; ) whois $1@whois.apnic.net;;
+&amp;quot;wh-cw&amp;quot; ) whois $1@whois.cw.net;;
+* ) echo &amp;quot;Usage: `basename $0` [domain-name]&amp;quot;;;
+esac
+----------------------------------------------------------------
+&lt;/code>&lt;/pre>
+&lt;h3 id="3--引用">#3. 引用&lt;/h3>
+&lt;pre>&lt;code>1, grep '[Ff]irst' *.txt;在''中的特殊情况,这里并不会去除[]的作用,而是作为被保护的内容传递给grep
+2, &amp;quot;&amp;quot;保护除过$,\,`的其他符号
+3, 可以引用\n
+quote=$'\116'
+echo -e '\'${quote,}
+4, $'...'可以将8进制或者16进制数转换成ascii字符保存到变量中
+quote=$'\042'
+5, echo -e用于转换特殊含义字符
+&lt;/code>&lt;/pre>
+&lt;h3 id="4--测试">#4. 测试&lt;/h3>
+&lt;pre>&lt;code>测试结构:
+1, if/then/elif/else结构,结合if后面的返回值确定执行顺序
+--&amp;gt; if结构不仅仅只能判断[]结构,后面可借命令
+--&amp;gt; if和then都是关键字参数,关键字开启代码块,在同一行开启一行新语句,就语句必须终结
+2, []结构,等效于test
+3, [[]]关键字结构,类比于test
+4, ((...))和let ...结构,运算结果为非零时,返回值为0;运算结果为零时,返回值为非零
+5, test是bash的内建命令,因此在一个脚本中使用test,使用的并不是/usr/bin/test二进制文件
+--&amp;gt; 在脚本中需要使用/usr/bin/test命令,需要写全路径
+6, 使用[[]]替换[]做测试结构可以防止很多脚本中的逻辑错误
+--&amp;gt; &amp;amp;&amp;amp;, ||, &amp;lt;, &amp;gt;可以用在[[]]中,但无法在[]中使用
+--&amp;gt; 8进制,10进制,16进制可在[[]]中进行比较,[]会报错
+7, (())也可用于测试,展开并对括号中的变量进行运算;当运算结果非零或为0或者'true';当运算结果为零时返回1或者'false'
+8, 文件测试,如下不同场景返回true
+--&amp;gt; -e 文件存在
+--&amp;gt; -f 是普通文件,不是目录或设备文件
+--&amp;gt; -s 大小不为零
+--&amp;gt; -d 是个目录
+--&amp;gt; -b 块设备
+--&amp;gt; -c 字符设备
+--&amp;gt; -p 管道文件
+----------------------------------------------------------------
+# 示例内容:
+function show_input_type()
+{
+[ -p /dev/fd/0 ] &amp;amp;&amp;amp; echo PIPE || echo STDIN
+}
+show_input_type &amp;quot;Input&amp;quot; # STDIN
+echo &amp;quot;Input&amp;quot; | show_input_type # PIPE
+----------------------------------------------------------------
+--&amp;gt; -h 符号链接
+--&amp;gt; -L 符号链接
+--&amp;gt; -S socket文件
+--&amp;gt; -t 文件绑定一个终端设备
+[ -t 0 ]用来测试脚本执行是不是在终端上
+--&amp;gt; -r/w/x/g/u/k 检测文件是否具有相应的权限
+--&amp;gt; -O/G你是文件所属者(组)
+--&amp;gt; f1 -nt f2 文件f1比f2新
+--&amp;gt; f1 -ot f2 文件f1比f2旧
+--&amp;gt; f1 -ef f2 文件f1和f2是指向同一个文件的硬链接
+--&amp;gt; ! 非
+&lt;/code>&lt;/pre>
+&lt;h3 id="5--操作符">#5. 操作符&lt;/h3>
+&lt;pre>&lt;code>--&amp;gt; bash不明白浮点数的运算,会将浮点数当作字符处理;需要处理浮点数的运算,可以使用bc操作
+--&amp;gt; 逻辑运算符:
+1, &amp;amp;&amp;amp; 和/与
+--&amp;gt; if [ $condition1 ] &amp;amp;&amp;amp; [ $condition2 ] Same as: if [ $condition1 -a $condition2 ]
+2, ! 非
+--&amp;gt; if [ ! -f $file ]
+3, || 或
+--&amp;gt; if [ $condition1 ] || [ $condition2 ] Same as: if [ $condition1 -o $condition2 ]
+4, &amp;amp;&amp;amp;/||在判断结构中的使用
+--&amp;gt; if [[ $a -eq 24 &amp;amp;&amp;amp; $b -eq 24 ]] works.
+--&amp;gt; if [ &amp;quot;$a&amp;quot; -eq 24 &amp;amp;&amp;amp; &amp;quot;$b&amp;quot; -eq 47 ] error
+5, 进制换算
+--&amp;gt; 可以使用$((...))结构对各个进制数进行换算
+echo $((0x9abc))
+--&amp;gt; 在shell中,默认使用10进制,当把8进制或者16进制数使用let赋值存储在变量中,打印后变为10进制
+let 'hex = 0x32';echo $hex
+--&amp;gt; 不限制进制数格式,可以使用let进行换算,可以使用10 digits + 26 lowercase characters + 26 uppercase characters + @ + _
+echo $((36#zz)) $((2#10101010)) $((16#AF16)) $((53#1aA)) # 1295 170 44822 3375
+--&amp;gt; 双括号结构:
+同let,(())结构允许逻辑展开和运算
+1, (( a = 23 )) 赋值,等号左右两侧都要有空格
+2, (( --a ))和(( a-- ))都可以进行运算
+3, (( t = a&amp;lt;45?7:11 ))
+echo &amp;quot;if a &amp;lt; 45;then t = 7;else t = 11;fi&amp;quot; # a = 23
+echo &amp;quot;t = $t &amp;quot; # t = 7
+--&amp;gt; 运算符优先顺序:
+if [ &amp;quot;$v1&amp;quot; -gt &amp;quot;$v2&amp;quot; -o &amp;quot;$v1&amp;quot; -lt &amp;quot;$v2&amp;quot; -a -e &amp;quot;$filename&amp;quot; ]
+# Unclear what's going on here...,不能有超过三个的叠加存在(-a/-o)
+if [[ &amp;quot;$v1&amp;quot; -gt &amp;quot;$v2&amp;quot; ]] || [[ &amp;quot;$v1&amp;quot; -lt &amp;quot;$v2&amp;quot; ]] &amp;amp;&amp;amp; [[ -e &amp;quot;$filename&amp;quot; ]]
+# Much better -- the condition tests are grouped in logical sections.
+&lt;/code>&lt;/pre>
+&lt;h3 id="6--其他变量视角">#6. 其他变量视角&lt;/h3>
+&lt;p>&lt;strong>内部变量&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>1, $BASHPID(返回当前shell),不同于$$(返回父shell),虽然大部分时候两个值相同
+echo $BASHPID;(echo $BASHPID) ## output different
+echo $$;(echo $$) ## output same
+2, $DIRSTACK,在目录栈中的第一个值,被pushd和popd影响
+内置变量响应dirs命令,dirs会显示栈中所有的信息
+3, $EDITOR,默认被脚本引用的编辑器,一般是vi或者emacs,nano
+4, $EUID,有效UID
+5, $FUNCNAME,在函数中,显示当前函数的名字
+6, $GROUPS,当前用户所属用户组,是一个数组
+echo ${GROUPS[1]}
+7, $HOSTTYPE,检查当前系统的硬件类型
+echo $HOSTTYPE # i686
+8, $IFS,内部边界分隔符;这个变量决定bash怎样判断词组,字符串的边界
+--&amp;gt; 默认为空白符(空格,tab,新行)
+--&amp;gt; 这个值可以被更改
+bash -c 'set w x y z; IFS=&amp;quot;:-;&amp;quot;; echo &amp;quot;$*&amp;quot;' ## w:x:y:z
+--&amp;gt; 在设置IFS时需要注意,IFS对待空格和其他字符不一样
+var=&amp;quot; a b c &amp;quot;使用for循环打印出来时,会变成三行,而不是和','一样,变为多行(超过三行)
+对于使用在awk中的FS也存在同样的问题
+9, $PATH,二进制文件路径
+10,$PIPESTATUS,保存上一条命令的执行返回值
+11,$PPID,父进程的PID号
+12,$PROMPT_COMMAND,保存将要被执行的命令(是否为该含义待查)
+13,$PS1,主提示符,命令行界面显示
+14,$PS2,备提示符,在需要输入额外输入是显示,显示为'&amp;gt;'
+15,$PS3,select loop中使用
+16,$PS4,set -x后界面显示的提示符'+'
+17,$PWD,pwd命令显示结果
+18,$REPLY,当且仅当上一条read命令无变量时,保存read的变量值
+19,$SECONDS,当前脚本运行了多长时间
+while [ &amp;quot;$SECONDS&amp;quot; -le &amp;quot;$TIME_LIMIT&amp;quot; ]
+20,$SHELLOPTS,保存set -o的options项
+21,$TMOUT,设置为一个非零值之后,超时会自动登出
+--&amp;gt; 可以在脚本中设置超时,在一定时间内未输入,则退出
+----------------------------------------------------------------
+TMOUT=3
+# Prompt times out at three seconds.
+echo &amp;quot;What is your favorite song?&amp;quot;
+echo &amp;quot;Quickly now, you only have $TMOUT seconds to answer!&amp;quot;
+read song
+if [ -z &amp;quot;$song&amp;quot; ]
+then
+song=&amp;quot;(no answer)&amp;quot;
+# Default response.
+fi
+----------------------------------------------------------------
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>位置参数&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>1, $0,$1,$2...,位置参数,从命令行传递给脚本,函数;或者使用set进行设置
+2, $#,位置参数或者命令行参数的数目
+3, $*,所有的位置参数,视为一个word,需要使用&amp;quot;&amp;quot;外加
+4, $@,同$*,但每个参数单独使用&amp;quot;&amp;quot;括起来,同样也需要使用&amp;quot;&amp;quot;括起来
+--&amp;gt; 使用IFS和$@,$*时需要注意
+--&amp;gt; $@和$*仅在使用双引号引用的时候有差别
+5, $!,上一个跑在后台的job的进程号
+--&amp;gt; 可用于任务控制
+{ sleep ${TIMEOUT}; eval 'kill -9 $!' &amp;amp;&amp;gt; /dev/null; }
+--&amp;gt; 另一种方式
+----------------------------------------------------------------
+TIMEOUT=30
+count=0
+possibly_hanging_job &amp;amp; {
+while ((count &amp;lt; TIMEOUT )); do
+eval '[ ! -d &amp;quot;/proc/$!&amp;quot; ] &amp;amp;&amp;amp; ((count = TIMEOUT))'
+# /proc is where information about running processes is found.
+# &amp;quot;-d&amp;quot; tests whether it exists (whether directory exists).
+# So, we're waiting for the job in question to show up.
+((count++))
+sleep 1
+done
+eval '[ -d &amp;quot;/proc/$!&amp;quot; ] &amp;amp;&amp;amp; kill -15 $!'
+# If the hanging job is running, kill it.
+}
+----------------------------------------------------------------
+6, $_,映射为执行的上一个命令最后一项内容
+--&amp;gt; du &amp;gt; /dev/null;echo $_ # du
+--&amp;gt; ls -al &amp;gt; /dev/null;echo $_ # -al
+7, $?,命令,函数或者是脚本的执行状态返回值
+8, $$,脚本自己的pid号,常用于创建惟一的temp文件,相较于mktemp使用更简单
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>变量归类&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>1, 使用declare/typeset完成变量定义
+2, declare/typeset属于内建命令
+3, -r,设置只读变量
+--&amp;gt; declare -r var1=xx 等效于 readonly var1=xx
+4, -i,设置为整数变量
+--&amp;gt; 设置为整数变量,允许直接进行运算,不需要expr结构
+----------------------------------------------------------------
+n=6/3
+echo &amp;quot;n = $n&amp;quot;
+declare -i n
+echo &amp;quot;n = $n&amp;quot;
+# n = 6/3
+# n = 2
+----------------------------------------------------------------
+5, -a,设置为数组变量
+6, -f,显示函数
+--&amp;gt; declare -f后未接任何参数,显示所有的函数;可以用在ssh远程连接,传递函数使用
+--&amp;gt; declare -f func_name仅显示func_name函数内容
+7, -x,等效于export
+8, 使用declare声明一个变量会限制其scope
+9, 使用declare可以非常方便的辨别变量,尤其是在辨认数组时
+--&amp;gt; declare | grep HOME
+--&amp;gt; Colors=([0]=&amp;quot;purple&amp;quot; [1]=&amp;quot;reddish-orange&amp;quot; [2]=&amp;quot;light green&amp;quot;);declare |grep Colors
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>变量操作&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>--&amp;gt; bash允许大量字符串操作,部分属于变量替换操作,部分属于UNIX的expr功能
+1, 字符串长度
+--&amp;gt; ${井号string},显示变量string的长度
+--&amp;gt; expr length $string,使用expr功能显示字符串长度
+--&amp;gt; expr &amp;quot;$string&amp;quot; : '.*',同样是显示变量string中字符串的长度值
+2, substring从string开头匹配的字符数,substring是正则表达式
+--&amp;gt; expr match &amp;quot;$string&amp;quot; '$substring'
+stringZ=abcABC123ABCabc
+--&amp;gt; expr &amp;quot;$string&amp;quot; : '$substring'
+echo `expr match &amp;quot;$stringZ&amp;quot; 'abc[A-Z]*.2'` # 8
+echo `expr &amp;quot;$stringZ&amp;quot; : 'abc[A-Z]*.2'` # 8
+3, substring在string中第一次匹配的下标号
+--&amp;gt; expr index $string $substring
+echo `expr index &amp;quot;$stringZ&amp;quot; 1c`
+# 'c' (in #3 position) matches before '1'.
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>变量取出&lt;/strong>&lt;/p>
+&lt;pre>&lt;code> 1, 切片用法
+--&amp;gt; ${string:position} # 从position处开始抽取string,此处的position和length都可以是变量
+--&amp;gt; ${string:position:length} # 从position处抽取length个string字符
+----------------------------------------------------------------
+stringZ=abcABC123ABCabc
+echo ${stringZ:7} # 23ABCabc
+echo ${stringZ:7:3} # 23A
+echo ${stringZ:(-4)} # Cabc 区别于${stringZ:-4},这种形式等效于${string:-default}
+----------------------------------------------------------------
+--&amp;gt; ${*:position} # 从position处开始取位置参数
+--&amp;gt; ${@:position} # 同上一条
+--&amp;gt; ${*:position:length} # 同string 的用法,换成位置参数
+--&amp;gt; expr substr $string $position $length # expr用法,切片用法
+--&amp;gt; expr match &amp;quot;$string&amp;quot; '\($substring\)' # 获取第一次匹配的substring内容,substring为正则表达式
+--&amp;gt; expr &amp;quot;$string&amp;quot; : '\($substring\)' # 同上
+----------------------------------------------------------------
+echo `expr match &amp;quot;$stringZ&amp;quot; '\(.[b-c]*[A-Z]..[0-9]\)'` # abcABC1
+echo `expr &amp;quot;$stringZ&amp;quot; : '\(.[b-c]*[A-Z]..[0-9]\)'` # abcABC1
+echo `expr &amp;quot;$stringZ&amp;quot; : '\(.......\)'` # abcABC1
+----------------------------------------------------------------
+--&amp;gt; expr match &amp;quot;$string&amp;quot; '.*\($substring\)' # 获取尾部第一次匹配的substring内容,substring为正则表达式
+--&amp;gt; expr &amp;quot;$string&amp;quot; : '.*\($substring\)' # 同上
+echo `expr match &amp;quot;$stringZ&amp;quot; '.*\([A-C][A-C][A-C][a-c]*\)'` # ABCabc
+echo `expr &amp;quot;$stringZ&amp;quot; : '.*\(......\)'` # ABCabc
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>变量置换&lt;/strong>&lt;/p>
+&lt;pre>&lt;code> file=/dir1/dir2/dir3/my.file.txt
+--&amp;gt; ${file#*/} # 拿掉第一条/及其左边的字串：dir1/dir2/dir3/my.file.txt
+--&amp;gt; ${file##*/} # 拿掉最后一条/及其左边的字串：my.file.txt
+--&amp;gt; ${file#*.} # 拿掉第一个.及其左边的字串：file.txt
+--&amp;gt; ${file##*.} # 拿掉最后一个.及其左边的字串：txt
+--&amp;gt; ${file%/*} # 拿掉最后一条/及其右边的字串：/dir1/dir2/dir3
+--&amp;gt; ${file%%/*} # 拿掉第一条/及其右边的字串：（空值）
+--&amp;gt; ${file%.*} # 拿掉最后一个.及其右边的字串：/dir1/dir2/dir3/my.file
+--&amp;gt; ${file%%.*} # 拿掉第一个.及其右边的字串：/dir1/dir2/dir3/my
+mv $filename ${filename%$1}$2 # 可以用作重命名
+--&amp;gt; ${file:0:5} # 提取最左边的5个字节：/dir1
+--&amp;gt; ${file:5:5} # 提取第5个字节右边的连续5个字节：/dir2
+--&amp;gt; ${file-my.file.txt} # 假如$file没有设定，则使用my.file.txt作传回值。（空值及非空值时不作处理）
+--&amp;gt; ${file:-my.file.txt} # 假如$file没有设定或为空值，则使用my.file.txt作传回值。（非空值时不作处理）
+${username-`whoami`} # when username has not been set, return the value of result of whoami
+filename=${1:-DEFAULT_FILENAME}
+--&amp;gt; ${file+my.file.txt} # 假如$file设为空值或非空值，均使用my.file.txt作传回值。（没设定时不作处理）
+--&amp;gt; ${file:+my.file.txt} # 若$file为非空值，则使用my.file.txt作传回值。（没设定及空值时不作处理）
+--&amp;gt; ${file=my.file.txt} # 若$file没设定，则使用my.file.txt作传回值，同时将$file赋值为my.file.txt。\
+（空值及非空值时不作处理）
+--&amp;gt; ${file:=my.file.txt} # 若$file没设定或为空值，则使用my.file.txt作传回值，同时将$file赋值为my.file.txt。\
+（非空值时不作处理）
+--&amp;gt; ${file?my.file.txt} # 若$file没设定，则将my.file.txt输出至STDERR,用于变量报错设置（空值及非空值时不作处理）
+--&amp;gt; ${file:?my.file.txt} # 若$file没设定或为空值，则将my.file.txt输出至STDERR。（非空值时不作处理）
+--&amp;gt; 要分清楚unset与null及non-null这三种赋值状态。一般而言，: 与null有关，若不带 : 的话，null不受影响，若带 : 则连null \
+也受影响。
+--&amp;gt; ${var,,} # 更改var的大小写,将$var中的大写字符转换成小写
+--&amp;gt; ${井号var} # get the length of the variate of var
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>变量替换&lt;/strong>&lt;/p>
+&lt;pre>&lt;code> stringZ=abcABC123ABCabc
+--&amp;gt; echo ${stringZ/abc/xyz} # xyzABC123ABCabc,将开头的abc替换成xyz
+--&amp;gt; echo ${stringZ//abc/xyz} # xyzABC123ABCxyz,将字符串中的所有abc替换成xyz
+abc和xyz都可以使用变量替换
+--&amp;gt; echo ${stringZ/abc} # ABC123ABCabc,不包含replacement时,则是直接删除第一处匹配内容
+--&amp;gt; echo ${stringZ//abc} # ABC123ABC,同上,删除所有的匹配内容
+--&amp;gt; echo ${stringZ/#abc/XYZ} # XYZABC123ABCabc,匹配前端的第一个,进行替换
+--&amp;gt; echo ${stringZ/%abc/XYZ} # abcABC123ABCXYZ,匹配后端的最后一个,进行替换
+--&amp;gt; echo ${!varprefix*} # 匹配所有已声明已xyz开头的变量
+--&amp;gt; echo ${!varprefix@} # 匹配所有已声明已xyz开头的变量
+abc23=something_else
+b=${!abc*}
+echo &amp;quot;b = $b&amp;quot; # b = abc23
+c=${!b} # Now, the more familiar type of indirect reference.
+echo $c
+awk的使用,等效变量替换
+String=23skidoo1
+# 012345678 Bash 变量替换中bash的下标计算方式
+# 123456789 awk 变量替换中awk的下标计算方式
+--&amp;gt; echo | awk '{ print substr(&amp;quot;'&amp;quot;${String}&amp;quot;'&amp;quot;,3,4) }' # skid
+前面使用空echo的作用是,所谓伪输入,不需要填写输入文件
+&lt;/code>&lt;/pre>
+&lt;h3 id="7-循环和分支结构">#7. 循环和分支结构&lt;/h3>
+&lt;p>&lt;strong>for循环&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>for arg in [list]; do command;done
+--&amp;gt; for循环和set结合使用,会很方便,以下是例子
+--------------------------------------------------------------------------------
+set `uname -a`; for item in $(seq $#); do echo ${!item}; done
+for planet in &amp;quot;Mercury 36&amp;quot; &amp;quot;Venus 67&amp;quot; &amp;quot;Earth 93&amp;quot; &amp;quot;Mars 142&amp;quot; &amp;quot;Jupiter 483&amp;quot;; do
+set -- $planet
+echo &amp;quot;$1 $2,000,000 miles from the sun&amp;quot;
+done
+--------------------------------------------------------------------------------
+--&amp;gt; set中使用的--,避免难预测的bug,当后面的变量为空或者是以'-'开头
+--&amp;gt; [list]可以是一个变量,保存了多个值,用于for循环使用
+--&amp;gt; [list]也可以使用*通配符
+--&amp;gt; 无[list]项也可,循环使用的内容为位置参数
+for a; do echo -n &amp;quot;$a &amp;quot;; done # 写入脚本后,执行脚本时,后接参数或者不接参数,得出结果不同
+--&amp;gt; [list]内容同样可为命令替换后的结果
+for name in $(awk 'BEGIN{FS=&amp;quot;:&amp;quot;}{print $1}' &amp;lt; &amp;quot;$PASSWORD_FILE&amp;quot; ) # 系统上所有用户
+for word in $(generate_list) # 函数运行结果
+--&amp;gt; for loop结束后,在done后面可直接使用管道进行操作,例如排序等
+for file in &amp;quot;$( find $directory -type l )&amp;quot;;do echo &amp;quot;$file&amp;quot;; done | sort # 对循环执行后的结果进行排序
+--&amp;gt; C风格的for循环,需要用到(());
+LIMIT=10; for ((a=1; a &amp;lt;= LIMIT ; a++)); do echo $a; done
+for ((a=1, b=1; a &amp;lt;= LIMIT ; a++, b++)); do echo -n &amp;quot;$a-$b &amp;quot;; done
+--&amp;gt; 一般情况下,do和done分割for循环的结构,但在特定情况下,省略do和done
+----------------------------------------------------------------
+for((n=1; n&amp;lt;=10; n++))
+{ # No do
+echo -n &amp;quot;* $n *&amp;quot;
+} # No done!
+for n in 1 2 3
+{ echo -n &amp;quot;$n &amp;quot;; } # 在经典的for结构中,花括号中需要包含;,用于结尾
+----------------------------------------------------------------
+--&amp;gt; E_NOARGS=65 --&amp;gt; The standards of variate naming, exit-because-no-arguments
+--&amp;gt; read command read reads a line every time, in the function 'while read i j', i stands for the first word, j stands for the rest of this line
+--&amp;gt; the difference between return and exit
+若在script里，用exit RV来指定其值，若没指定，在结束时以最后一道命令之RV为值。
+若在function里，则用return RV来代替exit RV即可。
+若在loop里，则用break
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>while循环&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>相对于for循环,while循环更适合用于不确定condition情况下进行的循环
+while [condition]; do command(s); done
+--&amp;gt; 在while循环中可能存在多个条件,但只有最后一个条件决定什么时候终止循环
+----------------------------------------------------------------
+while echo &amp;quot;previous-variable = $previous&amp;quot;
+echo
+previous=$var1
+[ &amp;quot;$var1&amp;quot; != end ]; do ...
+----------------------------------------------------------------
+--&amp;gt; 同for循环一样,while可以接收C风格的条件格式
+----------------------------------------------------------------
+while (( a &amp;lt;= LIMIT ))
+do
+echo -n &amp;quot;$a&amp;quot;
+((a += 1)) # let &amp;quot;a+=1&amp;quot;
+done
+----------------------------------------------------------------
+--&amp;gt; while的条件可以直接接函数
+----------------------------------------------------------------
+condition(){
+((t++))
+if [ $t -lt 5 ]; then
+return 0 # true
+else
+return 1 # false
+fi
+}
+while condition
+----------------------------------------------------------------
+--&amp;gt; 与read一起结合使用,得到while read结构
+cat file | while read line # 同时是以管道作为输入内容
+--&amp;gt; while可以在done后使用'&amp;lt;'来作为内容输入
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>until循环&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>循环体在顶部,直到条件正确,才退出执行循环结构中的内容;与while循环相反
+until [ condition-is-true ]; do command(s); done
+until循环结构格式类同于for循环
+--&amp;gt; 条件为真才退出
+----------------------------------------------------------------
+END_CONDITION=end
+until [ &amp;quot;$var1&amp;quot; = &amp;quot;$END_CONDITION&amp;quot; ]
+# Tests condition here, at top of loop.
+do
+echo &amp;quot;Input variable #1 &amp;quot;
+echo &amp;quot;($END_CONDITION to exit)&amp;quot;
+read var1
+echo &amp;quot;variable #1 = $var1&amp;quot;
+echo
+done
+----------------------------------------------------------------
+--&amp;gt; until同样接受C风格的判断条件,使用双括号的格式(())
+until (( var &amp;gt; LIMIT ))
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>嵌套循环&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>一个循环结构属于另一个循环结构的构成部分,称为嵌套循环
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>循环控制&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>影响循环行为的命令
+break;continue
+--&amp;gt; break的作用为终止当前循环
+--&amp;gt; continue的作用为跳过当前这次的循环,在该分支中,跳过该分支后面需要执行的命令和操作
+----------------------------------------------------------------
+while [ $a -le &amp;quot;$LIMIT&amp;quot; ]; do
+a=$(($a+1))
+if [ &amp;quot;$a&amp;quot; -eq 3 ] || [ &amp;quot;$a&amp;quot; -eq 11 ]; then # Excludes 3 and 11.
+continue # Skip rest of this particular loop iteration.
+fi
+echo -n &amp;quot;$a&amp;quot; # This will not execute for 3 and 11.
+done
+while [ &amp;quot;$a&amp;quot; -le &amp;quot;$LIMIT&amp;quot; ]; do
+a=$(($a+1))
+if [ &amp;quot;$a&amp;quot; -gt 2 ]; then
+break # Skip entire rest of loop.
+fi
+echo -n &amp;quot;$a&amp;quot;
+done
+----------------------------------------------------------------
+--&amp;gt; break可以后接参数,单个的break表示终止当前循环;break N表示终止几层循环
+--&amp;gt; continue也可以接参数,单个的continue表示此次循环,continue N会终止当前层级的循环,开始下一次的循环,从N层开始
+&lt;/code>&lt;/pre>
+&lt;p>&lt;strong>测试和分支&lt;/strong>&lt;/p>
+&lt;pre>&lt;code>case和select结构不属于循环结构,但他们通过条件判断引导程序流向
+--&amp;gt; case对标的是C/C++中的switch结构;case可以说是简化版的if/elif/elif/.../else结构,case可以用于设置程序接口
+----------------------------------------------------------------
+case &amp;quot;$variable&amp;quot; in
+&amp;quot;$condition1&amp;quot;)
+command...
+;;
+&amp;quot;$condition2&amp;quot;)
+command...
+;;
+esac
+----------------------------------------------------------------
+--&amp;gt; 判断后接参数
+----------------------------------------------------------------
+E_PARAM=1
+case &amp;quot;$1&amp;quot; in
+&amp;quot;&amp;quot;) echo &amp;quot;Usage: ${0##*/} &amp;lt;filename&amp;gt;&amp;quot;; exit $E_PARAM;; # 提示信息,精简化
+-*) FILENAME=./$1;; # 如果后面所接参数包含破折号,将其替换为./$1,这样后面的命令嗯就不会把其当做$1
+* ) FILENAME=$1;;
+esac
+----------------------------------------------------------------
+--&amp;gt; while和case一起使用:
+----------------------------------------------------------------
+while [ $# -gt 0 ]; do
+case &amp;quot;$1&amp;quot; in
+-d|--debug)
+DEBUG=1
+;;
+-c|--conf)
+CONFFILE=&amp;quot;$2&amp;quot;
+shift
+if [ ! -f $CONFFILE ]; then
+echo &amp;quot;Error: Supplied file doesn't exist!&amp;quot;
+exit $E_CONFFILE
+fi
+;;
+esac
+shift
+done
+----------------------------------------------------------------
+--&amp;gt; 做匹配函数:
+----------------------------------------------------------------
+match_string (){
+MATCH=0
+E_NOMATCH=90
+PARAMS=2
+E_BAD_PARAMS=91
+[ $# -eq $PARAMS ] || return $E_BAD_PARAMS
+case &amp;quot;$1&amp;quot; in
+&amp;quot;$2&amp;quot;) return $MATCH;;
+* ) return $E_NOMATCH;;
+esac
+}
+----------------------------------------------------------------
+--&amp;gt; select继承自ksh,同样是一个可用于构建入口的工具
+----------------------------------------------------------------
+select variable [in list]
+do
+command...
+break
+done
+----------------------------------------------------------------
+--&amp;gt; select结构提示用户输入给定的选项之一,默认情况下使用环境变量PS3作为提示符,但这个可以被改变
+----------------------------------------------------------------
+PS3='Choose your favorite vegetable: ' # Sets the prompt string.
+# Otherwise it defaults to #? .
+select vegetable in &amp;quot;beans&amp;quot; &amp;quot;carrots&amp;quot; &amp;quot;potatoes&amp;quot; &amp;quot;onions&amp;quot; &amp;quot;rutabagas&amp;quot;
+do
+echo
+echo &amp;quot;Your favorite veggie is $vegetable.&amp;quot;
+echo &amp;quot;Yuck!&amp;quot;
+echo
+break # What happens if there is no 'break' here?
+done
+----------------------------------------------------------------
+--&amp;gt; 如果结构中list不存在,select会使用传递给脚本或包含select结构的函数的位置参数$@;可类比for variable [in list]
+----------------------------------------------------------------
+PS3='Choose your favorite vegetable: '
+choice_of(){
+select vegetable # [in list] omitted, so 'select' uses arguments passed to function.
+do
+echo
+echo &amp;quot;Your favorite veggie is $vegetable.&amp;quot;
+echo &amp;quot;Yuck!&amp;quot;
+echo
+break
+done
+}
+choice_of beans rice carrots radishes rutabaga spinach
+----------------------------------------------------------------
+&lt;/code>&lt;/pre>
+&lt;h3 id="8-命令替换">#8. 命令替换&lt;/h3>
+&lt;pre>&lt;code>命令替换重新单个甚至多个命令的输出结果,逐字的将输出内容传递给另一个上下文
+--&amp;gt; 命令的输出结果可以是传递给其他命令的参数,可以是设置变量,甚至生成for循环需要使用的内容参数
+--&amp;gt; 命令替换有两种形式:`commands`,$(commands),两种方式等效
+--&amp;gt; 命令替换生成一个子shell
+--&amp;gt; 命令替换可能把输出结果分片
+----------------------------------------------------------------
+COMMAND `echo a b` # 2 args: a and b
+COMMAND &amp;quot;`echo a b`&amp;quot; # 1 arg: &amp;quot;a b&amp;quot;
+note: 有时命令替换会出现不期望的结果
+mkdir 'dir with trailing newline
+'
+cd &amp;quot;`pwd`&amp;quot; # error inform
+cd &amp;quot;$PWD&amp;quot; # works fine
+----------------------------------------------------------------
+--&amp;gt; 使用echo输出命令替换厚的未括变量,echo会将换行符去除
+--&amp;gt; 命令替换允许使用重定向或者cat来获取文件内容作为变量内容
+echo ` &amp;lt;$0` # 输出脚本内容
+--&amp;gt; 不要将一个长文本内容作为值赋给一个变量，也不要将二进制文件内容作为变量的值
+--&amp;gt; 没有缓冲溢出的情况出现，这是翻译性语言的特性，相较编译语言提供更多的保护
+--&amp;gt; 变量声明甚至可以通过一个循环结构来赋值
+----------------------------------------------------------------
+variable1=`for i in 1 2 3 4 5
+do
+echo -n &amp;quot;$i&amp;quot;
+done`
+----------------------------------------------------------------
+--&amp;gt; 命令替换使用$()替换掉反引号的使用
+允许这种形式：content=$(&amp;lt;$File2)
+--&amp;gt; $()的形式允许多重嵌套
+&lt;/code>&lt;/pre>
+&lt;h3 id="9-运算展开">#9. 运算展开&lt;/h3>
+&lt;pre>&lt;code>算数展开提供了一个强大的工具，用于在脚本中进行算数运算；常用的有反引号、双括号、let
+变种：
+--&amp;gt; 使用反引号的算数运算，常常和expr结合使用
+z=`expr $z + 3`
+--&amp;gt; 算数展开使用双括号和let，反引号的结构已经被(())，$(())和let替换
+z=$(($z+3))或者z=$((z+3))也可以
+(( n += 1 ))是正确的；(( $n += 1 ))是错误的
+let z=z+3是正确的；let &amp;quot;z += 3&amp;quot;也可以
+&lt;/code>&lt;/pre>
+&lt;h2 id="linux命令">linux命令&lt;/h2>
+&lt;h3 id="1-内部命令和内部指令">#1. 内部命令和内部指令&lt;/h3>
+&lt;p>​ 内建指令是指包含在bash工具集内部的命令；内建命令的作用一方面是为了提升性能，常用于需要fork新进程的命令，另一方面是出于某些命令需要直接访问shell内部&lt;/p>
+&lt;pre>&lt;code>--&amp;gt; 父进程获取到子进程的pid后，可以传递参数给子进程，反过来则不行；这个需要注意，出现这种问题时，一般难以排查
+----------------------------------------------------------------
+PIDS=$(pidof sh $0) # Process IDs of the various instances of this script.
+P_array=( $PIDS )
+echo $PIDS
+let &amp;quot;instances = ${井号P_array[*]} - 1&amp;quot;
+echo &amp;quot;$instances instance(s) of this script running.&amp;quot;
+echo &amp;quot;[Hit Ctl-C to exit.]&amp;quot;;
+echo
+sleep 1
+sh $0
+exit 0
+----------------------------------------------------------------
+--&amp;gt; 一般来说，bash内建指令不会自动fork新的进程，外部命令或者管道过滤时会fork新进程
+--&amp;gt; 内建指令可能和系统命令有同样的名字，但bash会使用内建命令，echo和/bin/echo并不一样
+----------------------------------------------------------------
+echo &amp;quot;This line uses the \&amp;quot;echo\&amp;quot; builtin.&amp;quot;
+/bin/echo &amp;quot;This line uses the /bin/echo system command.&amp;quot;
+----------------------------------------------------------------
+--&amp;gt; 关键字是预留字、符号，或者是操作符；关键字对shell来说具有特殊的含义，是shell的语句块的构成部分；关键字属于bash的硬编码部分，不同于内建指令，关键字是命令的子单元
+&lt;/code>&lt;/pre>
+&lt;h3 id="2-io命令">#2. IO命令&lt;/h3>
+&lt;pre>&lt;code>echo：打印表达式或者变量到标准输出
+--&amp;gt; 和-e使用，用来打印脱意符
+--&amp;gt; 默认情况下，每个echo会打印一个终端换行符，当与-n一起使用时，会将换行符省略掉
+--&amp;gt; echo `command`的形式会删除所有由command生成的换行符
+变量$IFS默认情况下降'\n'作为分隔符之一，bash将换行符后面的内容作为参数传递给echo，echo将这些参数打印出来，使用空格分隔
+printf：格式化打印，增强型的echo，是一个C语言中printf()函数的限制型变体，部分内容与原函数使用不同
+printf format-string... parameter...
+--&amp;gt; 格式化输出
+----------------------------------------------------------------
+declare -r PI=3.14159265358979
+printf &amp;quot;Pi to 2 decimal places = %1.2f&amp;quot; $PI
+printf &amp;quot;Pi to 9 decimal places = %1.9f&amp;quot; $PI
+----------------------------------------------------------------
+--&amp;gt; 格式化输出错误内容很实用
+----------------------------------------------------------------
+# 注意$'strings...'的格式，在此处与%s的使用
+error()
+{
+printf &amp;quot;$@&amp;quot; &amp;gt;&amp;amp;2 # Formats positional params passed, and sends them to stderr.
+echo
+exit $E_BADDIR
+}
+cd $var || error $&amp;quot;Can't cd to %s.&amp;quot; &amp;quot;$var&amp;quot;
+----------------------------------------------------------------
+read：通过标准输入读取变量值，动态的通过键盘获取值，与-a选项一起使用时可获取数组变量
+--&amp;gt; read通常情况下，'\'会去除换行的含义，当与-r参数一同使用时，'\'按照原意进行输出
+--&amp;gt; -s：不显示输入内容到屏幕上
+--&amp;gt; -n：设置仅接收多少字符，-n同样能接受特殊按键，但需要清楚特殊按键对应的字符，但不能获取到回车的字符
+----------------------------------------------------------------
+arrowup='\[A'
+arrowdown='\[B'
+arrowrt='\[C'
+arrowleft='\[D'
+insert='\[2'
+delete='\[3'
+----------------------------------------------------------------
+--&amp;gt; -p：在接收输入内容前，打印后续内容到屏幕上，作为提示用
+--&amp;gt; -t：用在设置超时时间的场景下
+--&amp;gt; -u：获取目标文件的文件描述符
+--&amp;gt; read命令同样可以通过重定向到标准输入的文件来读取变量，如果文件内容超过一行，则只有第一行内容会被用于变量读取；
+--&amp;gt; 当read后接的参数多余一个时，默认会以空格（或者连续空格）作为分隔符来读取变量，此行为可通过更改环境变量$IFS来改变
+----------------------------------------------------------------
+read var1 &amp;lt; /tmp/file1
+read var1 var2 &amp;lt; /tmp/file1
+while read line; do echo $line; done &amp;lt; /tmp/file1
+----------------------------------------------------------------
+&lt;/code>&lt;/pre>
+&lt;h3 id="3-文件系统命令">#3. 文件系统命令&lt;/h3>
+&lt;pre>&lt;code>cd：切换路径命令
+--&amp;gt; 使用-P参数，忽略链接文件
+--&amp;gt; cd -,切换到上一个目录，$OLDPWD变量保存的内容
+--&amp;gt; 使用两个斜杠时，cd命令会出现我们不期望的情况
+----------------------------------------------------------------
+# 以下的问题在命令行和脚本中都存在，需要注意
+$ cd //
+$ pwd
+//
+----------------------------------------------------------------
+pwd：显示当前工作目录路径
+--&amp;gt;使用该命令的效果同$PWD完全相同
+pushd,popd,dirs：这个命令集合是一个工作目录书签工具，用于在工作目录中有序的来回切换；后进先出的堆栈方式处理工作目录组，允许对这个堆栈进行各种不同的操作
+--&amp;gt; pushd dir-name把目录dir-name放入到到堆栈中（栈顶），同时切换当前目录到dir-name中去
+--&amp;gt; popd 将目录栈顶的目录从栈中移除，同时将工作目录切换至此时的栈顶目录中去
+--&amp;gt; dirs 列出栈中的目录列表，popd和pushd会引用到dirs
+在脚本中需要切换多个目录工作时，使用这个命令集可以方便的进行管理，$DIRSTACK数组包含有目录的列表栈内容
+&lt;/code>&lt;/pre>
+&lt;h3 id="4-变量操作命令">#4. 变量操作命令&lt;/h3>
+&lt;pre>&lt;code>let：let命令执行对变量的算数运算操作，在很多种情况下，let相当于简化版的expr命令
+----------------------------------------------------------------
+let a=11; let a=a+5
+let &amp;quot;a &amp;lt;&amp;lt;= 3&amp;quot;
+let &amp;quot;a += 5&amp;quot;
+let a++(++a)
+let &amp;quot;t = a&amp;lt;7?7:11&amp;quot;
+----------------------------------------------------------------
+--&amp;gt; 使用let命令，在特定情况下，命令返回值和通常情况不同
+----------------------------------------------------------------
+$ var=0
+$ echo $?
+0
+$ let var++
+$ echo $?
+1
+----------------------------------------------------------------
+eval：
+eval arg1 [arg2] ... [argN]
+结合一个表达式或者一列表达式中的参数，是这些参数联合；所有在表达式中的变量都会被展开，得出的字符串被转换为命令
+----------------------------------------------------------------
+$ command_string=&amp;quot;ps ax&amp;quot;
+$ eval &amp;quot;$command_string&amp;quot;
+----------------------------------------------------------------
+--&amp;gt; 每次调用eval都会强制重新评估其参数
+----------------------------------------------------------------
+$ a=&amp;quot;$b&amp;quot;
+$ b=&amp;quot;$c&amp;quot;
+$ c=d
+$ echo $a
+$ eval echo $a
+$ eval eval echo $a
+----------------------------------------------------------------
+----------------------------------------------------------------
+params=$#
+param=1
+while [ &amp;quot;$param&amp;quot; -le &amp;quot;$params&amp;quot; ]
+do
+echo -n &amp;quot;Command-line parameter &amp;quot;
+echo -n \$$param
+echo -n &amp;quot; = &amp;quot;
+eval echo \$$param
+(( param ++ ))
+done
+----------------------------------------------------------------
+--&amp;gt; 使用eval命令有一定的风险，如果存在替换的方案，尽量使用替换方案来实现目的；像是eval $COMMANDS，在命令的返回结果中可能存在危险的内容如rm -rf *等
+set：
+set命令可用于更改脚本内部的变量值或者脚本选项，用法之一是可以设置option flags来更改脚本执行的动作；另一个用法是可以是将命令的输出结果设置为位置参数。
+----------------------------------------------------------------
+set `uname -a`
+----------------------------------------------------------------
+--&amp;gt; 当单独使用set命令时，终端显示所有的环境变量以及已经设置的变量
+--&amp;gt; set后接--,表示将一个变量的内容设置为位置参数,当--后没有任何参数时,表示取消所有的位置参数
+----------------------------------------------------------------
+variable=&amp;quot;one two three four five&amp;quot;
+set -- $variable
+first_param=$1
+second_param=$2
+shift; shift
+remaining_params=&amp;quot;$*&amp;quot;
+echo &amp;quot;first parameter = $first_param&amp;quot; # one
+echo &amp;quot;second parameter = $second_param&amp;quot; # two
+echo &amp;quot;remaining parameters = $remaining_params&amp;quot; # three four five
+set --
+first_param=$1
+second_param=$2
+echo &amp;quot;first parameter = $first_param&amp;quot; # (null value)
+echo &amp;quot;second parameter = $second_param&amp;quot; # (null value)
+----------------------------------------------------------------
+unset:
+unset命令删除一个shell变量,将变量的值设置为null,改命令不影响位置参数
+--&amp;gt; 大多数情况下,使用unset设置过的变量和undeclare设置过的变量是等效的;但对于${parameter:-default}还是有区分的
+export:
+export命令将变量的值声明至所有由脚本生成的子shell或者是shell,令其都可使用;在开机启动脚本中使用是export一个重要使用场景,有初始化环境的作用,让后启用的脚本能够继承环境变量
+--&amp;gt; 父进程是没有办法获取到子进程的变量的
+--&amp;gt; 大部分情况下,export var=xxx和var=xxx;export var是等效的,但在某些情况下有差别
+----------------------------------------------------------------
+bash$ export var=(a b); echo ${var[0]}
+(a b)
+bash$ var=(a b); export var; echo ${var[0]}
+a
+----------------------------------------------------------------
+declare/typeset:
+这两个命令用来设定或者限制变量的属性
+readonly:
+等效于declare -r,将一个变量设置为只读,或者实际效用为设置成一个常量,这个命令类似于C中的const
+getopsts:
+这个强大的命令解析命令行参数,传递给脚本使用,这个命令类似于C中的外部命令getopt,getopt库函数;命令允许传递和连接多个选项,并且为脚本联合多个参数,如下所示:
+----------------------------------------------------------------
+scriptname -abc -e /usr/local
+----------------------------------------------------------------
+--&amp;gt; getopts使用两个默认的变量:
+$OPTIND(OPTion INDex)是参数指针
+$OPTARG(OPTion ARGument)是参数指定一个选项
+选项名声明时后接冒号表明这个选项有一个指定的参数
+--&amp;gt; getopts结构一般会同while循环使用,每次处理一个选项和参数,然后变量$OPTIND指针指向下一个值
+命令行传递给脚本的参数前面必须接'-',存在'-'的前缀,让getopts识别命令行参数为选项;实际上,没有'-'时,getopts不会去处理这些参数,直接当作缺失选项处理
+getopts模板与while循环有些许差别
+getopts结构是外部命令getopt命令的替换
+----------------------------------------------------------------
+while getopts &amp;quot;:abcde:fg&amp;quot; Option
+# Initial declaration.
+# a, b, c, d, e, f, and g are the options (flags) expected.
+# The : after option 'e' shows it will have an argument passed with it.
+do
+case $Option in
+a ) # Do something with variable 'a'.
+b ) # Do something with variable 'b'.
+...
+e) # Do something with 'e', and also with $OPTARG,
+# which is the associated argument passed with option 'e'.
+...
+g ) # Do something with variable 'g'.
+esac
+done
+shift $(($OPTIND - 1)) # Move argument pointer to next.
+# All this is not nearly as complicated as it looks &amp;lt;grin&amp;gt;.
+----------------------------------------------------------------
+----------------------------------------------------------------
+NO_ARGS=0
+E_OPTERROR=85
+if [ $# -eq &amp;quot;$NO_ARGS&amp;quot; ] # Script invoked with no command-line args?
+then
+echo &amp;quot;Usage: `basename $0` options (-mnopqrs)&amp;quot;
+exit $E_OPTERROR
+# Exit and explain usage.
+# Usage: scriptname -options
+# Note: dash (-) necessary
+fi
+while getopts &amp;quot;:mnopq:rs&amp;quot; Option
+do
+case $Option in
+m) echo &amp;quot;Scenario #1: option -m- [OPTIND=${OPTIND}]&amp;quot;;;
+n | o ) echo &amp;quot;Scenario #2: option -$Option- [OPTIND=${OPTIND}]&amp;quot;;;
+p) echo &amp;quot;Scenario #3: option -p- [OPTIND=${OPTIND}]&amp;quot;;;
+q) echo &amp;quot;Scenario #4: option -q- with argument \&amp;quot;$OPTARG\&amp;quot; [OPTIND=${OPTIND}]&amp;quot;;;
+r | s ) echo &amp;quot;Scenario #5: option -$Option-&amp;quot;;;
+*) echo &amp;quot;Unimplemented option chosen.&amp;quot;;; # Default.
+esac
+done
+shift $(($OPTIND - 1))
+exit $?
+----------------------------------------------------------------
+&lt;/code>&lt;/pre>
+&lt;h3 id="5-脚本行为命令">#5. 脚本行为命令&lt;/h3>
+&lt;pre>&lt;code>source/. (点命令)
+这个命令,当在脚本外使用时,作用为调用一个脚本;
+在脚本内部使用,source file-name的作用为加载file-name的内容;
+--&amp;gt; source一个文件,将该文件的代码加载进入当前脚本(作用内容于C里面的#include作用)
+--&amp;gt; 最终结果是,一个被source过的文件,代码就像在当前脚本物理上包含了被source过的文件的代码内容;当多个脚本使用同一个数据文件时,这种方式很有用
+--&amp;gt; 如果被source的文件本身是一个可执行脚本,当source后,脚本会执行,然后将控制权交回调用其的脚本;一个可执行的source文件可以使用return来实现目的
+--&amp;gt; 参数(可选)可以传递给被source的文件作为位置参数
+----------------------------------------------------------------
+source $filename $args1 $args2
+----------------------------------------------------------------
+--&amp;gt; 脚本甚至可以在执行时source自己,随然可能没有什么实际的应用场景
+----------------------------------------------------------------
+#!/bin/bash
+MAXPASSCNT=100
+echo -n &amp;quot;$pass_count &amp;quot;
+let &amp;quot;pass_count += 1&amp;quot;
+while [ &amp;quot;$pass_count&amp;quot; -le $MAXPASSCNT ]; do
+. $0
+done
+echo
+exit 0
+----------------------------------------------------------------
+exit
+无条件的终止一个脚本;exit命令可以选择性的后接一个整数参数,用作脚本的exit返回状态
+--&amp;gt; 最简单的方式是直接使用exit 0, 指明此次运行成功
+--&amp;gt; 如果一个脚本以未接参数的exit作为结尾,那么脚本的返回值则为最后一条命令的返回值,等效于exit $?
+--&amp;gt; 一个exit命令也可以用于终止一个子shell
+exec
+这个shell内建命令替换当前进程为一个指定的命令
+--&amp;gt; 通常情况下,当shell遇到一个命令时,会fork一个子进程来执行该命令,当使用exec命令时,shell不再fork子进程,并且exec调用的命令替换了shell
+--&amp;gt; 当exec在脚本中使用时,当exec调用的命令结束时,会强制退出脚本
+----------------------------------------------------------------
+#!/bin/bash
+exec echo &amp;quot;Exiting \&amp;quot;$0\&amp;quot; at line $LINENO.&amp;quot; # Exit from script here.
+# $LINENO is an internal Bash variable set to the line number it's on.
+# The following lines never execute.
+echo &amp;quot;This echo fails to echo.&amp;quot;
+exit 99
+----------------------------------------------------------------
+----------------------------------------------------------------
+#!/bin/bash
+# self-exec.sh
+# Note: Set permissions on this script to 555 or 755,
+# then call it with ./self-exec.sh or sh ./self-exec.sh.
+echo
+echo &amp;quot;This line appears ONCE in the script, yet it keeps echoing.&amp;quot;
+echo &amp;quot;The PID of this instance of the script is still $$.&amp;quot;
+# Demonstrates that a subshell is not forked off.
+echo &amp;quot;==================== Hit Ctl-C to exit ====================&amp;quot;
+sleep 1
+exec $0 # Spawns another instance of this same script
+#+ that replaces the previous one.
+echo &amp;quot;This line will never echo!&amp;quot; # Why not?
+exit 99 # Will not exit here!
+# Exit code will not be 99!
+----------------------------------------------------------------
+--&amp;gt; exec同时还具有重新声明文件描述符的功能,例如:exec &amp;lt;zzz-file用文件zzz-file内容替换标准输入
+--&amp;gt; 在find命令中使用的-exec选项和shell内建命令exec不同,需要注意
+shopt
+这个命令允许在运行的过程中更改shell选项,通常出现在bash启动文件中,同样在脚本中可以使用,需要version 2以上版本的bash
+----------------------------------------------------------------
+shopt -s cdspell
+# Allows minor misspelling of directory names with 'cd'
+# Option -s sets, -u unsets.
+cd /hpme # Oops! Mistyped '/home'.
+pwd # /home
+# The shell corrected the misspelling.
+----------------------------------------------------------------
+caller
+在一个函数中放置一个caller命令,会打印出是在第几行调用这个函数,不再函数中使用没有作用
+----------------------------------------------------------------
+#!/bin/bash
+function1 ()
+{
+caller 0 # Tell me about it.
+}
+function1
+----------------------------------------------------------------
+--&amp;gt; caller命令在被source后,同样能够打印出在被source文件中的位置,类似于一个函数,这个被称作为子程序
+--&amp;gt; caller在debug中比较有用
+&lt;/code>&lt;/pre>
+&lt;h3 id="6-常用命令">#6 常用命令&lt;/h3>
+&lt;pre>&lt;code>true
+一个返回成功(0)的退出状态码命令,不做任何其他动作
+常用与无限循环结构中: while true
+false
+一个返回失败(非0)退出状态码命令,不做任何其他动作
+常用场景同样为无限循环结构: while false
+type[cmd]
+类似于which的外部命令,type命名用于鉴定cmd命令;
+--&amp;gt; 不同于which,type是一个内建命令
+--&amp;gt; type使用-a参数时,用于鉴定关键字和内建命令,同样定位命令在系统上的唯一名称
+----------------------------------------------------------------
+bash$ type '['
+[ is a shell builtin
+bash$ type -a '['
+[ is a shell builtin
+[ is /usr/bin/[
+bash$ type type
+type is a shell builtin
+----------------------------------------------------------------
+--&amp;gt; 在测试一个命令是否存在时,type命令非常有用,可以在判断结构中使用
+----------------------------------------------------------------
+bash$ type bogus_command &amp;amp;&amp;gt;/dev/null
+bash$ echo $?
+1
+----------------------------------------------------------------
+hash [cmds]
+记录指定命令的path名--在shell的哈希表中--因此shell或者脚本不需要逐次的查找$PATH变量目录来调用这些命令
+--&amp;gt; 当hash命令后不接参数时,则仅仅将已经hash的命令列出来
+--&amp;gt; 使用-r参数是清空hash表操作
+bind
+内建命令bind显示或者修改readline关键子绑定
+readline:The readline library is what Bash uses for reading input in an interactive shell.
+help
+获取简短的shell内建命令帮助信息,这个命令whatis的副本,但是是一个内建命令
+help命令在bash v4后显示的信息详尽很多
+&lt;/code>&lt;/pre>
+&lt;h3 id="7-job控制命令">#7. job控制命令&lt;/h3>
+&lt;pre>&lt;code>该部分内容的部分命令需要后接任务鉴定符作为参数
+jobs
+列出当前在后台运行的所有job,给出job数字,没有ps有用
+--&amp;gt; job和process的概念很容易混淆;一些特定的内建命令,像kill,disown,wait后接job号或者进程号作为参数;但fg,bg和jobs命令则仅接收任务号(job号)作为参数
+----------------------------------------------------------------
+bash$ sleep 100 &amp;amp;
+[1] 1384
+bash $ jobs
+[1]+ Running sleep 100 &amp;amp;
+----------------------------------------------------------------
+上面的命令及其输出中,数字1是任务号(由当前shell获取的job号),1384是进程号(由系统获取),杀掉job/process,使用kill %1或者kill 1384
+disown
+移除shell中table内正在运行的job
+----------------------------------------------------------------
+$ jobs
+[1] Running sleep 1000 &amp;amp;
+[2] Running sleep 1000 &amp;amp;
+[3]- Running sleep 1000 &amp;amp;
+[4]+ Running sleep 1000 &amp;amp;
+$ disown
+$ jobs
+[1] Running sleep 1000 &amp;amp;
+[2]- Running sleep 1000 &amp;amp;
+[3]+ Running sleep 1000 &amp;amp;
+----------------------------------------------------------------
+fg,bg
+fg命令将一个运行在后台的任务切换至前台. bg命令重新启动一个挂起的任务,并在后台执行
+--&amp;gt; 如果没有指定任务号,则默认fg和bg会作用与当前正在running状态的任务
+wait
+暂时挂起脚本的执行过程,直到所有的后台运行任务已经结束,或者是作为参数的任务号/进程号已经终止,返回wait后接命令的返回状态码
+--&amp;gt; 使用wait的场景通常为:指定的后台任务已完成,再继续执行脚本后续内容
+----------------------------------------------------------------
+#!/bin/bash
+ROOT_UID=0 # Only users with $UID 0 have root privileges.
+E_NOTROOT=65
+E_NOPARAMS=66
+if [ &amp;quot;$UID&amp;quot; -ne &amp;quot;$ROOT_UID&amp;quot; ]; then
+echo &amp;quot;Must be root to run this script.&amp;quot; # &amp;quot;Run along kid, it's past your bedtime.&amp;quot;
+exit $E_NOTROOT
+fi
+if [ -z &amp;quot;$1&amp;quot; ]; then
+echo &amp;quot;Usage: `basename $0` find-string&amp;quot;
+exit $E_NOPARAMS
+fi
+echo &amp;quot;Updating 'locate' database...&amp;quot;
+echo &amp;quot;This may take a while.&amp;quot;
+updatedb /usr &amp;amp; # Must be run as root.
+wait
+# Don't run the rest of the script until 'updatedb' finished.
+# You want the the database updated before looking up the file name.
+locate $1
+# Without the 'wait' command, in the worse case scenario,
+#+ the script would exit while 'updatedb' was still running,
+#+ leaving it as an orphan process.
+exit 0
+----------------------------------------------------------------
+--&amp;gt; wait也可以后接一个任务识别号作为参数,例如: wait %1或者wait $PPID
+--&amp;gt; 在一个脚本中,使用&amp;amp;符号让命令在后台执行可能会导致脚本hang死直到按下enter键,这种情况主要出现在需要输出到标准输出的命令,这种情况的出现比较让人烦;在这种命令后接wait
+----------------------------------------------------------------
+#!/bin/bash
+# test.sh
+ls -l &amp;amp;
+echo &amp;quot;Done.&amp;quot;
+wait
+bash$ ./test.sh
+Done.
+[bozo@localhost test-scripts]$ total 1
+-rwxr-xr-x 1 bozo bozo 34 Oct 11 15:09 test.sh
+----------------------------------------------------------------
+将命令输出写入到文件或者/dev/null中也可以解决这个问题
+suspend
+改命令与ctrl+Z有相似的效果,但是这个命令是挂起shell(shell的父进程应该在合适的时候恢复该shell的运行)
+logout
+退出一个登录shell,后面可借参数n,指定登出shell的状态返回码
+times
+显示进程执行用时数据,区别于time命令;得出的信息价值有限,对于profile和基础shell脚本并不通用
+kill
+强制终止一个进程,通过传递合适的终止信号
+----------------------------------------------------------------
+#!/bin/bash
+# self-destruct.sh
+kill $$ # Script kills its own process here.
+# Recall that &amp;quot;$$&amp;quot; is the script's PID.
+echo &amp;quot;This line will not echo.&amp;quot;
+# Instead, the shell sends a &amp;quot;Terminated&amp;quot; message to stdout.
+exit 0 # Normal exit? No!
+# After this script terminates prematurely,
+#+ what exit status does it return?
+#
+# sh self-destruct.sh
+# echo $?
+# 143
+#
+# 143 = 128 + 15
+# TERM signal
+----------------------------------------------------------------
+--&amp;gt; kill -l列出所有支持的信号列表(包含在文件/usr/include/asm/signal.h)
+--&amp;gt; kill -9是一个确认杀死,通常使用在单独使用kill命令无法杀死的场景下,有时,kill -15也能生效
+--&amp;gt; 僵尸进程是一个子进程已经终止,但父进程还没有被kill,无法被一个loged-on用户杀死--你无法杀死一个已经死的物件--但是init迟早会清理这些进程
+killall
+killall命令通过名字杀死一个运行进程,而不是通过pid
+--&amp;gt; 如果同时存在多个命令运行实例,则执行killall命令会将所有的这些实例全部杀死
+--&amp;gt; 此处的killall是指在/usr/bin/下的命令,而不是/etc/rc.d/init.d下的killall脚本
+command
+command命令禁用接在其后的命令的alias和function
+--&amp;gt; 这个命令是三个影响脚本命令执行的指令之一,其他两个分别是builtin和enable
+builtin
+使用命令builtin BUILTIN_COMMAND将命令BUILTIN_COMMAND当作一个shell内建命令来执行;临时禁用与调用命令同名的functions或者是系统外部命令
+enable
+改命令能够启用或者禁用一个shell内建命令
+例如: 命令enable -n kill禁用了shell内建命令kill,当bash继续调用kill时,调用的是外部命令kill
+--&amp;gt; enable的-a选项列出所有的shell内建命令,指示这些命令是否被enable
+--&amp;gt; -f filename选项让enable加载一个内建命令作为一个共享库模块从一个正确编译的二进制文件
+&lt;/code>&lt;/pre>
+&lt;h3 id="8-任务识别符">#8. 任务识别符&lt;/h3>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">内容&lt;/th>
+&lt;th style="text-align:left">含义&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">%N&lt;/td>
+&lt;td style="text-align:left">任务号&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">%S&lt;/td>
+&lt;td style="text-align:left">引用以S开头的job&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">%?S&lt;/td>
+&lt;td style="text-align:left">引用包含S的job&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">%%&lt;/td>
+&lt;td style="text-align:left">当前job(最后一个在前台停止的任务或者是最后一个在后台启动的任务)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">%+&lt;/td>
+&lt;td style="text-align:left">当前job(最后一个在前台停止的任务或者是最后一个在后台启动的任务)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">%-&lt;/td>
+&lt;td style="text-align:left">上一个job&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">$!&lt;/td>
+&lt;td style="text-align:left">上一个后台任务&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="9-外部过滤器程序及命令">#9. 外部过滤器,程序及命令&lt;/h3>
+&lt;p>标准的UNIX命令让shell脚本更加灵活,shell脚本的能力通过多个系统命令和shell指令的整合来实现&lt;/p>
+&lt;h3 id="10-基础命令">#10. 基础命令&lt;/h3>
+&lt;pre>&lt;code>ls
+基础文件罗列命令.很容易理解这个命令的低调;
+用-R参数是递归的罗列出当前目录下的内容
+用-S参数是按照文件的大小来排序
+用-t参数是按照文件的修改时间来排序
+用-v参数是文件名逆序罗列(依照数值顺序)
+用-b参数是显示脱意字符
+用-i参数是显示inode信息
+--&amp;gt; ls返回一个非零返回值,当目标文件不存在时
+cat/tac
+cat是concatenate的缩写,获取一个文件的内容,显示到标准输出,当与重定向符(&amp;gt;或者&amp;gt;&amp;gt;)一同使用时,一般用来连接文件
+--&amp;gt; -n参数是在文件的前面加上行号
+--&amp;gt; -b参数是只显示非空行内容
+--&amp;gt; -v参数是显示不可打印字符
+--&amp;gt; -s参数是将多行空行显示为一行空行
+--&amp;gt; 在一个管道中,直接使用重定向会比cat的效率更高
+----------------------------------------------------------------
+cat filename | tr a-z A-Z
+tr a-z A-Z &amp;lt; filename
+----------------------------------------------------------------
+--&amp;gt; tac是cat的反向命令,反向输出一个文件的内容(最后一行变为第一行,依次向上)
+rev
+将文件的每一行内容反向输出到标准输出,注意这个通tac功能是不一样的
+cp
+文件复制命令
+cp file1 file2 --&amp;gt; 将file1复制到文件file2,如果file2存在,则覆盖文件file2内容
+--&amp;gt; 尤其注意-a(archive)参数的使用,可以用于将一个目录完整复制
+--&amp;gt; -u(update)参数避免覆盖
+--&amp;gt; -r/-R 递归的复制
+move
+文件移动命令
+命令等效与cp和rm的结合体,用来将多个文件移动到一个文件夹中,或者重命名文件夹;
+--&amp;gt; 当mv用在一个非交互的脚本中时,mv会使用-f(force)参数来忽略用户的输入内容
+--&amp;gt; 当把一个目录mv为另一个已经存在目录名称时,该目录会变成已存在目录的子目录
+rm
+删除文件命令
+--&amp;gt; -f(force)参数用于强制删除文件,即使该文件为只读,在脚本中使用,用来绕开用户输入非常有用
+--&amp;gt; 当一个文件以'-'开头时,使用rm删除会失败;rm将以'-'的内容作为参数使用
+a.解决方式之一是在要删除文件的前面加上'--'(选项结束标识符)
+b.另一种方式是,在文件名前加上./,表示是在当前目录下的文件
+----------------------------------------------------------------
+rm -- -badname
+rm ./-badname
+----------------------------------------------------------------
+--&amp;gt; 当使用-r参数时,表示从当前指定目录递归删除
+a.使用路径名称中包含变量的时候,尤其小心,当变量不存在时,有可能就变成了rm -rf /
+b.使用rm -rf *时需要注意;若命令执行时,当前工作路径不对,改命令结束后,效果将等同如rm -rf /
+rmdir
+删除文件夹命令
+当使用这个命令删除文件夹时,目录必须为空(包括.文件--隐藏文件)
+--&amp;gt; 特定场景下使用这个命令来替代rm -rf dirname,防止误删错误文件夹
+mkdir
+创建文件夹命令
+创建一个新的文件夹,如: mkdir -p project/programs/December; -p参数会自动创建任何必需的父目录
+chmod
+更改已存在文件或者文件夹的属性命令
+--&amp;gt; 数字方式 chmod 755 /dirname
+--&amp;gt; 字符方式 chmod u+rwx /filename
+chattr
+更改文件属性命令,这个命令与chmod的功能类似,但是使用不同的选项和语法方式,(仅在ext文件系统上使用?)
+--&amp;gt; chattr的一个特殊的参数'i'(immutable),当一个文件具有了i属性,表示这个文件是不可更改的,不能被修改,删除,链接(root也不行)
+--&amp;gt; 当一个文件具有了's'(secure)属性时,文件被删除后,之前文件占用的块将被二进制0填充
+--&amp;gt; 当一个文件具有了'u'(undelete)属性时,文件被删除后,文件内容仍能够获取到(状态为undeleted)
+--&amp;gt; 当一个文件具有了'c'(compress)属性时,当文件被写时,自动压缩到磁盘文件,当文件被读时,自动从磁盘解压读取
+--&amp;gt; chattr包含的文件属性不同使用ls -l显示出来
+ln
+为存在的文件创建链接,链接是一个文件的映射,文件的别名
+--&amp;gt; ln命令允许被链接的文件包含不止一个映射名
+--&amp;gt; ln命令还可以用作别名来使用,在脚本中充作别名(abs-p38)
+--&amp;gt; ln只创建文件的映射,指向文件的指针大小只有几个字节大小
+--&amp;gt; ln命令最常与-s选项一同使用(符号链接或者称为软链接);软链接的优势之一是可以跨越文件系统创建
+ln -s oldfile newfile将oldfile链接一个新的文件名称newfile
+--&amp;gt; 更改文件被链接文件的内容时,软链接和硬链接同时能够体现更改的文件内容;不同点是
+a.删除或者重命名被链接文件后,硬链接不受影响,源文件的存储块内容并没有发生变化;但对于指向源文件名称的软链接来说,旧文件名称已经不存在,软链接将失效
+b.软链接的优点是可以跨越文件系统进行链接,并且,不同于硬链接,软链接还可以指向文件夹,硬链接则不行
+--&amp;gt; 链接的存在可以让脚本(或其他任何可执行的文件)通过不同的名称来调用(eg:/sbin/iptables -&amp;gt; xtables-multi),通过名称来限定脚本执行哪部分功能
+----------------------------------------------------------------
+#!/bin/bash
+# hello.sh
+ln -s hello.sh goodbye
+HELLO_CALL=65
+GOODBYE_CALL=66
+if [ $0 = &amp;quot;./goodbye&amp;quot; ]; then
+echo &amp;quot;Good-bye!&amp;quot; # Some other goodbye-type commands, as appropriate.
+exit $GOODBYE_CALL
+fi
+echo &amp;quot;Hello!&amp;quot;
+exit $HELLO_CALL
+----------------------------------------------------------------
+man/info
+获取帮助文档,info文档一般描述信息会比man文档更详尽
+--&amp;gt; man文档的书写可以通过脚本来优化(abs-709)
+&lt;/code>&lt;/pre>
+&lt;h3 id="11-高级命令">#11. 高级命令&lt;/h3>
+&lt;pre>&lt;code>find
+命令形式: -exec COMMAND \;
+为每一行find匹配的内容执行COMMAND命令,命令序列是以';'结尾
+--&amp;gt; 此处使用的-exec与shell自带命令exec别混淆了
+--&amp;gt; 注意此处不是命令分隔使用到的';',find命令序列中';'是脱意的,为了确保shell将';'按照字面意思传递给find
+--&amp;gt; 如果COMMAND中包含有{},则find将find匹配的路径或者文件名通过{}来替换;
+----------------------------------------------------------------
+find ~/ -name 'core*' -exec rm {} \;
+find /etc -exec grep '[0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*[.][0-9][0-9]*' {} \;
+find /home -type f -atime +5 -exec rm {} \;
+----------------------------------------------------------------
+--&amp;gt; 时间匹配: find可以通过文件的时间戳进行查找匹配
+mtime = last modification time of the target file
+ctime = last status change time (via 'chmod' or otherwise)
+atime = last access time
+(-mtime -1表示前一天被修改过的文件)
+--&amp;gt; 文件匹配: find可以通过文件类型进行查找匹配
+f = regular file
+d = directory
+l = symbolic link, etc.
+----------------------------------------------------------------
+## 删除当前目录下包含特殊字符的文件
+find . -name '*[+{;&amp;quot;\\=?~()&amp;lt;&amp;gt;&amp;amp;*|$ ]*' -maxdepth 0 -exec rm -f '{}' \;
+## 通过inum删除文件
+inum=`ls -i | grep &amp;quot;$1&amp;quot; | awk '{print $1}'`
+find . -inum $inum -exec rm {} \;
+----------------------------------------------------------------
+xargs
+一个用来传递参数给命令的过滤器,同样也是一个集合命令的工具
+--&amp;gt; xargs将数据流打散成足够小的块,用来给命令或者进程处理,可以将这个命令想成更加强大的后向引用
+--&amp;gt; 在有些场景下,命令替换报too many arguements时,用xargs却可以使用
+--&amp;gt; 一般场景下,xargs通过管道或者标准输入读取数据,但也可以通过一个文件的内容来获取
+--&amp;gt; 默认传递给xargs的命令是echo,这表示当输入管道给到xargs时,换行符和一些其他空白字符会被跳过
+----------------------------------------------------------------
+bash$ ls -l | xargs
+total 0 -rw-rw-r-- 1 bozo bozo 0 Jan 29 23:58 file1 -rw-rw-r-- 1 bozo bozo 0 Jan...
+----------------------------------------------------------------
+--&amp;gt; 命令ls | xargs -p -l gzip 将当前目录下的每个文件用gzip打包,每次一个,每进行一次会提示一次
+--&amp;gt; xargs依次序处理传递给其的参数,一次一项
+--&amp;gt; -n NN形式;限制每次传递给命令的参数数目,ls | xargs -n 3 echo -- 每次打印三个名字
+--&amp;gt; 另外一个有用的参数是-0,通常和find -print0或者grep -lZ一同使用;这个场景下允许处理的参数中包含空白字符或者引用
+----------------------------------------------------------------
+find / -type f -print0 | xargs -0 grep -liwZ GUI | xargs -0 rm -f
+grep -rliwZ GUI / | xargs -0 rm -f
+----------------------------------------------------------------
+--&amp;gt; -P选项允许并行执行命令,在多核机器中能够提高执行速度
+----------------------------------------------------------------
+ls *gif | xargs -t -n1 -P2 gif2png
+# Converts all the gif images in current directory to png.
+# Options:
+# =======
+# -t Print command to stderr.
+# -n1 At most 1 argument per command line.
+# -P2 Run up to 2 processes simultaneously.
+----------------------------------------------------------------
+--&amp;gt; 在find中使用,一对花括号的作用是作为占位符使用的
+----------------------------------------------------------------
+ls . | xargs -i -t cp ./{} $1
+# -t is &amp;quot;verbose&amp;quot; (output command-line to stderr) option.
+# -i is &amp;quot;replace strings&amp;quot; option.
+# {} is a placeholder for output text.
+# This is similar to the use of a curly-bracket pair in &amp;quot;find.&amp;quot;
+----------------------------------------------------------------
+expr
+通用表达式求值运算命令
+连接并对给出的命令选项和参数进行求值操作(各个参数之间必须用空格隔开)
+--&amp;gt; 可进行的操作包括有: 算数运算,比较,字符或者逻辑运算
+----------------------------------------------------------------
+expr 3 + 5
+expr 5 % 3
+expr 1 / 0
+expr 5 \* 3 # 乘法运算,在expr表达式中,乘号需要脱意
+y=`expr $y + 1` # 变量自增,等效于 let y=y+1 and y=$(($y+1))
+z=`expr substr $string $position $length` # 获取变量string中position位置length长度的字符
+----------------------------------------------------------------
+--&amp;gt; ':'运算符可以用来替代match;命令 b=`expr $a : [0-9]*`等效于 b=`expr match $a [0-9]*`
+&lt;/code>&lt;/pre>
+&lt;h3 id="12-时间日期命令">#12. 时间/日期命令&lt;/h3>
+&lt;pre>&lt;code>date
+打印当前时间和日期信息到标准输出,这个命令的格式化输出和解析选项很有用
+--&amp;gt; -u选项显示UTC时间
+--&amp;gt; date可以用来计算不同时间之间的时间间隔
+--&amp;gt; date有大量的输出选项可供选择;比如%N是给出当前时间的纳秒格式,这个形式可以用来获取随机数
+----------------------------------------------------------------
+date +%N | sed -e 's/000$//' -e 's/^0//'
+date --date='6 days ago'
+date --date='1 year ago'
+----------------------------------------------------------------
+zdump
+时区dump:打印指定时区的时间
+----------------------------------------------------------------
+bash$ zdump EST
+EST Tue Sep 18 22:09:22 2001 EST
+----------------------------------------------------------------
+time
+显示执行一个命令的准确时间
+--&amp;gt; time不同于命令times,注意
+----------------------------------------------------------------
+bash$ time ls -l /
+real 0m0.004s
+user 0m0.004s
+sys 0m0.001s
+----------------------------------------------------------------
+touch
+更新文件的访问/修改时间为系统/指定时间,同时具有新建一个文件的功能
+--&amp;gt; 当文件zzz不存在时,touch zzz会创建一个大小为0的文件zzz;这种方式用来存储日期/时间戳很有用
+--&amp;gt; touch命令等效于:&amp;gt;&amp;gt; newfile或者&amp;gt;&amp;gt; newfile(普通文件)
+--&amp;gt; 可以结合cp -a一起使用,使用touch更新不想被覆盖的文件时间戳,再用cp -u
+at
+at任务控制命令在指定的时间执行一系列指定的命令;命令类似于cron,at命令很适合只执行一次的命令
+--&amp;gt; 使用-f选项或者&amp;lt;输入重定向,at充文件中读取命令;文件应该是一个可执行的shell脚本,同时是非交互式脚本
+--&amp;gt; 需要执行较多内容时,可以结合run-parts命令来实现
+----------------------------------------------------------------
+bash$ at 2:30 am Friday &amp;lt; at-jobs.list
+job 2 at 2000-10-27 02:30
+----------------------------------------------------------------
+batch
+batch命令类似于at命令,但要求在系统负载低于0.8时执行;类似于at,可以接-f选项
+cal
+打印简化版的日历到标准输出,可接不同选项,显示不同年份和月份的日历
+sleep
+这个是shell形势下的wait循环;命令暂停指定秒数的时间,什么都不做
+--&amp;gt; 对于后台运行的命令或者定时进程很有用,定时检查事件
+--&amp;gt; sleep命令默认情况下是使用秒,但也可以用分钟,小时或者天来定时
+--&amp;gt; watch命令比sleep命令更适合周期性检查命令执行情况
+usleep
+类似与sleep,但默认时间为微秒,用在对时间更加精准或查询更加频繁的场景下
+hwclock/clock
+命令hwclock获取或者调整机器的硬件时间,某些选项需要root权限才能使用
+--&amp;gt; 在rhel6中,启动时,/etc/rc.d/rc.sysinit启动文件通过hwclock获取硬件时间来设置系统时间
+--&amp;gt; clock是hwclock的同义词
+&lt;/code>&lt;/pre>
+&lt;h3 id="13-文本处理命令">#13. 文本处理命令&lt;/h3>
+&lt;pre>&lt;code>sort
+文件归类工具,通常用在管道后过滤使用
+--&amp;gt; 命令用来正序,逆序或者指定位置关键字/字符位置来处理文本流或者文件
+--&amp;gt; 使用-m选项,合入预处理过的文件
+--&amp;gt; 可以查看info文档来获取sort的使用场景
+tsort
+拓扑排序,读取以空格分隔的字符串对，并根据输入模式进行排序;通常情况下tsort命令排序的结果与sort排序结果有较大差别
+uniq
+该命令移除文件中重复出现的行,通常会结合sort和管道一同使用
+----------------------------------------------------------------
+cat list-1 list-2 list-3 | sort | uniq &amp;gt; final.list
+----------------------------------------------------------------
+--&amp;gt; 使用-c选项,在输出结果中显示重复出现的次数
+--&amp;gt; sort INPUTFILE | uniq -c | sort -nr　命令打印出在INPUTFILE中出现的频次信息,使用场景为分析log文件或者字典列表等
+----------------------------------------------------------------
+sed -e 's/\.//g' -e 's/\,//g' -e 's/ //g' &amp;quot;$1&amp;quot; | tr 'A-Z' 'a-z' | sort | uniq -c | sort -nr
+----------------------------------------------------------------
+expand/unexpand
+命令expand用来将tab展开为空格,通常与管道结合使用
+命令unexpand将空格转换为tab,是expand的反转命令
+cut
+展开文件指定区域的命令.命令类似于在awk结构中的print $N,但相比较之下,限制更多.在脚本中使用cut命令会比使用awk更简单.cut重要的选项-f和-d
+----------------------------------------------------------------
+# 使用cut来获取挂载文件系统列表
+cut -d ' ' -f1,2 /etc/mtab
+# 使用cut列出OS和内核版本
+uname -a | cut -d&amp;quot; &amp;quot; -f1,3,11,12
+# 使用cut来解析email信息头部
+bash$ grep '^Subject:' read-messages | cut -c10-80
+Re: Linux suitable for mission-critical apps?
+MAKE MILLIONS WORKING AT HOME!!!
+Spam complaint
+Re: Spam complaint
+----------------------------------------------------------------
+--&amp;gt; 甚至可以指定换行符作为分隔符
+----------------------------------------------------------------
+bash$ cut -d'
+' -f3,7,19 testfile
+This is line 3 of testfile.
+This is line 7 of testfile.
+This is line 19 of testfile.
+----------------------------------------------------------------
+--&amp;gt; cut -d ' ' -f2,3 filename的结果等效于awk -F'[ ]' '{ print $2, $3 }' filename
+paste
+用于将多个文件合成为一个文件,将合成的结果输出到标准输出
+join
+这是一个特殊形式的paste命令;这个强大的程序允许按照一定的关联关系来合并两个文件内容,这实际上已经是一个简化版的关系数据库形式了
+--&amp;gt; join命令只对两个文件进行操作，但只粘贴那些带有公共标记字段（通常是数字标签）的行，并将结果写入stdout
+--&amp;gt; 要加入的文件应根据标记字段进行排序，以使匹配正常工作
+----------------------------------------------------------------
+File: 1.data
+100200300Shoes
+Laces
+Socks
+File: 2.data
+100200300$40.00
+$1.00
+$2.00
+bash$ join 1.data 2.data
+File: 1.data 2.data
+100 Shoes $40.00
+200 Laces $1.00
+300 Socks $2.00
+# 标识字段只出现一次
+----------------------------------------------------------------
+head
+打印一个文件的启示内容到标准输出,默认行数是10,但允许设置不同数字
+--&amp;gt; head有多个不同的参数可以使用,如-c(字符数),-n(行数)
+tail
+打印一个文件的尾部到标准输出,默认行数是10,但该数字可以通过接-n选项更改;通常用来追踪一个文件内容的变化
+--&amp;gt; tail -f等效于tailf,动态实时的显示文件内容
+--&amp;gt; 显示某个文件的指定行内容,其中一种方式: head -n 8 database.txt | tail -n 1 l
+--&amp;gt; 使用新的 tail -n $LINES filename 代替旧有形式tail -$LINES filename
+grep
+一个多功能的搜索工具,可以使用正则表达式;命令形式grep pattern [file...]
+--&amp;gt; -i选项,忽略大小写
+--&amp;gt; -w选项,仅匹配整个单词
+--&amp;gt; -l选项,仅显示匹配相关内容的文件名
+--&amp;gt; -r选项,递归搜索
+--&amp;gt; -n选项,显示匹配到的内容所在行,并将行数显示在匹配内容的前面
+--&amp;gt; -v选项,不显示匹配到的内容
+--&amp;gt; -c选项,显示匹配到的次数
+--&amp;gt; --color选项,将匹配到的内容上色显示
+--&amp;gt; -o选项,仅打印匹配到的内容,不显示一整行
+--&amp;gt; -q选项,不打印任何内容,在判断结构中使用很方便
+--&amp;gt; 当仅搜索一个文件时,在输出结果中要将文件名一同打印,可以后接/dev/null作为第二个文件名
+----------------------------------------------------------------
+bash$ grep Linux osinfo.txt /dev/null
+----------------------------------------------------------------
+--&amp;gt; grep匹配到相关内容后,返回值为0,这样可以结合判断结构来使用
+--&amp;gt; 使用sed命令可以仿真grep的行为: sed -n /&amp;quot;$1&amp;quot;/p $file
+--&amp;gt; 怎样让grep匹配两个不同的匹配模式,可以使用方式grep pattern1 | grep pattern2来实现
+--&amp;gt; egrep等效于grep -E,允许使用扩展正则表达式来进行匹配,形式更加灵活
+--&amp;gt; fgrep等效于grep -F,逐字匹配(不使用正则表达式),速度会更快一些
+--&amp;gt; agrep(近似匹配/模糊匹配),扩展grep的能力,使其能够进行模糊匹配
+--&amp;gt; 匹配压缩文件内容时,使用zgrep/zegrep/zfgrep,这些命令同样能用在普通文件,虽然速度慢一些,但对于包含多种文件类型(普通文件/压缩文件)的场景下操作则更方便
+--&amp;gt; 匹配bzip文件时使用bzgrep命令
+look
+look命令工作形式类似于grep,但是是基于字典(一个已排序的单词列表)进行查询;默认情况下,look在/usr/dict/words下进行匹配,但可以指定进行匹配的字典
+----------------------------------------------------------------
+file=words.database # Data file from which to read words to test.
+while [ &amp;quot;$word&amp;quot; != end ]; do # Last word in data file.
+read word
+look $word &amp;gt; /dev/null
+lookup=$?
+if [ &amp;quot;$lookup&amp;quot; -eq 0 ]; then
+echo &amp;quot;\&amp;quot;$word\&amp;quot; is valid.&amp;quot;
+else
+echo &amp;quot;\&amp;quot;$word\&amp;quot; is invalid.&amp;quot;
+fi
+done &amp;lt;&amp;quot;$file&amp;quot;
+----------------------------------------------------------------
+sed/awk
+脚本语言,非常适合用来处理文本文件和标准输出的内容
+sed
+非交互式的流编辑器,在batch(不需要用户介入的情况下运行一组命令)模式下允许使用很多ex命令,在脚本中使用很广泛
+awk
+可编程式文件内容提取及格式化程序,适合用来操作或展开格式化的文本文件的列,语法格式类似于C语言
+wc
+计数程序
+--&amp;gt; -w:单词数;-l:行数;-c:字节数;-m:字符数;-L:给出最长行的长度
+tr
+字符转化过滤器
+--&amp;gt; 视情况决定是否需要使用引用或者括号,引号引用可以防止shell将属于tr的特殊字符先行处理了,括号必须被引起来,防止直接被展开
+----------------------------------------------------------------
+tr &amp;quot;A-Z&amp;quot; &amp;quot;*&amp;quot; &amp;lt;filename
+tr A-Z \* &amp;lt;filename
+----------------------------------------------------------------
+--&amp;gt; 接上-d选项,用于删除一系列的指定字符
+--&amp;gt; --squeeze-repeats(-s)选项用来删除连续的字符(保留第一个),这个选项用来移除多余的空白字符很有用
+--&amp;gt; -c(补足)选项将未匹配的内容用指定的字符替代
+----------------------------------------------------------------
+bash$ echo &amp;quot;acfdeb123&amp;quot; | tr -c b-d +
++c+d+b++++
+bash$ echo &amp;quot;abcd2ef1&amp;quot; | tr '[:alpha:]' -
+----2--1
+----------------------------------------------------------------
+fold
+将输入的行折叠成指定宽度的过滤器
+--&amp;gt; 使用-s选项用来以空格作为隔断符,防止直接截断字符
+----------------------------------------------------------------
+b=`ls /usr/local/bin`
+$ echo $b | fold - -s -w 40
+cnpm compile cops-cli gitbook pacvim
+ptyping qr-filetransfer runenpass sle
+study s-tui t termtosvg tget tiv
+# 等效于echo $b | fmt -w $WIDTH
+----------------------------------------------------------------
+fmt
+简单的格式化工具,用于将长行分割为多行
+column
+列格式化工具,将列类型的文本输出转换成格式友好的打印形式,在合适的位置插入tab
+--&amp;gt; 对于文件中存在多列内容,但未对齐的格式,使用column -t处理会很方便
+colrm
+列删除处理器,该命令删除文件中的列内容并直接写该文件
+--&amp;gt; colrm 2 4 &amp;lt;filename 删除文件中的第二到第四列内容
+--&amp;gt; 上列命令使用时,若文件中包含有tab之类的不可打印字符,则可能导致无法预估的结果,考虑使用expand/unexpand命令处理之后再管道传输给colrm
+nl
+打印文件内容并附上行号
+--&amp;gt; 打印的是非空行内容
+--&amp;gt; nl的操作非常类似于cat -b,同样是不打印非空行
+cpio
+这个特定的归档复制命令已经很少用了,基本已经被tar/gzip取代;但在某些场景下,还是能够使用
+--&amp;gt; 指定块大小进行复制,速度会比tar更快
+find &amp;quot;$source&amp;quot; -depth | cpio -admvp &amp;quot;$destination&amp;quot;
+rpm2cpio
+这个命令从rpm包中解压一个cpio文件出来
+gzip
+结合-c选项使用时,将gzip的输出写入到标准输出,结合管道使用非常有用
+zcat/bzcat
+可以用来查看gzip/bzip文件中的内容,相当与bzip/gzip文件下的cat
+readlink
+获取符号链接指向的文件
+strings
+用来获取二进制文件或其他数据文件中的可打印字符
+diff
+逐行打印两个对比文件的不同内容
+--&amp;gt; 使用--side-by-side选项,每个文件内容显示一列,相较原来的形式更方便对比查看
+--&amp;gt; 使用-c和-u选项可以让输出结果更适合查看
+--&amp;gt; 可以在判断结构中使用diff命令,当比较的两个文件同一的时候,命令返回值为0,当比较的两个文件不一样时,返回值非零
+patch
+一个非常灵活的版本记录命令,结合diff使用比较常见,可以给出一个由diff命令创建的差异文件
+diff3
+diff命令的升级版命令,可以一次比较三个文件,正常执行后命令返回值为0,但改命令不会打印文件差异内容出来
+split/csplit
+用于将一个文件切片为小块的工具,使用场景一般为文件太大,需要切片后邮件发送或者拷贝到移动磁盘
+csplit命令通过文件内容来进行分片
+sum,cksum,md5sum,sha1sum
+以上命令是用于创建校验和的工具,校验和是通过对一个文件内容进行数学计算得出的字符串,用于检查文件的完整性
+openssl
+可以用于加密使用,结合tar一同使用,可以方便的加密相关目录和文件
+shred
+用随机字符多次重写文件,可用在安全要求高的场景下
+mktemp
+创建一个拥有唯一名称的临时文件,不使用其他参数是,在/tmp目录下创建一个大小为0的文件
+--&amp;gt; tempfile=`mktemp $PREFIX.XXXXXX` 指定创建的新文件包含有多少个随机字符
+ptx
+ptx[targetfile]命令输出目标文件的排列索引（交叉引用列表）。如有必要，可以在管道中进一步过滤和格式化。
+ipcalc
+用于换算和查看ip相关的内容
+traceroute
+通过发送的包追踪路由
+sx,rx
+命令集通过xmodem协议与远端服务器传输文件
+sz,rz
+命令集通过zmodem协议与远端服务器传输文件,zmodem的速度相对xmodem更快
+ssh
+--&amp;gt; 在循环中使用ssh时,可能出现不可预期的情况,可以后接-f或者-n选项来避免
+tput
+--&amp;gt; 初始化终端和/或从terminfo数据中获取有关它的信息。各种选项允许某些终端操作：tput clear等于clear；tput reset等于reset。
+--&amp;gt; tput可以用来对终端进行操作,更改字符显示方式等
+reset
+重置终端参数并且清屏
+script
+记录键盘敲击记录,执行该命令后,会在当前目录下生成一个文件,用于记录后面敲击的键盘记录
+factor
+后接一个数字,将该数字的各个因数打印出来
+bc
+bash无法进行浮点数计算,且缺少一些重要的运算功能,bc可以满足部分需求
+--&amp;gt; bc可以用在脚本中,用来对变量进行计算获值variable=$(echo &amp;quot;OPTIONS; OPERATIONS&amp;quot; | bc)
+--&amp;gt; 另外一种形式是结合here document的方式来作为输入
+----------------------------------------------------------------
+&amp;lt;&amp;lt; EOF
+18.33 * 19.78
+EOF
+----------------------------------------------------------------
+awk
+另外一种进行浮点数运算的方式是使用awk命令
+----------------------------------------------------------------
+AWKSCRIPT=' { printf( &amp;quot;%3.7f\n&amp;quot;, sqrt($1*$1 + $2*$2) ) } '
+# command(s) / parameters passed to awk
+# Now, pipe the parameters to awk.
+echo -n &amp;quot;Hypotenuse of $1 and $2 = &amp;quot;
+echo $1 $2 | awk &amp;quot;$AWKSCRIPT&amp;quot;
+----------------------------------------------------------------
+jot,seq
+生成一个整数序列,用户可以自定义步长和分隔符
+--&amp;gt; seq -s : 5 指定分隔符为:,默认情况下是换行符
+--&amp;gt; jot和seq都可以用在for循环中
+run-parts
+run-parts命令会执行目标目录下的所有脚本,默认依照ascii字母顺序执行,当然,脚本需要有执行权限
+yes
+yes默认的动作为返回y及换行符到标准输出,需要使用ctrl+C来终止
+--&amp;gt; 使用yes string,则后面会不断重复出现string
+--&amp;gt; 使用场景: yes | rm -r dirname
+tee
+类似与重定向,但与重定向不同
+(redirection)
+|----&amp;gt; to file
+|
+==========================|====================
+command ---&amp;gt; command ---&amp;gt; |tee ---&amp;gt; command ---&amp;gt; ---&amp;gt; output of pipe
+===============================================
+mkfifo
+命令创建一个命名管道,一个临时的first-in-first-out用于在不同的进程之间传递数据,一般情况下,一个进程向FIFO中写数据,另一个进程则从FIFO中读取数据
+----------------------------------------------------------------
+(cut -d' ' -f1 | tr &amp;quot;a-z&amp;quot; &amp;quot;A-Z&amp;quot;) &amp;gt;pipe2 &amp;lt;pipe1 &amp;amp;
+ls -l | tr -s ' ' | cut -d' ' -f3,9- | tee pipe1 | cut -d' ' -f2 | paste - pipe2
+rm -f pipe1
+rm -f pipe2
+----------------------------------------------------------------
+&lt;/code>&lt;/pre>
+&lt;h3 id="14-其他命令">#14. 其他命令&lt;/h3>
+&lt;pre>&lt;code>groups
+显示当前用户属于哪些组
+lid
+命令将显示给出的用户名所属的groups列表
+logname
+显示登录当前终端登录系统的用户名称,即使su之后,改命令仍显示为源用户
+ac
+显示用户登录的时长
+newgrp
+更改当前用户的组id而不需要登出系统
+tty
+显示当前终端所在的文件名称
+stty
+显示或者是更改终端的设置,改命令较复杂,在脚本中使用时,可以控制终端的行为以及其输出内容的形式
+setterm
+设置指定的终端属性,这条命令会更改输出到标准输出结果的显示情况
+getty/agetty
+使用getty/agetty来初始化终端进程,这些命令不能在脚本中使用,脚本中可使用的是stty
+lastcomm
+显示上一条执行命令的一些相关信息,内容是存储在/var/accounut/pacct文件中的
+strace(system trace)
+用于诊断和debug系统调用的工具,该命令和ltrace可用来查找一个程序运行失败的原因
+itrace(library trace)
+用于诊断和debug库调用的工具
+nc(netcat)
+nc工具集是一个用来连接和监听TCP/UDP端口的工具
+dmesg
+打印所有的系统启动日志信息到标准输出
+size
+size /path/to/binary 会给出一个二进制文件的各个段大小,对于程序员来说,需要使用
+logger
+追加用户自定义的内容到/var/log/messages中去,普通用户也可以使用
+--&amp;gt; 该命令可以用来在脚本中增加debug信息到日志中
+logrotate
+该工具用于管理系统的日志文件,轮转,压缩,删除或者email发送等,一般是结合cron一起使用来实现日志管理的
+fuser
+获取当前正在访问给定文件,文件集,或者目录的进程(通过进程号显示)
+--&amp;gt; 同-k选项一同使用时,杀掉这些进程,在插拔可移动设备的场景下使用较多
+--&amp;gt; 同-n选项一同使用时,获取到当前在访问指定端口的进程,与nmap一同搭配使用非常有用
+----------------------------------------------------------------
+# nmap localhost
+PORT STATE SERVICE
+25/tcp open smtp
+# fuser -un tcp 25
+25/tcp: 2095(root)
+----------------------------------------------------------------
+nmap
+network mapper and port scanner,网络映射和端口扫描,查看指定主机开放的端口
+sync
+执行命令后,强制当前环境下,将buffer中的数据写入到磁盘中
+losetup
+创建或者配置loop设备
+mkswap
+创建一个swap分区或者文件,swap区域启动需要使用swapon命令
+swapon/swapoff
+启用/关闭swap设备
+dumpe2fs
+打印显示详细的文件系统相关信息,必须由root用户调用
+hdparm
+显示/更改磁盘参数,必须由root用户使用,错误使用很危险
+badblocks
+检查一个存储设备的坏块,在一个刚格式化后的设备或者备份文件时使用
+lsusb,usbmodules
+显示所有的usb设备信息
+lspci
+列出当前使用到的pci总线
+chroot
+顾名思义,更改当前的根目录位置
+lockfile
+属于procmail包的一部分,他创建一个lock 文件,用于作为一个标记文件存在,控制文件,设备或者资源的可获取性
+flock
+命令给文件设置一个锁信息的公告,当命令执行完成之后,其他命令或者进程才能操作刚才的文件
+----------------------------------------------------------------
+flock $0 cat $0 &amp;gt; lockfile__$0
+# Set a lock on the script the above line appears in,
+#+ while listing the script to stdout.
+----------------------------------------------------------------
+--&amp;gt; 与lockfile命令不同的是,flock命令不会自动创建一个lock文件
+mknod
+创建一个块设备或者字符设备(当在系统上新增了一个新的设备之后可能有必要这样做),MAKEDEV工具比mknod更容易使用,且具备相应的功能
+MAKEDEV
+用于创建设备文件的命令,必须由root用户来执行,文件保存在/dev下,是高级版的mknod
+tmpwatch
+自动删除有一段时间没有被访问过的文件,通常结合cron一同使用,用于删除log文件
+dump/restore
+dump命令是设计用于备份文件系统的命令,命令读取磁盘分区的裸数据并写一个二进制文件
+ulimit
+设置一个更高的系统使用极值
+quota
+显示用户或者组的磁盘配额信息
+setquota
+设置用户或者组的磁盘配额
+depmod
+生成模块依赖文件,通常会被启动脚本调用
+ldd
+显示一个可执行文件需要使用到的共享库依赖
+watch
+以特定间隔运行一个命令
+&lt;/code>&lt;/pre>
+&lt;h2 id="特殊内容">特殊内容&lt;/h2>
+&lt;h3 id="1-here-document">#1. here document&lt;/h3>
+&lt;pre>&lt;code>&amp;lt;&amp;lt; 可以结合vi一同使用,如下所示:
+----------------------------------------------------------------
+# Insert 2 lines in file, then save.
+#--------Begin here document-----------#
+vi $TARGETFILE &amp;lt;&amp;lt;x23LimitStringx23
+i
+This is line 1 of the example file.
+This is line 2 of the example file.
+^[
+ZZ
+x23LimitStringx23
+#----------End here document-----------#
+----------------------------------------------------------------
+可以使用vi +n的形式指定文件打开后在第几行
+&lt;/code>&lt;/pre></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tags/bash/">bash</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">基础知识</category></item></channel></rss>
