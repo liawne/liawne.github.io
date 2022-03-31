@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-03-30T23:37:03+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.93.2">Hugo</generator><entry><title type="text">Openssl Toolkit使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</id><updated>2022-03-24T22:37:26+08:00</updated><published>2022-03-24T22:37:26+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一种openssl 工具集, 满足各种证书生成和转换需求</summary><content type="html">&lt;blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-03-31T23:41:41+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.93.2">Hugo</generator><entry><title type="text">Openssl Toolkit使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</id><updated>2022-03-24T22:37:26+08:00</updated><published>2022-03-24T22:37:26+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一种openssl 工具集, 满足各种证书生成和转换需求</summary><content type="html">&lt;blockquote>
 &lt;p>工具下载: &lt;a href="https://ruisum.top/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="说明">说明&lt;/h2>
@@ -1137,7 +1137,294 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">fileencodings&lt;/span>&lt;span class="o">=&lt;/span>utf-8,ucs-bom,gb2312,cp936
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/vim/" term="vim" label="vim"/><category scheme="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/" term="解码" label="解码"/></entry><entry><title type="text">Kubernetes学习笔记</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/><id>https://ruisum.top/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id><updated>2022-03-13T22:04:30+08:00</updated><published>2022-03-13T22:04:30+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">k8s学习笔记记录</summary><content type="html">&lt;h2 id="devops核心要点及kubernetes架构概述">Devops核心要点及kubernetes架构概述&lt;/h2>
+&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/vim/" term="vim" label="vim"/><category scheme="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/" term="解码" label="解码"/></entry><entry><title type="text">docker 使用到的 iptables 内容</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/docker/docker%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/docker/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-13T22:58:17+08:00</updated><published>2022-03-13T22:58:17+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">安装并启动 docker 服务后, 服务器上自动增加 docker 相关的 iptables 规则和链, 他们的作用是什么</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
+&lt;p>在服务器上安装 &lt;code>docker&lt;/code> , 并启动 &lt;code>docker.service&lt;/code> 后会发现, &lt;code>iptables-save&lt;/code> 命令的输出增加一些 &lt;code>DOCKER&lt;/code> 相关的内容.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@c7u3test1 ~&lt;span class="o">]&lt;/span>&lt;span class="c1"># iptables-save &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Generated by iptables-save v1.4.21 on Sun Aug 25 05:05:17 2019&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*nat
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:PREROUTING ACCEPT &lt;span class="o">[&lt;/span>0:0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:INPUT ACCEPT &lt;span class="o">[&lt;/span>0:0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:OUTPUT ACCEPT &lt;span class="o">[&lt;/span>1:128&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:POSTROUTING ACCEPT &lt;span class="o">[&lt;/span>1:128&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:DOCKER - &lt;span class="o">[&lt;/span>0:0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A PREROUTING -m addrtype --dst-type LOCAL -j DOCKER
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A OUTPUT ! -d 127.0.0.0/8 -m addrtype --dst-type LOCAL -j DOCKER
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A POSTROUTING -s 172.17.0.0/16 ! -o docker0 -j MASQUERADE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A DOCKER -i docker0 -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">COMMIT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Completed on Sun Aug 25 05:05:17 2019&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Generated by iptables-save v1.4.21 on Sun Aug 25 05:05:17 2019&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*filter
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:INPUT ACCEPT &lt;span class="o">[&lt;/span>23:1592&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:FORWARD DROP &lt;span class="o">[&lt;/span>0:0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:OUTPUT ACCEPT &lt;span class="o">[&lt;/span>12:1152&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:DOCKER - &lt;span class="o">[&lt;/span>0:0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">:DOCKER-ISOLATION - &lt;span class="o">[&lt;/span>0:0&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A FORWARD -j DOCKER-ISOLATION
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A FORWARD -o docker0 -j DOCKER
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A FORWARD -o docker0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A FORWARD -i docker0 ! -o docker0 -j ACCEPT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A FORWARD -i docker0 -o docker0 -j ACCEPT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A DOCKER-ISOLATION -j RETURN
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">COMMIT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Completed on Sun Aug 25 05:05:17 2019&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>当使用&lt;code>-p&lt;/code>参数拉起一个容器时, 查看 &lt;code>iptables-save&lt;/code> 输出会发现多了一些规则, 其中的 &lt;code>IP&lt;/code> 地址就是新拉起容器的地址&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@c7u3test1 ~&lt;span class="o">]&lt;/span>&lt;span class="c1"># docker run -d -p 5000:5000 busybox sleep 10000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">e4d5f73de95ed178fb24b5068ded0478d957d94d88a3906d7a08c89aab79f339
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@c7u3test1 ~&lt;span class="o">]&lt;/span>&lt;span class="c1"># docker container ps -q&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">e4d5f73de95e
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@c7u3test1 ~&lt;span class="o">]&lt;/span>&lt;span class="c1"># iptables-save &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Generated by iptables-save v1.4.21 on Tue Mar 29 11:06:18 2022&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*nat
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A POSTROUTING -s 172.17.0.2/32 -d 172.17.0.2/32 -p tcp -m tcp --dport &lt;span class="m">5000&lt;/span> -j MASQUERADE
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">*filter
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-A DOCKER -d 172.17.0.2/32 ! -i docker0 -o docker0 -p tcp -m tcp --dport &lt;span class="m">5000&lt;/span> -j ACCEPT
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>iptables&lt;/code>的介绍请看这里: &lt;a href="https://need.todo3">iptables 简述&lt;/a>&lt;/p>
+&lt;p>这篇文章简述&lt;code>iptables&lt;/code> 在 &lt;code>docker&lt;/code> 中常见的一些功能.&lt;/p>
+&lt;h2 id="dasfdsadf">dasfdsadf&lt;/h2></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/docker/" term="docker" label="docker"/><category scheme="https://ruisum.top/tags/docker/" term="docker" label="docker"/><category scheme="https://ruisum.top/tags/iptables/" term="iptables" label="iptables"/><category scheme="https://ruisum.top/tags/network/" term="network" label="network"/></entry><entry><title type="text">hexo多设备管理</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/><id>https://ruisum.top/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</id><updated>2022-03-20T15:47:20+08:00</updated><published>2022-03-01T22:13:11+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">在新设备上准备hexo发布文章的配置过程</summary><content type="html">&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
+在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在 hexo 分支,hexo 基于更改内容生成的文件提交到 master 分支
+下列内容记录在 raspberry 上配置实现 hexo 编辑提交内容的过程&lt;/p>
+&lt;h3 id="1安装基础包">1.安装基础包&lt;/h3>
+&lt;p>在新机器上安装基础包，当前机器为 raspberry，以该机器为例说明
+raspberry 安装系统是&amp;quot;Raspbian GNU/Linux 10 (buster)&amp;quot;，基于 debian 的发行，用如下命令安装&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装nodejs、npm、git&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install nodejs npm git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="2配置git及github">2.配置git及github&lt;/h3>
+&lt;p>安装好基础包后，要配置 github 上&lt;strong>个人资料/settings/SSH and GPG keys/SSH keys&lt;/strong>,用于提交代码使用&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 在raspberry上,使用pi用户生成公私钥对&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ ssh-keygen -t rsa -P &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Generating public/private rsa key pair.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Enter file in which to save the key &lt;span class="o">(&lt;/span>/home/pi/.ssh/id_rsa&lt;span class="o">)&lt;/span>: Your identification has been saved in /home/pi/.ssh/id_rsa.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Your public key has been saved in /home/pi/.ssh/id_rsa.pub.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The key fingerprint is:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SHA256:5C2iM9maPY/n+2iDwmodQJOjxTq2ZJkwv0xBy4EG68E pi@raspberrypi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The keys randomart image is:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+---&lt;span class="o">[&lt;/span>RSA 2048&lt;span class="o">]&lt;/span>----+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>o+o. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>&lt;span class="o">=&lt;/span>+Oo &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>+E&lt;span class="o">=&lt;/span>+ . &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>&lt;span class="o">=&lt;/span>*&lt;span class="o">=&lt;/span> o . &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>+&lt;span class="o">=&lt;/span>.o . S . &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> .o .+ . . &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="nv">o&lt;/span>&lt;span class="o">=&lt;/span>... &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> . +*o.+. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> ...o.o*&lt;span class="o">=&lt;/span>+. &lt;span class="p">|&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----&lt;span class="o">[&lt;/span>SHA256&lt;span class="o">]&lt;/span>-----+
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pi用户家目录下.ssh文件夹下新生成了id_rsa/id_rsa.pub文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ ls ~/.ssh -lrt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">total &lt;span class="m">16&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r-- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">444&lt;/span> Feb &lt;span class="m">27&lt;/span> 21:28 known_hosts
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw------- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">1366&lt;/span> Feb &lt;span class="m">28&lt;/span> 13:06 authorized_keys
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r-- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">396&lt;/span> Mar &lt;span class="m">1&lt;/span> 21:30 id_rsa.pub
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw------- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">1823&lt;/span> Mar &lt;span class="m">1&lt;/span> 21:30 id_rsa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 复制id_rsa.pub内容,在github上SSH keys界面上点击New SSH key,添加复制的公钥内容并命名&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ cat ~/.ssh/id_rsa.pub
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ssh-rsa AAAAB3NzaCxxxx.....
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>配置本地 git&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置user.name和user.email&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ git config --global user.email &lt;span class="s2">&amp;#34;you@example.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ git config --global user.name &lt;span class="s2">&amp;#34;Your Name&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="3npm安装hexo相关包">3.npm安装hexo相关包&lt;/h3>
+&lt;p>配置好 github &lt;strong>SSH keys&lt;/strong>后,下载&lt;strong>yourname.github.io&lt;/strong>库到本地&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 进入相应的目录,下载hexo分支代码; 此处在家目录下新建了projects目录,进入projects目录进行操作&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ mkdir ~/projects &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">cd&lt;/span> ~/projects
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># $yourname填写自己实际的名称&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ git clone git@github.com:&lt;span class="nv">$yourname&lt;/span>/&lt;span class="nv">$yourname&lt;/span>.github.io.git
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>下载完成后,进入&lt;strong>yourname.github.io&lt;/strong>目录,安装 npm 相关包&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装hexo&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ &lt;span class="nb">cd&lt;/span> &lt;span class="nv">$yourname&lt;/span>.github.io &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> npm install hexo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 当前目录下已经包含package.json文件,直接安装相关包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ npm install
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># hexo同步至github需要使用的包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ npm install hexo-deployer-git
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装完成后,需要将当前目录下node_modules/.bin加入到PATH中&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PATH=$PATH:/home/pi/projects/$yourname.github.io/node_modules/.bin&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ &lt;span class="nb">source&lt;/span> ~/.bashrc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="4测试发布新文章">4.测试发布新文章&lt;/h3>
+&lt;p>上述内容配置完成后,在新机器上测试新文章发布&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 新增文章&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo n &lt;span class="nb">test&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 编辑source/_post/test.md内容,可以在typora等markdown写作软件上先完成内容后再粘贴&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ vim source/_post/test.md
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 生成内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo g
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 测试新文章内容,hexo s后访问localhost:4000查看文章效果&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo s
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 内容核对完成,发布到github yourname.github.io的master分支上&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/hexo/" term="hexo" label="hexo"/></entry><entry><title type="text">Kubernetes学习笔记</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/><id>https://ruisum.top/tech/cloud/kubernetes%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id><updated>2021-09-13T22:04:30+08:00</updated><published>2021-09-13T22:04:30+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">k8s学习笔记记录</summary><content type="html">&lt;h2 id="devops核心要点及kubernetes架构概述">Devops核心要点及kubernetes架构概述&lt;/h2>
 &lt;p>1, ansible:应用编排工具&lt;/p>
 &lt;ul>
 &lt;li>可以安装,配置应用&lt;/li>
@@ -2032,7 +2319,7 @@ command: [&amp;#34;/bin/sh&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;sed -i &amp;
 command: [&amp;#34;nginx&amp;#34;]
 args: [&amp;#34;-g&amp;#34;, &amp;#34;daemon off&amp;#34;, &amp;#34;-c&amp;#34;, &amp;#34;/etc/nginx/nginx.conf&amp;#34;] -----------&amp;gt;注意不要和lifecycle的command有强依赖
 &lt;/code>&lt;/pre>&lt;/li>
-&lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://ruisum.top/tags/cloud/" term="cloud" label="cloud"/><category scheme="https://ruisum.top/tags/docker/" term="docker" label="docker"/><category scheme="https://ruisum.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://ruisum.top/tags/kubernetes/" term="kubernetes" label="kubernetes"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/cloud/docker%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-27T17:53:53+08:00</updated><published>2022-03-10T22:01:26+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
+&lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://ruisum.top/tags/cloud/" term="cloud" label="cloud"/><category scheme="https://ruisum.top/tags/docker/" term="docker" label="docker"/><category scheme="https://ruisum.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://ruisum.top/tags/kubernetes/" term="kubernetes" label="kubernetes"/></entry><entry><title type="text">docker学习</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/cloud/docker%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/cloud/docker%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-31T23:38:42+08:00</updated><published>2021-08-10T22:01:26+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍容器的实现,讲解docker常用命令和Dockerfile的使用</summary><content type="html">&lt;h2 id="-容器是什么">#. 容器是什么&lt;/h2>
 &lt;p>1, LXC(linux container): linux容器&lt;/p>
 &lt;p>2, 虚拟化类型:&lt;/p>
 &lt;ul>
@@ -3382,7 +3669,7 @@ docker hub主要提供如下的功能特性:&lt;/p>
 &lt;li>--cpuset-cpus 限制在哪些核上&lt;/li>
 &lt;li>-- cpu-shares 配置为共享方式(各个容器共享宿主机CPU)&lt;/li>
 &lt;/ul>
-&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://ruisum.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://ruisum.top/tags/docker/" term="docker" label="docker"/><category scheme="https://ruisum.top/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-27T17:57:50+08:00</updated><published>2022-03-05T12:07:21+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
+&lt;p>7,下载压测镜像,可以在dockerhub上搜索stress&lt;/p></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/cloud/" term="cloud" label="cloud"/><category scheme="https://ruisum.top/tags/%E4%BA%91%E5%8E%9F%E7%94%9F/" term="云原生" label="云原生"/><category scheme="https://ruisum.top/tags/docker/" term="docker" label="docker"/><category scheme="https://ruisum.top/tags/cloud/" term="cloud" label="cloud"/></entry><entry><title type="text">ansible及ansible-playbook的使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/ops/ansible%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/ops/ansible%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-31T23:38:04+08:00</updated><published>2021-07-05T12:07:21+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">讲解ansible及ansible-playbook的使用</summary><content type="html">&lt;h1 id="learning-ansible">learning ansible&lt;/h1>
 &lt;p>&lt;em>本文内容参考自&lt;a href="https://www.zsythink.net/archives/2481">朱双印ansible笔记&lt;/a>&lt;/em>&lt;/p>
 &lt;h2 id="配置主机清单">配置主机清单&lt;/h2>
 &lt;p>主机清单配置有两种方式&lt;/p>
@@ -12125,191 +12412,7 @@ not :取反，对一个操作体取反
 &lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">var&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="l">tlist&lt;/span>&lt;span class="w">
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/ops/" term="ops" label="ops"/><category scheme="https://ruisum.top/tags/ansible/" term="ansible" label="ansible"/><category scheme="https://ruisum.top/tags/ops/" term="ops" label="ops"/></entry><entry><title type="text">hexo多设备管理</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/"/><id>https://ruisum.top/tech/miscell/hexo%E5%A4%9A%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</id><updated>2022-03-20T15:47:20+08:00</updated><published>2022-03-01T22:13:11+00:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">在新设备上准备hexo发布文章的配置过程</summary><content type="html">&lt;p>&lt;code>github+hexo+next搭建个人博客&lt;/code>已经完成,使用一段时间后,发现存在多处编辑提交的需求.
-在网上查询相关方案后,决定采取广大网友建议的方式: 将平时需要修改的内容存储在 hexo 分支,hexo 基于更改内容生成的文件提交到 master 分支
-下列内容记录在 raspberry 上配置实现 hexo 编辑提交内容的过程&lt;/p>
-&lt;h3 id="1安装基础包">1.安装基础包&lt;/h3>
-&lt;p>在新机器上安装基础包，当前机器为 raspberry，以该机器为例说明
-raspberry 安装系统是&amp;quot;Raspbian GNU/Linux 10 (buster)&amp;quot;，基于 debian 的发行，用如下命令安装&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装nodejs、npm、git&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">sudo apt install nodejs npm git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="2配置git及github">2.配置git及github&lt;/h3>
-&lt;p>安装好基础包后，要配置 github 上&lt;strong>个人资料/settings/SSH and GPG keys/SSH keys&lt;/strong>,用于提交代码使用&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 在raspberry上,使用pi用户生成公私钥对&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ ssh-keygen -t rsa -P &lt;span class="s1">&amp;#39;&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Generating public/private rsa key pair.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Enter file in which to save the key &lt;span class="o">(&lt;/span>/home/pi/.ssh/id_rsa&lt;span class="o">)&lt;/span>: Your identification has been saved in /home/pi/.ssh/id_rsa.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Your public key has been saved in /home/pi/.ssh/id_rsa.pub.
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The key fingerprint is:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">SHA256:5C2iM9maPY/n+2iDwmodQJOjxTq2ZJkwv0xBy4EG68E pi@raspberrypi
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">The keys randomart image is:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+---&lt;span class="o">[&lt;/span>RSA 2048&lt;span class="o">]&lt;/span>----+
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>o+o. &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>&lt;span class="o">=&lt;/span>+Oo &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>+E&lt;span class="o">=&lt;/span>+ . &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>&lt;span class="o">=&lt;/span>*&lt;span class="o">=&lt;/span> o . &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span>+&lt;span class="o">=&lt;/span>.o . S . &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> .o .+ . . &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> &lt;span class="nv">o&lt;/span>&lt;span class="o">=&lt;/span>... &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> . +*o.+. &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">|&lt;/span> ...o.o*&lt;span class="o">=&lt;/span>+. &lt;span class="p">|&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">+----&lt;span class="o">[&lt;/span>SHA256&lt;span class="o">]&lt;/span>-----+
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pi用户家目录下.ssh文件夹下新生成了id_rsa/id_rsa.pub文件&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ ls ~/.ssh -lrt
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">total &lt;span class="m">16&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r-- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">444&lt;/span> Feb &lt;span class="m">27&lt;/span> 21:28 known_hosts
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw------- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">1366&lt;/span> Feb &lt;span class="m">28&lt;/span> 13:06 authorized_keys
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw-r--r-- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">396&lt;/span> Mar &lt;span class="m">1&lt;/span> 21:30 id_rsa.pub
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-rw------- &lt;span class="m">1&lt;/span> pi pi &lt;span class="m">1823&lt;/span> Mar &lt;span class="m">1&lt;/span> 21:30 id_rsa
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 复制id_rsa.pub内容,在github上SSH keys界面上点击New SSH key,添加复制的公钥内容并命名&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ cat ~/.ssh/id_rsa.pub
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">ssh-rsa AAAAB3NzaCxxxx.....
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>配置本地 git&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置user.name和user.email&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ git config --global user.email &lt;span class="s2">&amp;#34;you@example.com&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ git config --global user.name &lt;span class="s2">&amp;#34;Your Name&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="3npm安装hexo相关包">3.npm安装hexo相关包&lt;/h3>
-&lt;p>配置好 github &lt;strong>SSH keys&lt;/strong>后,下载&lt;strong>yourname.github.io&lt;/strong>库到本地&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
-&lt;/span>&lt;span class="lnt">2
-&lt;/span>&lt;span class="lnt">3
-&lt;/span>&lt;span class="lnt">4
-&lt;/span>&lt;span class="lnt">5
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 进入相应的目录,下载hexo分支代码; 此处在家目录下新建了projects目录,进入projects目录进行操作&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ mkdir ~/projects &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">cd&lt;/span> ~/projects
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># $yourname填写自己实际的名称&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ git clone git@github.com:&lt;span class="nv">$yourname&lt;/span>/&lt;span class="nv">$yourname&lt;/span>.github.io.git
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>下载完成后,进入&lt;strong>yourname.github.io&lt;/strong>目录,安装 npm 相关包&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装hexo&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ &lt;span class="nb">cd&lt;/span> &lt;span class="nv">$yourname&lt;/span>.github.io &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> npm install hexo
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 当前目录下已经包含package.json文件,直接安装相关包&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ npm install
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># hexo同步至github需要使用的包&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ npm install hexo-deployer-git
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装完成后,需要将当前目录下node_modules/.bin加入到PATH中&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;export PATH=$PATH:/home/pi/projects/$yourname.github.io/node_modules/.bin&amp;#39;&lt;/span> &amp;gt;&amp;gt; ~/.bashrc
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ &lt;span class="nb">source&lt;/span> ~/.bashrc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="4测试发布新文章">4.测试发布新文章&lt;/h3>
-&lt;p>上述内容配置完成后,在新机器上测试新文章发布&lt;/p>
-&lt;div class="highlight">&lt;div class="chroma">
-&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
-&lt;/span>&lt;span class="lnt"> 2
-&lt;/span>&lt;span class="lnt"> 3
-&lt;/span>&lt;span class="lnt"> 4
-&lt;/span>&lt;span class="lnt"> 5
-&lt;/span>&lt;span class="lnt"> 6
-&lt;/span>&lt;span class="lnt"> 7
-&lt;/span>&lt;span class="lnt"> 8
-&lt;/span>&lt;span class="lnt"> 9
-&lt;/span>&lt;span class="lnt">10
-&lt;/span>&lt;span class="lnt">11
-&lt;/span>&lt;span class="lnt">12
-&lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 新增文章&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo n &lt;span class="nb">test&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 编辑source/_post/test.md内容,可以在typora等markdown写作软件上先完成内容后再粘贴&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ vim source/_post/test.md
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 生成内容&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo g
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 测试新文章内容,hexo s后访问localhost:4000查看文章效果&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo s
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 内容核对完成,发布到github yourname.github.io的master分支上&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">PI $ hexo d
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/hexo/" term="hexo" label="hexo"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-20T10:18:17+08:00</updated><published>2021-03-20T10:18:17+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
+&lt;/div></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/ops/" term="ops" label="ops"/><category scheme="https://ruisum.top/tags/ansible/" term="ansible" label="ansible"/><category scheme="https://ruisum.top/tags/ops/" term="ops" label="ops"/></entry><entry><title type="text">learning bash via abs</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/"/><id>https://ruisum.top/tech/basics/bash%E5%AD%A6%E4%B9%A0/</id><updated>2022-03-20T10:18:17+08:00</updated><published>2020-03-20T10:18:17+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">通过advanced-bash-scripting学习bash的笔记内容</summary><content type="html">&lt;h2 id="变量及操作符">变量及操作符&lt;/h2>
 &lt;h3 id="1-特殊字符使用">#1. 特殊字符使用&lt;/h3>
 &lt;pre tabindex="0">&lt;code># --&amp;gt; 注释(不包括#!)
 --&amp;gt; 变量替换使用 echo ${PATH#*:}
