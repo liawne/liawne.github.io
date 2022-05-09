@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-05-05T23:17:19+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.96.0">Hugo</generator><entry><title type="text">Manjaro系统初始化</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/><id>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</id><updated>2022-04-09T14:47:28+08:00</updated><published>2022-04-09T14:47:28+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">manjaro 系统安装完成后的配置优化内容</summary><content type="html">&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-05-09T08:08:30+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.96.0">Hugo</generator><entry><title type="text">Manjaro系统初始化</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/><id>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</id><updated>2022-04-09T14:47:28+08:00</updated><published>2022-04-09T14:47:28+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">manjaro 系统安装完成后的配置优化内容</summary><content type="html">&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
 &lt;h3 id="-准备工作"># 准备工作&lt;/h3>
-&lt;p>当前准备安装 &lt;code>manjaro&lt;/code> 的机器是联想小新pro, 已经装有正版 &lt;code>windows11&lt;/code> 系统。考虑到平时也会有用到 &lt;code>windows&lt;/code> 办公的场景，所以准备安装双系统，日常使用 &lt;code>manjaro&lt;/code>，&lt;code>manjaro&lt;/code> 无法满足的场景再使用 &lt;code>windows&lt;/code>。&lt;/p>
+&lt;p>当前准备安装 &lt;code>manjaro&lt;/code> 的机器是联想小新pro, 已经装有正版 &lt;code>windows 11&lt;/code> 系统。考虑到平时也会有用到 &lt;code>windows&lt;/code> 办公的场景，所以准备安装双系统，日常使用 &lt;code>manjaro&lt;/code>，&lt;code>manjaro&lt;/code> 无法满足的场景再使用 &lt;code>windows&lt;/code>。&lt;/p>
 &lt;ul>
 &lt;li>刻录系统安装 &lt;code>U&lt;/code>盘&lt;br>
-对操作内容比较简单，直接使用 dd 即可完成; 需要提前下载好 &lt;code>manjaro&lt;/code> 系统安装 &lt;code>iso&lt;/code> 文件
+此操作比较简单，直接使用 &lt;code>dd&lt;/code> 命令刻录即可; 需要提前下载好 &lt;code>manjaro&lt;/code> 系统安装 &lt;code>iso&lt;/code> 文件
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
 &lt;/span>&lt;span class="lnt">2
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
-&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 镜像放在当前目录下，U 盘插入刻录 iso 文件的 linux 系统识别为 /dev/sdb; 如下命令操作&lt;/span>
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 镜像放在当前目录下，U 盘插入刻录 iso 文件的 linux 系统，识别为 /dev/sdb; 如下命令操作&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ sudo dd &lt;span class="k">if&lt;/span>&lt;span class="o">=&lt;/span>./manjaro-kde-21.1.4-210927-linux513.iso &lt;span class="nv">of&lt;/span>&lt;span class="o">=&lt;/span>/dev/sdb &lt;span class="nv">status&lt;/span>&lt;span class="o">=&lt;/span>progress
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
@@ -21,15 +21,15 @@
 &lt;h3 id="-windows-操作内容"># windows 操作内容&lt;/h3>
 &lt;p>&lt;code>windows&lt;/code> 默认把磁盘空间用完，需要在 &lt;code>windows&lt;/code> 系统上调整分区大小，分出一块空间给 &lt;code>manjaro&lt;/code> 使用&lt;/p>
 &lt;ul>
-&lt;li>进入磁盘管理
+&lt;li>进入磁盘管理&lt;br>
 右键 &lt;code>windows&lt;/code> 图标，选择磁盘管理
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220503-2336.png" alt="磁盘管理">&lt;/li>
-&lt;li>选择 D 盘进行缩容
+&lt;li>选择 D 盘进行缩容&lt;br>
 C 盘空间不建议缩容，对 D 盘做缩容操作
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220503-2337.png" alt="d盘缩容">&lt;/li>
-&lt;li>指定压缩卷空间大小即可
+&lt;li>指定压缩卷空间大小即可&lt;br>
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220503-2340.png" alt="缩容1">&lt;/li>
-&lt;li>缩容后显示
+&lt;li>缩容后显示&lt;br>
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220505-2236.png" alt="缩容2">&lt;/li>
 &lt;/ul>
 &lt;h3 id="-manjaro-系统安装"># manjaro 系统安装&lt;/h3>
@@ -37,7 +37,7 @@ C 盘空间不建议缩容，对 D 盘做缩容操作
 &lt;ul>
 &lt;li>
 &lt;p>进入安装入口&lt;br>
-此处选择了&lt;code>通过开源驱动&lt;/code>启动，下一项为&lt;code>通过专有驱动&lt;/code>启动，建议有特殊硬件的设备选择这一项
+此处选择了&lt;code>通过开源驱动&lt;/code>启动，下一项为&lt;code>通过专有驱动&lt;/code>启动，建议有特殊硬件的设备选择这一项&lt;br>
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220505-2244.jpg" alt="选择入口">&lt;/p>
 &lt;/li>
 &lt;li>
@@ -296,6 +296,9 @@ $ yay -S wps-office
 &lt;/code>&lt;/pre>&lt;h3 id="-安装网易云音乐"># 安装网易云音乐&lt;/h3>
 &lt;p>日常听歌使用&lt;/p>
 &lt;pre tabindex="0">&lt;code>$ yay -S netease-cloud-music
+&lt;/code>&lt;/pre>&lt;h3 id="-安装街机模拟器-mame"># 安装街机模拟器 mame&lt;/h3>
+&lt;p>街机游戏&lt;/p>
+&lt;pre tabindex="0">&lt;code>$ sudo pacman -S mame
 &lt;/code>&lt;/pre>&lt;h3 id="-安装-xmind-2020"># 安装 xmind-2020&lt;/h3>
 &lt;p>思维导图使用&lt;/p>
 &lt;pre tabindex="0">&lt;code># xmind-2020 需要使用 snap 进行安装，manjaro 系统安装完成后已经有 snap 了; 若没有，则按以下方式进行配置
@@ -428,6 +431,17 @@ $ sudo numix-folders
 &lt;p>&lt;strong>Plasma style配置&lt;/strong>&lt;/p>
 &lt;p>如下图，选择自己喜欢的进行安装
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/04/20220410-2309.png" alt="plasma配置">&lt;/p>
+&lt;p>&lt;strong>锁屏配置&lt;/strong>&lt;/p>
+&lt;p>如下图，先安装 &lt;code>wallpaper plugin&lt;/code> &lt;code>flipclock&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>入口：桌面空白处右键/configure desktop and wallpaper/wallpaper type/get new plugins&lt;br>
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220508-2352.png" alt="flip插件安装">&lt;/p>
+&lt;/blockquote>
+&lt;p>如下图，配置锁屏界面&lt;/p>
+&lt;blockquote>
+&lt;p>入口：system settings/workspace behavior/screen locking/apperance/configure/wallpaper type/flipclock&lt;br>
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220508-2357.png" alt="配置锁屏">&lt;/p>
+&lt;/blockquote>
 &lt;h3 id="-语言设置"># 语言设置&lt;/h3>
 &lt;p>切换默认语言，可以自行设置&lt;/p>
 &lt;blockquote>
@@ -456,6 +470,8 @@ $ sudo numix-folders
 &lt;li>&lt;a href="https://github.com/pyenv/pyenv-virtualenv">pyenv-virtualenv使用&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://forum.manjaro.org/t/root-tip-get-your-time-timezone-right-using-manjaro-windows-dual-boot/1167">Get your time/timezone right using Manjaro/Windows dual-boot&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://cloud.tencent.com/developer/article/1443927">Markdown 自动添加中英文空格&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/vinceliuice/grub2-themes">grub2-theme&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://easior.is-programmer.com/posts/214926.html">Linux上安装街机模拟器&lt;/a>&lt;/li>
 &lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/manjaro/" term="manjaro" label="manjaro"/><category scheme="https://ruisum.top/tags/linux/" term="linux" label="linux"/><category scheme="https://ruisum.top/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" term="系统安装" label="系统安装"/></entry><entry><title type="text">Openssl Toolkit使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</id><updated>2022-03-24T22:37:26+08:00</updated><published>2022-03-24T22:37:26+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一种openssl 工具集, 满足各种证书生成和转换需求</summary><content type="html">&lt;blockquote>
 &lt;p>工具下载: &lt;a href="https://ruisum.top/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
 &lt;/blockquote>
