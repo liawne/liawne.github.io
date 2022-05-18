@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-05-19T00:04:02+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.98.0">Hugo</generator><entry><title type="text">Manjaro系统初始化</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/><id>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</id><updated>2022-04-09T14:47:28+08:00</updated><published>2022-04-09T14:47:28+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">manjaro 系统安装完成后的配置优化内容</summary><content type="html">&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-05-19T00:04:22+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.98.0">Hugo</generator><entry><title type="text">Manjaro系统初始化</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/"/><id>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</id><updated>2022-04-09T14:47:28+08:00</updated><published>2022-04-09T14:47:28+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">manjaro 系统安装完成后的配置优化内容</summary><content type="html">&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
 &lt;h3 id="-准备工作"># 准备工作&lt;/h3>
 &lt;p>当前准备安装 &lt;code>manjaro&lt;/code> 的机器是联想小新pro, 已经装有正版 &lt;code>windows 11&lt;/code> 系统。考虑到平时也会有用到 &lt;code>windows&lt;/code> 办公的场景，所以准备安装双系统，日常使用 &lt;code>manjaro&lt;/code>，&lt;code>manjaro&lt;/code> 无法满足的场景再使用 &lt;code>windows&lt;/code>。&lt;/p>
 &lt;ul>
@@ -476,7 +476,312 @@ $ sudo numix-folders
 &lt;li>&lt;a href="https://cloud.tencent.com/developer/article/1443927">Markdown 自动添加中英文空格&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/vinceliuice/grub2-themes">grub2-theme&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://easior.is-programmer.com/posts/214926.html">Linux上安装街机模拟器&lt;/a>&lt;/li>
-&lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/manjaro/" term="manjaro" label="manjaro"/><category scheme="https://ruisum.top/tags/linux/" term="linux" label="linux"/><category scheme="https://ruisum.top/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" term="系统安装" label="系统安装"/></entry><entry><title type="text">Openssl Toolkit使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</id><updated>2022-03-24T22:37:26+08:00</updated><published>2022-03-24T22:37:26+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一种openssl 工具集, 满足各种证书生成和转换需求</summary><content type="html">&lt;blockquote>
+&lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/miscell/" term="miscell" label="miscell"/><category scheme="https://ruisum.top/tags/manjaro/" term="manjaro" label="manjaro"/><category scheme="https://ruisum.top/tags/linux/" term="linux" label="linux"/><category scheme="https://ruisum.top/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/" term="系统安装" label="系统安装"/></entry><entry><title type="text">ipmi的使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/ops/ipmi%E7%9A%84%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/ops/ipmi%E7%9A%84%E4%BD%BF%E7%94%A8/</id><updated>2022-04-01T22:55:50+08:00</updated><published>2022-04-01T22:55:50+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">ipmi的介绍和ipmitool工具的使用</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
+&lt;p>日常工作内容，或多或少会包含部分运维相关内容，像：&lt;/p>
+&lt;ul>
+&lt;li>自测环境使用完成，需要重装&lt;/li>
+&lt;li>服务器故障，宕机后无法进入系统定位故障原因&lt;/li>
+&lt;li>修复操作系统，需要设定硬件服务器下次从光盘启动&lt;/li>
+&lt;li>...&lt;/li>
+&lt;/ul>
+&lt;p>如果不具备一些基本条件，可能就需要蹲机房解决这些问题了。&lt;/p>
+&lt;p>当硬件服务器的管理口有连接到交换机，并且在办公环境下能正常访问该交换机的话，上述的问题就比较好解决了，可以通过 &lt;code>ipmi&lt;/code> 来查看/管理服务器&lt;/p>
+&lt;h3 id="什么是ipmi">什么是IPMI&lt;/h3>
+&lt;p>&lt;code>IPMI&lt;/code> 的全称是 &lt;code>Intelligent Platform Management Interface&lt;/code>，智能平台管理接口的意思。&lt;/p>
+&lt;p>&lt;code>IPMI&lt;/code> 原本是一种&lt;code>Intel&lt;/code>架构的企业系统的周边设备所采用的一种工业标准&lt;/p>
+&lt;p>&lt;code>IPMI&lt;/code> 是一个开放的免费标准，用户无需支付额外的费用即可使用此标准。&lt;/p>
+&lt;p>&lt;code>IPMI&lt;/code> 能够横跨不同的操作系统、固件和硬件平台，可以智能的监控、控制和自动上报大量服务器的运作状况，以降低服务器系统成本。&lt;/p>
+&lt;h3 id="发展历史">发展历史&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>1998年&lt;code>Intel、DELL、HP&lt;/code>及&lt;code>NEC&lt;/code>共同提出&lt;code>IPMI&lt;/code>规格，可以透过网络远程控制温度、电压。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>2001年IPMI从1.0版改版至1.5版，新增 PCI Management Bus等功能。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>2004年Intel发表了IPMI 2.0的规格，能够向下兼容IPMI 1.0及1.5的规格。新增了Console Redirection，并可以通过Port、Modem以及Lan远程管理服务器，并加强了安全、VLAN 和刀片服务器的支持性。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>2014年2月11日，发表了v2.0 revision 1.1, 增加了IPv6的支持。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="ipmi-的特点">ipmi 的特点&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>IPMI&lt;/code> 独立于操作系统外自行运作，允许管理员在即使缺少操作系统或系统关机但有接电源的情况下，仍能远程管理系统。&lt;/li>
+&lt;li>&lt;code>IPMI&lt;/code> 能在操作系统启动后活动，与系统管理功能一并使用时，还能提供加强功能（&lt;code>linux&lt;/code> 的 &lt;code>ipmi&lt;/code> 服务）。&lt;/li>
+&lt;/ul>
+&lt;h3 id="ipmi-的结构">ipmi 的结构&lt;/h3>
+&lt;p>IPMI包含了一个以 &lt;code>基板管理控制器(BMC：baseboard management controller)&lt;/code> 为主的控制器和其他分布在不同系统模块（被称为“卫星”控制器）的管理控制器。&lt;/p>
+&lt;p>同一机箱内的卫星控制器通过称为 &lt;code>智能平台管理总线（IPMB：Intelligent Platform Management Bus/Bridge）&lt;/code>的系统接口连接到BMC - 增强的&lt;code>I²C（Inter-Integrated Circuit）&lt;/code>的实现。&lt;/p>
+&lt;p>BMC通过智能平台管理控制器（IPMC）总线连接到另一个机箱中的卫星控制器或其他BMC。&lt;/p>
+&lt;p>它可以使用 &lt;code>远程管理控制协议（RMCP：Remote Management Control Protocol）&lt;/code> 进行管理，RMCP是该规范定义的专门电线协议。&lt;/p>
+&lt;p>&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220516-2324.png" alt="ipmi结构">&lt;/p>
+&lt;h3 id="bmc">BMC&lt;/h3>
+&lt;p>&lt;code>IPMI&lt;/code> 的核心是 &lt;code>BMC&lt;/code>，&lt;code>BMC&lt;/code> 是一种专门的微控制器，该微控制器嵌入了计算机（通常是服务器）主板上。在工作时，所有的 &lt;code>IPMI&lt;/code> 功能都是向 &lt;code>BMC&lt;/code> 传送命令来完成的，命令使用 &lt;code>IPMI&lt;/code> 规范中规定的指令，&lt;code>BMC&lt;/code> 接收并在系統事件日志中记录事件信息。&lt;/p>
+&lt;p>BMC管理系统管理软件和平台硬件之间的接口。BMC拥有专用的固件和RAM。&lt;/p>
+&lt;p>计算机系统中内置的不同类型的传感器向BMC报告温度、冷却风扇速度、电源状态、操作系统（OS）状态等参数。BMC监视传感器，并可以通过网络向系统管理员发送警报，如果任何参数不在预设限制范围内，则表明系统的潜在故障。管理员还可以与BMC进行远程通信，来采取一些纠正措施，例如重置系统以使hang死的系统再次运行。这些能力降低了系统维护的成本。&lt;/p>
+&lt;p>符合IPMI版本2.0的系统也可以通过LAN串行进行通信，从而可以在LAN上远程查看串行控制台输出。支持IPMI 2.0的系统通常还包括基于IP的KVM、远程虚拟媒体、嵌入式网络服务器接口功能，尽管严格地说，这些功能都不在IPMI接口标准范围内。&lt;/p>
+&lt;h2 id="ipmitool-的使用">ipmitool 的使用&lt;/h2>
+&lt;p>ipmitool 是一种可用在 linux 系统下的命令行方式的 ipmi 平台管理工具，它支持 ipmi 1.5 规范（最新的规范为 ipmi 2.0），通过它可以实现获取感测器的信息、显示系统日志内容、网路远程开关机等功能。&lt;/p>
+&lt;h3 id="本地管理">本地管理&lt;/h3>
+&lt;ul>
+&lt;li>ipmitool 的安装&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 安装相应包&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ yum install OpenIPMI OpenIPMI-tools
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 启动 ipmi 服务，才能在 linux 上使用&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ systemctl &lt;span class="nb">enable&lt;/span> ipmi.service&lt;span class="p">;&lt;/span> systemctl start ipmi.service
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 要能够正常的使用 ipmi 功能，需要加载相应的 ipmi 模块&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ modprobe ipmi_msghandler
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ modprobe ipmi_devintf
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ modprobe ipmi_si
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ modprobe ipmi_poweroff
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ modprobe ipmi_watchdog
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 获取信道信息（一般是信道1）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="k">for&lt;/span> i in &lt;span class="k">$(&lt;/span>seq &lt;span class="m">1&lt;/span> 14&lt;span class="k">)&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span> ipmitool lan print &lt;span class="nv">$i&lt;/span> 2&amp;gt;/dev/null &lt;span class="p">|&lt;/span> grep -q ^Set &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">echo&lt;/span> Channel &lt;span class="nv">$i&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Channel &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>查看固件版本&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ipmitool mc info
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>重置 &lt;code>MC（management controller）&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 两种方式，硬重置/软重置&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool mc reset &lt;span class="o">[&lt;/span> warm &lt;span class="p">|&lt;/span> cold &lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>输出传感器信息（sensor）&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ipmitool sdr list &lt;span class="c1"># list sensor&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sdr &lt;span class="nb">type&lt;/span> list
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sdr &lt;span class="nb">type&lt;/span> Temperature
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sdr &lt;span class="nb">type&lt;/span> Fan
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sdr &lt;span class="nb">type&lt;/span> &lt;span class="s1">&amp;#39;Power Supply&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>chassis 相关命令&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ipmitool chassis status
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool chassis identify &lt;span class="o">[]&lt;/span> &lt;span class="c1"># turn on front panel identify light (default 15s) &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool &lt;span class="o">[&lt;/span>chassis&lt;span class="o">]&lt;/span> power soft &lt;span class="c1"># initiate a soft-shutdown via acpi &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool &lt;span class="o">[&lt;/span>chassis&lt;span class="o">]&lt;/span> power cycle &lt;span class="c1"># issue a hard power off, wait 1s, power on &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool &lt;span class="o">[&lt;/span>chassis&lt;span class="o">]&lt;/span> power off &lt;span class="c1"># issue a hard power off &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool &lt;span class="o">[&lt;/span>chassis&lt;span class="o">]&lt;/span> power on &lt;span class="c1"># issue a hard power on &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool &lt;span class="o">[&lt;/span>chassis&lt;span class="o">]&lt;/span> power reset &lt;span class="c1"># issue a hard reset&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>修改下一次系统启动的引导设备&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ipmitool chassis bootdev pxe &lt;span class="c1"># via pxe&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool chassis bootdev cdrom &lt;span class="c1"># via cdrom&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool chassis bootdev bios &lt;span class="c1"># into bios setup&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>日志相关&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ipmitool sel info
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sel list &lt;span class="c1"># show system event log&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sel elist &lt;span class="c1"># extended list (see manpage) &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool sel clear
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>用户配置&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 打印本机用户&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool user list &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool channel setaccess &lt;span class="m">1&lt;/span> &lt;span class="m">2&lt;/span> &lt;span class="nv">callin&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nb">true&lt;/span> &lt;span class="nv">ipmi&lt;/span>&lt;span class="o">=&lt;/span>on &lt;span class="nv">link&lt;/span>&lt;span class="o">=&lt;/span>on &lt;span class="nv">privilege&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool user &lt;span class="nb">set&lt;/span> name &lt;span class="m">2&lt;/span> root
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool user &lt;span class="nb">set&lt;/span> password &lt;span class="m">2&lt;/span> password@123
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>网络配置&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 打印信道1上配置的 IP 信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool lan print &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置信道1的 IP 相关内容&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool lan &lt;span class="nb">set&lt;/span> &lt;span class="m">1&lt;/span> ipsrc &lt;span class="o">[&lt;/span> static &lt;span class="p">|&lt;/span> dhcp &lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool lan &lt;span class="nb">set&lt;/span> &lt;span class="m">1&lt;/span> ipaddr &lt;span class="o">{&lt;/span>YOUR DESIRED IP&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool lan &lt;span class="nb">set&lt;/span> &lt;span class="m">1&lt;/span> netmask &lt;span class="o">{&lt;/span>YOUR NETMASK&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool lan &lt;span class="nb">set&lt;/span> &lt;span class="m">1&lt;/span> defgw ipaddr 10.0.1.1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool bmc reset cold
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="远程管理">远程管理&lt;/h3>
+&lt;p>若需要使用 &lt;code>ipmi&lt;/code> 远程管理其他主机，则需要在 &lt;code>ILO&lt;/code> 或 &lt;code>DRAC&lt;/code> 卡或 &lt;code>ipmitool&lt;/code> 在 &lt;code>OS&lt;/code> 上配置用户和网络。&lt;/p>
+&lt;p>配置 &lt;code>LAN&lt;/code> 设置后，就可以使用 &lt;code>ipmitool&lt;/code> 的 &lt;code>lan&lt;/code> 接口进行远程连接，管理其他同网段的服务器。&lt;/p>
+&lt;ul>
+&lt;li>ipmitool 远端管理&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 远程管理机器&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool -I lanplus -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt; -H &amp;lt;BMC_IP or Hostname&amp;gt; chassis power &amp;lt;status&lt;span class="p">|&lt;/span>on&lt;span class="p">|&lt;/span>off&lt;span class="p">|&lt;/span>cycle&lt;span class="p">|&lt;/span>reset&amp;gt;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 重置 BMC&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool bmc reset cold
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 激活 SOL 系统控制台&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool -I lanplus -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt; -H &amp;lt;BMC_IP or Hostname&amp;gt; sol activate
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 退出 SOL 系统控制台&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ ipmitool -I lanplus -U &amp;lt;username&amp;gt; -P &amp;lt;password&amp;gt; -H &amp;lt;BMC_IP or Hostname&amp;gt; sol activate
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="共享口和独享口">共享口和独享口&lt;/h2>
+&lt;p>物理服务器会有一个单独的 &lt;code>BMC&lt;/code> 管理口，一般是千兆网口; 进入 &lt;code>BIOS&lt;/code> 设置，配置 &lt;code>BMC IP&lt;/code>，IP 地址生效的网口就是这个管理口。
+这个管理口在 &lt;code>BIOS&lt;/code> 中可以配置两种模式：共享模式、独享模式&lt;/p>
+&lt;h3 id="共享模式">共享模式&lt;/h3>
+&lt;p>共享模式可以在 &lt;code>BIOS&lt;/code> 中设置，要清楚共享模式的实现，需要先了解 &lt;code>网络控制器边带接口：NC-SI（network controller sideband interface）&lt;/code>，这一技术是用来实现 &lt;code>BMC&lt;/code> 芯片和以太网控制器之间信息传递的，它使得 &lt;code>BMC&lt;/code> 芯片能够像使用独立管理网口那样使用主板上的网络接口。&lt;br>
+NC-SI 支持将 &lt;code>BMC(baseboard management controller)&lt;/code> 连接到服务器计算机系统中的一个或多个网络接口控制器 &lt;code>(NIC：network interface controllers)&lt;/code>，以实现带外系统管理。这使得对应网口除了常规的主机流量外，还可以接受 &lt;code>BMC&lt;/code> 的管理网流量。&lt;br>
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220518-2329.png" alt="NC-SI">&lt;/p>
+&lt;p>简单理解：&lt;code>BMC&lt;/code> 其实是一个单片机，它有自己独立的 &lt;code>IO&lt;/code> 设备，而独立网口就是其中之一。将&lt;code>BMC&lt;/code>芯片和网络控制器之间互联，并通过 &lt;code>NC-SI&lt;/code> 技术使得 &lt;code>BMC&lt;/code> 芯片能够使用网络控制器上的接口。&lt;/p>
+&lt;h4 id="共享模式优势">共享模式优势&lt;/h4>
+&lt;p>如下几方面：&lt;/p>
+&lt;ul>
+&lt;li>减少物料成本：可以在物理机系统需要配置千兆网时，节省一根网线&lt;/li>
+&lt;li>减少交换机投入：独立网口会多占用一个交换机端口，增加交换机采购数量，使用共享模式减少了这部分的支出和额外的交换机运维成本&lt;/li>
+&lt;li>减少人力成本：如果业务网只需要接一根网线，共享方案可以减少一半的布线人力支出；&lt;/li>
+&lt;/ul>
+&lt;h4 id="共享模式潜在风险">共享模式潜在风险&lt;/h4>
+&lt;p>如下：&lt;/p>
+&lt;ul>
+&lt;li>系统千兆网和 &lt;code>BMC&lt;/code> 管理网使用的是同一个物理网口，网口故障时，&lt;code>BMC&lt;/code> 和 千兆网将同时不可访问，单点故障&lt;/li>
+&lt;/ul>
+&lt;h4 id="共享模式配置">共享模式配置&lt;/h4>
+&lt;p>不同型号硬件服务器界面可能不一样，实际的配置内容相同，都是通过 &lt;code>BIOS&lt;/code> 或者 &lt;code>BMC WEB界面&lt;/code> 将 &lt;code>IPMI&lt;/code> 访问方式修改为 &lt;code>share（共享模式）&lt;/code>。&lt;/p>
+&lt;h3 id="独享模式">独享模式&lt;/h3>
+&lt;p>独享模式是默认模式，&lt;code>BMC&lt;/code> 管理网单独使用一个网口，不和系统共用。&lt;/p>
+&lt;h3 id="python接口使用">python接口使用&lt;/h3>
+&lt;pre>&lt;code>安装
+rpm包:python-ipmi
+pip包:pyipmi
+接口调用
+&lt;/code>&lt;/pre>
+&lt;h3 id="服务器接线">服务器接线&lt;/h3>
+&lt;pre>&lt;code>接在管理口,需要连接到千兆交换机
+千兆网同时使用管理口,pxe同时使用这个口
+千兆网只做管理口,万兆网作为PXE口
+&lt;/code>&lt;/pre>
+&lt;h2 id="其他">其他&lt;/h2>
+&lt;p>参考内容：&lt;br>
+&lt;a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface">https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface&lt;/a>&lt;br>
+&lt;a href="https://www.easyatm.com.tw/wiki/ipmitool">https://www.easyatm.com.tw/wiki/ipmitool&lt;/a>&lt;br>
+&lt;a href="https://www.ibm.com/docs/en/power9/0000-FUL?topic=msbui-common-ipmi-commands-2">https://www.ibm.com/docs/en/power9/0000-FUL?topic=msbui-common-ipmi-commands-2&lt;/a>&lt;br>
+&lt;a href="https://serverfault.com/questions/259792/how-does-ipmi-sideband-share-the-ethernet-port-with-the-host">https://serverfault.com/questions/259792/how-does-ipmi-sideband-share-the-ethernet-port-with-the-host&lt;/a>&lt;br>
+&lt;a href="https://developer.aliyun.com/article/544871">https://developer.aliyun.com/article/544871&lt;/a>&lt;/p></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/ops/" term="ops" label="ops"/><category scheme="https://ruisum.top/tags/ops/" term="ops" label="ops"/><category scheme="https://ruisum.top/tags/ipmi/" term="ipmi" label="ipmi"/><category scheme="https://ruisum.top/tags/linux/" term="linux" label="linux"/></entry><entry><title type="text">Openssl Toolkit使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</id><updated>2022-03-24T22:37:26+08:00</updated><published>2022-03-24T22:37:26+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">一种openssl 工具集, 满足各种证书生成和转换需求</summary><content type="html">&lt;blockquote>
 &lt;p>工具下载: &lt;a href="https://ruisum.top/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="说明">说明&lt;/h2>
