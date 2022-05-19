@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 19 May 2022 00:06:15 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>Manjaro系统初始化</title><link>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</guid><pubDate>Sat, 09 Apr 2022 14:47:28 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 19 May 2022 23:22:44 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>Manjaro系统初始化</title><link>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</guid><pubDate>Sat, 09 Apr 2022 14:47:28 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
 &lt;h3 id="-准备工作"># 准备工作&lt;/h3>
 &lt;p>当前准备安装 &lt;code>manjaro&lt;/code> 的机器是联想小新pro, 已经装有正版 &lt;code>windows 11&lt;/code> 系统。考虑到平时也会有用到 &lt;code>windows&lt;/code> 办公的场景，所以准备安装双系统，日常使用 &lt;code>manjaro&lt;/code>，&lt;code>manjaro&lt;/code> 无法满足的场景再使用 &lt;code>windows&lt;/code>。&lt;/p>
 &lt;ul>
@@ -764,24 +764,85 @@ NC-SI 支持将 &lt;code>BMC(baseboard management controller)&lt;/code> 连接�
 &lt;p>不同型号硬件服务器界面可能不一样，实际的配置内容相同，都是通过 &lt;code>BIOS&lt;/code> 或者 &lt;code>BMC WEB界面&lt;/code> 将 &lt;code>IPMI&lt;/code> 访问方式修改为 &lt;code>share（共享模式）&lt;/code>。&lt;/p>
 &lt;h3 id="独享模式">独享模式&lt;/h3>
 &lt;p>独享模式是默认模式，&lt;code>BMC&lt;/code> 管理网单独使用一个网口，不和系统共用。&lt;/p>
-&lt;h3 id="python接口使用">python接口使用&lt;/h3>
-&lt;pre>&lt;code>安装
-rpm包:python-ipmi
-pip包:pyipmi
-接口调用
-&lt;/code>&lt;/pre>
-&lt;h3 id="服务器接线">服务器接线&lt;/h3>
-&lt;pre>&lt;code>接在管理口,需要连接到千兆交换机
-千兆网同时使用管理口,pxe同时使用这个口
-千兆网只做管理口,万兆网作为PXE口
-&lt;/code>&lt;/pre>
 &lt;h2 id="其他">其他&lt;/h2>
+&lt;h3 id="python接口使用">python接口使用&lt;/h3>
+&lt;p>&lt;code>ipmi&lt;/code> 的 &lt;code>python&lt;/code> 库是 &lt;code>python-ipmi&lt;/code>，具体内容可以参考：&lt;a href="https://github.com/kontron/python-ipmi">python-ipmi&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>使用 &lt;code>pip&lt;/code> 安装
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># pip 直接安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ pip install python-ipmi
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>接口调用示例
+如下示例，使用 &lt;code>ipmitool&lt;/code> 作为网络和串行接口的后端来设置接口和连接。
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">pyipmi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">pyipmi.interfaces&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># Supported interface_types for ipmitool are: &amp;#39;lan&amp;#39; , &amp;#39;lanplus&amp;#39;, and &amp;#39;serial-terminal&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">interface&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pyipmi&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">interfaces&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create_interface&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;ipmitool&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">interface_type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s1">&amp;#39;lan&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pyipmi&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">create_connection&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">interface&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">target&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">pyipmi&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Target&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mh">0x82&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">target&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">set_routing&lt;/span>&lt;span class="p">([(&lt;/span>&lt;span class="mh">0x81&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mh">0x20&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">),(&lt;/span>&lt;span class="mh">0x20&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mh">0x82&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="mi">7&lt;/span>&lt;span class="p">)])&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">session&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">set_session_type_rmcp&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;10.0.0.1&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">port&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">623&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">session&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">set_auth_type_user&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s1">&amp;#39;admin&amp;#39;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s1">&amp;#39;admin&amp;#39;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">session&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">establish&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">connection&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_device_id&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 对应的 ipmitool 命令： &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># ipmitool -I lan -H 10.0.0.1 -p 623 -U &amp;#34;admin&amp;#34; -P &amp;#34;admin&amp;#34; -t 0x82 -b 0 -l 0 raw 0x06 0x01&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h3 id="服务器接线">服务器接线&lt;/h3>
+&lt;p>需要使用到 &lt;code>PXE&lt;/code> 和 &lt;code>ipmi&lt;/code> 的几种常见接线方式：&lt;/p>
+&lt;ul>
+&lt;li>系统 &lt;code>PXE&lt;/code> 使用服务器 &lt;code>BMC&lt;/code> 管理口，&lt;code>BMC&lt;/code> 是共享模式，&lt;code>BMC&lt;/code> 和 &lt;code>PXE&lt;/code> 流量都要走同一个千兆交换机口&lt;/li>
+&lt;li>系统 &lt;code>PXE&lt;/code> 使用服务器千兆口，&lt;code>BMC&lt;/code> 是独享模式，&lt;code>BMC&lt;/code> 和 &lt;code>PXE&lt;/code> 流量各走千兆交换机一个口&lt;/li>
+&lt;li>系统 &lt;code>PXE&lt;/code> 使用服务器万兆口，&lt;code>BMC&lt;/code> 是独享模式，万兆网作为 &lt;code>PXE&lt;/code> 口&lt;/li>
+&lt;/ul>
+&lt;h3 id="参考链接">参考链接&lt;/h3>
 &lt;p>参考内容：&lt;br>
 &lt;a href="https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface">https://en.wikipedia.org/wiki/Intelligent_Platform_Management_Interface&lt;/a>&lt;br>
 &lt;a href="https://www.easyatm.com.tw/wiki/ipmitool">https://www.easyatm.com.tw/wiki/ipmitool&lt;/a>&lt;br>
 &lt;a href="https://www.ibm.com/docs/en/power9/0000-FUL?topic=msbui-common-ipmi-commands-2">https://www.ibm.com/docs/en/power9/0000-FUL?topic=msbui-common-ipmi-commands-2&lt;/a>&lt;br>
 &lt;a href="https://serverfault.com/questions/259792/how-does-ipmi-sideband-share-the-ethernet-port-with-the-host">https://serverfault.com/questions/259792/how-does-ipmi-sideband-share-the-ethernet-port-with-the-host&lt;/a>&lt;br>
-&lt;a href="https://developer.aliyun.com/article/544871">https://developer.aliyun.com/article/544871&lt;/a>&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/ops/">ops</category><category domain="https://ruisum.top/tags/ops/">ops</category><category domain="https://ruisum.top/tags/ipmi/">ipmi</category><category domain="https://ruisum.top/tags/linux/">linux</category></item><item><title>Openssl Toolkit使用</title><link>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</guid><pubDate>Thu, 24 Mar 2022 22:37:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
+&lt;a href="https://developer.aliyun.com/article/544871">https://developer.aliyun.com/article/544871&lt;/a>&lt;br>
+&lt;a href="https://github.com/kontron/python-ipmi">https://github.com/kontron/python-ipmi&lt;/a>&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/ops/">ops</category><category domain="https://ruisum.top/tags/ops/">ops</category><category domain="https://ruisum.top/tags/ipmi/">ipmi</category><category domain="https://ruisum.top/tags/linux/">linux</category></item><item><title>Openssl Toolkit使用</title><link>https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://ruisum.top/tech/certificate/openssl-toolkit%E4%BD%BF%E7%94%A8/</guid><pubDate>Thu, 24 Mar 2022 22:37:26 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;blockquote>
 &lt;p>工具下载: &lt;a href="https://ruisum.top/uploads/openssl-toolkit.sh">openssl-toolkit&lt;/a>&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="说明">说明&lt;/h2>
@@ -1920,7 +1981,7 @@ pip包:pyipmi
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">fileencodings&lt;/span>&lt;span class="o">=&lt;/span>utf-8,ucs-bom,gb2312,cp936
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/miscell/">miscell</category><category domain="https://ruisum.top/tags/vim/">vim</category><category domain="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/">解码</category></item><item><title>docker 使用到的 iptables 内容</title><link>https://ruisum.top/tech/docker/docker%E5%AD%A6%E4%B9%A0/</link><guid isPermaLink="true">https://ruisum.top/tech/docker/docker%E5%AD%A6%E4%B9%A0/</guid><pubDate>Sun, 13 Mar 2022 22:58:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/miscell/">miscell</category><category domain="https://ruisum.top/tags/vim/">vim</category><category domain="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/">解码</category></item><item><title>docker 使用到的 iptables 内容</title><link>https://ruisum.top/tech/docker/docker%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84iptables/</link><guid isPermaLink="true">https://ruisum.top/tech/docker/docker%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84iptables/</guid><pubDate>Sun, 13 Mar 2022 22:58:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>在服务器上安装 &lt;code>docker&lt;/code> , 并启动 &lt;code>docker.service&lt;/code> 后会发现, &lt;code>iptables-save&lt;/code> 命令的输出增加一些 &lt;code>DOCKER&lt;/code> 相关的内容.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
