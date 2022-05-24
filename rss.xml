@@ -1,4 +1,354 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 19 May 2022 23:27:27 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>Manjaro系统初始化</title><link>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</guid><pubDate>Sat, 09 Apr 2022 14:47:28 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>NEWIUR</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 24 May 2022 23:53:15 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>grubby命令的使用</title><link>https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</guid><pubDate>Mon, 23 May 2022 23:24:04 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;h3 id="-grubby-是什么"># grubby 是什么&lt;/h3>
+&lt;p>&lt;code>grubby&lt;/code> 是一个可在不同架构下配置 &lt;code>bootloader&lt;/code> 菜单条目的命令行工具。&lt;/p>
+&lt;h3 id="-详细内容"># 详细内容&lt;/h3>
+&lt;p>&lt;code>grubby&lt;/code> 用于更新和显示特定于架构下的&lt;code>引导程序（bootloader）&lt;/code>的配置文件的信息。&lt;code>grubby&lt;/code> 是被设计给需要查找有关当前引导环境信息来安装新内核的脚本使用。&lt;/p>
+&lt;h4 id="-支持的架构"># 支持的架构&lt;/h4>
+&lt;ul>
+&lt;li>&lt;code>grubby&lt;/code> 已经完全支持在&lt;strong>x86_64&lt;/strong>系统上使用&lt;code>传统（legacy） BIOS&lt;/code>或者现代 &lt;code>UEFI&lt;/code> 固件的 &lt;code>GRUB2 引导加载程序（grub2 bootloader）&lt;/code>；同时支持&lt;code>ppc64&lt;/code> 和 &lt;code>ppc64le&lt;/code> 硬件使用 &lt;code>OPAL&lt;/code> 或 &lt;code>SLOF&lt;/code> 作为固件的 &lt;code>GRUB2&lt;/code> 引导加载程序。&lt;/li>
+&lt;li>完全支持传统 &lt;code>s390&lt;/code> 和当前的 &lt;code>s390x&lt;/code> 体系结构及其 &lt;code>zipl引导加载程序（zipl bootloader）&lt;/code> 。&lt;/li>
+&lt;li>不再支持 &lt;code>yaboot&lt;/code>，从 &lt;code>power8&lt;/code> 之后使用 &lt;code>grub2&lt;/code> 或 &lt;code>petitboot&lt;/code> 的 &lt;code>ppc&lt;/code> 体系结构硬件都使用GRUB2配置文件格式。&lt;/li>
+&lt;li>传统引导加载程序 &lt;code>LILO, SILO和 ELILO&lt;/code> 被弃用&lt;/li>
+&lt;/ul>
+&lt;h4 id="-默认行为"># 默认行为&lt;/h4>
+&lt;p>默认的引导加载程序目标主要由构建 &lt;code>grubby&lt;/code> 的系统架构决定。每个系统架构都有一个首选的引导加载程序，每个引导加载程序都有其自己的配置文件; 如果未在命令行上选择 &lt;code>bootloader&lt;/code>，则 &lt;code>grubby&lt;/code> 将使用这些默认设置来搜索现有配置; 如果找不到 &lt;code>bootloader&lt;/code> 配置文件，&lt;code>grubby&lt;/code> 将使用该系统架构的默认值, 这些默认值在下表中列出:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">&lt;strong>架构&lt;/strong>&lt;/th>
+&lt;th style="text-align:center">&lt;strong>bootloader&lt;/strong>&lt;/th>
+&lt;th style="text-align:left">&lt;strong>配置文件&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>x86_64 [BIOS]&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>grub2&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/boot/grub2/grub.cfg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>x86_64 [UEFI]&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>grub2&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/boot/efi/EFI/redhat/grub.cfg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>i386&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>grub2&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/boot/grub2/grub.cfg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>ia64&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>elilo&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/boot/efi/EFI/redhat/elilo.conf&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>ppc [&amp;gt;=Power8]&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>grub2&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/boot/grub2/grub.cfg&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>ppc [&amp;lt;=Power7]&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>yaboot&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/etc/yaboot.conf&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>s390&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>zipl&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/etc/zipl.conf&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>s390x&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>zipl&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>/etc/zipl.conf&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="-名词解释"># 名词解释&lt;/h3>
+&lt;p>&lt;strong>boot entry&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>引导条目（&lt;code>boot entry&lt;/code>）是一个选项的集合，该选项存储在配置文件中，并绑定到特定的内核版本。&lt;/li>
+&lt;li>实际使用中，系统至少拥有与系统已安装内核一样多的引导条目。&lt;/li>
+&lt;li>引导条目展示的文件名由存储在 &lt;code>/etc/machine-id&lt;/code> 文件中的机器 &lt;code>ID&lt;/code> 和内核版本组成。&lt;/li>
+&lt;li>引导条目配置文件包含有关内核版本，初始 &lt;code>ramdisk image&lt;/code> 和 &lt;code>kernelopts（其中包含内核命令行参数）&lt;/code> 环境变量的信息。&lt;/li>
+&lt;li>&lt;code>kernelopts&lt;/code> 环境变量在 &lt;code>/boot/grub2/grubenv&lt;/code> 文件中定义。&lt;/li>
+&lt;li>引导条目配置文件位于 &lt;code>/boot/loader/entries/directory&lt;/code> 中，类似如下内容:
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ cat /boot/grub/grub.cfg
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ......
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">### BEGIN /etc/grub.d/10_linux ### &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> menuentry &lt;span class="s1">&amp;#39;Manjaro Linux&amp;#39;&lt;/span> --class manjaro --class gnu-linux --class gnu --class os &lt;span class="nv">$menuentry_id_option&lt;/span> &lt;span class="s1">&amp;#39;gnulinux-simple-7afa0d3
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="s1"> 2-fd8d-44cc-8e4e-784f2493f4ca&amp;#39;&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> savedefault
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> load_video
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">set&lt;/span> &lt;span class="nv">gfxpayload&lt;/span>&lt;span class="o">=&lt;/span>keep
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> insmod gzio
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> insmod part_gpt
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> insmod ext2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> search --no-floppy --fs-uuid --set&lt;span class="o">=&lt;/span>root 7afa0d32-fd8d-44cc-8e4e-784f2493f4ca
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> linux /boot/vmlinuz-5.15-x86_64 &lt;span class="nv">root&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">UUID&lt;/span>&lt;span class="o">=&lt;/span>7afa0d32-fd8d-44cc-8e4e-784f2493f4ca rw quiet &lt;span class="nv">apparmor&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> &lt;span class="nv">security&lt;/span>&lt;span class="o">=&lt;/span>apparmor
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> udev.log_priority&lt;span class="o">=&lt;/span>&lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> initrd /boot/amd-ucode.img /boot/initramfs-5.15-x86_64.img
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">......
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h2 id="常用的-grubby-命令">常用的 grubby 命令&lt;/h2>
+&lt;h3 id="-添加新内核条目"># 添加新内核条目&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 假设已经构建了自己的内核，该内核已安装在服务器上，并希望为此新内核添加自定义条目，可以使用如下命令：&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --add-kernel&lt;span class="o">=&lt;/span>new_kernel --title&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;entry_title&amp;#34;&lt;/span> --initrd&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;new_initrd&amp;#34;&lt;/span> --copy-default
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 上一条命令使用了 --copy-default ，该参数会从我们的默认内核复制所有内核参数到此新内核条目，若要添加自己的自定义内核参数，可以使用：&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --add-kernel&lt;span class="o">=&lt;/span>new_kernel --title&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;entry_title&amp;#34;&lt;/span> --initrd&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;new_initrd&amp;#34;&lt;/span> --args&lt;span class="o">=&lt;/span>kernel_args
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 示例命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --grub2 --add-kernel&lt;span class="o">=&lt;/span>/boot/vmlinuz-4.18.0-193.el8.x86_64 --title&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Red Hat Enterprise 8 Test&amp;#34;&lt;/span> --initrd&lt;span class="o">=&lt;/span>/boot/initramfs-4.18.0-193.el8.x86_64.img --copy-default
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-删除已有内核条目"># 删除已有内核条目&lt;/h3>
+&lt;p>&lt;strong>请谨慎使用此命令&lt;/strong>，因为该命令会删除当前已有的内核的引导条目。如果删除了不正确内核的内核条目，系统可能无法启动，到时只能进入单用户模式修复损坏的服务器了。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除内核条目&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --remove-kernel&lt;span class="o">=&lt;/span>old_kernel
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 或者使用索引进行删除&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --remove-kernel&lt;span class="o">=&lt;/span>menu_index
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-添加新的内核参数"># 添加新的内核参数&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 添加新的内核参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>current_kernel --args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;kernel_args&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 具体命令示例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>/boot/vmlinuz-&lt;span class="k">$(&lt;/span>uname -r&lt;span class="k">)&lt;/span> --args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;ipv6.disable=1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 给当前所有可用内核统一添加内核参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>ALL --args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;kernel_args&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-删除已有的内核参数"># 删除已有的内核参数&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除已有的内核参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>current_kernel --remove-args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;kernel_args&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 具体命令示例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>/boot/vmlinuz-&lt;span class="k">$(&lt;/span>uname -r&lt;span class="k">)&lt;/span> --remove-args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;ipv6.disable=1&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 给当前所有可用内核统一删除内核参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>ALL --args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;kernel_args&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-删除并添加内核参数"># 删除并添加内核参数&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 删除和添加内核参数可以同时使用&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --remove-args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;kernel-args&amp;#34;&lt;/span> --args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;kernel_args&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 具体命令示例&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --update-kernel&lt;span class="o">=&lt;/span>/boot/vmlinuz-&lt;span class="k">$(&lt;/span>uname -r&lt;span class="k">)&lt;/span> --remove-args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;quiet&amp;#34;&lt;/span> --args&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;console=ttsy0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-列出所有安装的内核"># 列出所有安装的内核&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 列出所有已经安装的内核&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --info&lt;span class="o">=&lt;/span>ALL &lt;span class="p">|&lt;/span> grep ^kernel
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.14.3.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.1.2.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.el8.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-0-rescue-d88fa2c7ff574ae782ec8c4288de4e85&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-获取更多有关内核启动条目的信息"># 获取更多有关内核启动条目的信息&lt;/h3>
+&lt;p>获取更多的内核引导条目的信息可以通过命令 &lt;code>grubby --info&lt;/code>，命令会提供诸如索引号，&lt;code>boot entry ID&lt;/code>，应用于内核的参数等信息&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ grubby --info&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-&lt;/span>&lt;span class="k">$(&lt;/span>uname -r&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">index&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.1.2.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">args&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;ro resume=/dev/mapper/rhel-swap rd.lvm.lv=rhel/root rd.lvm.lv=rhel/swap rhgb biosdevname=0 net.ifnames=0 enforcing=0 &lt;/span>&lt;span class="nv">$tuned_params&lt;/span>&lt;span class="s2"> console=ttsy0&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">root&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/dev/mapper/rhel-root&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">initrd&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/initramfs-4.18.0-193.1.2.el8_2.x86_64.img &lt;/span>&lt;span class="nv">$tuned_initrd&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">title&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;Red Hat Enterprise Linux (4.18.0-193.1.2.el8_2.x86_64) 8.2 (Ootpa)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;d88fa2c7ff574ae782ec8c4288de4e85-4.18.0-193.1.2.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-列出默认内核的路径"># 列出默认内核的路径&lt;/h3>
+&lt;p>默认内核是指系统启动时默认使用的内核&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ grubby --default-kernel
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/boot/vmlinuz-4.18.0-193.el8.x86_64
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-列出默认内核在引导条目中的索引号"># 列出默认内核在引导条目中的索引号&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ grubby --default-index
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-列出默认内核在引导条目中的标题"># 列出默认内核在引导条目中的标题&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ grubby --default-title
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Red Hat Enterprise Linux &lt;span class="o">(&lt;/span>4.18.0-193.1.2.el8_2.x86_64&lt;span class="o">)&lt;/span> 8.2 &lt;span class="o">(&lt;/span>Ootpa&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-使用内核路径设置默认内核"># 使用内核路径设置默认内核&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 更改默认内核（更改系统启动默认使用的内核）&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --set-default&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.1.2.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-使用索引设置默认内核"># 使用索引设置默认内核&lt;/h3>
+&lt;p>不使用内核 &lt;code>vmlinuz&lt;/code> 来设置默认启动内核，我们还可以通过提供索引号来更改默认内核。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 获取所有已安装内核的索引号&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --info&lt;span class="o">=&lt;/span>ALL &lt;span class="p">|&lt;/span> grep -E &lt;span class="s2">&amp;#34;^kernel|^index&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">index&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.14.3.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">index&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.1.2.el8_2.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">index&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.el8.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">index&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-4.18.0-193.el8.x86_64&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">index&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">kernel&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/boot/vmlinuz-0-rescue-d88fa2c7ff574ae782ec8c4288de4e85&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 通过索引号设置默认内核&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ grubby --set-default-index&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="其他">其他&lt;/h2>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>&lt;a href="https://www.systutorials.com/docs/linux/man/8-grubby/">https://www.systutorials.com/docs/linux/man/8-grubby/&lt;/a>
+&lt;a href="https://www.golinuxcloud.com/grubby-command-examples/">https://www.golinuxcloud.com/grubby-command-examples/&lt;/a>&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tags/grub/">grub</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/basic/">basic</category><category domain="https://ruisum.top/tags/system/">system</category></item><item><title>Manjaro系统初始化</title><link>https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/manjaro%E7%B3%BB%E7%BB%9F%E5%88%9D%E5%A7%8B%E5%8C%96/</guid><pubDate>Sat, 09 Apr 2022 14:47:28 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="双系统安装配置">双系统安装配置&lt;/h2>
 &lt;h3 id="-准备工作"># 准备工作&lt;/h3>
 &lt;p>当前准备安装 &lt;code>manjaro&lt;/code> 的机器是联想小新pro, 已经装有正版 &lt;code>windows 11&lt;/code> 系统。考虑到平时也会有用到 &lt;code>windows&lt;/code> 办公的场景，所以准备安装双系统，日常使用 &lt;code>manjaro&lt;/code>，&lt;code>manjaro&lt;/code> 无法满足的场景再使用 &lt;code>windows&lt;/code>。&lt;/p>
 &lt;ul>
