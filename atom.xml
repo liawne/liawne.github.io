@@ -1,17 +1,274 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-05-25T08:04:56+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.98.0">Hugo</generator><entry><title type="text">grubby命令的使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</id><updated>2022-05-23T23:24:04+08:00</updated><published>2022-05-23T23:24:04+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">grubby：用于配置 bootloader 菜单条目的命令行工具</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">NEWIUR</title><subtitle type="html">newiur's blog</subtitle><updated>2022-05-28T14:03:30+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.98.0">Hugo</generator><entry><title type="text">uefi/bios，gpt/mbr的一些概念</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/"/><id>https://ruisum.top/tech/basics/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</id><updated>2022-05-25T23:03:13+08:00</updated><published>2022-05-25T23:03:13+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍uefi和bios的差别，gpt和mbr的差别，以及他们互相之间的关系</summary><content type="html">&lt;h2 id="-说明"># 说明&lt;/h2>
+&lt;p>不清楚 &lt;code>legacy bios&lt;/code> 和 &lt;code>uefi&lt;/code>，&lt;code>gpt&lt;/code> 和 &lt;code>mbr&lt;/code> 的区别，理一下他们的来源和互相之间的关系&lt;/p>
+&lt;h2 id="-bios-和-uefi"># BIOS 和 UEFI&lt;/h2>
+&lt;p>&lt;code>BIOS&lt;/code> 和 &lt;code>UEFI&lt;/code> 是计算机的两个固件接口，它们充当操作系统和计算机固件之间的解释器。这两个接口都用于在计算机启动时初始化硬件组件并启动存储在硬盘驱动器上的操作系统。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>BIOS&lt;/code> 通过读取硬盘驱动器的第一个扇区来工作，该扇区存储了要初始化的下一个设备地址或要执行的代码。BIOS 还会选择启动操作系统时需要初始化的引导设备。&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 执行相同的任务，但实现略有不同。它将有关初始化和启动的所有信息存储在 &lt;code>.efi&lt;/code> 文件而不是固件中。此文件存储在名为 &lt;code>ESP&lt;/code> 的特殊分区内。ESP 分区还包含计算机上安装的操作系统的引导加载程序。&lt;/li>
+&lt;/ul>
+&lt;h3 id="-bios"># BIOS&lt;/h3>
+&lt;p>&lt;strong>什么是 BIOS&lt;/strong>&lt;br>
+&lt;code>BIOS&lt;/code> 是 &lt;code>Basic Input/Output System&lt;/code> 的简称，也称为&lt;code>系统 BIOS&lt;/code>、&lt;code>ROM BIOS&lt;/code> 或 &lt;code>PC BIOS&lt;/code>。它是嵌入在计算机主板芯片上的固件。&lt;br>
+&lt;code>BIOS&lt;/code> 固件预装在 &lt;code>PC&lt;/code> 的主板上; 它是一个非易失性固件，这意味着它的设置即使在断电后也不会消失或改变。&lt;/p>
+&lt;p>&lt;strong>BIOS 怎么工作&lt;/strong>&lt;br>
+当计算机启动时，&lt;code>BIOS&lt;/code> 会加载并唤醒计算机的硬件组件，确保它们正常工作，然后加载引导加载程序来初始化已安装的操作系统。&lt;br>
+&lt;code>BIOS&lt;/code> 必须在 &lt;code>16&lt;/code> 位处理器模式下运行，并且只有 &lt;code>1 MB&lt;/code> 的空间可以执行。在这种情况下，&lt;code>BIOS&lt;/code> 无法同时初始化多个硬件设备，从而导致初始化所有硬件接口和设备时时间更长，启动过程变慢。&lt;/p>
+&lt;p>&lt;strong>选择 BIOS 的场景&lt;/strong>&lt;br>
+用户选择 &lt;code>Legacy BIOS&lt;/code> 而不是 &lt;code>UEFI&lt;/code> 的一些可能的原因：&lt;/p>
+&lt;ul>
+&lt;li>如果不需要对计算机的运行方式进行精细控制，&lt;code>BIOS&lt;/code> 是理想的选择。&lt;/li>
+&lt;li>如果只有小型驱动器或分区，&lt;code>BIOS&lt;/code> 也足够了。尽管许多较新的硬盘驱动器超过了 &lt;code>BIOS&lt;/code> 的 &lt;code>2 TB&lt;/code> 限制，但并非每个用户都需要这么大的空间。&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 的&lt;code>安全启动（secure boot）&lt;/code>功能可能会导致 &lt;code>OEM&lt;/code> 制造商阻止用户在其硬件上安装其他操作系统。如果使用 &lt;code>BIOS&lt;/code>，则可以回避这个问题。&lt;/li>
+&lt;li>&lt;code>BIOS&lt;/code> 提供对接口中硬件信息的访问，但并非所有的 &lt;code>UEFI&lt;/code> 实现都可以这样做。可以在操作系统中访问硬件规格。&lt;/li>
+&lt;/ul>
+&lt;div class="notice tip" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M504 256a248 248 0 11-496 0 248 248 0 01496 0zm-248 50a46 46 0 100 92 46 46 0 000-92zm-44-165l8 136c0 6 5 11 12 11h48c7 0 12-5 12-11l8-136c0-7-5-13-12-13h-64c-7 0-12 6-12 13z"/>&lt;/svg>&lt;/div>
+&lt;p>一些计算机用户使用 UEFI 启动，但仍将其称为&amp;quot;BIOS&amp;quot;，这容易让人感到困惑。即使 PC 使用术语 &amp;quot;BIOS&amp;quot;，如今购买的大多数现代 PC 都使用 UEFI 固件而不是 BIOS。为了区分 UEFI 和 BIOS，也有人将 UEFI 固件称为 UEFI BIOS，而 BIOS 则称为 Legacy BIOS 或传统 BIOS。&lt;/p>
+&lt;/div>
+&lt;h3 id="-uefi"># UEFI&lt;/h3>
+&lt;p>&lt;strong>什么是 UEFI&lt;/strong>&lt;br>
+&lt;code>UEFI（Unified Extensible Firmware Interface）&lt;/code>：统一的可扩展固件接口，它是 &lt;code>EFI（Extensible Firmware Interface）&lt;/code> 的逻辑继承。&lt;/p>
+&lt;p>&lt;strong>UEFI 发展历史&lt;/strong>&lt;br>
+在90年代中期，英特尔意识到 &lt;code>IBM BIOS（Basic Input/Output System（基本输入/输出系统））&lt;/code> 样式固件接口有其固有的限制。这些限制并不影响普通用户，但它们使生产高性能服务器变得困难。于是，英特尔于1998年开始开发 &lt;code>EFI&lt;/code> 规范。2005年，英特尔停止了 &lt;code>EFI&lt;/code> 规范的开发，并在维持所有权的同时将其捐赠给了 &lt;code>Unified EFI Forum&lt;/code>。英特尔继续向供应商许可 &lt;code>EFI&lt;/code> 规范，但 &lt;code>UEFI&lt;/code> 规范归论坛所有。&lt;/p>
+&lt;p>&lt;strong>UEFI 的优势&lt;/strong>&lt;br>
+&lt;code>UEFI&lt;/code> 的设计目标是在未来完全替换传统 &lt;code>BIOS&lt;/code>，其具有许多传统 &lt;code>BIOS&lt;/code> 无法实现的新特性和优势，部分突出的优势如下：&lt;/p>
+&lt;ul>
+&lt;li>模块化设计&lt;/li>
+&lt;li>同 &lt;code>CPU&lt;/code> 架构解偶（&lt;code>Itanium, x86, x86-64, ARM Arch32, Arm Arch64&lt;/code>）&lt;/li>
+&lt;li>兼容 &lt;code>BIOS&lt;/code> 接口和传统启动方式&lt;/li>
+&lt;li>从大于 &lt;code>2TiB&lt;/code> 的磁盘引导的能力（注意&lt;code>2TB&lt;/code>和&lt;code>2TiB&lt;/code>之间的差异）&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 支持超过 &lt;code>4&lt;/code> 个具有 &lt;code>GUID&lt;/code> 分区表的主分区。&lt;/li>
+&lt;li>使用 &lt;code>UEFI&lt;/code> 固件的计算机的启动过程比 &lt;code>BIOS&lt;/code> 更快，&lt;code>UEFI&lt;/code> 中的各种优化和增强功能可以让系统更快地启动。&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 支持安全启动&lt;code>（secure boot）&lt;/code>，这意味着可以检查操作系统的有效性，以确保没有恶意软件篡改启动过程。&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 支持 &lt;code>UEFI&lt;/code> 固件本身的联网功能，有助于远程故障排除和 &lt;code>UEFI&lt;/code> 配置。&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 具有更简单的图形用户界面，并且还具有比传统 &lt;code>BIOS&lt;/code> 更丰富的设置菜单。&lt;/li>
+&lt;/ul>
+&lt;div class="notice warning" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>并非所有计算机或设备都支持 &lt;code>UEFI&lt;/code>。要使用 &lt;code>UEFI&lt;/code> 固件，磁盘上的硬件必须支持 &lt;code>UEFI&lt;/code>。此外，系统盘需要是 &lt;code>GPT&lt;/code> 盘。&lt;/p>
+&lt;/div>
+&lt;p>&lt;strong>ESP 特殊分区&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>UEFI&lt;/code> 将有关初始化和启动的所有信息存储在 &lt;code>.efi&lt;/code> 文件中，该文件存储在称为 &lt;code>EFI 系统分区 (ESP(EFI System Partition))&lt;/code> 的特殊分区上。&lt;/li>
+&lt;li>&lt;code>ESP&lt;/code> 分区包含计算机上安装的操作系统的引导加载程序。&lt;/li>
+&lt;li>&lt;code>ESP&lt;/code> 分区使用 &lt;code>FAT32&lt;/code> 格式进行格式化，具有特定的分区类型代码 &lt;code>EF00&lt;/code>，而不是通常用于 &lt;code>FAT32&lt;/code> 驱动器的 &lt;code>0x0C&lt;/code>。&lt;/li>
+&lt;li>许多操作系统会因为它被视为系统卷而将其隐藏。&lt;/li>
+&lt;li>在启动时，主板上的 &lt;code>UEFI&lt;/code> 兼容固件会扫描所有磁盘以查找 &lt;code>ESP&lt;/code>，并在其中查找这些可执行文件，在此过程中，&lt;code>MBR&lt;/code> 的硬编码引导范例不再适用。&lt;/li>
+&lt;li>正是因为有了这个分区，&lt;code>UEFI&lt;/code> 可以直接启动操作系统，省去 &lt;code>BIOS&lt;/code> 自检过程，这也是 &lt;code>UEFI&lt;/code> 启动速度更快的一个重要原因。&lt;/li>
+&lt;/ul>
+&lt;h2 id="-mbr-和-gpt"># MBR 和 GPT&lt;/h2>
+&lt;p>&lt;code>MBR（主引导记录（Master Boot Record）)&lt;/code> 和 &lt;code>GPT（GUID 分区表（GUID Partition Table））&lt;/code> 是各种硬盘驱动器的两种分区方案，其中 &lt;code>GPT&lt;/code> 是较新的标准。对于这两种分区方案，引导结构和数据处理方式都是不同的，速度不同，使用要求也不同。&lt;/p>
+&lt;h3 id="-mbr"># MBR&lt;/h3>
+&lt;p>&lt;strong>什么是 MBR&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>MBR&lt;/code> 代表的是 &lt;code>Master Boot Record&lt;/code>，主引导分区的意思。&lt;/li>
+&lt;li>&lt;code>MBR&lt;/code> 只是硬盘的一部分，在它上面可以找到有关磁盘的所有信息;。&lt;/li>
+&lt;li>&lt;code>MBR&lt;/code> 存储在&lt;code>引导扇区（boot sector）&lt;/code>，它包含了分区类型的详细信息以及引导计算机操作系统时所需的代码。&lt;/li>
+&lt;li>&lt;code>MBR&lt;/code> 可以有很多不同的形式，但所有这些形式的共同点是它们都具有 &lt;code>512&lt;/code> 字节的大小，都存储了分区表和引导代码（通常称为引导加载程序）。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>MBR 的特点&lt;/strong>&lt;br>
+如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>MBR&lt;/code> 磁盘上可能的最大主分区数为 &lt;code>4&lt;/code>，其中每个分区需要 &lt;code>16&lt;/code> 字节空间，这使得所有分区总共需要 &lt;code>64&lt;/code> 字节空间。&lt;/li>
+&lt;li>&lt;code>MBR&lt;/code> 分区可以分为三种类型——主分区、扩展分区和逻辑分区。如上所述，它只能有 4 个主分区。扩展分区和逻辑分区克服了这一限制。&lt;/li>
+&lt;li>&lt;code>MBR&lt;/code> 中的分区表仅包含有关主分区和扩展分区的详细信息。此外，重要的是要了解数据不能直接保存在扩展分区上，因此需要创建逻辑分区。&lt;/li>
+&lt;li>一些最新类型的 &lt;code>MBR&lt;/code> 还可能添加了磁盘签名、时间戳和有关磁盘格式化的详细信息。&lt;/li>
+&lt;li>与可以支持四个分区的旧版本的 &lt;code>MBR&lt;/code> 不同，最新版本能够支持多达 &lt;code>16&lt;/code> 个分区。由于所有 &lt;code>MBR&lt;/code> 的大小不超过 &lt;code>512&lt;/code> 字节，因此使用 &lt;code>MBR&lt;/code> 格式化的磁盘有 &lt;code>2TB&lt;/code> 的可用磁盘空间上限（有些硬盘也有 &lt;code>1024&lt;/code> 字节或 &lt;code>2048&lt;/code> 字节扇区，但这会导致磁盘速度出现问题，因此不是明智的选择）。&lt;/li>
+&lt;li>它兼容所有版本的 &lt;code>Windows（32 位和 64 位）&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>MBR 构成&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>传统&lt;code>MBR&lt;/code>构成图
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220526-2335.png" alt="classic MBR">&lt;/li>
+&lt;li>以&lt;code>windows&lt;/code>上的&lt;code>MBR&lt;/code>为例说明扩展分区
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220528-1203.png" alt="扩展分区">&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>MBR 的限制&lt;/strong>
+如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>MBR&lt;/code> 风格的分区只能使用不超过 &lt;code>2TB&lt;/code> 的磁盘空间。&lt;/li>
+&lt;li>它最多只能有 &lt;code>4&lt;/code> 个主分区。如果创建主分区后有未分配的空间，我们可以通过创建扩展分区来使其可用，其中可以创建各种逻辑分区。&lt;/li>
+&lt;/ul>
+&lt;p>由于 &lt;code>MBR&lt;/code> 的这些限制，用户通常会选择不同的分区样式。除了 &lt;code>MBR&lt;/code> 之外，最常见的分区样式之一是 &lt;code>GPT&lt;/code>。&lt;/p>
+&lt;h3 id="-gpt"># GPT&lt;/h3>
+&lt;p>&lt;strong>GPT 的来源&lt;/strong>&lt;br>
+同样的，英特尔对基于 &lt;code>BIOS&lt;/code> 和 &lt;code>MBR&lt;/code> 的引导模式不满意，于是开发了 &lt;code>GPT&lt;/code> 规范。&lt;/p>
+&lt;p>&lt;strong>什么是 GPT&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>GPT&lt;/code> 代表的是 &lt;code>GUID（全局唯一标识符（globally unique identifier）） Partition Table&lt;/code>，&lt;code>GUID分区表&lt;/code>的意思。&lt;/li>
+&lt;li>&lt;code>GPT&lt;/code> 是最新的磁盘分区方式，被称为 &lt;code>MBR&lt;/code> 的继承者。&lt;/li>
+&lt;li>&lt;code>GPT&lt;/code> 在整个驱动器上维护有关分区组织和操作系统启动代码的数据。这样可以确保在任何分区损坏或删除的情况下，仍然可以检索数据，并且引导过程不会出现问题。这也是 GPT 优于 MBR 的原因之一。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>GPT 构成&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>纵向分布视图
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220526-2341.png" alt="GPT 构成1">&lt;/li>
+&lt;li>横向视图
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220528-1212.png" alt="GPT 构成2">&lt;/li>
+&lt;/ul>
+&lt;p>通过以上图片，我们可以看到GPT磁盘分为三个部分：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>主分区表（Primary Partition Table）&lt;/code>：这是保护 MBR、GPT 标头分区和分区表所在的位置。&lt;/li>
+&lt;li>&lt;code>普通数据分区（Normal Data Partition）&lt;/code>：这是用于存储个人数据的位置。&lt;/li>
+&lt;li>&lt;code>备份分区表（Back up Partition Table）&lt;/code>：此位置用于存储 GPT 标头和分区表的备份数据。这在主分区表损坏的情况下很有用。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>GPT 的特点&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>与 &lt;code>MBR&lt;/code> 相比，&lt;code>GPT&lt;/code> 磁盘提供了更多的存储空间。用户可以创建多个分区。 &lt;code>GPT&lt;/code> 磁盘系统可以创建多达 &lt;code>128&lt;/code> 个分区。&lt;/li>
+&lt;li>&lt;code>GPT&lt;/code> 格式的磁盘分区，分区表数据恢复更容易。&lt;/li>
+&lt;li>&lt;code>GPT&lt;/code> 可以运行检查以确保数据安全。它使用 &lt;code>CRC&lt;/code> 值来检查数据的安全性。如果数据损坏，它可以检测损坏并尝试从磁盘上的其他位置检索损坏的数据。与 &lt;code>MBR&lt;/code> 相比，这使得 &lt;code>GPT&lt;/code> 成为更可靠的选择。&lt;/li>
+&lt;li>&lt;code>GPT&lt;/code> 中包含的一项非常有趣的功能称为 &lt;code>保护性MBR(Protective MBR)&lt;/code>。此 &lt;code>MBR&lt;/code> 仅考虑整个驱动器上的一个分区。在这种情况下，当用户尝试借助旧工具管理 &lt;code>GPT&lt;/code> 时，该工具将读取分布在驱动器上的一个分区。这是保护性 MBR 确保旧工具不会认为 &lt;code>GPT&lt;/code> 驱动器没有分区，并防止旧工具使用新 &lt;code>MBR&lt;/code> 对 &lt;code>GPT&lt;/code> 数据造成任何损坏。保护性 &lt;code>MBR&lt;/code> 保护 &lt;code>GPT&lt;/code> 数据，使其不会被删除。&lt;/li>
+&lt;li>与将一部分引导代码放入引导扇区的 &lt;code>MBR&lt;/code> 不同，&lt;code>GPT&lt;/code> 将引导代码和分区表分离了。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>GPT 的限制&lt;/strong>&lt;br>
+如果必须将 &lt;code>GPT&lt;/code> 用作引导驱动器，则系统需要基于 &lt;code>UEFI&lt;/code>。在基于 &lt;code>BIOS&lt;/code> 的系统中，&lt;code>GPT&lt;/code> 驱动器不能用作主驱动器。&lt;/p>
+&lt;p>用户选择 &lt;code>MBR&lt;/code> 而不是 &lt;code>GPT&lt;/code> 的唯一原因是当操作系统安装在基于 &lt;code>BIOS&lt;/code> 的系统上并且驱动器将用作引导驱动器时。&lt;/p>
+&lt;h3 id="-gpt-vs-mbr"># GPT vs MBR&lt;/h3>
+&lt;p>下面是 MBR 和 GPT 之间的综合比较表，该表突出显示了 MBR 和 GPT 之间的主要区别。 &lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">&lt;strong>比较点&lt;/strong>&lt;/th>
+&lt;th style="text-align:center">&lt;strong>MBR&lt;/strong>&lt;/th>
+&lt;th style="text-align:center">&lt;strong>GPT&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">主分区数&lt;/td>
+&lt;td style="text-align:center">&lt;code>4&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>可达到128&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">最大分区大小&lt;/td>
+&lt;td style="text-align:center">&lt;code>2 TB&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>18 EB&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">最大硬盘大小&lt;/td>
+&lt;td style="text-align:center">&lt;code>2 TB&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>18 EB&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">安全性&lt;/td>
+&lt;td style="text-align:center">&lt;code>无&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>CRC 值用于确保数据安全&lt;/code>&lt;br>&lt;code>备份 GUID 分区表&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">适用于&lt;/td>
+&lt;td style="text-align:center">&lt;code>BIOS&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>UEFI&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">分区名称&lt;/td>
+&lt;td style="text-align:center">&lt;code>存储在分区中&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>具有唯一的 GUID 和 36 个字符的名称&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">支持多重启动&lt;/td>
+&lt;td style="text-align:center">&lt;code>支持较差&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>引导加载程序条目位于不同的分区中&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">数据还原&lt;/td>
+&lt;td style="text-align:center">&lt;code>较难&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>相对简单&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">数据损坏&lt;/td>
+&lt;td style="text-align:center">&lt;code>无法检测数据损坏&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>易于检测&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">分区寻址方法&lt;/td>
+&lt;td style="text-align:center">&lt;code>CHS（Cylinder Head Cycle）&lt;/code>或&lt;br>&lt;code>LBS（逻辑块寻址 Logical Block Addressing）&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>LBA 是寻址分区的唯一方法&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">大小&lt;/td>
+&lt;td style="text-align:center">&lt;code>512 字节&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>每个 LBA 512 字节&lt;/code>&lt;br>&lt;code>每个分区条目为 128 字节&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">分区类型代码&lt;/td>
+&lt;td style="text-align:center">&lt;code>1字节&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>使用 16 字节 GUID&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">稳定性&lt;/td>
+&lt;td style="text-align:center">&lt;code>与 GPT 相比，稳定性较差&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>提供更多安全性&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">可启动版本的操作系统&lt;/td>
+&lt;td style="text-align:center">&lt;code>引导 32 位操作系统&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>引导 64 位操作系统&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">存储&lt;/td>
+&lt;td style="text-align:center">&lt;code>只支持 2TB 的容量&lt;/code>&lt;br>&lt;code>磁盘大小 &amp;gt;2TB 被标记为未分配且无法使用&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>可支持容量达944万TB的磁盘&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">性能&lt;/td>
+&lt;td style="text-align:center">&lt;code>与 GPT 相比，性能较低&lt;/code>&lt;/td>
+&lt;td style="text-align:center">&lt;code>如果支持 UEFI 引导，则提供卓越的性能&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>上表列出了 &lt;code>MBR&lt;/code> 与 &lt;code>GPT&lt;/code> 的性能。基于上述几点，如果支持 &lt;code>UEFI&lt;/code> 引导，&lt;code>GPT&lt;/code> 在性能方面要优越得多。它还提供了稳定性和速度的优势，并增强了硬件的性能，这主要归功于 &lt;code>UEFI&lt;/code> 的结构。&lt;/p>
+&lt;h3 id="-一些疑问"># 一些疑问&lt;/h3>
+&lt;ul>
+&lt;li>
+&lt;p>MBR和GPT可以混用吗？&lt;/p>
+&lt;blockquote>
+&lt;p>只有在支持 &lt;code>GPT&lt;/code> 的系统上才能混用 &lt;code>MBR&lt;/code> 和 &lt;code>GPT&lt;/code>。&lt;br>
+&lt;code>GPT&lt;/code> 需要 &lt;code>UEFI&lt;/code> 接口，当系统支持 &lt;code>UEFI&lt;/code> 时，引导分区必须位于 &lt;code>GPT&lt;/code> 磁盘上，这一点很重要;但是，其他硬盘可以是 &lt;code>MBR&lt;/code> 或 &lt;code>GPT&lt;/code>。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>UEFI 可以启动 MBR 吗？&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>UEFI&lt;/code> 可以同时支持 &lt;code>MBR&lt;/code> 和 &lt;code>GPT&lt;/code>。&lt;br>
+&lt;code>UEFI&lt;/code> 与 &lt;code>GPT&lt;/code> 配合使用可以很好地摆脱 &lt;code>MBR&lt;/code> 的分区大小和数量限制。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>
+&lt;p>如果将 GPT 转换为 MBR，是否有可能丢失数据？&lt;/p>
+&lt;blockquote>
+&lt;p>如果通过工具将磁盘分区格式从 &lt;code>GPT&lt;/code> 转换为 &lt;code>MBR&lt;/code> 或从 &lt;code>MBR&lt;/code> 转换为 &lt;code>GPT&lt;/code>，则需要在转换前删除所有分区。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="其他">其他&lt;/h2>
+&lt;h3 id="-相关名词解释"># 相关名词解释&lt;/h3>
+&lt;p>&lt;strong>Secure Boot&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>安全启动&lt;code>（secure boot）&lt;/code>是什么：是可执行文件的签名，如果签名与已在 &lt;code>UEFI&lt;/code> 固件中注册的签名匹配，则主板将允许它启动; 否则不允许启动。&lt;/li>
+&lt;/ul>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>&lt;a href="https://fossbytes.com/uefi-bios-gpt-mbr-whats-difference/">https://fossbytes.com/uefi-bios-gpt-mbr-whats-difference/&lt;/a>
+&lt;a href="https://www.partitionwizard.com/partitionmagic/uefi-vs-bios.html">https://www.partitionwizard.com/partitionmagic/uefi-vs-bios.html&lt;/a>
+&lt;a href="https://www.freecodecamp.org/news/mbr-vs-gpt-whats-the-difference-between-an-mbr-partition-and-a-gpt-partition-solved/">https://www.freecodecamp.org/news/mbr-vs-gpt-whats-the-difference-between-an-mbr-partition-and-a-gpt-partition-solved/&lt;/a>
+&lt;a href="https://www.maketecheasier.com/differences-between-uefi-and-bios/#:~:text=BIOS%20uses%20the%20Master%20Boot,physical%20partitions%20to%20only%204.">https://www.maketecheasier.com/differences-between-uefi-and-bios/#:~:text=BIOS%20uses%20the%20Master%20Boot,physical%20partitions%20to%20only%204.&lt;/a>
+·&lt;a href="https://en.wikipedia.org/wiki/Master_boot_record">https://en.wikipedia.org/wiki/Master_boot_record&lt;/a>
+&lt;a href="https://www.partitionwizard.com/partitionmagic/uefi-vs-bios.html">https://www.partitionwizard.com/partitionmagic/uefi-vs-bios.html&lt;/a>
+&lt;a href="https://www.softwaretestinghelp.com/mbr-vs-gpt/">https://www.softwaretestinghelp.com/mbr-vs-gpt/&lt;/a>
+&lt;a href="https://www.alphr.com/mbr-vs-gpt/#:~:text=The%20main%20difference%20between%20MBR,boot%20off%20of%20GPT%20drives.">https://www.alphr.com/mbr-vs-gpt/#:~:text=The%20main%20difference%20between%20MBR,boot%20off%20of%20GPT%20drives.&lt;/a>&lt;/p></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/basics/" term="basics" label="basics"/><category scheme="https://ruisum.top/tags/uefi/" term="uefi" label="uefi"/><category scheme="https://ruisum.top/tags/bios/" term="bios" label="bios"/><category scheme="https://ruisum.top/tags/gpt/" term="gpt" label="gpt"/><category scheme="https://ruisum.top/tags/mbr/" term="mbr" label="mbr"/></entry><entry><title type="text">grubby命令的使用</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/"/><id>https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</id><updated>2022-05-23T23:24:04+08:00</updated><published>2022-05-23T23:24:04+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">grubby：用于配置 bootloader 菜单条目的命令行工具</summary><content type="html">&lt;h2 id="说明">说明&lt;/h2>
 &lt;h3 id="-grubby-是什么"># grubby 是什么&lt;/h3>
 &lt;p>&lt;code>grubby&lt;/code> 是一个可在不同架构下配置 &lt;code>bootloader&lt;/code> 菜单条目的命令行工具。&lt;/p>
 &lt;h3 id="-详细内容"># 详细内容&lt;/h3>
-&lt;p>&lt;code>grubby&lt;/code> 用于更新和显示特定于架构下的&lt;code>引导程序（bootloader）&lt;/code>的配置文件的信息。&lt;code>grubby&lt;/code> 是被设计给需要查找有关当前引导环境信息来安装新内核的脚本使用。&lt;/p>
+&lt;p>&lt;code>grubby&lt;/code> 用于更新和显示在特定架构下的&lt;code>引导程序（bootloader）&lt;/code>配置文件信息。&lt;code>grubby&lt;/code> 是被设计给需要查找有关当前引导环境信息来安装新内核的脚本使用。&lt;/p>
 &lt;h4 id="-支持的架构"># 支持的架构&lt;/h4>
 &lt;ul>
-&lt;li>&lt;code>grubby&lt;/code> 已经完全支持在&lt;strong>x86_64&lt;/strong>系统上使用&lt;code>传统（legacy） BIOS&lt;/code>或者现代 &lt;code>UEFI&lt;/code> 固件的 &lt;code>GRUB2 引导加载程序（grub2 bootloader）&lt;/code>；同时支持&lt;code>ppc64&lt;/code> 和 &lt;code>ppc64le&lt;/code> 硬件使用 &lt;code>OPAL&lt;/code> 或 &lt;code>SLOF&lt;/code> 作为固件的 &lt;code>GRUB2&lt;/code> 引导加载程序。&lt;/li>
-&lt;li>完全支持传统 &lt;code>s390&lt;/code> 和当前的 &lt;code>s390x&lt;/code> 体系结构及其 &lt;code>zipl引导加载程序（zipl bootloader）&lt;/code> 。&lt;/li>
-&lt;li>不再支持 &lt;code>yaboot&lt;/code>，从 &lt;code>power8&lt;/code> 之后使用 &lt;code>grub2&lt;/code> 或 &lt;code>petitboot&lt;/code> 的 &lt;code>ppc&lt;/code> 体系结构硬件都使用GRUB2配置文件格式。&lt;/li>
+&lt;li>支持在&lt;strong>x86_64&lt;/strong>系统上使用&lt;code>传统（legacy） BIOS&lt;/code>或者现代 &lt;code>UEFI&lt;/code> 固件的 &lt;code>GRUB2&lt;/code> 引导加载程序（grub2 bootloader）&lt;/li>
+&lt;li>支持 &lt;code>ppc64&lt;/code> 和 &lt;code>ppc64le&lt;/code> 架构的硬件使用 &lt;code>OPAL&lt;/code> 或 &lt;code>SLOF&lt;/code> 作为固件的 &lt;code>GRUB2&lt;/code> 引导加载程序。&lt;/li>
+&lt;li>支持 &lt;code>s390&lt;/code> 和 &lt;code>s390x&lt;/code> 架构及其 &lt;code>zipl&lt;/code> 引导加载程序（zipl bootloader）。&lt;/li>
+&lt;li>不再支持 &lt;code>yaboot&lt;/code>，从 &lt;code>power8&lt;/code> 之后使用 &lt;code>grub2&lt;/code> 或 &lt;code>petitboot&lt;/code> 的 &lt;code>ppc&lt;/code> 架构的硬件都是使用 &lt;code>GRUB2&lt;/code> 配置文件格式。&lt;/li>
 &lt;li>传统引导加载程序 &lt;code>LILO, SILO和 ELILO&lt;/code> 被弃用&lt;/li>
 &lt;/ul>
 &lt;h4 id="-默认行为"># 默认行为&lt;/h4>
-&lt;p>默认的引导加载程序目标主要由构建 &lt;code>grubby&lt;/code> 的系统架构决定。每个系统架构都有一个首选的引导加载程序，每个引导加载程序都有其自己的配置文件; 如果未在命令行上选择 &lt;code>bootloader&lt;/code>，则 &lt;code>grubby&lt;/code> 将使用这些默认设置来搜索现有配置; 如果找不到 &lt;code>bootloader&lt;/code> 配置文件，&lt;code>grubby&lt;/code> 将使用该系统架构的默认值, 这些默认值在下表中列出:&lt;/p>
+&lt;p>默认的引导加载程序主要由构建 &lt;code>grubby&lt;/code> 的系统架构决定。每个系统架构都有一个首选的引导加载程序，每个引导加载程序都有其自己的配置文件; 如果没在命令行上配置选择 &lt;code>bootloader&lt;/code>，则 &lt;code>grubby&lt;/code> 将使用这些默认值来搜索现有配置; 如果找不到 &lt;code>bootloader&lt;/code> 配置文件，&lt;code>grubby&lt;/code> 将使用该系统架构的默认值, 这些默认值在下表中列出:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -67,7 +324,7 @@
 &lt;p>&lt;strong>boot entry&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>引导条目（&lt;code>boot entry&lt;/code>）是一个选项的集合，该选项存储在配置文件中，并绑定到特定的内核版本。&lt;/li>
-&lt;li>实际使用中，系统至少拥有与系统已安装内核一样多的引导条目。&lt;/li>
+&lt;li>实际使用中，系统至少有与系统已安装内核一样多的引导条目。&lt;/li>
 &lt;li>引导条目展示的文件名由存储在 &lt;code>/etc/machine-id&lt;/code> 文件中的机器 &lt;code>ID&lt;/code> 和内核版本组成。&lt;/li>
 &lt;li>引导条目配置文件包含有关内核版本，初始 &lt;code>ramdisk image&lt;/code> 和 &lt;code>kernelopts（其中包含内核命令行参数）&lt;/code> 环境变量的信息。&lt;/li>
 &lt;li>&lt;code>kernelopts&lt;/code> 环境变量在 &lt;code>/boot/grub2/grubenv&lt;/code> 文件中定义。&lt;/li>
