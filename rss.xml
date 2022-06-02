@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 31 May 2022 23:40:44 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>uefi/bios，gpt/mbr的一些概念</title><link>https://ruisum.top/tech/basics/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid><pubDate>Wed, 25 May 2022 23:03:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 02 Jun 2022 23:48:03 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>uefi/bios，gpt/mbr的一些概念</title><link>https://ruisum.top/tech/basics/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid><pubDate>Wed, 25 May 2022 23:03:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
 &lt;p>不清楚 &lt;code>legacy bios&lt;/code> 和 &lt;code>uefi&lt;/code>，&lt;code>gpt&lt;/code> 和 &lt;code>mbr&lt;/code> 的区别，理一下他们的来源和互相之间的关系&lt;/p>
 &lt;h2 id="-bios-和-uefi"># BIOS 和 UEFI&lt;/h2>
 &lt;p>&lt;code>BIOS&lt;/code> 和 &lt;code>UEFI&lt;/code> 是计算机的两个固件接口，它们充当操作系统和计算机固件之间的解释器。这两个接口都用于在计算机启动时初始化硬件组件并启动存储在硬盘驱动器上的操作系统。&lt;/p>
@@ -255,61 +255,74 @@
 &lt;a href="https://www.partitionwizard.com/partitionmagic/uefi-vs-bios.html">https://www.partitionwizard.com/partitionmagic/uefi-vs-bios.html&lt;/a>&lt;br>
 &lt;a href="https://www.softwaretestinghelp.com/mbr-vs-gpt/">https://www.softwaretestinghelp.com/mbr-vs-gpt/&lt;/a>&lt;br>
 &lt;a href="https://www.alphr.com/mbr-vs-gpt/#:~:text=The%20main%20difference%20between%20MBR,boot%20off%20of%20GPT%20drives.">https://www.alphr.com/mbr-vs-gpt/#:~:text=The%20main%20difference%20between%20MBR,boot%20off%20of%20GPT%20drives.&lt;/a>&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tags/uefi/">uefi</category><category domain="https://ruisum.top/tags/bios/">bios</category><category domain="https://ruisum.top/tags/gpt/">gpt</category><category domain="https://ruisum.top/tags/mbr/">mbr</category></item><item><title>linux系统启动流程</title><link>https://ruisum.top/tech/basics/linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/linux%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</guid><pubDate>Wed, 25 May 2022 22:52:46 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
-&lt;p>了解 Linux 引导和启动过程对于能够配置 Linux 和解决启动问题都很重要。本文描述使用 &lt;code>GRUB2&lt;/code> 引导加载程序的&lt;code>boot 流程&lt;/code>以及 &lt;code>systemd&lt;/code> 初始化系统执行的&lt;code>startup 流程&lt;/code>。&lt;/p>
+&lt;p>了解 &lt;code>Linux&lt;/code> 引导和启动过程，有助于增加对 &lt;code>Linux&lt;/code> 的了解，日常工作中碰到系统启动相关问题也能知道是什么原因导致的。 本文主要说明使用 &lt;code>GRUB2&lt;/code> 引导加载程序完成系统的 &lt;code>boot 流程&lt;/code>以及 &lt;code>systemd&lt;/code> 初始化系统执行的&lt;code>startup 流程&lt;/code>。&lt;/p>
 &lt;p>实际上，启动 &lt;code>Linux&lt;/code> 计算机并使其可用需要分两个步骤：&lt;code>boot&lt;/code> 和 &lt;code>startup&lt;/code>。&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>boot&lt;/code> 流程在计算机开机时开始，在内核初始化和 &lt;code>systemd&lt;/code> 启动时完成。&lt;/li>
 &lt;li>&lt;code>startup&lt;/code> 流程在 &lt;code>boot&lt;/code> 流程完成后接管并完成使 &lt;code>Linux&lt;/code> 计算机进入运行状态的任务。&lt;/li>
 &lt;/ul>
-&lt;p>总的来说，Linux 引导和启动过程由以下步骤组成，将在以下各节中更详细地描述。&lt;/p>
+&lt;p>总的来说，Linux 引导和启动过程由以下步骤组成。&lt;/p>
 &lt;ul>
 &lt;li>&lt;code>BIOS POST&lt;/code>&lt;/li>
-&lt;li>&lt;code>Boot loader (GRUB2)&lt;/code>&lt;/li>
-&lt;li>&lt;code>Kernel initialization&lt;/code>（内核初始化）&lt;/li>
-&lt;li>启动 &lt;code>systemd&lt;/code>，所有进程的父进程&lt;/li>
+&lt;li>&lt;code>boot loader (GRUB2)&lt;/code>&lt;/li>
+&lt;li>&lt;code>kernel initialization&lt;/code>（内核初始化）&lt;/li>
+&lt;li>启动 &lt;code>systemd（所有进程的父进程）&lt;/code>&lt;/li>
 &lt;/ul>
 &lt;p>详细流程如下图：
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220529-2243.png" alt="">&lt;/p>
 &lt;h2 id="bios-post">BIOS POST&lt;/h2>
-&lt;p>&lt;code>Linux&lt;/code> 启动过程的第一步实际上和 &lt;code>Linux&lt;/code> 无关。这是引导过程的硬件部分，对于任何操作系统都是一样的。当计算机首次通电时，它会运行 &lt;code>POST&lt;/code>（开机自检），这属于 &lt;code>BIOS&lt;/code> 的一部分。&lt;code>POST&lt;/code> 是 &lt;code>BIOS&lt;/code> 的一部分，其任务是确保计算机硬件正常运行。如果 &lt;code>POST&lt;/code> 失败，计算机可能无法使用，因此引导过程不会继续。&lt;/p>
+&lt;p>&lt;code>Linux&lt;/code> 启动过程的第一步实际上和 &lt;code>Linux&lt;/code> 无关，这是引导过程的硬件部分，对于任何操作系统都是一样的。当计算机首次通电时，它会运行 &lt;code>POST&lt;/code>（开机自检）。&lt;code>POST&lt;/code> 是 &lt;code>BIOS&lt;/code> 的一部分，其任务是确保计算机硬件正常运行。如果 &lt;code>POST&lt;/code> 失败，计算机可能无法使用，因此引导过程不会继续。&lt;/p>
 &lt;p>&lt;code>BIOS POST&lt;/code> 检查硬件的基本可操作性，然后发出一个 &lt;code>BIOS&lt;/code> 中断 &lt;code>INT 13H&lt;/code>，它可以定位任何连接的可引导设备上的引导扇区。它将找到的包含有效引导记录的第一个引导扇区加载到 &lt;code>RAM&lt;/code> 中，然后将控制权转移到从引导扇区加载的代码。&lt;/p>
 &lt;p>引导扇区实际上是引导加载程序的第一阶段。大多数 &lt;code>Linux&lt;/code> 发行版使用三个引导加载程序：&lt;code>GRUB、GRUB2 和 LILO&lt;/code>。 &lt;code>GRUB2&lt;/code> 是最新的，并且现在是使用最多的。&lt;/p>
 &lt;h2 id="grub2">GRUB2&lt;/h2>
-&lt;p>&lt;code>GRUB2&lt;/code> 代表 &lt;code>GRand Unified Bootloader version 2&lt;/code>，它是当前大多数 &lt;code>Linux&lt;/code> 发行版的主要引导加载程序。&lt;code>GRUB2&lt;/code> 是使计算机足够智能以找到操作系统内核并将其加载到内存中的程序。因为 &lt;code>GRUB&lt;/code> 比 &lt;code>GRUB2&lt;/code> 更容易写和说，下文直接使用 &lt;code>GRUB&lt;/code> 表示 &lt;code>GRUB2&lt;/code>。&lt;/p>
-&lt;p>&lt;code>GRUB&lt;/code> 被设计为与多重引导规范兼容，允许 &lt;code>GRUB&lt;/code> 引导许多版本的 &lt;code>Linux&lt;/code> 和其他免费操作系统；它还可以链接加载专有操作系统的&lt;code>引导记录（boot record）&lt;/code>。&lt;/p>
-&lt;p>&lt;code>GRUB&lt;/code> 还可以允许用户选择从任何给定 &lt;code>Linux&lt;/code> 发行版的多个不同内核中引导。有了该功能，当新内核有问题或与软件不兼容，可以直接回退。使用 &lt;code>/boot/grub/grub.conf&lt;/code> 文件配置 &lt;code>GRUB&lt;/code>。&lt;/p>
-&lt;p>&lt;code>GRUB1&lt;/code> 现在被认为是过时的，并且在大多数现代发行版中已被 &lt;code>GRUB2&lt;/code> 取代，&lt;code>GRUB2&lt;/code> 是对 &lt;code>GRUB1&lt;/code> 的重写。基于 &lt;code>Red Hat&lt;/code> 的发行版，&lt;code>Fedora 15&lt;/code> 和 &lt;code>CentOS/RHEL 7&lt;/code> 升级到了 &lt;code>GRUB2&lt;/code>。&lt;code>GRUB2&lt;/code> 提供与 &lt;code>GRUB1&lt;/code> 相同的引导功能，但 &lt;code>GRUB2&lt;/code> 也是类似大型机的基于命令的预操作系统环境，并在预引导阶段提供更大的灵活性。 &lt;code>GRUB2&lt;/code> 使用 &lt;code>/boot/grub2/grub.cfg&lt;/code> 进行配置。&lt;/p>
-&lt;p>任一 &lt;code>GRUB&lt;/code> 的主要功能是将 &lt;code>Linux&lt;/code> 内核加载到内存中并运行。两个 &lt;code>GRUB&lt;/code> 版本的工作方式基本相同，并且具有相同的三个阶段。 虽然 &lt;code>GRUB2&lt;/code> 并没有官方对 &lt;code>GRUB2&lt;/code> 的三个阶段使用阶段表示法，但是这样理解会比较方便&lt;/p>
+&lt;p>&lt;strong>什么是 GRUB2&lt;/strong>&lt;br>
+&lt;code>GRUB2&lt;/code> 代表 &lt;code>GRand Unified Bootloader version 2&lt;/code>，它是当前大多数 &lt;code>Linux&lt;/code> 发行版的主要引导加载程序&lt;/p>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>grub2介绍请查看：&lt;a href="https://www.ruisum.top/tech/basics/grub2%E4%BB%8B%E7%BB%8D/">grub2介绍&lt;/a>&lt;/p>
+&lt;/div>
+&lt;p>任一 &lt;code>GRUB&lt;/code> 的主要功能是将 &lt;code>Linux&lt;/code> 内核加载到内存中并运行。两个 &lt;code>GRUB（grub 和 grub2）&lt;/code> 版本的工作方式基本相同，并且具有相同的三个阶段。 虽然官方并没有使用此处 &lt;code>GRUB2&lt;/code> 的三个阶段来说明 &lt;code>GRUB2&lt;/code> 的工作流程，但是这样理解会比较方便。&lt;/p>
 &lt;h3 id="stage-1">Stage 1&lt;/h3>
-&lt;p>如 &lt;code>BIOS POST&lt;/code> 部分所述，在 &lt;code>POST&lt;/code> 结束时，&lt;code>BIOS&lt;/code> 在连接的磁盘中搜索引导记录，通常位于&lt;code>主引导记录 (MBR) &lt;/code>中，它将找到的&lt;strong>第一个&lt;/strong>记录加载到内存中，然后开始执行开机记录。引导代码（即 GRUB2 阶段 1）非常小，因为它必须与分区表一起放入硬盘驱动器上的第一个 &lt;code>512&lt;/code> 字节扇区。在经典通用 &lt;code>MBR&lt;/code> 中为实际引导代码分配的空间总量为 &lt;code>446&lt;/code> 字节。阶段 1 的 &lt;code>446&lt;/code> 字节文件名为 &lt;code>boot.img&lt;/code>，不包含单独添加到引导记录的分区表。&lt;/p>
-&lt;p>因为引导记录必须如此之小，它不聪明也不了解文件系统结构。因此 &lt;code>stage 1&lt;/code> 的唯一目的是定位和加载&lt;code>stage 1.5&lt;/code>。为了做到这一点，&lt;code>GRUB&lt;/code> 的 &lt;code>stage 1.5&lt;/code> 必须位于引导记录本身和驱动器上的第一个分区之间的空间中。将 &lt;code>GRUB stage 1.5&lt;/code> 加载到 &lt;code>RAM&lt;/code> 后，&lt;code>stage 1&lt;/code> 将控制权移交给&lt;code>stage 1.5&lt;/code>。&lt;/p>
+&lt;p>如 &lt;code>BIOS POST&lt;/code> 部分所述，在 &lt;code>POST&lt;/code> 结束时，&lt;code>BIOS&lt;/code> 在连接的磁盘中搜索引导记录。引导记录通常位于&lt;code>主引导记录 (MBR) &lt;/code>中，它将找到的&lt;span style="border-bottom: #ffdd00 2px solid">
+第一个
+&lt;/span>记录加载到内存中，然后开始执行开机。&lt;code>引导代码（即 GRUB2 stage 1）&lt;/code>非常小，因为它必须与分区表一起放入硬盘驱动器上的第一个 &lt;code>512&lt;/code> 字节扇区。在经典通用 &lt;code>MBR&lt;/code> 中为实际引导代码分配的空间总量为 &lt;code>446&lt;/code> 字节。阶段 1 的 &lt;code>446&lt;/code> 字节文件名为 &lt;code>boot.img&lt;/code>，不包含单独添加到引导记录的分区表。&lt;/p>
+&lt;p>因为引导记录如此之小，写不了多少代码，功能有限。因此 &lt;code>stage 1&lt;/code> 的唯一目的是定位和加载&lt;code>stage 1.5&lt;/code>。为了做到这一点，&lt;code>GRUB&lt;/code> 的 &lt;code>stage 1.5&lt;/code> 必须位于引导记录本身和驱动器上的第一个分区之间的空间中。将 &lt;code>GRUB stage 1.5&lt;/code> 加载到 &lt;code>RAM&lt;/code> 后，&lt;code>stage 1&lt;/code> 将控制权移交给&lt;code>stage 1.5&lt;/code>。&lt;/p>
 &lt;h3 id="stage-15">Stage 1.5&lt;/h3>
 &lt;p>如上所述，&lt;code>GRUB&lt;/code> 的 &lt;code>stage 1.5&lt;/code> 必须位于引导记录本身和磁盘驱动器上的第一个分区之间的空间中。由于技术原因，这个空间在历史上一直未被使用。硬盘驱动器上的第一个分区从扇区 &lt;code>63&lt;/code> 开始，&lt;code>MBR&lt;/code> 在&lt;code>扇区 0&lt;/code>，剩下 &lt;code>62512&lt;/code> 字节扇区（31,744 字节）用于存储 &lt;code>GRUB stage 1.5&lt;/code> 的 &lt;code>core.img&lt;/code> 文件。&lt;code>core.img&lt;/code> 文件是 &lt;code>25,389&lt;/code> 字节，因此在 &lt;code>MBR&lt;/code> 和存储它的第一个磁盘分区之间有足够的空间。&lt;/p>
-&lt;p>由于 &lt;code>stage 1.5&lt;/code> 可以容纳更多的代码，它可以有足够的代码来包含一些常见的文件系统驱动程序，例如标准 &lt;code>EXT&lt;/code> 和其他 &lt;code>Linux&lt;/code> 文件系统、&lt;code>FAT&lt;/code> 和 &lt;code>NTFS&lt;/code>。&lt;code>GRUB2 core.img&lt;/code> 比旧的 &lt;code>GRUB1 stage 1.5&lt;/code> 更复杂和更强大。这意味着 &lt;code>GRUB2 stage 2&lt;/code>可以位于标准 &lt;code>EXT&lt;/code> 文件系统上，但不能位于逻辑卷上。所以&lt;code>stage 2&lt;/code>文件的标准位置是在 &lt;code>/boot&lt;/code> 文件系统中，特别是 &lt;code>/boot/grub2&lt;/code>。&lt;/p>
-&lt;p>请注意，&lt;code>/boot&lt;/code> 目录必须位于 &lt;code>GRUB&lt;/code> 支持的文件系统上，因为并非所有文件系统都是 &lt;code>GRUB&lt;/code>支持的。&lt;code>stage 1.5&lt;/code> 的功能是使用文件系统驱动程序开始执行，以在 &lt;code>/boot&lt;/code> 文件系统中定位&lt;code>stage 2&lt;/code>文件并加载所需的驱动程序。&lt;/p>
+&lt;p>由于 &lt;code>stage 1.5&lt;/code> 可以容纳更多的代码，它可以有足够的代码来包含一些常见的文件系统驱动程序，例如标准 &lt;code>EXT&lt;/code> 和其他 &lt;code>Linux&lt;/code> 文件系统、&lt;code>FAT&lt;/code> 和 &lt;code>NTFS&lt;/code>。&lt;code>GRUB2 core.img&lt;/code> 比旧的 &lt;code>GRUB1 stage 1.5&lt;/code> 更复杂和更强大。这意味着 &lt;code>GRUB2 stage 2&lt;/code>可以位于标准 &lt;code>EXT&lt;/code> 文件系统上（不能位于lvm逻辑卷上）。所以&lt;code>stage 2&lt;/code>文件的标准位置是在 &lt;code>/boot&lt;/code> 文件系统中，特别是 &lt;code>/boot/grub2&lt;/code>。&lt;/p>
+&lt;p>需要特别注意的是，&lt;code>/boot&lt;/code> 目录必须位于 &lt;code>GRUB&lt;/code> 支持的文件系统上，因为并非所有文件系统都是 &lt;code>GRUB&lt;/code> 支持的。&lt;code>stage 1.5&lt;/code> 的功能是从加载文件系统驱动程序开始，以在 &lt;code>/boot&lt;/code> 文件系统中定位 &lt;code>stage 2&lt;/code> 文件并加载所需的驱动程序。&lt;/p>
+&lt;p>&lt;code>GRUB2 stage 1.5&lt;/code> 的功能是定位 &lt;code>Linux&lt;/code> 内核并加载到 &lt;code>RAM&lt;/code> 中，并将计算机的控制权交给内核，内核及其相关文件位于 &lt;code>/boot&lt;/code> 目录中。内核文件是可识别的，因为它们都以 &lt;code>vmlinuz&lt;/code> 开头。&lt;/p>
 &lt;h3 id="stage-2">Stage 2&lt;/h3>
-&lt;p>&lt;code>GRUB stage 1.5&lt;/code> 的所有文件都位于 &lt;code>/boot/grub2&lt;/code> 目录和几个子目录中。 &lt;code>GRUB2&lt;/code> 没有&lt;code>stage 1&lt;/code> 和&lt;code>stage 2&lt;/code> 那样的映像文件。相反，它主要由根据需要从 &lt;code>/boot/grub2/i386-pc&lt;/code> 目录加载的运行时内核模块组成。&lt;/p>
-&lt;p>&lt;code>GRUB2 stage 1.5&lt;/code> 的功能是定位 &lt;code>Linux&lt;/code> 内核并加载到 &lt;code>RAM&lt;/code> 中，并将计算机的控制权交给内核。内核及其相关文件位于 &lt;code>/boot&lt;/code> 目录中。内核文件是可识别的，因为它们都以 &lt;code>vmlinuz&lt;/code> 开头。您可以列出 &lt;code>/boot&lt;/code> 目录的内容以查看系统上当前安装的内核。&lt;/p>
-&lt;p>&lt;code>GRUB2&lt;/code> 与 &lt;code>GRUB1&lt;/code> 一样，支持从一系列 &lt;code>Linux&lt;/code> 内核之一进行引导。&lt;code>Red Hat&lt;/code> 包管理器 &lt;code>DNF&lt;/code> 支持保留多个版本的内核，以便在最新版本出现问题时，可以引导旧版本的内核。默认情况下，&lt;code>GRUB&lt;/code> 提供已安装内核的预引导菜单，包括救援选项和恢复选项（如果已配置）。&lt;/p>
 &lt;p>&lt;code>GRUB2 stage 2&lt;/code>将选定的内核加载到内存中，并将计算机的控制权交给内核。&lt;/p>
 &lt;h2 id="kernel">kernel&lt;/h2>
-&lt;p>所有内核都采用自解压压缩格式以节省空间。内核与初始 RAM 磁盘映像和硬盘驱动器的设备映射一起位于 /boot 目录中。&lt;/p>
-&lt;p>在选定的内核加载到内存并开始执行后，它必须首先从文件的压缩版本中提取自身，然后才能执行任何有用的工作。一旦内核解压了自己，它就会加载 systemd，它是旧 SysV init 程序的替代品，并将控制权交给它。&lt;/p>
-&lt;p>这是引导过程的结束。此时，Linux 内核和 systemd 正在运行，但无法为最终用户执行任何生产任务，因为没有其他任何东西在运行。&lt;/p>
+&lt;p>所有内核都采用自解压压缩格式以节省空间。内核与初始 &lt;code>RAM disk image&lt;/code> 和硬盘驱动器的设备映射一起位于 &lt;code>/boot&lt;/code> 目录中。&lt;/p>
+&lt;p>在选定的内核加载到内存并开始执行后，内核首先需要从文件的压缩版本中提取自身，然后才能执行其他工作内容。一旦内核解压了自己，它就会加载 &lt;code>systemd（旧 SysV init 程序的替代品）&lt;/code>，并将控制权交给它。&lt;/p>
+&lt;p>这是&lt;code>boot process&lt;/code>的结束。此时，&lt;code>Linux&lt;/code> 内核和 &lt;code>systemd&lt;/code> 正在运行，但无法为用户执行任何任务，因为当前没有任何服务在运行。&lt;/p>
 &lt;h2 id="startup-流程">startup 流程&lt;/h2>
-&lt;p>启动过程遵循引导过程，并使 Linux 计算机进入可用于生产性工作的运行状态。&lt;/p>
+&lt;p>&lt;code>startup process&lt;/code> 随着 &lt;code>boot process&lt;/code> 结束而开始，其作用是使 &lt;code>Linux&lt;/code> 计算机进入可用于生产性工作的运行状态。&lt;/p>
 &lt;h3 id="systemd">systemd&lt;/h3>
-&lt;p>systemd 是所有进程之母，它负责将 Linux 主机提升到可以完成生产性工作的状态。它的一些功能比旧的 init 程序要广泛得多，用于管理正在运行的 Linux 主机的许多方面，包括挂载文件系统，以及启动和管理拥有高效 Linux 主机所需的系统服务。任何与启动顺序无关的 systemd 任务都超出了本文的范围。&lt;/p>
-&lt;p>首先，systemd 挂载 /etc/fstab 定义的文件系统，包括任何交换文件或分区。此时，它可以访问位于 /etc 中的配置文件，包括它自己的。它使用其配置文件 /etc/systemd/system/default.target 来确定应将主机引导到哪个状态或目标。default.target 文件只是指向真正目标文件的符号链接。对于桌面工作站，这通常是 graphics.target，相当于旧 SystemV init 中的运行级别 5。对于服务器，默认值更可能是 multi-user.target，类似于 SystemV 中的运行级别 3。 Emergency.target 类似于单用户模式。&lt;/p>
-&lt;p>请注意，&lt;code>targets &lt;/code>和 &lt;code>service&lt;/code> 是 &lt;code>systemd units&lt;/code>。&lt;/p>
-&lt;p>下面的表 1 是 systemd 目标与旧 SystemV 启动运行级别的比较。 systemd 目标别名由 systemd 提供以实现向后兼容性。目标别名允许脚本（以及许多像我这样的系统管理员）使用 SystemV 命令（如 init 3）来更改运行级别。当然，SystemV 命令会被转发到 systemd 进行解释和执行。
+&lt;p>&lt;code>systemd&lt;/code> 是所有进程之母，它负责将 &lt;code>Linux&lt;/code> 主机提升到可以完成生产性工作的状态。&lt;code>systemd&lt;/code> 的功能比旧的 &lt;code>init&lt;/code> 要广泛得多，可以管理运行中的 &lt;code>Linux&lt;/code> 主机的方方面面，包括挂载文件系统、启动和管理使 &lt;code>Linux&lt;/code> 主机高效工作所需的系统服务。&lt;/p>
+&lt;p>&lt;code>systemd&lt;/code> 首先挂载 &lt;code>/etc/fstab&lt;/code> 定义的文件系统，可以包括任何交换文件或分区。此时，&lt;code>systemd&lt;/code> 可以访问位于 &lt;code>/etc&lt;/code> 中的配置文件，包括它自己的。&lt;br>
+&lt;code>systemd&lt;/code> 使用其配置文件 &lt;code>/etc/systemd/system/default.target&lt;/code> 来确定应将主机引导到哪个状态或目标。&lt;code>default.target&lt;/code> 文件只是指向真正目标文件的符号链接。&lt;/p>
+&lt;ul>
+&lt;li>对于桌面环境，通常是 &lt;code>graphics.target&lt;/code>，相当于旧 &lt;code>SystemV init&lt;/code> 中的运行&lt;code>runlevel 5&lt;/code>。&lt;/li>
+&lt;li>对于服务器，默认值更可能是 &lt;code>multi-user.target&lt;/code>，类似于 &lt;code>SystemV&lt;/code> 中的运行&lt;code>runlevel 3&lt;/code>。&lt;/li>
+&lt;li>&lt;code>Emergency.target&lt;/code> 类似于单用户模式。&lt;/li>
+&lt;/ul>
+&lt;p>请注意，&lt;code>targets &lt;/code>和 &lt;code>service&lt;/code> 都是 &lt;code>systemd units&lt;/code>。&lt;/p>
+&lt;p>下面的表 1 是 &lt;code>systemd target&lt;/code> 与旧 &lt;code>SystemV&lt;/code> 启动运行级别的比较。&lt;br>
+&lt;code>systemd target alias&lt;/code> 由 &lt;code>systemd&lt;/code> 提供以实现向后兼容性。目标别名允许脚本使用 &lt;code>SystemV&lt;/code> 命令（如 &lt;code>init 3&lt;/code>）来更改运行级别，&lt;code>SystemV&lt;/code> 命令会被转发到 &lt;code>systemd&lt;/code> 进行解释和执行。
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/05/20220529-2315.png" alt="sysv和systemd对比">&lt;/p>
-&lt;p>每个目标都有一组在其配置文件中描述的依赖项。 systemd 启动所需的依赖项。这些依赖项是在特定功能级别上运行 Linux 主机所需的服务。当目标配置文件中列出的所有依赖项都加载并运行时，系统就在该目标级别运行。&lt;/p>
-&lt;p>不推荐使用的网络服务是 Fedora 中仍在使用 SystemV 启动文件的服务的一个很好的例子。systemd 还会查看旧的 SystemV 初始化目录以查看那里是否存在任何启动文件。如果是这样，systemd 使用这些作为配置文件来启动文件描述的服务。&lt;/p>
-&lt;p>下面的图 1 直接从启动手册页复制而来。它显示了 systemd 启动期间事件的一般顺序以及确保成功启动的基本排序要求。&lt;/p>
-&lt;p>sysinit.target 和 basic.target 目标可以被视为启动过程中的检查点。尽管 systemd 将并行启动系统服务作为其设计目标之一，但在启动其他服务和目标之前，仍然必须启动某些服务和功能目标。在满足该检查点所需的所有服务和目标之前，无法通过这些检查点。&lt;/p>
-&lt;p>因此，当它所依赖的所有单元都完成时，就会达到 sysinit.target。所有这些单元，挂载文件系统，设置交换文件，启动 udev，设置随机生成器种子，启动低级服务，如果一个或多个文件系统被加密，则设置加密服务必须完成，但在 sysinit.target 中，这些任务可以并行执行。&lt;/p>
-&lt;p>sysinit.target 启动所有低级服务和单元，系统需要这些服务和单元才能正常运行，并且需要启用向 basic.target 移动。&lt;/p>
+&lt;p>每个 &lt;code>target&lt;/code> 都有一组在其配置文件中描述的依赖项，&lt;code>systemd&lt;/code> 会启动所需的依赖项。这些依赖项是在特定功能级别上运行 &lt;code>Linux&lt;/code> 主机所需的服务。当目标配置文件中列出的所有依赖项都加载并运行时，系统就在该&lt;code>目标级别（target level）&lt;/code>运行。&lt;/p>
+&lt;p>&lt;code>systemd&lt;/code> 还会查看旧的 &lt;code>SystemV&lt;/code> 初始化目录以查看那里是否存在任何启动文件。如果存在，&lt;code>systemd&lt;/code> 使用这些作为配置文件来启动文件描述的服务。&lt;/p>
+&lt;p>下面的图 1 直接从 &lt;a href="http://man7.org/linux/man-pages/man7/bootup.7.html">bootup man page&lt;/a> 复制而来。它显示了 &lt;code>systemd&lt;/code> 启动期间事件的一般顺序以及确保成功启动的基本排序要求。&lt;/p>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>systemd 介绍请查看：&lt;a href="https://www.ruisum.top/tech/basics/systemd%E4%BB%8B%E7%BB%8D">systemd介绍&lt;/a>&lt;/p>
+&lt;/div>
+&lt;p>&lt;code>sysinit.target&lt;/code> 和 &lt;code>basic.target&lt;/code> &lt;code>target&lt;/code> 可以被视为启动过程中的检查点。尽管 &lt;code>systemd&lt;/code> 将并行启动系统服务作为其设计目标之一，但在启动其他&lt;code>services 和 targets&lt;/code>之前，仍然必须启动某些&lt;code>service&lt;/code>和功能&lt;code>target&lt;/code>。在满足该检查点所需的所有&lt;code>services 和 targets&lt;/code>之前，无法通过这些检查点。&lt;/p>
+&lt;p>因此，当&lt;code>sysinit.target&lt;/code>所依赖的所有 &lt;code>units&lt;/code> 都启动完成时，就完成了 &lt;code>sysinit.target&lt;/code>的启动。所有这些&lt;code>units&lt;/code>：挂载文件系统、设置&lt;code>swap&lt;/code>、启动 &lt;code>udev&lt;/code>，设置&lt;code>random generator seed&lt;/code>，启动&lt;code>low-level services&lt;/code>、&lt;code>cryptographic服务&lt;/code>等必须完成，但在 &lt;code>sysinit.target&lt;/code> 中，这些任务可以并行执行。&lt;/p>
+&lt;p>&lt;code>sysinit.target&lt;/code> 启动所有&lt;code>low-level services&lt;/code>和&lt;code>units&lt;/code>，系统需要这些&lt;code>services and units&lt;/code>才能正常运行，并且需要继续完成 &lt;code>basic.target&lt;/code>。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
@@ -402,18 +415,19 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> graphical.target
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>完成 sysinit.target 后，systemd 接下来启动 basic.target，启动完成它所需的所有单元。基本目标通过启动下一个目标所需的单元来提供一些附加功能。其中包括设置各种可执行目录、通信套接字和计时器的路径。&lt;/p>
-&lt;p>最后，可以初始化用户级目标 multi-user.target 或 graphics.target。请注意，在满足图形目标依赖关系之前，必须达到 multi-user.target。&lt;/p>
-&lt;p>图 1 中带下划线的目标是通常的启动目标。当达到这些目标之一时，启动已完成。如果 multi-user.target 是默认值，那么您应该会在控制台上看到文本模式登录。如果 graphics.target 是默认值，那么您应该会看到图形登录；您看到的特定 GUI 登录屏幕将取决于您使用的默认显示管理器。&lt;/p>
+&lt;/div>&lt;p>完成 &lt;code>sysinit.target&lt;/code> 后，&lt;code>systemd&lt;/code> 接下来启动 &lt;code>basic.target&lt;/code>，启动完成它所需的所有&lt;code>units&lt;/code>。&lt;code>basic.target&lt;/code> 通过启动下一个 &lt;code>target&lt;/code> 所需的 &lt;code>units&lt;/code> 来提供一些附加功能。其中包括设置各种可执行目录、通信套接字和计时器的路径。&lt;/p>
+&lt;p>最后，可以初始化用户级目标 &lt;code>multi-user.target&lt;/code> 或 &lt;code>graphics.target&lt;/code>。在满足 &lt;code>graphics.target&lt;/code> 依赖关系之前，必须达到 &lt;code>multi-user.target&lt;/code>。&lt;/p>
+&lt;p>上面的文本图中，带下划线的 &lt;code>target&lt;/code> 是通常的 &lt;code>startup targets&lt;/code>。当达到这些 &lt;code>target&lt;/code> 之一时，&lt;code>startup 流程&lt;/code>就完成了。如果 &lt;code>multi-user.target&lt;/code> 是默认值，那应该会在控制台上看到文本登录界面。如果 &lt;code>graphics.target&lt;/code> 是默认值，那应该会看到图形登录界面。&lt;/p>
 &lt;h2 id="结论">结论&lt;/h2>
-&lt;p>GRUB2 和 systemd init 系统是大多数现代 Linux 发行版的引导和启动阶段的关键组件。尽管围绕 systemd 一直存在争议，但这两个组件可以顺利地协同工作，首先加载内核，然后启动生成功能性 Linux 系统所需的所有系统服务。&lt;/p>
-&lt;p>尽管我确实发现 GRUB2 和 systemd 都比它们的前辈复杂，但它们也同样易于学习和管理。手册页包含大量关于 systemd 的信息，freedesktop.org 在线提供了完整的 systemd 手册页集。有关更多链接，请参阅下面的资源。&lt;/p>
+&lt;p>&lt;code>GRUB2&lt;/code> 和 &lt;code>systemd init&lt;/code> 系统是大多数现代 &lt;code>Linux&lt;/code> 发行版的 &lt;code>boot&lt;/code> 和 &lt;code>startup&lt;/code> 阶段的关键组件。尽管围绕 &lt;code>systemd&lt;/code> 一直存在争议，但这两个组件可以顺利地协同工作，首先加载内核，然后启动 &lt;code>Linux&lt;/code> 系统所需的所有系统服务。&lt;/p>
 &lt;h2 id="其他">其他&lt;/h2>
 &lt;h3 id="-参考内容"># 参考内容&lt;/h3>
 &lt;ul>
 &lt;li>&lt;a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-working_with_the_grub_2_boot_loader">Working with GRUB 2&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://opensource.com/article/17/2/linux-boot-and-startup">An introduction to the Linux boot and startup processes&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.freedesktop.org/software/systemd/man/bootup.html">linux system boot&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://askubuntu.com/questions/961086/trying-to-understand-the-boot-loader-process-grub">Trying to understand the boot loader process / GRUB?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://superuser.com/questions/1165557/how-grub2-works-on-a-mbr-partitioned-disk-and-gpt-partitioned-disk">How grub2 works on a MBR partitioned disk and GPT partitioned disk?&lt;/a>&lt;/li>
 &lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/grub/">grub</category><category domain="https://ruisum.top/tags/boot/">boot</category><category domain="https://ruisum.top/tags/bootloader/">bootloader</category></item><item><title>grubby命令的使用</title><link>https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/</guid><pubDate>Mon, 23 May 2022 23:24:04 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
 &lt;h3 id="-grubby-是什么"># grubby 是什么&lt;/h3>
 &lt;p>&lt;code>grubby&lt;/code> 是一个可在不同架构下配置 &lt;code>bootloader&lt;/code> 菜单条目的命令行工具。&lt;/p>
