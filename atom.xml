@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">newiur</title><subtitle type="html">newiur's blog</subtitle><updated>2022-06-05T16:59:38+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.98.0">Hugo</generator><entry><title type="text">uefi/bios，gpt/mbr的一些概念</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/"/><id>https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</id><updated>2022-05-25T23:03:13+08:00</updated><published>2022-05-25T23:03:13+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍uefi和bios的差别，gpt和mbr的差别，以及他们互相之间的关系</summary><content type="html">&lt;h2 id="-说明"># 说明&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">newiur</title><subtitle type="html">newiur's blog</subtitle><updated>2022-06-05T17:01:06+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.98.0">Hugo</generator><entry><title type="text">systemd介绍</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/"/><id>https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</id><updated>2022-06-02T23:05:38+08:00</updated><published>2022-06-02T23:05:38+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">systemd是什么，systemd的构成</summary><content type="html">&lt;h2 id="-说明"># 说明&lt;/h2>
+&lt;h3 id="-什么是-systemd"># 什么是 systemd&lt;/h3>
+&lt;p>&lt;code>systemd&lt;/code> 是一个软件套件，它为 &lt;code>linux&lt;/code> 操作系统提供一系列系统组件。它的主要目标是统一 &lt;code>linux&lt;/code> 发行版中的服务配置和行为；它的主要组件是 &lt;code>system and service manager&lt;/code> —— 一个用于启动用户空间和管理用户进程的 &lt;code>init&lt;/code> 系统。它还提供各种守护程序和实用程序的替代品，包括设备管理（&lt;code>device management&lt;/code>）、登录管理（&lt;code>login management&lt;/code>）、网络连接管理（&lt;code>network connection management&lt;/code>）和事件日志记录（&lt;code>event logging&lt;/code>）。&lt;/p>
+&lt;p>自 &lt;code>2015&lt;/code> 年以来，大多数 &lt;code>linux&lt;/code> 发行版都采用了 &lt;code>systemd&lt;/code>，取代了其他 &lt;code>init&lt;/code> 系统，例如 &lt;code>SysV init&lt;/code>。&lt;/p>
+&lt;h3 id="-systemd的历史"># systemd的历史&lt;/h3>
+&lt;p>最初开发 &lt;code>systemd&lt;/code> 是 &lt;code>Red Hat&lt;/code> 软件工程师 &lt;code>Lennart Poettering&lt;/code> 和 &lt;code>Kay Sievers&lt;/code> 于 &lt;code>2010&lt;/code> 年启动的一个项目，目的是用来取代 &lt;code>linux&lt;/code> 的传统 &lt;code>System V init&lt;/code>。&lt;code>Poettering&lt;/code> 在 &lt;code>2010 年 4 月&lt;/code>发表的一篇题 &lt;span style="border-bottom: #ffdd00 2px solid">
+重新思考 PID 1
+&lt;/span>的博客文章，引入了后来成为 systemd 的实验版本; 他们试图以多种方式超越 &lt;code>init&lt;/code> 守护进程的效率。他们希望改进表达依赖关系的软件框架，来允许在系统启动期间同时或并行完成更多任务。&lt;/p>
+&lt;p>&lt;code>2011 年 5 月&lt;/code>，&lt;code>Fedora&lt;/code> 成为第一个默认启用 &lt;code>systemd&lt;/code> 的主要 &lt;code>linux&lt;/code> 发行版，取代了 &lt;code>SysVinit&lt;/code>。当时的理由是 &lt;code>systemd&lt;/code> 在启动期间提供了广泛的并行化、更好的流程管理以及总体上更理智、基于依赖关系的系统控制方法。&lt;/p>
+&lt;p>&lt;code>2012 年 10 月&lt;/code>，&lt;code>Arch linux&lt;/code> 将 &lt;code>systemd&lt;/code> 设为默认值，也完成了从 &lt;code>SysVinit&lt;/code> 的切换。&lt;/p>
+&lt;p>&lt;code>2013 年 10 月&lt;/code>至 &lt;code>2014 年 2 月&lt;/code> 期间，&lt;code>Debian&lt;/code> 技术委员会在经过长时间的辩论后，最终做出决定，在 &lt;code>Debian 8&amp;quot;jessie&amp;quot;&lt;/code>上使用 &lt;code>systemd&lt;/code>。&lt;/p>
+&lt;p>&lt;code>2014 年 2 月&lt;/code>，在 &lt;code>Debian&lt;/code> 做出决定后，&lt;code>Mark Shuttleworth&lt;/code> 在他的博客上宣布 &lt;code>Ubuntu&lt;/code> 将跟随实施 &lt;code>systemd&lt;/code>，放弃自己的 &lt;code>Upstart&lt;/code>。&lt;/p>
+&lt;h2 id="systemd的实现">systemd的实现&lt;/h2>
+&lt;h3 id="-设计"># 设计&lt;/h3>
+&lt;p>&lt;code>Poettering&lt;/code> 将 &lt;code>systemd&lt;/code> 开发描述为 &lt;code>never finished, never complete, but tracking progress of technology（远未完成、远未完美、只跟随技术进步）&lt;/code>。&lt;/p>
+&lt;p>&lt;code>2014 年 5 月&lt;/code>，&lt;code>Poettering&lt;/code> 通过提供以下三个通用功能进一步将 &lt;code>systemd&lt;/code> 描述为&lt;code>pointless differences between distributions（版本之间无大差异）&lt;/code>：&lt;/p>
+&lt;ul>
+&lt;li>系统和服务管理器（通过应用各种配置来管理系统及其服务）&lt;/li>
+&lt;li>软件平台（作为开发其他软件的基础）&lt;/li>
+&lt;li>应用程序和内核之间的粘合剂（提供各种接口来暴露内核提供的功能）&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>systemd&lt;/code> 包括诸如按需&lt;code>启动守护进程&lt;/code>、&lt;code>快照支持&lt;/code>、&lt;code>进程跟踪&lt;/code>和&lt;code>抑制剂锁（Inhibitor Locks）&lt;/code>等功能。它不仅仅是&lt;code>systemd init daemon&lt;/code>的名字，还指代围绕它的整个软件包，除了&lt;code>systemd init&lt;/code>守护进程之外，还包括守护进程&lt;code>journald&lt;/code>、&lt;code>logind&lt;/code>和&lt;code>networkd&lt;/code>以及许多其他基础组件。&lt;/p>
+&lt;p>&lt;code>2013 年 1 月&lt;/code>，&lt;code>Poettering&lt;/code> 将 &lt;code>systemd&lt;/code> 描述为不是一个程序，而是一个包含 &lt;code>69&lt;/code> 个单独二进制文件的大型软件套件。作为一个集成的软件套件，&lt;code>systemd&lt;/code> 取代了由传统 &lt;code>init&lt;/code> 守护进程控制的启动顺序和运行级别，以及在其控制下执行的 &lt;code>shell&lt;/code> 脚本。&lt;code>systemd&lt;/code> 还通过处理用户登录、系统控制台、设备热插拔（&lt;code>device hotplugging&lt;/code>）、计划执行（&lt;code>替换 cron&lt;/code>）、日志记录、主机名和语言环境来集成 &lt;code>Linux&lt;/code> 系统上常见的许多其他服务。&lt;/p>
+&lt;p>与 &lt;code>init&lt;/code> 守护进程一样，&lt;code>systemd&lt;/code> 是一个管理其他守护进程的守护进程，这些守护进程包括 &lt;code>systemd&lt;/code> 本身都是后台进程。 &lt;code>systemd&lt;/code> 是在引导期间启动的第一个守护进程，也是在关机期间终止的最后一个守护进程。&lt;code>systemd&lt;/code> 守护进程充当用户空间进程树的根；第一个进程&lt;code>（PID 1）&lt;/code>在 &lt;code>Unix&lt;/code> 系统上具有特殊的作用，因为它会在原始父进程终止时替换进程的父进程，因此，第一个进程特别适合用于监控守护进程。&lt;/p>
+&lt;p>&lt;code>systemd&lt;/code> 并行执行其启动序列的元素，这在理论上比传统的启动序列方法更快。对于进程间通信 (&lt;code>IPC&lt;/code>)，&lt;code>systemd&lt;/code> 使 &lt;code>Unix&lt;/code> 域套接字（&lt;code>Unix domain sockets&lt;/code>）和 &lt;code>D-Bus&lt;/code> 可用于正在运行的守护进程。 &lt;code>systemd&lt;/code> 本身的状态也可以保存在快照中以备将来调用。&lt;/p>
+&lt;h3 id="-核心组件和库"># 核心组件和库&lt;/h3>
+&lt;p>&lt;strong>systemd组件和库&lt;/strong>&lt;br>
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/06/20220605-1626.png" alt="systemd组件和库">
+遵循 &lt;code>systemd&lt;/code> 的集成方法，&lt;code>systemd&lt;/code> 还提供各种守护程序和实用程序的替代品，包括启动 &lt;code>shell&lt;/code> 脚本、&lt;code>pm-utils&lt;/code>、&lt;code>inetd&lt;/code>、&lt;code>acpid&lt;/code>、&lt;code>syslog&lt;/code>、&lt;code>watchdog&lt;/code>、&lt;code>cron&lt;/code> 和 &lt;code>atd&lt;/code>。&lt;br>
+systemd 的核心组件包括：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>systemd&lt;/code> 是 &lt;code>linux&lt;/code> 操作系统的系统和服务管理器。&lt;/li>
+&lt;li>&lt;code>systemctl&lt;/code> 是一个自省和控制 &lt;code>systemd&lt;/code> 系统和服务管理器状态的命令(不要与 sysctl 混淆)。&lt;/li>
+&lt;li>&lt;code>systemd-analyze&lt;/code> 可用于确定系统启动性能统计数据，并从系统和服务管理器检索其他状态和跟踪信息。
+&lt;code>systemd&lt;/code> 使用 &lt;code>linux&lt;/code> 内核的 &lt;code>cgroups&lt;/code> 子系统而不是使用&lt;code>进程标识符 (PID)&lt;/code> 来跟踪进程；因此，守护进程无法逃离 &lt;code>systemd&lt;/code>，即使是通过 &lt;code>double-forking&lt;/code> 也不行。&lt;br>
+&lt;code>systemd&lt;/code> 不仅使用 &lt;code>cgroup&lt;/code>，还使用 &lt;code>systemd-nspawn&lt;/code> 和 &lt;code>machinectl&lt;/code> 来扩充它们，这两个实用程序有助于创建和管理 &lt;code>linux&lt;/code> 容器。&lt;br>
+从&lt;code>版本 205&lt;/code> 开始，&lt;code>systemd&lt;/code> 还提供 &lt;code>ControlGroupInterface&lt;/code>，它是 &lt;code>linux&lt;/code> 内核 &lt;code>cgroups&lt;/code> 的 &lt;code>API&lt;/code>。&lt;code>linux&lt;/code> 内核 &lt;code>linux&lt;/code> 适用于支持 &lt;code>kernfs&lt;/code>，并且正在被修改以支持统一的层次结构。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>统一层次的 &lt;code>cgroup&lt;/code> 将由 &lt;code>systemd&lt;/code> 通过 &lt;code>systemd-nspawn&lt;/code> 独占访问&lt;/strong>&lt;br>
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/06/20220605-1627.png" alt="systemd-nspawn">&lt;/p>
+&lt;h3 id="-辅助组件"># 辅助组件&lt;/h3>
+&lt;p>除了提供 &lt;code>linux&lt;/code> 初始化系统的主要目的之外，&lt;code>systemd&lt;/code> 套件还可以提供其他功能，包括以下组件：
+&lt;strong>journald&lt;/strong>&lt;br>
+&lt;code>systemd-journald&lt;/code> 是一个负责事件记录的守护进程，使用 &lt;code>append-only&lt;/code> 的二进制文件作为其日志文件。系统管理员可以选择是否使用 &lt;code>systemd-journald&lt;/code>、&lt;code>syslog-ng&lt;/code> 或 &lt;code>rsyslog&lt;/code> 记录系统事件。&lt;br>
+&lt;strong>libudev&lt;/strong>&lt;br>
+&lt;code>libudev&lt;/code> 是使用 &lt;code>udev&lt;/code> 的标准库，它允许第三方应用程序查询 &lt;code>udev&lt;/code> 资源。&lt;br>
+&lt;strong>localed&lt;/strong>&lt;br>
+负责系统语言环境和键盘布局&lt;br>
+&lt;strong>logind&lt;/strong>&lt;br>
+&lt;code>systemd-logind&lt;/code> 是一个以各种方式管理用户登录和席位的守护进程。它是一个集成的登录管理器，提供&lt;code>多席位（multiseat）&lt;/code>改进并取代不再维护的 &lt;code>ConsoleKit&lt;/code>。对于 &lt;code>X11&lt;/code> 显示管理器，切换到 &lt;code>logind&lt;/code> 需要很少的移植。 &lt;code>logind&lt;/code> 集成在 &lt;code>systemd version 30&lt;/code> 中。&lt;br>
+&lt;strong>networkd&lt;/strong>&lt;br>
+&lt;code>networkd&lt;/code> 是处理网络接口配置的守护进程；在 &lt;code>verion 209&lt;/code> 中，&lt;code>networkd&lt;/code> 首次被集成到&lt;code>systemd&lt;/code>，支持场景较少，仅限于静态分配的地址和对桥接配置的基本支持。&lt;code>2014 年 7 月&lt;/code>，&lt;code>systemd 版本 215&lt;/code> 发布，增加了 &lt;code>IPv4&lt;/code> 主机的 &lt;code>DHCP&lt;/code> 服务器和 &lt;code>VXLAN&lt;/code> 支持等新功能。&lt;code>networkctl&lt;/code> 可用于查看 &lt;code>systemd-networkd&lt;/code> 所看到的网络链接的状态。 必须在 /lib/systemd/network/ 下添加新接口的配置作为以 .network 扩展名结尾的新文件。要添加新接口的配置，必须在 &lt;code>/lib/systemd/network/&lt;/code> 新增以 &lt;code>.network&lt;/code> 扩展名结尾的新文件。&lt;br>
+&lt;strong>resolved&lt;/strong>&lt;br>
+&lt;strong>systemd-boot&lt;/strong>&lt;br>
+&lt;code>systemd-boot&lt;/code> 是一个引导管理器，以前称为 &lt;code>gummiboot&lt;/code>。 &lt;code>Kay Sievers&lt;/code> 将其合并到 &lt;code>systemd with rev 220&lt;/code>。&lt;br>
+&lt;strong>timedated&lt;/strong>&lt;br>
+&lt;code>systemd-timedated&lt;/code> 是一个守护进程，可用于控制与时间相关的设置，例如系统时间、系统时区或 &lt;code>UTC&lt;/code> 和本地时区系统时钟之间的选择。&lt;code>timedated&lt;/code> 可以通过 &lt;code>D-Bus&lt;/code> 访问，在&lt;code>systemd 版本 30&lt;/code> 中被集成。&lt;br>
+&lt;strong>timesyncd&lt;/strong>&lt;br>
+&lt;strong>tmpfiles&lt;/strong>&lt;br>
+&lt;code>systemd-tmpfiles&lt;/code> 是一个负责创建和清理临时文件和目录的实用程序。它通常在启动时运行一次，然后以指定的时间间隔运行。&lt;br>
+&lt;strong>udevd&lt;/strong>&lt;br>
+&lt;code>udev&lt;/code> 是 &lt;code>linux&lt;/code> 内核的设备管理器，它处理 &lt;code>/dev&lt;/code> 目录和添加/删除设备时的所有用户空间操作，包括固件加载。&lt;code>2012 年 4 月&lt;/code>，&lt;code>udev&lt;/code> 的源代码树被合并到 &lt;code>systemd&lt;/code> 源代码树中。
+&lt;code>2014 年 5 月 29 日&lt;/code>，通过 &lt;code>udev&lt;/code> 加载固件的支持从 &lt;code>systemd&lt;/code> 中删除，应该由内核应该负责加载固件。&lt;/p>
+&lt;h3 id="-systemd的配置"># systemd的配置&lt;/h3>
+&lt;p>&lt;code>systemd&lt;/code> 仅通过纯文本文件进行配置。&lt;br>
+&lt;code>systemd&lt;/code> 将每个守护进程的初始化指令记录在使用声明性语言的配置文件（称为&amp;quot;单元文件(unit file)&amp;quot;）中，替换传统上使用的每个守护进程启动 &lt;code>shell&lt;/code> 脚本。配置文件支持 &lt;code>crudini&lt;/code> 配置。&lt;/p>
+&lt;p>&lt;code>单元文件（unit file）&lt;/code> 类型包括：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>.service&lt;/code>&lt;/li>
+&lt;li>&lt;code>.socket&lt;/code>&lt;/li>
+&lt;li>&lt;code>.device&lt;/code> (由 &lt;code>systemd&lt;/code> 自动启动)&lt;/li>
+&lt;li>&lt;code>.mount&lt;/code>&lt;/li>
+&lt;li>&lt;code>.automount&lt;/code>&lt;/li>
+&lt;li>&lt;code>.swap&lt;/code>&lt;/li>
+&lt;li>&lt;code>.target&lt;/code>&lt;/li>
+&lt;li>&lt;code>.path&lt;/code>&lt;/li>
+&lt;li>&lt;code>.timer&lt;/code> (可以用作类似 &lt;code>cron&lt;/code> 的作业调度程序)&lt;/li>
+&lt;li>&lt;code>.snapshot&lt;/code>&lt;/li>
+&lt;li>&lt;code>.slice&lt;/code> (用于对流程和资源进行分组和管理)&lt;/li>
+&lt;li>&lt;code>.scope&lt;/code> (用于对工作进程进行分组，不打算通过单元文件进行配置)&lt;/li>
+&lt;/ul>
+&lt;h2 id="-其他"># 其他&lt;/h2>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>&lt;strong>本文内容参考自：&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/Systemd">systemd&lt;/a>&lt;/li>
+&lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/basics/" term="basics" label="basics"/><category scheme="https://ruisum.top/tech/basics/boot_process/" term="boot_process" label="boot_process"/><category scheme="https://ruisum.top/tags/linux/" term="linux" label="linux"/><category scheme="https://ruisum.top/tags/systemd/" term="systemd" label="systemd"/><category scheme="https://ruisum.top/tags/boot/" term="boot" label="boot"/></entry><entry><title type="text">uefi/bios，gpt/mbr的一些概念</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/"/><id>https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</id><updated>2022-05-25T23:03:13+08:00</updated><published>2022-05-25T23:03:13+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">介绍uefi和bios的差别，gpt和mbr的差别，以及他们互相之间的关系</summary><content type="html">&lt;h2 id="-说明"># 说明&lt;/h2>
 &lt;p>不清楚 &lt;code>legacy bios&lt;/code> 和 &lt;code>uefi&lt;/code>，&lt;code>gpt&lt;/code> 和 &lt;code>mbr&lt;/code> 的区别，理一下他们的来源和互相之间的关系&lt;/p>
 &lt;h2 id="-bios-和-uefi"># BIOS 和 UEFI&lt;/h2>
 &lt;p>&lt;code>BIOS&lt;/code> 和 &lt;code>UEFI&lt;/code> 是计算机的两个固件接口，它们充当操作系统和计算机固件之间的解释器。这两个接口都用于在计算机启动时初始化硬件组件并启动存储在硬盘驱动器上的操作系统。&lt;/p>
