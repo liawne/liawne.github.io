@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Sun, 05 Jun 2022 22:11:08 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>systemd介绍</title><link>https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</guid><pubDate>Thu, 02 Jun 2022 23:05:38 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 08 Jun 2022 00:00:40 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>systemd介绍</title><link>https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</guid><pubDate>Thu, 02 Jun 2022 23:05:38 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
 &lt;h3 id="-什么是-systemd"># 什么是 systemd&lt;/h3>
 &lt;p>&lt;code>systemd&lt;/code> 是一个软件套件，它为 &lt;code>linux&lt;/code> 操作系统提供一系列系统组件。它的主要目标是统一 &lt;code>linux&lt;/code> 发行版中的服务配置和行为；它的主要组件是 &lt;code>system and service manager&lt;/code> —— 一个用于启动用户空间和管理用户进程的 &lt;code>init&lt;/code> 系统。它还提供各种守护程序和实用程序的替代品，包括设备管理（&lt;code>device management&lt;/code>）、登录管理（&lt;code>login management&lt;/code>）、网络连接管理（&lt;code>network connection management&lt;/code>）和事件日志记录（&lt;code>event logging&lt;/code>）。&lt;/p>
 &lt;p>自 &lt;code>2015&lt;/code> 年以来，大多数 &lt;code>linux&lt;/code> 发行版都采用了 &lt;code>systemd&lt;/code>，取代了其他 &lt;code>init&lt;/code> 系统，例如 &lt;code>SysV init&lt;/code>。&lt;/p>
@@ -84,7 +84,95 @@ systemd 的核心组件包括：&lt;/p>
 &lt;p>&lt;strong>本文内容参考自：&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://en.wikipedia.org/wiki/Systemd">systemd&lt;/a>&lt;/li>
-&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/boot_process/">boot_process</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/systemd/">systemd</category><category domain="https://ruisum.top/tags/boot/">boot</category></item><item><title>uefi/bios，gpt/mbr的一些概念</title><link>https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid><pubDate>Wed, 25 May 2022 23:03:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/boot_process/">boot_process</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/systemd/">systemd</category><category domain="https://ruisum.top/tags/boot/">boot</category></item><item><title>grub2介绍</title><link>https://ruisum.top/tech/basics/boot_process/grub2%E4%BB%8B%E7%BB%8D/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/grub2%E4%BB%8B%E7%BB%8D/</guid><pubDate>Thu, 02 Jun 2022 22:56:20 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
+&lt;p>&lt;code>bootloader&lt;/code> 是计算机启动时运行的第一个软件程序，它负责加载并将控制权转移到操作系统内核，然后内核初始化操作系统的其余部分。&lt;/p>
+&lt;h3 id="-什么是-grub"># 什么是 GRUB&lt;/h3>
+&lt;p>&lt;code>GNU GRUB&lt;/code> 是一个非常强大的 &lt;code>bootloader（引导加载程序）&lt;/code>，它可以加载各种各样的开源操作系统，以及链式加载专有操作系统（如：&lt;code>windows&lt;/code>）&lt;/p>
+&lt;p>&lt;code>GRUB&lt;/code> 旨在解决引导个人计算机的复杂性。&lt;code>GRUB&lt;/code> 的重要特性之一是灵活性，&lt;code>GRUB&lt;/code> 了解文件系统和内核可执行格式，因此可以按照自己喜欢的方式加载任意操作系统，而无需记录内核在磁盘上的物理位置; 只需指定内核的文件名以及内核所在的驱动器和分区即可加载内核。&lt;/p>
+&lt;p>使用 &lt;code>GRUB&lt;/code> 引导时，可以使用命令行界面或菜单界面的方式：&lt;/p>
+&lt;ul>
+&lt;li>使用命令行界面，可以手动键入内核的驱动器规格和文件名。&lt;/li>
+&lt;li>选择菜单界面，可以使用箭头键选择一个操作系统。
+&lt;ul>
+&lt;li>该菜单基于预先准备的配置文件。&lt;/li>
+&lt;li>在菜单中，可以切换到命令行模式，反之亦然。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="-grub2-和-grub-的异同"># GRUB2 和 GRUB 的异同&lt;/h3>
+&lt;p>&lt;code>GRUB2&lt;/code> 是对 &lt;code>GRUB&lt;/code> 的重写，它与以前的版本（现在称为 &lt;code>GRUB Legacy&lt;/code>）的部分不同点如下：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>GRUB2&lt;/code> 配置文件不同，使用 &lt;code>grub.cfg&lt;/code> 而不是 &lt;code>GRUB&lt;/code> 的 &lt;code>menu.lst (grub.conf的软链接)&lt;/code>或 &lt;code>grub.conf&lt;/code>&lt;/li>
+&lt;li>&lt;code>GRUB2&lt;/code> 设备名称中的分区号现在从 &lt;code>1&lt;/code> 开始，而不是 &lt;code>0&lt;/code>。&lt;/li>
+&lt;li>&lt;code>GRUB2&lt;/code> 增添了许多语法，更接近于脚本语言，支持变量、条件判断、循环等。&lt;/li>
+&lt;li>&lt;code>GRUB2&lt;/code> 使用 &lt;code>img&lt;/code> 文件，不再使用 &lt;code>GRUB&lt;/code> 中的 &lt;code>stage1、stage1.5和stage2&lt;/code>。&lt;/li>
+&lt;/ul>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>更详细的内容可以查看：&lt;a href="https://www.gnu.org/software/grub/manual/grub/html_node/Changes-from-GRUB-Legacy.html#Changes-from-GRUB-Legacy">Differences from previous versions&lt;/a>&lt;/p>
+&lt;/div>
+&lt;h2 id="-grub2-使用"># GRUB2 使用&lt;/h2>
+&lt;h3 id="-grub2-的命名约定"># GRUB2 的命名约定&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>fd0&lt;span class="o">)&lt;/span> ：表示第一块软盘
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>hd0,msdos2&lt;span class="o">)&lt;/span> ：表示第一块硬盘的第二个mbr分区。grub2中分区从1开始编号，传统的grub是从0开始编号的
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>hd0,msdos5&lt;span class="o">)&lt;/span> ：表示第一块硬盘的第一个逻辑分区
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>hd0,gpt1&lt;span class="o">)&lt;/span> ：表示第一块硬盘的第一个gpt分区
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/boot/vmlinuz ：相对路径，基于根目录，表示根目录下的boot目录下的vmlinuz，
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ：如果设置了根目录变量root为&lt;span class="o">(&lt;/span>hd0,msdos1&lt;span class="o">)&lt;/span>，则表示&lt;span class="o">(&lt;/span>hd0,msdos1&lt;span class="o">)&lt;/span>/boot/vmlinuz
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>hd0,msdos1&lt;span class="o">)&lt;/span>/boot/vmlinuz：绝对路径，表示第一硬盘第一分区的boot目录下的vmlinuz文件
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>更详细的内容可以查看：&lt;a href="https://www.gnu.org/software/grub/manual/grub/html_node/Naming-convention.html#Naming-convention">Naming convention&lt;/a>&lt;/p>
+&lt;/div>
+&lt;h3 id="-如何引导操作系统"># 如何引导操作系统&lt;/h3>
+&lt;p>&lt;code>GRUB&lt;/code> 有两种不同的引导方法。 一个是直接加载操作系统，另一种是链式加载另一个引导加载程序，然后再加载操作系统。&lt;br>
+一般使用第一种方式，因为不需要安装或维护其他引导加载程序，而且 GRUB 足够灵活，可以从任意磁盘/分区加载操作系统，能够满足绝大部分场景。&lt;br>
+有时需要后者，因为 &lt;code>GRUB&lt;/code> 本身并不支持所有现有的操作系统。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>直接引导(direct-load)&lt;/code>：直接通过默认的 &lt;code>grub2 boot loader&lt;/code> 来引导写在默认配置文件中的操作系统。&lt;/li>
+&lt;li>&lt;code>链式引导(chain-load)&lt;/code>：使用默认 &lt;code>grub2 boot loader&lt;/code> 链式引导另一个&lt;code>bootloader&lt;/code>，该 &lt;code>bootloader&lt;/code> 将引导对应的操作系统。&lt;/li>
+&lt;/ul>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>更详细的内容可以查看：&lt;a href="https://www.gnu.org/software/grub/manual/grub/html_node/General-boot-methods.html#General-boot-methods">How to boot operating systems&lt;/a>&lt;/p>
+&lt;/div>
+&lt;p>&lt;strong>GRUB2 配置文件&lt;/strong>&lt;br>
+&lt;code>GRUB2&lt;/code> 的配置文件（该文件包含菜单信息）：&lt;/p>
+&lt;ul>
+&lt;li>传统的基于 &lt;code>BIOS&lt;/code> 的机器： &lt;code>/boot/grub2/grub.cfg&lt;/code> 文件&lt;/li>
+&lt;li>&lt;code>UEFI&lt;/code> 机器： &lt;code>/boot/efi/EFI/redhat/grub.cfg&lt;/code> 文件&lt;/li>
+&lt;/ul>
+&lt;p>&lt;code>GRUB2&lt;/code> 的配置文件 &lt;code>grub.cfg&lt;/code> 是在系统安装期间，或通过调用 /usr/sbin/grub2-mkconfig 实用程序生成的，并且在每次安装新内核时由 &lt;code>grubby&lt;/code> 自动更新。&lt;/p>
+&lt;blockquote>
+&lt;p>grubby命令的使用可查看：&lt;a href="https://www.ruisum.top/tech/basics/grubby%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8/">grubby命令的使用&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>当使用 &lt;code>grub2-mkconfig&lt;/code> 手动重新生成时，该文件是根据位于 &lt;code>/etc/grub.d/&lt;/code> 中的模板文件和 &lt;code>/etc/default/grub&lt;/code> 文件中的自定义设置生成的。每次使用 &lt;code>grub2-mkconfig&lt;/code> 重新生成文件时，对 &lt;code>grub.cfg&lt;/code> 的编辑都将丢失，因此要特别注意管控对 &lt;code>/etc/default/grub&lt;/code> 的任何更改。&lt;/p>
+&lt;p>&lt;strong>GRUB2 配置文件的修改&lt;/strong>&lt;br>
+对于 &lt;code>grub.cfg&lt;/code> 的正常操作，例如删除和添加新内核，应该使用 &lt;code>grubby&lt;/code> 工具完成，对于脚本，使用 &lt;code>new-kernel-pkg&lt;/code> 工具。&lt;/p>
+&lt;h2 id="-其他"># 其他&lt;/h2>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>本文内容参考自：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.gnu.org/software/grub/manual/grub/html_node/Changes-from-GRUB-Legacy.html#Changes-from-GRUB-Legacy">Changes-from-GRUB-Legacy&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.gnu.org/software/grub/manual/grub/html_node/Images.html#Images">grub images&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.cnblogs.com/f-ck-need-u/p/7094693.html">命名习惯和文件路径表示方式&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.gnu.org/software/grub/manual/grub/html_node/index.html#SEC_Contents">GNU GRUB手册&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.gnu.org/manual/manual.html">GUN 手册&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/boot_process/">boot_process</category><category domain="https://ruisum.top/tags/grub2/">grub2</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/grubby/">grubby</category></item><item><title>uefi/bios，gpt/mbr的一些概念</title><link>https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/uefibiosgptmbr%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5/</guid><pubDate>Wed, 25 May 2022 23:03:13 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
 &lt;p>不清楚 &lt;code>legacy bios&lt;/code> 和 &lt;code>uefi&lt;/code>，&lt;code>gpt&lt;/code> 和 &lt;code>mbr&lt;/code> 的区别，理一下他们的来源和互相之间的关系&lt;/p>
 &lt;h2 id="-bios-和-uefi"># BIOS 和 UEFI&lt;/h2>
 &lt;p>&lt;code>BIOS&lt;/code> 和 &lt;code>UEFI&lt;/code> 是计算机的两个固件接口，它们充当操作系统和计算机固件之间的解释器。这两个接口都用于在计算机启动时初始化硬件组件并启动存储在硬盘驱动器上的操作系统。&lt;/p>
@@ -381,7 +469,7 @@ systemd 的核心组件包括：&lt;/p>
 &lt;code>GRUB2&lt;/code> 代表 &lt;code>GRand Unified Bootloader version 2&lt;/code>，它是当前大多数 &lt;code>Linux&lt;/code> 发行版的主要引导加载程序&lt;/p>
 &lt;div class="notice info" >
 &lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
-&lt;p>grub2介绍请查看：&lt;a href="https://www.ruisum.top/tech/basics/grub2%E4%BB%8B%E7%BB%8D/">grub2介绍&lt;/a>&lt;/p>
+&lt;p>grub2介绍请查看：&lt;a href="https://www.ruisum.top/tech/basics/boot_process/grub2%E4%BB%8B%E7%BB%8D/">grub2介绍&lt;/a>&lt;/p>
 &lt;/div>
 &lt;h3 id="bios-下-grub-流程">BIOS 下 GRUB 流程&lt;/h3>
 &lt;p>任一 &lt;code>GRUB&lt;/code> 的主要功能是将 &lt;code>linux&lt;/code> 内核加载到内存中并运行。两个 &lt;code>GRUB（grub 和 grub2）&lt;/code> 版本的工作方式基本相同，并且具有相同的三个阶段。 虽然官方并没有使用三个阶段来说明 &lt;code>GRUB&lt;/code> 的工作流程，但是这样理解会比较方便。&lt;/p>
@@ -427,7 +515,7 @@ systemd 的核心组件包括：&lt;/p>
 &lt;p>下面的图 1 直接从 &lt;a href="http://man7.org/linux/man-pages/man7/bootup.7.html">bootup man page&lt;/a> 复制而来。它显示了 &lt;code>systemd&lt;/code> 启动期间事件的一般顺序以及确保成功启动的基本排序要求。&lt;/p>
 &lt;div class="notice info" >
 &lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
-&lt;p>systemd 介绍请查看：&lt;a href="https://www.ruisum.top/tech/basics/systemd%E4%BB%8B%E7%BB%8D">systemd介绍&lt;/a>&lt;/p>
+&lt;p>systemd 介绍请查看：&lt;a href="https://www.ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/">systemd介绍&lt;/a>&lt;/p>
 &lt;/div>
 &lt;p>&lt;code>sysinit.target&lt;/code> 和 &lt;code>basic.target&lt;/code> &lt;code>target&lt;/code> 可以被视为启动过程中的检查点。尽管 &lt;code>systemd&lt;/code> 将并行启动系统服务作为其设计目标之一，但在启动其他&lt;code>services 和 targets&lt;/code>之前，仍然必须启动某些&lt;code>service&lt;/code>和功能&lt;code>target&lt;/code>。在满足该检查点所需的所有&lt;code>services 和 targets&lt;/code>之前，无法通过这些检查点。&lt;/p>
 &lt;p>因此，当&lt;code>sysinit.target&lt;/code>所依赖的所有 &lt;code>units&lt;/code> 都启动完成时，就完成了 &lt;code>sysinit.target&lt;/code>的启动。所有这些&lt;code>units&lt;/code>：挂载文件系统、设置&lt;code>swap&lt;/code>、启动 &lt;code>udev&lt;/code>，设置&lt;code>random generator seed&lt;/code>，启动&lt;code>low-level services&lt;/code>、&lt;code>cryptographic服务&lt;/code>等必须完成，但在 &lt;code>sysinit.target&lt;/code> 中，这些任务可以并行执行。&lt;/p>
