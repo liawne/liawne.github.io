@@ -1,4 +1,166 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 08 Jun 2022 00:04:28 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>systemd介绍</title><link>https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</guid><pubDate>Thu, 02 Jun 2022 23:05:38 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 09 Jun 2022 08:10:22 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>linux盘符变化</title><link>https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</guid><pubDate>Wed, 08 Jun 2022 22:41:20 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
+&lt;p>&lt;code>linux&lt;/code> 服务器重启后盘符发生变化，导致之前以盘符写入 &lt;code>/etc/fstab&lt;/code> 中的开机挂载项错乱，开机自启的应用将数据写入错误的磁盘。&lt;/p>
+&lt;p>查了一下相关信息，&lt;code>linux&lt;/code> 系统启动，磁盘设备名称都有可能变化，这是因为驱动加载的顺序、磁盘扫描顺序都不是固定的。在系统开机时，不同的控制器并行检测，先被探测到的先分配盘符，所以盘符乱序在一些场景下属于正常现象。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;code>/dev/sdx&lt;/code> 的表示形式长期以来一直不是驱动器的稳定标识符（实际上可能从来没有），这些是按照它们被发现的顺序分配的&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="-盘符怎么分配的"># 盘符怎么分配的&lt;/h3>
+&lt;p>&lt;code>linux&lt;/code> 上的设备文件名（通常位于 &lt;code>/dev/&lt;/code> 目录中）在每次系统启动时动态分配。当内核启动时，会检测到每个可用设备，并向 &lt;code>UDEV（用户空间设备管理）&lt;/code> 子系统发送通知。通过将内核设备标识中的信息与 &lt;code>/etc/udev/rules.d&lt;/code> 目录中的 &lt;code>UDEV&lt;/code> 规则集进行比较，&lt;code>UDEV&lt;/code> 为设备分配一个名称并创建一个设备节点，例如 &lt;code>/dev/sda&lt;/code> 或 &lt;code>/dev/mapper/mpath1&lt;/code>，因此应用程序可以访问设备。&lt;/p>
+&lt;h3 id="-固定盘符的难点"># 固定盘符的难点&lt;/h3>
+&lt;p>尽管 &lt;code>linux&lt;/code> 努力在系统重新启动时保持相同的设备名称，但外部环境的变化还是会影响实际的名称显示。&lt;/p>
+&lt;blockquote>
+&lt;p>例如：同一 &lt;code>SAN&lt;/code> 分区在一个客户端上可能是 &lt;code>/dev/sda&lt;/code>，但在另一个集群节点上可能是 &lt;code>/dev/sdf&lt;/code>，这取决于每个主机发现设备的顺序，或者哪台机器的&lt;code>多路径链接（multipath link）&lt;/code>首先联机。&lt;/p>
+&lt;/blockquote>
+&lt;p>节点通常在每次启动时以相同的顺序发现其设备，但这种方式不能确保。需要一种方法来保证持久的、可预测的设备标识。&lt;/p>
+&lt;h3 id="-盘符变化的几种场景"># 盘符变化的几种场景&lt;/h3>
+&lt;ul>
+&lt;li>系统几次启动时，&lt;code>raid&lt;/code> 卡状态有差异&lt;/li>
+&lt;li>服务器磁盘较多，&lt;code>sata/ssd&lt;/code> 混用&lt;/li>
+&lt;li>&lt;/li>
+&lt;/ul>
+&lt;h2 id="-固定盘符的方式"># 固定盘符的方式&lt;/h2>
+&lt;h3 id="-通过-lable-挂载"># 通过 lable 挂载&lt;/h3>
+&lt;p>许多文件系统类型支持将任意字符串或标签与每个文件系统相关联。以 &lt;code>ext3&lt;/code> 文件系统举例说明：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 获取 label&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ /sbin/e2label /dev/sda5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/home
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置 /etc/fstab 挂载&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">LABEL&lt;/span>&lt;span class="o">=&lt;/span>/HOME /home auto defaults &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-通过-uuid-挂载"># 通过 uuid 挂载&lt;/h3>
+&lt;p>许多文件系统类型为每个格式化的磁盘分区分配一个&lt;code>通用唯一标识符（Universally Unique Identifier（UUID））&lt;/code>。&lt;code>UUID&lt;/code> 通常是自动分配的，不建议手动更改该值。还是以 &lt;code>ext3&lt;/code> 文件系统为例说明：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 获取 uuid&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ /sbin/blkid /dev/sda5
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">/dev/sda5: &lt;span class="nv">LABEL&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;/home&amp;#34;&lt;/span> &lt;span class="nv">UUID&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;0c960108-7649-4d8c-a28c-2f75e2f906d3&amp;#34;&lt;/span> &lt;span class="nv">SEC_TYPE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;ext2&amp;#34;&lt;/span> &lt;span class="nv">TYPE&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;ext3&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 配置 /etc/fstab 挂载&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">UUID&lt;/span>&lt;span class="o">=&lt;/span>0c96010876494d8ca28c2f75e2f906d3 /home ext3 defaults &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-使用-udev-规则集"># 使用 udev 规则集&lt;/h3>
+&lt;p>最灵活同时配置难度高一些的方式是使用 &lt;code>udev&lt;/code>，这种方式可以配置持久的、可预测的设备名称。这涉及创建 &lt;code>udev&lt;/code> 匹配规则，该规则使用设备属性来识别设备，然后为其创建设备节点。通常情况下，该规则只是为内核分配的实际&lt;code>低级设备节点（low-level device node）&lt;/code>创建一个符号链接。&lt;/p>
+&lt;p>&lt;strong>使用 multipath 的场景&lt;/strong>&lt;br>
+这是用于实现&lt;code>设备映射器多路径设备（device mapper multipath devices）&lt;/code>的技术。
+内核创建一个 &lt;code>/dev/dm-x&lt;/code> 设备；然后 &lt;code>udev&lt;/code> 规则和&lt;code>多路径守护进程（multipathing daemon）&lt;/code>创建 &lt;code>/dev/mpath/&lt;/code> 链接回 &lt;code>/dev/dm-x&lt;/code> 设备；然后创建 &lt;code>/dev/mapper/mpathN&lt;/code> 或 &lt;code>/dev/mapper/[uuid]&lt;/code> 链接。&lt;/p>
+&lt;p>在使用 &lt;code>multipath&lt;/code> 的场景下，创建哪种类型的 &lt;code>/dev/mapper/&lt;/code> 文件名由 &lt;code>/etc/multipath.conf&lt;/code> 文件 &lt;code>user_friendly_names&lt;/code> 设置控制。 默认设置是：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-editorconfig" data-lang="editorconfig">default {
+user_friendly_names yes
+}
+&lt;/code>&lt;/pre>&lt;p>使用该配置会创建完全没有意义的 &lt;code>/dev/mapper/mpathN&lt;/code> 名称。建议注释掉这一项配置，这样可以直接使用 &lt;code>/dev/mapper/xxxx&lt;/code> 名称，路径可能更难输出，但至少可以在所有集群节点上移植。&lt;/p>
+&lt;p>&lt;strong>udev rules文件规则&lt;/strong>&lt;br>
+下面是一个 &lt;code>udev&lt;/code> 匹配规则的示例。&lt;br>
+该行以一系列谓词或&lt;code>匹配表达式（matching expressions）&lt;/code>开始，由 &lt;code>==&lt;/code> 运算符标记。 如果所有谓词都与已发现设备的谓词匹配，则采取 &lt;code>=&lt;/code> 子句表示的操作。&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-editorconfig" data-lang="editorconfig">SYSFS{vendor}==&amp;#34;iriver&amp;#34; SYSFS{model}==&amp;#34;T10&amp;#34; OWNER=&amp;#34;user&amp;#34; MODE=&amp;#34;0600&amp;#34; SYMLINK+=&amp;#34;iriver%n&amp;#34;
+&lt;/code>&lt;/pre>&lt;p>示例内容是将第一个 &lt;code>IRiver T10&lt;/code> 播放器插入 &lt;code>USB&lt;/code> 端口时创建符号链接 &lt;code>/dev/iriver0&lt;/code>。 该设备文件访问权限 &lt;code>0600&lt;/code> ，用户为 &lt;code>user&lt;/code>。&lt;br>
+首先，&lt;code>USB&lt;/code> 子系统发现设备已插入并通知内核，发现的有关设备的属性也会传递给内核; 这些信息最终到达 &lt;code>UDEV&lt;/code> 子系统，该子系统开始读取 &lt;code>/etc/udev/rules.d&lt;/code> 中的规则集并将设备属性与每个规则的谓词进行匹配。 如果所有谓词都与规则匹配，则执行该规则指定的任何操作。&lt;/p>
+&lt;p>编写 &lt;code>UDEV&lt;/code> 规则的挑战部分是了解哪些属性可用，以便规则可以正确识别设备。&lt;code>udevinfo （或者 udevadm info）&lt;/code> 可以显示规则可用的设备名称和属性。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 udevinfo 命令&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ /usr/bin/udevinfo -q all -p /block/sdb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">P: /block/sdb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">N: sdb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">S: disk/by-id/usb-iriver_T10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">S: disk/by-path/pci-0000:00:07.2-usb-0:1:1.0-scsi-0:0:0:0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_VENDOR&lt;/span>&lt;span class="o">=&lt;/span>iriver
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_MODEL&lt;/span>&lt;span class="o">=&lt;/span>T10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_REVISION&lt;/span>&lt;span class="o">=&lt;/span>1.00
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_SERIAL&lt;/span>&lt;span class="o">=&lt;/span>iriver_T10
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_TYPE&lt;/span>&lt;span class="o">=&lt;/span>disk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_BUS&lt;/span>&lt;span class="o">=&lt;/span>usb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_PATH&lt;/span>&lt;span class="o">=&lt;/span>pci-0000:00:07.2-usb-0:1:1.0-scsi-0:0:0:0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 udevadm info&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ udevadm info /dev/loop0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">P: /devices/virtual/block/loop0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">N: loop0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">L: &lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVPATH&lt;/span>&lt;span class="o">=&lt;/span>/devices/virtual/block/loop0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVNAME&lt;/span>&lt;span class="o">=&lt;/span>/dev/loop0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVTYPE&lt;/span>&lt;span class="o">=&lt;/span>disk
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DISKSEQ&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">MAJOR&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">7&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">MINOR&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">SUBSYSTEM&lt;/span>&lt;span class="o">=&lt;/span>block
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">USEC_INITIALIZED&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1108575&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_FS_VERSION&lt;/span>&lt;span class="o">=&lt;/span>4.0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_FS_TYPE&lt;/span>&lt;span class="o">=&lt;/span>squashfs
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_FS_USAGE&lt;/span>&lt;span class="o">=&lt;/span>filesystem
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">TAGS&lt;/span>&lt;span class="o">=&lt;/span>:systemd:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">CURRENT_TAGS&lt;/span>&lt;span class="o">=&lt;/span>:systemd:
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>udevinfo 命令中路径是相对于 &lt;code>/sys/&lt;/code> 目录的，而不是传统的根目录，完整的文件名是 &lt;code>/sys/block/sdb&lt;/code>。&lt;/p>
+&lt;/div>
+&lt;p>选择合适属性集去配置，不要过多或过少，能确定匹配设备即可;我们在这里的选择是使用供应商名称和型号名称，可以使用任何对象设备的属性集进行设置。&lt;br>
+确定好谓词和操作后，将 &lt;code>rules&lt;/code> 文件放在 &lt;code>/etc/udev/rules.d&lt;/code> 目录中。不要修改系统原有的 &lt;code>rules&lt;/code> 文件，否则更改可能会在包更新时丢失。&lt;/p>
+&lt;h2 id="-其他"># 其他&lt;/h2>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>本文内容参考自：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://blog.51cto.com/gehailong/1546206">解析linux下磁盘乱序的问题&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://access.redhat.com/solutions/1135513">What is udev and how do you write custom udev rules in RHEL7 ?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.thegeekdiary.com/inconsistent-device-names-across-reboot-cause-mount-failure-or-incorrect-mount-in-linux/">Inconsistent Device Names Across Reboot Cause Mount Failure Or Incorrect Mount in Linux&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/problems/">problems</category><category domain="https://ruisum.top/tags/udev/">udev</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/system/">system</category></item><item><title>systemd介绍</title><link>https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</guid><pubDate>Thu, 02 Jun 2022 23:05:38 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
 &lt;h3 id="-什么是-systemd"># 什么是 systemd&lt;/h3>
 &lt;p>&lt;code>systemd&lt;/code> 是一个软件套件，它为 &lt;code>linux&lt;/code> 操作系统提供一系列系统组件。它的主要目标是统一 &lt;code>linux&lt;/code> 发行版中的服务配置和行为；它的主要组件是 &lt;code>system and service manager&lt;/code> —— 一个用于启动用户空间和管理用户进程的 &lt;code>init&lt;/code> 系统。它还提供各种守护程序和实用程序的替代品，包括设备管理（&lt;code>device management&lt;/code>）、登录管理（&lt;code>login management&lt;/code>）、网络连接管理（&lt;code>network connection management&lt;/code>）和事件日志记录（&lt;code>event logging&lt;/code>）。&lt;/p>
 &lt;p>自 &lt;code>2015&lt;/code> 年以来，大多数 &lt;code>linux&lt;/code> 发行版都采用了 &lt;code>systemd&lt;/code>，取代了其他 &lt;code>init&lt;/code> 系统，例如 &lt;code>SysV init&lt;/code>。&lt;/p>
@@ -2890,7 +3052,7 @@ NC-SI 支持将 &lt;code>BMC(baseboard management controller)&lt;/code> 连接�
 &lt;li>&lt;a href="https://comodosslstore.com/resources/a-ssl-certificate-file-extension-explanation-pem-pkcs7-der-and-pkcs12/">A SSL Certificate File Extension Explanation: PEM, PKCS7, DER, and PKCS#12
 &lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://serverfault.com/questions/9708/what-is-a-pem-file-and-how-does-it-differ-from-other-openssl-generated-key-file">What is a Pem file and how does it differ from other OpenSSL Generated Key File Formats?&lt;/a>&lt;/li>
-&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/certificate/">certificate</category><category domain="https://ruisum.top/tags/x509/">X509</category><category domain="https://ruisum.top/tags/ca/">CA</category><category domain="https://ruisum.top/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://ruisum.top/tags/%E5%8A%A0%E5%AF%86/">加密</category></item><item><title>vim 打开 txt 文件乱码</title><link>https://ruisum.top/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</link><guid isPermaLink="true">https://ruisum.top/tech/miscell/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</guid><pubDate>Sun, 20 Mar 2022 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="背景">背景&lt;/h2>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/certificate/">certificate</category><category domain="https://ruisum.top/tags/x509/">X509</category><category domain="https://ruisum.top/tags/ca/">CA</category><category domain="https://ruisum.top/tags/%E8%AF%81%E4%B9%A6/">证书</category><category domain="https://ruisum.top/tags/%E5%8A%A0%E5%AF%86/">加密</category></item><item><title>vim 打开 txt 文件乱码</title><link>https://ruisum.top/tech/problems/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</link><guid isPermaLink="true">https://ruisum.top/tech/problems/vim%E6%89%93%E5%BC%80txt%E6%96%87%E4%BB%B6%E4%B9%B1%E7%A0%81/</guid><pubDate>Sun, 20 Mar 2022 10:18:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="背景">背景&lt;/h2>
 &lt;p>使用 vim 打开 windows 上编辑的 txt 文件, 出现下面的乱码现象
 &lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/04/20220403-2144.png" alt="vim显示乱码">
 在 manjaro 的 kate 中打开, 可以正常显示
@@ -2975,7 +3137,7 @@ NC-SI 支持将 &lt;code>BMC(baseboard management controller)&lt;/code> 连接�
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">set&lt;/span> &lt;span class="nv">fileencodings&lt;/span>&lt;span class="o">=&lt;/span>utf-8,ucs-bom,gb2312,cp936
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/miscell/">miscell</category><category domain="https://ruisum.top/tags/vim/">vim</category><category domain="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/">解码</category></item><item><title>docker 使用到的 iptables 内容</title><link>https://ruisum.top/tech/docker/docker%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84iptables/</link><guid isPermaLink="true">https://ruisum.top/tech/docker/docker%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84iptables/</guid><pubDate>Sun, 13 Mar 2022 22:58:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
+&lt;/div>&lt;p>重新打开文件, 显示正常&lt;/p></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/problems/">problems</category><category domain="https://ruisum.top/tags/vim/">vim</category><category domain="https://ruisum.top/tags/%E8%A7%A3%E7%A0%81/">解码</category></item><item><title>docker 使用到的 iptables 内容</title><link>https://ruisum.top/tech/docker/docker%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84iptables/</link><guid isPermaLink="true">https://ruisum.top/tech/docker/docker%E4%BD%BF%E7%94%A8%E5%88%B0%E7%9A%84iptables/</guid><pubDate>Sun, 13 Mar 2022 22:58:17 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="说明">说明&lt;/h2>
 &lt;p>在服务器上安装 &lt;code>docker&lt;/code> , 并启动 &lt;code>docker.service&lt;/code> 后会发现, &lt;code>iptables-save&lt;/code> 命令的输出增加一些 &lt;code>DOCKER&lt;/code> 相关的内容.&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
