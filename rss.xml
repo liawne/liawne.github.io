@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Thu, 09 Jun 2022 08:10:22 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>linux盘符变化</title><link>https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</guid><pubDate>Wed, 08 Jun 2022 22:41:20 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Mon, 13 Jun 2022 00:01:29 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>linux盘符变化</title><link>https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</guid><pubDate>Wed, 08 Jun 2022 22:41:20 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
 &lt;p>&lt;code>linux&lt;/code> 服务器重启后盘符发生变化，导致之前以盘符写入 &lt;code>/etc/fstab&lt;/code> 中的开机挂载项错乱，开机自启的应用将数据写入错误的磁盘。&lt;/p>
 &lt;p>查了一下相关信息，&lt;code>linux&lt;/code> 系统启动，磁盘设备名称都有可能变化，这是因为驱动加载的顺序、磁盘扫描顺序都不是固定的。在系统开机时，不同的控制器并行检测，先被探测到的先分配盘符，所以盘符乱序在一些场景下属于正常现象。&lt;/p>
 &lt;blockquote>
@@ -70,7 +70,7 @@ user_friendly_names yes
 }
 &lt;/code>&lt;/pre>&lt;p>使用该配置会创建完全没有意义的 &lt;code>/dev/mapper/mpathN&lt;/code> 名称。建议注释掉这一项配置，这样可以直接使用 &lt;code>/dev/mapper/xxxx&lt;/code> 名称，路径可能更难输出，但至少可以在所有集群节点上移植。&lt;/p>
 &lt;p>&lt;strong>udev rules文件规则&lt;/strong>&lt;br>
-下面是一个 &lt;code>udev&lt;/code> 匹配规则的示例。&lt;br>
+下面是一个 &lt;code>udev&lt;/code> 匹配规则（centos7之前版本适用）的示例。&lt;br>
 该行以一系列谓词或&lt;code>匹配表达式（matching expressions）&lt;/code>开始，由 &lt;code>==&lt;/code> 运算符标记。 如果所有谓词都与已发现设备的谓词匹配，则采取 &lt;code>=&lt;/code> 子句表示的操作。&lt;/p>
 &lt;pre tabindex="0">&lt;code class="language-editorconfig" data-lang="editorconfig">SYSFS{vendor}==&amp;#34;iriver&amp;#34; SYSFS{model}==&amp;#34;T10&amp;#34; OWNER=&amp;#34;user&amp;#34; MODE=&amp;#34;0600&amp;#34; SYMLINK+=&amp;#34;iriver%n&amp;#34;
 &lt;/code>&lt;/pre>&lt;p>示例内容是将第一个 &lt;code>IRiver T10&lt;/code> 播放器插入 &lt;code>USB&lt;/code> 端口时创建符号链接 &lt;code>/dev/iriver0&lt;/code>。 该设备文件访问权限 &lt;code>0600&lt;/code> ，用户为 &lt;code>user&lt;/code>。&lt;br>
@@ -91,25 +91,6 @@ user_friendly_names yes
 &lt;/span>&lt;span class="lnt">11
 &lt;/span>&lt;span class="lnt">12
 &lt;/span>&lt;span class="lnt">13
-&lt;/span>&lt;span class="lnt">14
-&lt;/span>&lt;span class="lnt">15
-&lt;/span>&lt;span class="lnt">16
-&lt;/span>&lt;span class="lnt">17
-&lt;/span>&lt;span class="lnt">18
-&lt;/span>&lt;span class="lnt">19
-&lt;/span>&lt;span class="lnt">20
-&lt;/span>&lt;span class="lnt">21
-&lt;/span>&lt;span class="lnt">22
-&lt;/span>&lt;span class="lnt">23
-&lt;/span>&lt;span class="lnt">24
-&lt;/span>&lt;span class="lnt">25
-&lt;/span>&lt;span class="lnt">26
-&lt;/span>&lt;span class="lnt">27
-&lt;/span>&lt;span class="lnt">28
-&lt;/span>&lt;span class="lnt">29
-&lt;/span>&lt;span class="lnt">30
-&lt;/span>&lt;span class="lnt">31
-&lt;/span>&lt;span class="lnt">32
 &lt;/span>&lt;/code>&lt;/pre>&lt;/td>
 &lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 udevinfo 命令&lt;/span>
@@ -125,25 +106,6 @@ user_friendly_names yes
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_TYPE&lt;/span>&lt;span class="o">=&lt;/span>disk
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_BUS&lt;/span>&lt;span class="o">=&lt;/span>usb
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_PATH&lt;/span>&lt;span class="o">=&lt;/span>pci-0000:00:07.2-usb-0:1:1.0-scsi-0:0:0:0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 使用 udevadm info&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ udevadm info /dev/loop0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">P: /devices/virtual/block/loop0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">N: loop0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">L: &lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVPATH&lt;/span>&lt;span class="o">=&lt;/span>/devices/virtual/block/loop0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVNAME&lt;/span>&lt;span class="o">=&lt;/span>/dev/loop0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVTYPE&lt;/span>&lt;span class="o">=&lt;/span>disk
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DISKSEQ&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">MAJOR&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">7&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">MINOR&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">SUBSYSTEM&lt;/span>&lt;span class="o">=&lt;/span>block
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">USEC_INITIALIZED&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">1108575&lt;/span>
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_FS_VERSION&lt;/span>&lt;span class="o">=&lt;/span>4.0
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_FS_TYPE&lt;/span>&lt;span class="o">=&lt;/span>squashfs
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_FS_USAGE&lt;/span>&lt;span class="o">=&lt;/span>filesystem
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">TAGS&lt;/span>&lt;span class="o">=&lt;/span>:systemd:
-&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">CURRENT_TAGS&lt;/span>&lt;span class="o">=&lt;/span>:systemd:
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>
@@ -151,15 +113,265 @@ user_friendly_names yes
 &lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
 &lt;p>udevinfo 命令中路径是相对于 &lt;code>/sys/&lt;/code> 目录的，而不是传统的根目录，完整的文件名是 &lt;code>/sys/block/sdb&lt;/code>。&lt;/p>
 &lt;/div>
-&lt;p>选择合适属性集去配置，不要过多或过少，能确定匹配设备即可;我们在这里的选择是使用供应商名称和型号名称，可以使用任何对象设备的属性集进行设置。&lt;br>
+&lt;p>选择合适属性集去配置，不要过多或过少，能确定匹配设备即可;我们在这里选择使用供应商名称和型号名称，可以使用任何对象设备的属性集进行设置。&lt;br>
 确定好谓词和操作后，将 &lt;code>rules&lt;/code> 文件放在 &lt;code>/etc/udev/rules.d&lt;/code> 目录中。不要修改系统原有的 &lt;code>rules&lt;/code> 文件，否则更改可能会在包更新时丢失。&lt;/p>
-&lt;h2 id="-其他"># 其他&lt;/h2>
+&lt;h2 id="-udev-相关内容"># udev 相关内容&lt;/h2>
+&lt;p>&lt;code>rhel7（centos7）&lt;/code> 和之前版本 &lt;code>rhel（centos)&lt;/code> 上的 &lt;code>udev&lt;/code> 版本之间的 &lt;code>udev&lt;/code> 规则语法略有不同。&lt;/p>
+&lt;div class="notice warning" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>本文只讨论 &lt;code>rhel7/8和rhel6&lt;/code>，对 &lt;code>rhel5/9&lt;/code> 的 &lt;code>udev&lt;/code> 配置不在讨论范围内。&lt;/p>
+&lt;/div>
+&lt;h3 id="rhel7centos7-中的-udev-规则配置">rhel7(centos7) 中的 udev 规则配置&lt;/h3>
+&lt;p>要生成拥有唯一名称的磁盘，需要为目标磁盘配置相应的 &lt;code>规则（udev）&lt;/code>。每个 &lt;code>udev&lt;/code> 规则由三部分组成：&lt;/p>
+&lt;blockquote>
+&lt;p>(1)&lt;strong>ACTION&lt;/strong>s (2)&lt;strong>FILTER&lt;/strong>s (3)&lt;strong>CHANGE&lt;/strong>s&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>ACTION&lt;/strong>s(动作): 或何时应用规则。最常见的触发操作是 &lt;code>add&lt;/code> 和/或 &lt;code>change&lt;/code>。
+&lt;strong>FILTER&lt;/strong>s(过滤器): 或如何识别目标磁盘以应用更改。有几种常用的磁盘过滤方法，包括通过&lt;code>子系统(subsystem)&lt;/code>和 wwid（或其他唯一标识符）。一些过滤器生效范围很广，因为要应用的更改会跨多个磁盘完成，例如更改磁盘上的所有者或访问权限。然而，更常见的是过滤器针对单个磁盘，为此，通常使用一些唯一的标识符，如序列号或 &lt;code>wwid&lt;/code>。&lt;br>
+&lt;strong>CHANGE&lt;/strong>s(更改): 或者我们想用设备做什么。最常见的更改是创建一个唯一且持久的设备名称，然后应用程序可以使用该名称。&lt;/p>
+&lt;p>如下是示例：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-udev" data-lang="udev">|&amp;lt;--- ACTIONs ----&amp;gt;| |&amp;lt;-------------------- FILTERs -------------------&amp;gt;| |&amp;lt;--------- CHANGEs ----------------&amp;gt;|
+ACTION==&amp;#34;add|change&amp;#34;, KERNEL==&amp;#34;sd*&amp;#34;, ENV{ID_SCSI_SERIAL}==&amp;lt;serial-number&amp;gt;&amp;#34;, SYMLINK+=&amp;#34;&amp;lt;my-persistent-disk-name&amp;gt;%n&amp;#34;
+ACTION==&amp;#34;add|change&amp;#34;, KERNEL==&amp;#34;sd*&amp;#34;, ENV{ID_SCSI_SERIAL}==&amp;#34;50014380212E90E0&amp;#34;, SYMLINK+=&amp;#34;data.A%n&amp;#34;
+&lt;/code>&lt;/pre>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>1.&lt;code>%n&lt;/code> 是分区号，所以如果 &lt;code>sda&lt;/code> 是上面 &lt;code>FILTER&lt;/code> 识别的磁盘，那么 &lt;code>sda&lt;/code>、&lt;code>sda1&lt;/code>、&lt;code>sda2&lt;/code> 将同时创建 &lt;code>data.A&lt;/code>、&lt;code>data.A1&lt;/code>、&lt;code>data.A2&lt;/code> 等。&lt;br>2. &lt;code>NAME udev&lt;/code> 不要使用内核已经使用的名称（例如 &lt;code>sd* dm* st* nt* eth*&lt;/code> 等）。 这种使用不受支持并且可能会导致问题，&lt;code>SYMLINK&lt;/code> 值 &lt;code>my-persistent-disk-name&lt;/code> 应该是唯一的，而不是内核已经使用的东西。&lt;/p>
+&lt;/div>
+&lt;p>示例中的规则将识别具有指定序列号的 &lt;code>sdX&lt;/code> 磁盘，并在 &lt;code>devfs&lt;/code> 中创建唯一的 &lt;code>/dev/my-persistent-disk-name&lt;/code> 条目。 然后应用程序使用 &lt;code>/dev/my-persistent-disk-name&lt;/code> 而不是尝试使用定义为非持久的 &lt;code>sdX&lt;/code>。&lt;/p>
+&lt;h3 id="rhel7centos7-中获取设备信息">rhel7(centos7) 中获取设备信息&lt;/h3>
+&lt;p>要查找唯一的自标识符（由磁盘本身提供），请使用 &lt;code>udevadm info&lt;/code> 命令。 例如：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm info --query=all /dev/sda | egrep -i &amp;#34;serial|wwn&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">S: disk/by-id/wwn-0x600508b1001ca98d5d765bea5a0dd3fa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">DEVLINKS&lt;/span>&lt;span class="o">=&lt;/span>/dev/disk/by-path/pci-0000:04:00.0-scsi-0:1:0:0 /dev/disk/by-id/scsi-0HP_LOGICAL_VOLUME_00000000 /dev/disk/by-id/scsi-3600508b1001ca98d5d765bea5a0dd3fa /dev/disk/by-id/scsi-SHP_LOGICAL_VOLUME_50014380212E90E0 /dev/disk/by-id/wwn-0x600508b1001ca98d5d765bea5a0dd3fa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_SCSI_SERIAL&lt;/span>&lt;span class="o">=&lt;/span>50014380212E90E0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_SERIAL&lt;/span>&lt;span class="o">=&lt;/span>3600508b1001ca98d5d765bea5a0dd3fa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_SERIAL_SHORT&lt;/span>&lt;span class="o">=&lt;/span>600508b1001ca98d5d765bea5a0dd3fa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_WWN&lt;/span>&lt;span class="o">=&lt;/span>0x600508b1001ca98d
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_WWN_VENDOR_EXTENSION&lt;/span>&lt;span class="o">=&lt;/span>0x5d765bea5a0dd3fa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_WWN_WITH_EXTENSION&lt;/span>&lt;span class="o">=&lt;/span>0x600508b1001ca98d5d765bea5a0dd3fa
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">SCSI_IDENT_SERIAL&lt;/span>&lt;span class="o">=&lt;/span>50014380212E90E0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>E:&lt;/code> 表示这些是 &lt;code>ENV{name}=&amp;quot;value&amp;quot;&lt;/code> 类型，在上面的示例中，使用了 &lt;code>ENV{ID_SCSI_SERIAL}&lt;/code>，因为这在当前系统上的磁盘配置中是唯一的。 也可以为此磁盘选择&lt;code>全球名称 (wwid) ENV{ID_WWN} &lt;/code>或任何其他命名标识符。&lt;/p>
+&lt;p>使用 &lt;code>ENV{name}&lt;/code> 子句进行过滤的替代方法是使用 &lt;code>ATTR{name}==&amp;quot;value&amp;quot;&lt;/code> 或 &lt;code>ATTRS{name}==&amp;quot;value&amp;quot;&lt;/code> 过滤。 再次使用 &lt;code>udevadm&lt;/code> 命令可以找到这些信息：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm info --path=/sys/class/block/sda --attribute-walk | grep -i ww&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> ATTRS&lt;span class="o">{&lt;/span>wwid&lt;span class="o">}==&lt;/span>&lt;span class="s2">&amp;#34;naa.600508b1001ca98d5d765bea5a0dd3fa&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>注意，&lt;code>此 ATTRS{name}&lt;/code> 与 &lt;code>ENV{ID_WWN_WITH_EXTENSION}&lt;/code> 具有相同的值，&lt;code>但带有naa&lt;/code>。&lt;/p>
+&lt;p>验证写的 &lt;code>rules&lt;/code> 文件：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm test /block/&amp;lt;sdX&amp;gt; 2&amp;gt;&amp;amp;1 | grep &amp;lt;my-persistent-disk-name&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>验证通过后应用 &lt;code>rules&lt;/code> 内容，重新加载并触发内容生效：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm control --reload-rules&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm trigger --type=devices --action=change&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">NOTE: To monitor the rules, open a monitor &lt;span class="k">while&lt;/span> you &lt;span class="k">do&lt;/span> the above. In a separate terminal run the udev monitor, control-C to exit.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm monitor&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="notice warning" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>在 &lt;code>rhel7(centos7)和rhel8(centos8)&lt;/code>中，&lt;code>scsi_id&lt;/code> 命令位于 &lt;code>/usr/lib/udev&lt;/code> 中，扫描的是 &lt;code>SUBSYSTEM&lt;/code> 而不是 &lt;code>BUS&lt;/code>。&lt;/p>
+&lt;/div>
+&lt;h3 id="rhel6centos6-中获取设备信息">rhel6(centos6) 中获取设备信息&lt;/h3>
+&lt;p>第一步是获取 &lt;code>SCSI&lt;/code> 设备的 &lt;code>SCSI&lt;/code> 标识符，通常是一个 &lt;code>WWID&lt;/code>。 可以使用如下命令获取，命令必须以 &lt;code>root&lt;/code> 身份运行，否则不会生成任何输出，因为需要 &lt;code>root&lt;/code> 权限才能访问原始设备。&lt;br>
+要获取 /dev/sda 的标识符，请运行以下命令：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># scsi_id --whitelisted --replace-whitespace --device=/dev/sda&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3500000e012d5ede0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>scsi_id&lt;/code> 命令向设备发出 &lt;code>SCSI INQUIRY&lt;/code> 命令以访问&lt;code>重要产品数据 (VPD(vital product data))&lt;/code> 页 &lt;code>0x83&lt;/code> 的数据（如果有的话）。该页面包括设备 &lt;code>WWID&lt;/code> 以及其他信息。&lt;br>
+如果 WWID 不可用，则输出基于 &lt;code>VPD&lt;/code> 页 &lt;code>0x80&lt;/code> 中的序列号 &lt;code>id&lt;/code>。由于名义上应该有 &lt;code>WWID（全球标识符）&lt;/code>可用，本文中设备标识符将是 &lt;code>WWID&lt;/code>。&lt;/p>
+&lt;p>以下是基于序列号的 &lt;code>SCSI&lt;/code> 标识符示例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># scsi_id --whitelisted --replace-whitespace --device=/dev/sda&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1ATA_ST3250310AS_9RY3GS4M
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>scsi_id&lt;/code> 命令（长字符串）的结果是当前映射到 &lt;code>/dev/sda&lt;/code> 的设备的 &lt;code>WWID&lt;/code>。同一设备的每个路径和设备的每个分区，此 &lt;code>WWID&lt;/code> 都是相同的。&lt;code>WWID&lt;/code> 是持久的，即使在系统中添加或删除其他设备也不会更改。&lt;br>
+系统重新启动时，&lt;code>WWID&lt;/code> 保持相同 。但是设备到 &lt;code>/dev/sda&lt;/code> 的映射可能会改变。这就是为什么需要为软件使用创建的静态设备名称的原因。&lt;/p>
+&lt;p>&lt;code>udevadm&lt;/code> 命令同样可用于查找 &lt;code>WWID&lt;/code> 信息：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm info --query all --name=/dev/sdd | grep WWN&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_WWN&lt;/span>&lt;span class="o">=&lt;/span>0x500000e012d5ede0
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_WWN_WITH_EXTENSION&lt;/span>&lt;span class="o">=&lt;/span>0x500000e012d5ede0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>优先使用 &lt;code>udevadm&lt;/code> 命令获取&lt;code>WWN（World Wide Name，World Wide IDentifier 的另一个名称）&lt;/code>和其他信息&lt;/p>
+&lt;/div>
+&lt;p>还可以使用下面的命令来获取 &lt;code>SCSI&lt;/code> 设备的 &lt;code>SERIAL ID&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm info --query all --name=/dev/sda | grep ID_SERIAL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_SERIAL&lt;/span>&lt;span class="o">=&lt;/span>ST3250310AS_9RY3GS4M
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">E: &lt;span class="nv">ID_SERIAL_SHORT&lt;/span>&lt;span class="o">=&lt;/span>9RY3GS4M
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="rhel6centos6-中的-udev-规则配置">rhel6(centos6) 中的 udev 规则配置&lt;/h3>
+&lt;p>为命名设备创建规则，创建 &lt;code>/etc/udev/rules.d/20-names.rules&lt;/code> 文件。加命名规则，格式如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ACTION&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;add|change&amp;#34;&lt;/span>, &lt;span class="nv">KERNEL&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;sd*&amp;#34;&lt;/span>, &lt;span class="nv">BUS&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;scsi&amp;#34;&lt;/span>, &lt;span class="nv">PROGRAM&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;/sbin/scsi_id --whitelisted --replace-whitespace --device=%N&amp;#34;&lt;/span>, &lt;span class="nv">RESULT&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;WWID&amp;#34;&lt;/span>, &lt;span class="nv">SYMLINK&lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="s2">&amp;#34;devicename%n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">or using udev ENV syntax:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ACTION&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;add|change&amp;#34;&lt;/span>, &lt;span class="nv">KERNEL&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;sd*&amp;#34;&lt;/span>, ENV&lt;span class="o">{&lt;/span>ID_WWN&lt;span class="o">}==&lt;/span>&lt;span class="s2">&amp;#34;WWID&amp;#34;&lt;/span>, &lt;span class="nv">SYMLINK&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;devicename%n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>将上述模板中的 &lt;code>stringsWWID&lt;/code> 和 &lt;code>devicename&lt;/code> 替换为在检索到的实际 &lt;code>WWID&lt;/code> 和所需的设备名称。
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>不要使用内核已经使用的名称（例如 &lt;code>sd* dm* st* nt* eth*&lt;/code> 等）。 这种使用不受支持并且可能会导致问题，为 &lt;code>SYMLINK&lt;/code> 指定的名称值在所有规则中必须是唯一的。&lt;/p>
+&lt;/div>&lt;/p>
+&lt;p>具体示例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ACTION&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;add|change&amp;#34;&lt;/span>, &lt;span class="nv">KERNEL&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;sd*&amp;#34;&lt;/span>, &lt;span class="nv">BUS&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;scsi&amp;#34;&lt;/span>, &lt;span class="nv">PROGRAM&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;/sbin/scsi_id --whitelisted --replace-whitespace --device=%N&amp;#34;&lt;/span>, &lt;span class="nv">RESULT&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;3500000e012d5ede0&amp;#34;&lt;/span>, &lt;span class="nv">SYMLINK&lt;/span>&lt;span class="o">+=&lt;/span>&lt;span class="s2">&amp;#34;mydiskname%n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">or using udev ENV syntax:
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">ACTION&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;add|change&amp;#34;&lt;/span>, &lt;span class="nv">KERNEL&lt;/span>&lt;span class="o">==&lt;/span>&lt;span class="s2">&amp;#34;sd*&amp;#34;&lt;/span>, ENV&lt;span class="o">{&lt;/span>ID_WWN&lt;span class="o">}==&lt;/span>&lt;span class="s2">&amp;#34;500000e012d5ede0&amp;#34;&lt;/span>, &lt;span class="nv">SYMLINK&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;mydiskname%n&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>规则文件生效时将触发系统检查与 &lt;code>/dev/sd*&lt;/code> 匹配的所有 &lt;code>SCSI&lt;/code> 设备，并检查给定的 &lt;code>WWID&lt;/code> &lt;code>500000e012d5ede0&lt;/code>。当它找到匹配的设备时，它将创建一个名为 &lt;code>/dev/mydiskname&lt;/code> 的符号链接，该链接指向 &lt;code>/dev/sda&lt;/code> —— 至少在当前引导周期内。 如果设备上有任何分区，则会创建其他符号链接：&lt;code>/dev/mydiskname1&lt;/code> 用于第一个分区 &lt;code>(/dev/sda1)&lt;/code>，&lt;code>/dev/mydiskname2&lt;/code> 用于第二个分区 &lt;code>(/dev/sda2)&lt;/code>，依此类推。&lt;/p>
+&lt;p>测试规则文件是否生效：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># /dev/sda 上有分区&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># udevadm test /block/sda 2&amp;gt;&amp;amp;1 | grep mydiskname&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">udev_rules_apply_to_event: LINK &lt;span class="s1">&amp;#39;mydiskname&amp;#39;&lt;/span> /etc/udev/rules.d/20-names.rules:1
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">link_find_prioritized: found &lt;span class="s1">&amp;#39;/sys/devices/pci0000:00/0000:00:1c.0/0000:02:00.0/host0/port-0:0/end_device-0:0/target0:0:0/0:0:0:0/block/sda&amp;#39;&lt;/span> claiming &lt;span class="s1">&amp;#39;/dev/.udev/links/mydiskname&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">link_update: creating link &lt;span class="s1">&amp;#39;/dev/mydiskname&amp;#39;&lt;/span> to &lt;span class="s1">&amp;#39;/dev/sda&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">node_symlink: creating symlink &lt;span class="s1">&amp;#39;/dev/mydiskname&amp;#39;&lt;/span> to &lt;span class="s1">&amp;#39;sda&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">udevadm_test: &lt;span class="nv">DEVLINKS&lt;/span>&lt;span class="o">=&lt;/span>/dev/mydiskname /dev/block/8:0 /dev/disk/by-id/scsi-3500000e012d5ede0 /dev/disk/by-id/wwn-0x500000e012d5ede0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>触发生效：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># add&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># /sbin/udevadm trigger --type=subsystems --action=add&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># /sbin/udevadm trigger --type=devices --action=add&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># change&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># /sbin/udevadm trigger --type=subsystems --action=change&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># /sbin/udevadm trigger --type=devices --action=change&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># 触发制定设备&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@host&lt;span class="o">]&lt;/span>&lt;span class="c1"># echo change &amp;gt; /sys/block/sda/sda1/uevent&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>检查：&lt;/p>
+&lt;pre tabindex="0">&lt;code class="language-editorconfig" data-lang="editorconfig"># ls -l /dev/mydiskname*
+lrwxrwxrwx. 1 root root 3 Feb 20 21:52 /dev/mydiskname -&amp;gt; sda
+lrwxrwxrwx. 1 root root 3 Feb 20 21:52 /dev/mydiskname1 -&amp;gt; sda1
+&lt;/code>&lt;/pre>&lt;h2 id="-其他"># 其他&lt;/h2>
 &lt;h3 id="-参考内容"># 参考内容&lt;/h3>
 &lt;p>本文内容参考自：&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://blog.51cto.com/gehailong/1546206">解析linux下磁盘乱序的问题&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://access.redhat.com/solutions/1135513">What is udev and how do you write custom udev rules in RHEL7 ?&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.thegeekdiary.com/inconsistent-device-names-across-reboot-cause-mount-failure-or-incorrect-mount-in-linux/">Inconsistent Device Names Across Reboot Cause Mount Failure Or Incorrect Mount in Linux&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://access.redhat.com/solutions/2975361">How are custom persistent names assigned for SCSI devices using udev in Red Hat Enterprise Linux 7 and 8?&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://access.redhat.com/solutions/45626">How can static names be assigned for SCSI devices using udev in Red Hat Enterprise Linux 6?&lt;/a>&lt;/li>
 &lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/problems/">problems</category><category domain="https://ruisum.top/tags/udev/">udev</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/system/">system</category></item><item><title>systemd介绍</title><link>https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/boot_process/systemd%E4%BB%8B%E7%BB%8D/</guid><pubDate>Thu, 02 Jun 2022 23:05:38 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-说明"># 说明&lt;/h2>
 &lt;h3 id="-什么是-systemd"># 什么是 systemd&lt;/h3>
 &lt;p>&lt;code>systemd&lt;/code> 是一个软件套件，它为 &lt;code>linux&lt;/code> 操作系统提供一系列系统组件。它的主要目标是统一 &lt;code>linux&lt;/code> 发行版中的服务配置和行为；它的主要组件是 &lt;code>system and service manager&lt;/code> —— 一个用于启动用户空间和管理用户进程的 &lt;code>init&lt;/code> 系统。它还提供各种守护程序和实用程序的替代品，包括设备管理（&lt;code>device management&lt;/code>）、登录管理（&lt;code>login management&lt;/code>）、网络连接管理（&lt;code>network connection management&lt;/code>）和事件日志记录（&lt;code>event logging&lt;/code>）。&lt;/p>
