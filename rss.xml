@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.98.0 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Tue, 14 Jun 2022 08:16:17 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>文件描述符暂存内容</title><link>https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/</guid><pubDate>Mon, 13 Jun 2022 23:15:48 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>newiur</title><link>https://ruisum.top/</link><description>newiur's blog</description><generator>Hugo 0.99.1 https://gohugo.io/</generator><language>zh-CN</language><managingEditor>rwen913@gmail.com (newiur)</managingEditor><webMaster>rwen913@gmail.com (newiur)</webMaster><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><lastBuildDate>Wed, 15 Jun 2022 23:38:47 +0800</lastBuildDate><atom:link rel="self" type="application/rss+xml" href="https://ruisum.top/rss.xml"/><item><title>文件描述符暂存内容</title><link>https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/</link><guid isPermaLink="true">https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/</guid><pubDate>Mon, 13 Jun 2022 23:15:48 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
 &lt;p>写 &lt;code>shell&lt;/code> 脚本时，有时会需要保存临时数据，供脚本后续流程使用的场景; 之前是在执行脚本时生成临时文件，脚本执行完成后删除文件&lt;/p>
 &lt;h2 id="-几种实现方式"># 几种实现方式&lt;/h2>
 &lt;h3 id="-使用-mktemp-生成临时文件"># 使用 mktemp 生成临时文件&lt;/h3>
@@ -17,7 +17,7 @@
 &lt;/div>
 &lt;/div>&lt;h3 id="-mktemp-结合-文件描述符使用"># mktemp 结合 文件描述符使用&lt;/h3>
 &lt;p>可以通过在脚本中打开文件的文件描述符后将其删除，来确保当脚本退出（包括终止和崩溃）时删除文件。&lt;br>
-只要文件描述符未关闭，该文件就一直可用（只对当前脚本而言，不是真的对于所有的其他进程）。当文件描述符关闭时（内核在进程退出时自动执行），文件系统将删除该文件。
+只要文件描述符未关闭，该文件就一直可用（只对当前脚本而言，不是真的对于所有的其他进程）。当文件描述符关闭时（内核在进程退出时自动执行），文件系统将删除该文件。&lt;br>
 如下示例：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
@@ -170,7 +170,123 @@
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">test5
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="-使用-named-pipe-和-文件描述符"># 使用 named pipe 和 文件描述符&lt;/h3></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/bash/">bash</category><category domain="https://ruisum.top/tags/fd/">fd</category><category domain="https://ruisum.top/tags/bash/">bash</category><category domain="https://ruisum.top/tags/basic/">basic</category><category domain="https://ruisum.top/tags/linux/">linux</category></item><item><title>linux盘符变化</title><link>https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</guid><pubDate>Wed, 08 Jun 2022 22:41:20 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
+&lt;/div>&lt;h3 id="-fd-的使用场景"># fd 的使用场景&lt;/h3>
+&lt;p>当要依次写入多个文件时，使用显式文件描述符会比较有用。 &lt;br>
+例如，完成一个脚本，数据保存要求有：&lt;/p>
+&lt;blockquote>
+&lt;p>1.将数据输出到数据保存文件&lt;br>
+2.将数据记录到日志文件&lt;br>
+3.错误消息保存到错误日志文件&lt;/p>
+&lt;/blockquote>
+&lt;p>如上意味着脚本需要有三个输出通道：一个用于数据，一个用于日志，一个用于错误。由于输出只有两个标准描述符，因此需要打开第三个文件描述符。&lt;br>
+打开文件描述符可以调用 &lt;code>exec&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> &amp;gt;data-file
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> 3&amp;gt;log-file
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;first line of data&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;this is a log line&amp;#34;&lt;/span> &amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">…
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">if&lt;/span> something_bad_happens&lt;span class="p">;&lt;/span> &lt;span class="k">then&lt;/span> &lt;span class="nb">echo&lt;/span> error message &amp;gt;&lt;span class="p">&amp;amp;&lt;/span>2&lt;span class="p">;&lt;/span> &lt;span class="k">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> &amp;gt;&lt;span class="p">&amp;amp;&lt;/span>- &lt;span class="c1"># close the data output file&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;output file closed&amp;#34;&lt;/span> &amp;gt;&lt;span class="p">&amp;amp;&lt;/span>&lt;span class="m">3&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="-其他"># 其他&lt;/h2>
+&lt;h3 id="-一些概念"># 一些概念&lt;/h3>
+&lt;p>&lt;strong>FIFO 和 mkfifo&lt;/strong>&lt;br>
+&lt;code>FIFO&lt;/code>：&lt;code>first in, first out&lt;/code> 的意思。&lt;br>
+先进先出 (&lt;code>FIFO&lt;/code>) 文件称为&lt;code>命名管道（named pipe）&lt;/code>，和将其他命令的输入和输出联系在一起的常规管道一样，&lt;code>FIFO&lt;/code> 也是管理进程之间的输入和输出。但任何进程都可以（如果文件系统权限允许）从常规管道读取和写入，这允许多个进程相互通信，甚至不知道谁在接收它们发送的数据（或者发送它们正在接收的数据）。&lt;code>mkfifo&lt;/code> 命令用于生成一个 &lt;code>FIFO&lt;/code>，可以选择设置权限来规避这种情况。&lt;/p>
+&lt;p>如下示例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 创建 FIFO 特殊文件 fifo1 和 fifo2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ mkfifo fifo1 fifo2
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 创建 FIFO 特殊文件 fifo1，并配置读写执行权限给所属者&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ mkfifo -m &lt;span class="m">700&lt;/span> myfifo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 创建 FIFO 特殊文件 /dir1/dir2/fifo1，并且创建路径中不存在的每个目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ mkfifo -p /dir1/dir2/fifo1
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>fifo 文件使用示例：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 在命名管道 (fifos) 的上下文中，使用文件描述符可以启用非阻塞管道行为&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rm -f fifo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">mkfifo fifo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> 3&amp;lt;fifo &lt;span class="c1"># open fifo for reading&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">trap&lt;/span> &lt;span class="s2">&amp;#34;exit&amp;#34;&lt;/span> &lt;span class="m">1&lt;/span> &lt;span class="m">2&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">15&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> cat fifo &lt;span class="p">|&lt;/span> nl
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">)&lt;/span> &lt;span class="p">&amp;amp;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">bpid&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$!&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> 3&amp;gt;fifo &lt;span class="c1"># open fifo for writing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">trap&lt;/span> &lt;span class="s2">&amp;#34;exit&amp;#34;&lt;/span> &lt;span class="m">1&lt;/span> &lt;span class="m">2&lt;/span> &lt;span class="m">3&lt;/span> &lt;span class="m">15&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span> true&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;blah&amp;#34;&lt;/span> &amp;gt; fifo
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#kill -TERM $bpid&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>
+&lt;div class="notice info" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>&lt;code>fifo buffer&lt;/code> 有一定的大小限制，使用时尽量不要超过 65536 字节&lt;/p>
+&lt;/div>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>&lt;strong>本文内容参考自&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://unix.stackexchange.com/questions/13724/file-descriptors-shell-scripting/13726#13726">File descriptors &amp;amp; shell scripting&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.ibm.com/docs/en/i/7.4?topic=directories-mkfifo">mkfifo - Make FIFO special files&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://unix.stackexchange.com/questions/11946/how-big-is-the-pipe-buffer/11954#11954">How big is the pipe buffer?&lt;/a>&lt;/li>
+&lt;/ul></description><category domain="https://ruisum.top/tech/">tech</category><category domain="https://ruisum.top/tech/basics/">basics</category><category domain="https://ruisum.top/tech/basics/bash/">bash</category><category domain="https://ruisum.top/tags/fd/">fd</category><category domain="https://ruisum.top/tags/bash/">bash</category><category domain="https://ruisum.top/tags/basic/">basic</category><category domain="https://ruisum.top/tags/linux/">linux</category><category domain="https://ruisum.top/tags/fifo/">fifo</category></item><item><title>linux盘符变化</title><link>https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</link><guid isPermaLink="true">https://ruisum.top/tech/problems/linux%E7%9B%98%E7%AC%A6%E5%8F%98%E5%8C%96/</guid><pubDate>Wed, 08 Jun 2022 22:41:20 +0800</pubDate><author>rwen913@gmail.com (newiur)</author><copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright><description>&lt;h2 id="-背景"># 背景&lt;/h2>
 &lt;p>&lt;code>linux&lt;/code> 服务器重启后盘符发生变化，导致之前以盘符写入 &lt;code>/etc/fstab&lt;/code> 中的开机挂载项错乱，开机自启的应用将数据写入错误的磁盘。&lt;/p>
 &lt;p>查了一下相关信息，&lt;code>linux&lt;/code> 系统启动，磁盘设备名称都有可能变化，这是因为驱动加载的顺序、磁盘扫描顺序都不是固定的。在系统开机时，不同的控制器并行检测，先被探测到的先分配盘符，所以盘符乱序在一些场景下属于正常现象。&lt;/p>
 &lt;blockquote>
