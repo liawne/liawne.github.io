@@ -1,4 +1,593 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">newiur</title><subtitle type="html">newiur's blog</subtitle><updated>2022-06-19T22:25:21+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.99.1">Hugo</generator><entry><title type="text">文件描述符暂存内容</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/"/><id>https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/</id><updated>2022-06-13T23:15:48+08:00</updated><published>2022-06-13T23:15:48+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">使用文件描述符暂存内容，使用完成后释放</summary><content type="html">&lt;h2 id="-背景"># 背景&lt;/h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN"><title type="text">newiur</title><subtitle type="html">newiur's blog</subtitle><updated>2022-06-19T23:35:28+08:00</updated><id>https://ruisum.top/</id><link rel="alternate" type="text/html" href="https://ruisum.top/"/><link rel="self" type="application/atom+xml" href="https://ruisum.top/atom.xml"/><author><name>newiur</name><uri>https://ruisum.top/</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><generator uri="https://gohugo.io/" version="0.99.1">Hugo</generator><entry><title type="text">linux 文件锁</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/system/linux%E6%96%87%E4%BB%B6%E9%94%81/"/><id>https://ruisum.top/tech/basics/system/linux%E6%96%87%E4%BB%B6%E9%94%81/</id><updated>2022-06-15T22:53:59+08:00</updated><published>2022-06-15T22:53:59+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">linux系统中的锁机制，以及flock命令和flock系统调用的说明</summary><content type="html">&lt;h2 id="-说明"># 说明&lt;/h2>
+&lt;h3 id="-背景"># 背景&lt;/h3>
+&lt;p>在多进程共享的应用程序中，通过&lt;code>锁&lt;/code>来对同一个计算资源进行协同管理是非常常见的做法，无论在单机或多机的系统、数据库、文件系统中，都需要依赖&lt;code>锁&lt;/code>机制来避免并发访问导致的不确定结果。&lt;br>
+文件锁是一种互斥机制，可确保多个进程以安全的方式读取/写入同一个文件。之所以要对这些多进程业务进行控制，是因为这些进程的调度是不可预期的，这种时序上的不可预期会对同一个文件资源产生竞争性访问，从而带来预期外的结果。&lt;/p>
+&lt;h3 id="-中间更新问题interceding-update"># 中间更新问题（interceding update）&lt;/h3>
+&lt;p>中间更新是并发系统中典型的竞争条件问题。
+举例说明：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">假设有一个 account.dat 文件，用于存储帐户余额，其初始值为200。并发系统有两个进程来更新这个文件上的余额值：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程 A : 读取当前值，减去 20，然后将结果保存回文件中。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程 B : 读取当前值，加 80，然后将结果写回到文件中。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">显然，在顺序执行完这两个进程后，我们期望文件具有以下值：200-20 + 80 = 260。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">但是，如果进程的执行不是按预期的顺序执行，在以下这种情况下，可能会出现不一样的结果：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程 A : 读取文件的当前值 200 ，并准备进行进一步的计算。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程 B : 读取相同的文件并获得当前余额 200 。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程 A : 计算 200-20 并将结果 180 保存回文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">进程 B : 不知道余额已更新。因此，它仍将使用过时的值 200 计算 200 + 80，并将结果 280 写入文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">结果，account.dat 文件中保存的余额就是 280 而不是预期值 260。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="linux-中的文件锁">linux 中的文件锁&lt;/h2>
+&lt;p>文件锁定是一种限制在多个进程之间访问文件的机制。它只允许一个进程在特定时间访问文件，从而避免&lt;code>中间更新（interceding update）&lt;/code>问题。&lt;br>
+&lt;code>linux&lt;/code> 支持两种文件锁：&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>协同锁（Advisory Locking）&lt;/code>&lt;/li>
+&lt;li>&lt;code>强制锁（mandatory locks）&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h3 id="-协同锁"># 协同锁&lt;/h3>
+&lt;p>协同锁不是强制锁定方案。只有当参与的进程通过显式获取锁进行合作时，它才会起作用;否则，如果进程根本不知道锁，协同锁将被忽略。&lt;/p>
+&lt;p>仍以之前的示例说明：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">假设文件 account.dat 仍然包含初始值 200。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">备注：必须了解的是，协同锁不是由操作系统或文件系统设置的。因此即使进程 A 锁定了文件，进程 B 仍然可以通过系统调用自由地读取、写入甚至删除文件。如果进程 B 执行文件操作而不尝试获取锁，我们说进程 B 不与进程 A 合作。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">协同锁是如何为协作进程工作的：
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 A ：获取 account.dat 文件的排他锁，然后打开并读取该文件以获取当前值：200。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 B ：在读取文件之前尝试获取 account.dat 文件的锁（与进程 A 合作）。由于进程 A 已锁定文件，进程 B 必须等待进程 A 释放锁定。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 A ：计算 200-20 并将 180 写回文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 A ：释放锁。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 B ：现在获取锁并读取文件，并获得更新后的值：180。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 B ：启动其逻辑并将结果 260 (180+80) 写回文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">- 进程 B ：释放锁，以便其他协作进程可以读取和写入文件。
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">后面可以看看使用 flock 命令实现。
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-强制锁"># 强制锁&lt;/h3>
+&lt;div class="notice warning" >
+&lt;div class="notice-title">&lt;svg xmlns="http://www.w3.org/2000/svg" class="icon notice-icon" viewBox="0 0 512 512">&lt;path d="M256 8a248 248 0 100 496 248 248 0 000-496zm0 110a42 42 0 110 84 42 42 0 010-84zm56 254c0 7-5 12-12 12h-88c-7 0-12-5-12-12v-24c0-7 5-12 12-12h12v-64h-12c-7 0-12-5-12-12v-24c0-7 5-12 12-12h64c7 0 12 5 12 12v100h12c7 0 12 5 12 12v24z"/>&lt;/svg>&lt;/div>
+&lt;p>在了解强制文件锁定之前，需要了解的是：&lt;a href="https://man7.org/linux/man-pages/man2/fcntl.2.html">Linux 的强制锁实现是不可靠的&lt;/a>&lt;br>&lt;br>因强制锁存在 BUG,且自 linux 4.5 以来,该功能被认为很少使用，
+强制锁已成为可选功能，由配置选项（CONFIG_MANDATORY_FILE_LOCKING）配置; 后续将逐步删除该功能。&lt;/p>
+&lt;/div>
+&lt;p>与协同锁不同，强制锁不需要参与进程之间的任何合作。一旦在文件上激活强制锁定，操作系统就会阻止其他进程读取或写入文件。要在 &lt;code>linux&lt;/code> 中启用强制文件锁定，必须满足两个要求：&lt;/p>
+&lt;ul>
+&lt;li>必须使用 &lt;code>mand&lt;/code> 选项挂载文件系统
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ mount -o mand FILESYSTEM MOUNT_POINT
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>必须打开 &lt;code>set-group-ID&lt;/code> 位并关闭我们将要锁定的文件的 &lt;code>group-execute&lt;/code> 位
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ chmod g+s,g-x FILE
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h3 id="-检查系统中的所有锁"># 检查系统中的所有锁&lt;/h3>
+&lt;p>检查正在运行的系统中当前获取的锁的两种方法：&lt;br>
+&lt;strong>lslocks&lt;/strong>&lt;br>
+&lt;code>lslocks&lt;/code> 命令是由 &lt;code>util-linux&lt;/code> 软件包提供的，可用于所有 &lt;code>Linux&lt;/code> 发行版，它可以列出我们系统中当前持有的所有文件锁。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@c7u3test1 ~&lt;span class="o">]&lt;/span>&lt;span class="c1"># lslocks &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">COMMAND PID TYPE SIZE MODE M START END PATH
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">lvmetad &lt;span class="m">463&lt;/span> POSIX 4B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /run/lvmetad.pid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">crond &lt;span class="m">628&lt;/span> FLOCK 4B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /run/crond.pid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">atd &lt;span class="m">629&lt;/span> POSIX 4B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /run/atd.pid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">abrtd &lt;span class="m">606&lt;/span> POSIX 4B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /run/abrt/abrtd.pid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">master &lt;span class="m">1512&lt;/span> FLOCK 33B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /var/spool/postfix/pid/master.pid
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">master &lt;span class="m">1512&lt;/span> FLOCK 33B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /var/lib/postfix/master.lock
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在命令输出中，我们可以看到系统中所有当前被锁定的文件，以及每个锁的详细信息，比如锁的类型，哪个进程持有锁等。&lt;/p>
+&lt;p>&lt;strong>/proc/locks&lt;/strong>&lt;br>
+&lt;code>/proc/locks&lt;/code> 不是命令，它是 &lt;code>procfs&lt;/code> 虚拟文件系统中的一个文件;该文件包含所有当前文件锁。&lt;code>lslocks&lt;/code> 命令也依赖此文件来生成列表。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="o">[&lt;/span>root@c7u3test1 ~&lt;span class="o">]&lt;/span>&lt;span class="c1"># cat /proc/locks &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">1: FLOCK ADVISORY WRITE &lt;span class="m">1512&lt;/span> fd:00:34534423 &lt;span class="m">0&lt;/span> EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">2: FLOCK ADVISORY WRITE &lt;span class="m">1512&lt;/span> fd:00:1284 &lt;span class="m">0&lt;/span> EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">3: POSIX ADVISORY WRITE &lt;span class="m">606&lt;/span> 00:12:15127 &lt;span class="m">0&lt;/span> EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">4: POSIX ADVISORY WRITE &lt;span class="m">629&lt;/span> 00:12:15111 &lt;span class="m">0&lt;/span> EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">5: FLOCK ADVISORY WRITE &lt;span class="m">628&lt;/span> 00:12:15087 &lt;span class="m">0&lt;/span> EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">6: POSIX ADVISORY WRITE &lt;span class="m">463&lt;/span> 00:12:12033 &lt;span class="m">0&lt;/span> EOF
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>选取第一行来了解锁信息在 &lt;code>/proc/locks&lt;/code> 文件系统中是如何组织的：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">&lt;span class="line">&lt;span class="cl">1: FLOCK ADVISORY WRITE 1512 fd:00:34534423 0 EOF
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-1- --2-- ---3--- --4-- --5- -------6------ -7- -8-
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 1: 第一个字段是序列号
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 2: 第二个字段表示使用的锁的类，例如 FLOCK（来自flock 系统调用）或POSIX（来自lockf、fcntl 系统调用）
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 3: 第三个字段表示锁定类型，它可以有两个值：ADVISORY 或 MANDATORY
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 4: 第四个字段显示锁是写锁还是读锁
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 5: 第五个字段表示持有锁的进程的ID
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 6: 第六个字段包含一个冒号分隔值字符串，以 major-device:minor-device:inode 的格式显示锁定文件的 id
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"># 7和8: 第七和第八字段一起显示被锁定文件的锁定区域的开始和结束;在此示例行中，整个文件被锁定
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="-协同锁使用示例"># 协同锁使用示例&lt;/h2>
+&lt;p>&lt;code>util-linux&lt;/code> &lt;code>包也提供了flock&lt;/code> 命令; &lt;code>flock&lt;/code> 命令允许我们在 &lt;code>shell&lt;/code> 脚本或命令行中管理协同文件锁，使用方式为：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ flock FILE_TO_LOCK COMMAND
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-获取协同锁"># 获取协同锁&lt;/h3>
+&lt;p>以更新 &lt;code>balance.dat&lt;/code> 文本文件为例说明，还需要两个进程 A 和 B 来更新文件中的余额。首先创建一个简单的 &lt;code>shell&lt;/code> 脚本 &lt;code>update_balance.sh&lt;/code> 来处理两个进程的余额更新逻辑，脚本如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="nv">file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;balance.dat&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>cat &lt;span class="nv">$file&lt;/span>&lt;span class="k">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Read current balance: &lt;/span>&lt;span class="nv">$value&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># sleep 10 seconds to simulate business calculation&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">progress&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="m">10&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">while&lt;/span> &lt;span class="o">[[&lt;/span> &lt;span class="nv">$progress&lt;/span> -lt &lt;span class="m">101&lt;/span> &lt;span class="o">]]&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="k">do&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">echo&lt;/span> -n -e &lt;span class="s2">&amp;#34;\033[77DCalculating new balance.. &lt;/span>&lt;span class="nv">$progress&lt;/span>&lt;span class="s2">%&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> sleep &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nv">progress&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$((&lt;/span>&lt;span class="m">10&lt;/span>&lt;span class="o">+&lt;/span>progress&lt;span class="k">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">done&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nv">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$((&lt;/span>value+&lt;span class="nv">$1&lt;/span>&lt;span class="k">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Write new balance (&lt;/span>&lt;span class="nv">$value&lt;/span>&lt;span class="s2">) back to &lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="s2">.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="nv">$value&lt;/span> &amp;gt; &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">echo&lt;/span> &lt;span class="s2">&amp;#34;Done.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>创建一个简单的 &lt;code>shell&lt;/code> 脚本 &lt;code>a.sh&lt;/code> 来模拟&lt;code>进程A&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="c1">#-----------------------------------------&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># process A: lock the file and subtract 20 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># from the current balance&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#-----------------------------------------&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock --verbose account.dat ./update_balance.sh &lt;span class="s1">&amp;#39;-20&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>执行后结果：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ ./a.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock: getting lock took 0.000002 seconds
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock: executing ./update_balance.sh
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Read current balance:100
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Calculating new balance..100%
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Write new balance &lt;span class="o">(&lt;/span>80&lt;span class="o">)&lt;/span> back to balance.dat.
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">Done.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>脚本执行过程中，可以通过 &lt;code>lslocks&lt;/code> 命令查看锁文件：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">$ lslocks &lt;span class="p">|&lt;/span> grep &lt;span class="s1">&amp;#39;balance&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock &lt;span class="m">825712&lt;/span> FLOCK 4B WRITE &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> &lt;span class="m">0&lt;/span> /tmp/test/balance.dat
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>输出显示 &lt;code>flock&lt;/code> 命令对整个文件 &lt;code>/tmp/test/balance.dat&lt;/code> 持有一个 &lt;code>WRITE&lt;/code> 锁。&lt;/p>
+&lt;h3 id="-非协作进程示例"># 非协作进程示例&lt;/h3>
+&lt;p>协作锁只有在参与的进程协作时才起作用。将余额重置为 200，并测试如果进程 A 获取文件的协作锁但以非协作方式启动进程 B 会发生什么。&lt;br>
+创建一个简单的 &lt;code>shell&lt;/code> 脚本 &lt;code>b_non-cooperative.sh&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="c1">#----------------------------------------&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># process B: add 80 to the current balance in a&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># non-cooperative way&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#----------------------------------------&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">./update_balance.sh &lt;span class="s1">&amp;#39;80&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>进程 B 调用 &lt;code>update_balance.sh&lt;/code> 没有尝试获取数据文件上的锁。
+&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/06/20220619-1538.gif" alt="test1">
+如果进程 B 启动时没有与进程 A 协作，进程 A 获取的协作锁将被忽略;因此在 &lt;code>balance.dat&lt;/code> 中数字为 280，而不是 260。&lt;/p>
+&lt;h3 id="-协作进程示例"># 协作进程示例&lt;/h3>
+&lt;p>创建另一个协作进程 B，&lt;code>b.sh&lt;/code>，看看协作锁是如何工作的：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>&lt;span class="c1">#----------------------------------------&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># process B: add 80 to the current balance&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># in a cooperative way&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">#----------------------------------------&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock --verbose balance.dat ./update_balance.sh &lt;span class="s1">&amp;#39;80&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;img src="https://ruisum.oss-cn-shenzhen.aliyuncs.com/img/2022/06/20220619-1547.gif" alt="test2">
+当进程 B 尝试获取 &lt;code>balance.dat&lt;/code> 文件上的锁时，它等待进程 A 释放锁。因此，协同锁定起作用了，我们在数据文件中得到了预期的结果 260。&lt;/p>
+&lt;h2 id="-flock-命令的使用"># flock 命令的使用&lt;/h2>
+&lt;h3 id="-flock-的语法"># flock 的语法&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 命令格式&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock &lt;span class="o">[&lt;/span>options&lt;span class="o">]&lt;/span> file&lt;span class="p">|&lt;/span>directory &lt;span class="nb">command&lt;/span> &lt;span class="o">[&lt;/span>arguments&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock &lt;span class="o">[&lt;/span>options&lt;span class="o">]&lt;/span> file&lt;span class="p">|&lt;/span>directory -c &lt;span class="nb">command&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock &lt;span class="o">[&lt;/span>options&lt;span class="o">]&lt;/span> number
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 几个参数的说明&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-c，--command command：后接命令
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-x，-e,--exclusive number： 获得排他锁，有时称为写锁。默认的锁
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-n，--nb,--nonblock： 如果无法立即获得锁，则失败而不是等待。有关使用的退出代码，请参见 -E 选项
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-E，--conflict-exit-code： 使用 -n 选项时使用的退出代码。默认值为 &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-o，--close： 在执行命令之前关闭持有锁的文件描述符。如果命令生成不应持有锁的子进程会比较有用
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-s，--shared：获得共享锁，有时称为读锁
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-u，--unlock： 释放锁。这通常不是必需的，因为当文件关闭时锁会自动删除&lt;span class="p">;&lt;/span>但在特殊情况下可能需要，例如如果封闭的命令组可能已经派生了一个不应该的后台进程保留了锁
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">-w，--wait，--timeout seconds：如果在几秒钟内无法获取锁，则失败
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>上面的第一种和第二种形式类似于 &lt;code>su&lt;/code> 或 &lt;code>newgrp&lt;/code> 的命令格式。他们锁定一个指定的文件或目录，如果尚不存在，则会创建（需要有适当的权限）。默认情况下，如果锁不能立即获得，&lt;code>flock&lt;/code> 会一直等待，直到锁可用为止。&lt;br>
+第三种形式通过文件描述符号使用打开的文件，后面有示例说明。&lt;/p>
+&lt;h3 id="-常见使用方式"># 常见使用方式&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 执行 echo 命令前，获取排他锁&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ flock -x local-lock-file &lt;span class="nb">echo&lt;/span> &lt;span class="s1">&amp;#39;a b c&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## shell 脚本中使用很方便，当块中的代码执行完成时，文件描述符9和锁会自动释放&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 此处还可以使用 subshell, 但subshell存在一定的性能损耗，以及一些其他类似变量传递等的问题&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> flock -n &lt;span class="m">9&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="nb">exit&lt;/span> &lt;span class="m">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1"># ... commands executed under lock ...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span> 9&amp;gt;/var/lock/mylockfile
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 这是 shell 脚本的样板代码。将它放在要锁定的 shell 脚本的顶部，它会在第一次运行时自动锁定。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 如果 env var $FLOCKER 未设置为正在运行的 shell 脚本，则在重新执行自身之前执行 flock 并获取独占非阻塞锁（使用脚本本身作为锁文件）。 &lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 它还将 FLOCKER 环境变量设置为正确的值，因此它不会再次运行。&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$ &lt;span class="o">[&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">FLOCKER&lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> !&lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$0&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">]&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="nb">exec&lt;/span> env &lt;span class="nv">FLOCKER&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$0&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> flock -en &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$0&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$0&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$@&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="o">||&lt;/span> :
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-flock-和-fd-的结合使用"># flock 和 fd 的结合使用&lt;/h3>
+&lt;ul>
+&lt;li>为什么将 &lt;code>flock&lt;/code> 与文件描述符结合使用
+&lt;blockquote>
+&lt;p>与更传统的锁定机制相比，使用&lt;code>flock() &lt;/code>或与之密切相关的&lt;code>fcntl(LOCK_EX)&lt;/code> 机制的主要优势之一是，无需在重新启动或其他非正常关机情况下执行清理动作。因为锁是通过文件描述符附加的；当该文件描述符关闭时（无论是通过正常关闭、SIGKILL 还是断电），不再持有锁。&lt;/p>
+&lt;/blockquote>
+&lt;/li>
+&lt;li>使用举例1
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 特定版本之后的 bash，支持不用手动管理 fd 的分配&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># this requires a very new bash -- 4.2 or so.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> &lt;span class="o">{&lt;/span>lock_fd&lt;span class="o">}&lt;/span>&amp;gt;filename &lt;span class="c1"># open filename, store FD number in lock_fd&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">flock -x &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$lock_fd&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="c1"># pass that FD number to flock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">exec&lt;/span> &lt;span class="nv">$lock_fd&lt;/span>&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>- &lt;span class="c1"># later: release the lock&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>使用举例2
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">## 配置一个函数，用于获取锁&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">declare&lt;/span> -A &lt;span class="nv">lock_fds&lt;/span>&lt;span class="o">=()&lt;/span> &lt;span class="c1"># store FDs in an associative array&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">getLock&lt;span class="o">()&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">local&lt;/span> &lt;span class="nv">file&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="k">$(&lt;/span>readlink -f &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$1&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">)&lt;/span> &lt;span class="c1"># declare locals; canonicalize name&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">local&lt;/span> &lt;span class="nv">op&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="nv">$2&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">case&lt;/span> &lt;span class="nv">$op&lt;/span> in
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LOCK_UN&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">[[&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">lock_fds&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="o">]]&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="c1"># if not locked, do nothing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exec&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">lock_fds&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="si">}&lt;/span>&amp;gt;&lt;span class="p">&amp;amp;&lt;/span>- &lt;span class="c1"># close the FD, releasing the lock&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">unset&lt;/span> lock_fds&lt;span class="o">[&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="o">]&lt;/span> &lt;span class="c1"># ...and clear the map entry.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> LOCK_EX&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">[[&lt;/span> &lt;span class="si">${&lt;/span>&lt;span class="nv">lock_fds&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="si">}&lt;/span> &lt;span class="o">]]&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="k">return&lt;/span> &lt;span class="c1"># if already locked, do nothing&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">local&lt;/span> new_lock_fd &lt;span class="c1"># don&amp;#39;t leak this variable&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nb">exec&lt;/span> &lt;span class="o">{&lt;/span>new_lock_fd&lt;span class="o">}&lt;/span>&amp;gt;&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="c1"># open the file...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> flock -x &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$new_lock_fd&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="c1"># ...lock the fd...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> lock_fds&lt;span class="o">[&lt;/span>&lt;span class="nv">$file&lt;/span>&lt;span class="o">]=&lt;/span>&lt;span class="nv">$new_lock_fd&lt;/span> &lt;span class="c1"># ...and store the locked FD.&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">;;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">esac&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;h2 id="-flock-系统调用"># flock() 系统调用&lt;/h2>
+&lt;p>&lt;code>flock()&lt;/code> - 在打开的文件上应用或删除协同锁&lt;/p>
+&lt;h3 id="-实现"># 实现&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C" data-lang="C">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#include&lt;/span> &lt;span class="cpf">&amp;lt;sys/file.h&amp;gt; &lt;/span>&lt;span class="cp">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kt">int&lt;/span> &lt;span class="nf">flock&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">fd&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">operation&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="-描述"># 描述&lt;/h3>
+&lt;p>对 &lt;code>fd&lt;/code> 指定的打开文件应用或删除协同锁，参数 &lt;code>operation&lt;/code> 是以下之一：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">&lt;strong>Tag&lt;/strong>&lt;/th>
+&lt;th style="text-align:left">&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>LOCK_SH&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>Place a shared lock. More than one process may hold a shared lock for a given file at a given time.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>LOCK_EX&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>Place an exclusive lock. Only one process may hold an exclusive lock for a given file at a given time.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>LOCK_UN&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>Remove an existing lock held by this process.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>如果另一个进程持有不兼容的锁，则调用 &lt;code>flock()&lt;/code> 可能会阻塞。要发出非阻塞请求，在上述任何操作中包含 &lt;code>LOCK_NB（通过 ORing）&lt;/code>。&lt;/li>
+&lt;li>单个文件一般不会同时拥有共享锁和排他锁。&lt;/li>
+&lt;li>由 &lt;code>flock()&lt;/code> 创建的锁与&lt;code>打开的文件表条目相（open file table entry）&lt;/code>关联。这意味着重复的文件描述符（例如，由 &lt;code>fork(2)&lt;/code> 或 &lt;code>dup(2)&lt;/code> 创建）引用同一个锁，并且可以使用这些描述符中的任何一个来修改或释放该锁。此外，通过对这些重复描述符中的任何一个执行显式 &lt;code>LOCK_UN&lt;/code> 操作或在所有此类描述符已关闭时释放锁。&lt;/li>
+&lt;li>如果一个进程使用 &lt;code>open(2)&lt;/code> （或类似方法）为同一个文件获取多个描述符，这些描述符将由 &lt;code>flock()&lt;/code> 独立处理。&lt;/li>
+&lt;li>一个进程只能在文件上持有一种类型的锁（共享或独占）。对已锁定文件的后续 &lt;code>flock()&lt;/code> 调用会将现有锁定转换为新锁定模式。&lt;/li>
+&lt;li>由 &lt;code>flock()&lt;/code> 创建的锁在 &lt;code>execve(2)&lt;/code> 中被保留。&lt;/li>
+&lt;li>无论打开文件的模式如何，都可以在文件上放置共享锁或排他锁。&lt;/li>
+&lt;/ul>
+&lt;h3 id="-返回值和错误"># 返回值和错误&lt;/h3>
+&lt;p>成功时，返回零;出错时，返回 -1，并适当设置 errno。&lt;br>
+错误内容如下： &lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:left">&lt;strong>Error Code&lt;/strong>&lt;/th>
+&lt;th style="text-align:left">&lt;strong>Description&lt;/strong>&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>EBADF&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>d is not a not an open file descriptor.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>EINTR&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>While waiting to acquire a lock, the call was interrupted by delivery of a signal caught by a handler.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>EINVAL&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>operation is invalid.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>ENOLCK&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>The kernel ran out of memory for allocating lock records.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:left">&lt;code>EWOULDBLOCK&lt;/code>&lt;/td>
+&lt;td style="text-align:left">&lt;code>The file is locked and the LOCK_NB flag was selected.&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="-其他"># 其他&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>flock(2)&lt;/code> 不会通过 &lt;code>NFS&lt;/code> 锁定文件。请改用 &lt;code>fcntl(2)&lt;/code>：它可以在 &lt;code>NFS&lt;/code> 上运行。&lt;/li>
+&lt;li>从内核 &lt;code>2.0&lt;/code> 开始，&lt;code>flock(2)&lt;/code> 本身作为系统调用实现，而不是在 &lt;code>GNU C&lt;/code> 库中模拟为对 &lt;code>fcntl(2)&lt;/code> 的调用。&lt;code>flock(2)&lt;/code> 和 &lt;code>fcntl(2)&lt;/code> 放置的锁类型之间没有交互，&lt;code>flock(2)&lt;/code> 不会检测到死锁。&lt;/li>
+&lt;li>&lt;code>flock(2)&lt;/code> 仅设置协同锁；给文件适当的权限，进程可以忽略 &lt;code>flock(2)&lt;/code> 的使用并对文件正常执行&lt;code>I/O&lt;/code>操作。&lt;/li>
+&lt;li>对于 &lt;code>forked进程&lt;/code> 和 &lt;code>dup(2)&lt;/code>，&lt;code>flock(2)&lt;/code> 和 &lt;code>fcntl(2)&lt;/code> 锁具有不同的语义。在使用 &lt;code>fcntl()&lt;/code> 实现 &lt;code>flock()&lt;/code> 的系统上，&lt;code>flock()&lt;/code> 的语义与本文&lt;code>描述&lt;/code>部分不同。&lt;/li>
+&lt;li>转换锁（共享到独占，反之亦然）不能保证是原子的：先移除现有锁，然后建立新锁。在这两个步骤之间，可能会授予另一个进程的挂起锁请求，如果指定了 &lt;code>LOCK_NB&lt;/code>，则转换要么阻塞，要么失败。&lt;/li>
+&lt;/ul>
+&lt;h2 id="-其他-1"># 其他&lt;/h2>
+&lt;h3 id="-参考内容"># 参考内容&lt;/h3>
+&lt;p>本文内容参考自：&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.baeldung.com/linux/file-locking#:~:text=Introduction%20to%20flock%20Command,or%20on%20the%20command%20line.">Introduction to File Locking in Linux&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://manpages.ubuntu.com/manpages/xenial/man1/flock.1.html">flock常见使用示例&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://stackoverflow.com/questions/24388009/linux-flock-how-to-just-lock-a-file">flock和文件描述符结合使用&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://wiki.bash-hackers.org/howto/mutex">Lock your script (against parallel execution)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://apenwarr.ca/log/20101213">Everything you never wanted to know about file locking&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://en.wikipedia.org/wiki/File_locking">wikipedia file locking&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.tutorialspoint.com/unix_system_calls/flock.htm">flock() - Unix, Linux System Call&lt;/a>&lt;/li>
+&lt;/ul></content><category scheme="https://ruisum.top/tech/" term="tech" label="tech"/><category scheme="https://ruisum.top/tech/basics/" term="basics" label="basics"/><category scheme="https://ruisum.top/tech/basics/system/" term="system" label="system"/><category scheme="https://ruisum.top/tags/linux/" term="linux" label="linux"/><category scheme="https://ruisum.top/tags/lock/" term="lock" label="lock"/><category scheme="https://ruisum.top/tags/flock/" term="flock" label="flock"/></entry><entry><title type="text">文件描述符暂存内容</title><link rel="alternate" type="text/html" href="https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/"/><id>https://ruisum.top/tech/basics/bash/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6%E6%9A%82%E5%AD%98%E5%86%85%E5%AE%B9/</id><updated>2022-06-13T23:15:48+08:00</updated><published>2022-06-13T23:15:48+08:00</published><author><name>newiur</name><uri>https://ruisum.top</uri><email>rwen913@gmail.com</email></author><rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html">使用文件描述符暂存内容，使用完成后释放</summary><content type="html">&lt;h2 id="-背景"># 背景&lt;/h2>
 &lt;p>写 &lt;code>shell&lt;/code> 脚本时，有时会需要保存临时数据，供脚本后续流程使用的场景; 之前是在执行脚本时生成临时文件，脚本执行完成后删除文件&lt;/p>
 &lt;h2 id="-几种实现方式"># 几种实现方式&lt;/h2>
 &lt;h3 id="-使用-mktemp-生成临时文件"># 使用 mktemp 生成临时文件&lt;/h3>
